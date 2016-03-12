@@ -10,5 +10,6 @@ function secret($str)
     $str = md5($str);
     $str = md5($str);
     $str = md5($str);
+    return $str;
 }
 ?>
