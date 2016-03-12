@@ -6,7 +6,7 @@
  * Time: 12:41
  */
 session_start();
-
+require_once 'ch_json_encode.php';
 if ($_SESSION['userid'] != null) {
-    echo json_encode($_SESSION);
+    echo ch_json_encode($_SESSION);
 }
