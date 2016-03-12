@@ -1,5 +1,5 @@
 function Loaded(){
-   var user =getName();
+    var user=getName()
     if(user==null||user==''){
         var msg=" <ul class=\"nav pull-right navbar-nav\" id=\"user\">"+
        " <li><a> <span class=\"glyphicon glyphicon-search\"></span></a></li>"+

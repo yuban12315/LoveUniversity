@@ -19,19 +19,14 @@ function getCookie(name) {
     return '';
 }
 
-function showName() {
-    var username = GetCookie('username');
-    var name=document.getElementById('name');
-    if (username != "" && username != null) {
-        var msg = 'Welcome ' + username + '!';
-        msg+='<a href="html/login.html" class="back">Logout</a>';
-        name.innerHTML = msg;
-    }
-    else {
-        var msg='Welcome Guest! --<span>Click for Login</span>';
-        name.innerHTML=msg;
-        name.onclick=function login(){
-            location.href='html/login.html';
-        }
-    }
+function resetCookie(){
+    var url = 'http://127.0.0.1/LoveUniversity/php/Service/UserService/session.php';
+    $.getJSON(url, function (data) {
+        var id=data.userid;
+        setCookie('userid',id);
+    })
+}
+
+function  getName(){
+    var url=''
 }

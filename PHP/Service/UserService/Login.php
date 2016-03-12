@@ -6,6 +6,7 @@
  * Time: 20:26
  */
 require_once '../../DAO/DAO.php';
+require_once 'MD5.php';
 session_start();
 $username = $_POST['username'];
 $password = $_POST['password'];
@@ -45,6 +46,7 @@ if($row) {
     if ($row['PassWord'] == $password) {
         $_SESSION['userid'] = $row['UserId'];
         $_SESSION['username'] = $row['UserName'];
+        $_SESSION['useridmd5'] = secret($_SESSION['userid']);
         echo '1';
     }
 }

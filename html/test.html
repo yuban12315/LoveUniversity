@@ -41,6 +41,7 @@
 <button id="test">Click</button>
 
 <script src="../js/jQuery.js"></script>
+<script src="../js/jQuery-MD5.js"></script>
 <script src="../js/bootstrap.js"></script>
 <script>
     $(document).ready(function () {
@@ -48,7 +49,8 @@
             var url = 'http://127.0.0.1/LoveUniversity/php/Service/UserService/session.php';
             $.getJSON(url, function (data) {
                 var id = data.userid;
-                alert(id)
+                id = $.md5(id);
+                alert(id);
             })
         })
     })
