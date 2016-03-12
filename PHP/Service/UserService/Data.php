@@ -7,6 +7,7 @@
  */
 session_start();
 require_once '../../DAO/DAO.php';
+require_once 'ch_json_encode.php';
 //$userid = $_SESSION['userid'];
 $userid = 1;
 if($userid!=null) {
@@ -38,7 +39,8 @@ if($userid!=null) {
         unset($XueData['UserId']);
         $array['XueData'] = $XueData;
     }
-    echo json_encode($array);
+    $str = ch_json_encode($array);
+    echo $str;
 }
 ?>
 
