@@ -9,10 +9,11 @@ require_once '../../DAO/DAO.php';
 require_once 'ImageChange.php';
 require_once 'Upload.php';
 session_start();
-$userid = $_SESSION['userid'];
-if ($userid == null) {
+
+if ($_SESSION == null) {
     echo "请登录";
 } else {
+    $userid = $_SESSION['userid'];
     $str = "select * from user where UserId = '{$userid}'";
     $row = sel($str);
     if ($_POST['username'] != null) {

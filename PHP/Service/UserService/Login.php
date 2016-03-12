@@ -7,11 +7,11 @@
  */
 require_once '../../DAO/DAO.php';
 session_start();
-/*$username = $_POST['username'];
-$password = $_POST['password'];*/
+$username = $_POST['username'];
+$password = $_POST['password'];
 
- $username = "admin";
- $password = "1234567";
+ /*$username = "admin";
+ $password = "1234567";*/
 
 if($username==null)
 {
