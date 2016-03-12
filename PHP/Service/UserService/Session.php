@@ -7,12 +7,5 @@
  */
 session_start();
 if ($_SESSION['userid'] != null) {
-    echo $_SESSION['userid'];
-} else {
-    echo "";
-}
-if ($_SESSION['truename'] != null) {
-    echo $_SESSION['truename'];
-} else {
-    echo "";
+    echo json_encode($_SESSION);
 }
