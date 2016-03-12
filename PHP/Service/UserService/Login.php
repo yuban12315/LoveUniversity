@@ -44,7 +44,7 @@ $row = sel($str);
 if($row) {
     if ($row['PassWord'] == $password) {
         $_SESSION['userid'] = $row['UserId'];
-        $_SESSION['truename'] = $row['TrueName'];
+        $_SESSION['username'] = $row['UserName'];
         echo '1';
     }
 }

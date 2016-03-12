@@ -8,8 +8,7 @@
 session_start();
 require_once '../../DAO/DAO.php';
 require_once 'ch_json_encode.php';
-//$userid = $_SESSION['userid'];
-$userid = 1;
+$userid = $_SESSION['userid'];
 if($userid!=null) {
     $str = 'select * from user where UserId = "' . $userid . '"';
     $str1 = 'select * from food where UserId = "' . $userid . '"';
@@ -39,7 +38,10 @@ if($userid!=null) {
         unset($XueData['UserId']);
         $array['XueData'] = $XueData;
     }
-    $str = ch_json_encode($array);
+    /*$str = ch_json_encode($array);
+    $str = str_replace("{","",$str);
+    $str = str_replace("}","",$str);
+    $str = str_replace("\"","",$str);*/
     echo $str;
 }
 ?>

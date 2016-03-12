@@ -7,6 +7,6 @@
  */
 session_start();
 require_once 'ch_json_encode.php';
-if ($_SESSION['userid'] != null) {
+if ($_SESSION!= null) {
     echo ch_json_encode($_SESSION);
 }
