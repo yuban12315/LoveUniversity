@@ -33,16 +33,17 @@ if ($userid == null) {
         }
     }
     if ($_FILES['userphoto']['name'] != null) {
-        $name = $_FILES['photo']['name'];
-        $type = $_FILES['photo']['type'];
-        $tmp_name = $_FILES['photo']['tmp_name'];
-        $error = $_FILES['photo']['error'];
-        $size = $_FILES['photo']['size'];
-        $destination = "../../../UserImage/User" . "$name";
+        $name = $_FILES['userphoto']['name'];
+        $type = $_FILES['userphoto']['type'];
+        $tmp_name = $_FILES['userphoto']['tmp_name'];
+        $error = $_FILES['userphoto']['error'];
+        $size = $_FILES['userphoto']['size'];
+        $destination = "../../UserImage/User" . "$name";
         $rename = $userid.'.png';
         $path = 'http://7xrqhs.com1.z0.glb.clouddn.com/'.$rename;
         if(buffer($type,$tmp_name,$destination)) {
             upload($destination, $rename);
+            unlink($destination);
             $str = "update user set UserPhoto = '{$path}' where UserId = '{$userid}'";
             if(up($str))
             {

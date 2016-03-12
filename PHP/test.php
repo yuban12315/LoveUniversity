@@ -1,14 +1,17 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: LC
- * Date: 2016/3/10
- * Time: 21:26
+/*
+ * $conn = mysqli_connect("183.175.12.160","root","31415926","loveu","3306");
+ * $username = "123";
+ * $result = mysqli_query($conn,"select * from user where UserName = 'admin'");
+ * $row = mysqli_fetch_assoc($result);
+ * echo $row['PassWord'];
  */
-require_once "../../../php-sdk-master/autoload.php";
+/*
+require_once "php-sdk-master/autoload.php";
 use Qiniu\Auth;
 use Qiniu\Storage\UploadManager;
-function upload($path,$name)
+upload();
+function upload()
 {
     $accessKey = 'gFO-8IYwjVPzNAmbAORHJCgGwIHzcyIbFhZ3yVIi';
     $secretKey = 'hllClWcBETkcn0aI8SROEe4Y1blV5gEQwgUHAQQu';
@@ -20,10 +23,10 @@ function upload($path,$name)
     $token = $auth->uploadToken($bucket);
 
 // 要上传文件的本地路径
-    $filePath = $path;
+    $filePath = "UserImage/System/Head.jpg";
 
 // 上传到七牛后保存的文件名
-    $key = $name;
+    $key = "Head.png";
 
 // 初始化 UploadManager 对象并进行文件的上传
     $uploadMgr = new UploadManager();
@@ -36,4 +39,10 @@ function upload($path,$name)
     } else {
         var_dump($ret);
     }
-}
+}*/
+//unlink('UserImage/System/Head.jpg');
+echo "hahah";
+
+
+
+

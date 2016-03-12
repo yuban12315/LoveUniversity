@@ -3,6 +3,7 @@ session_start();
 header("Content-type: text/html; charset=utf-8");
 require_once "../../DAO/DAO.php";
 require_once "MD5.php";
+require_once "XSS.php";
 $username = $_POST['username'];
 $password = $_POST['password'];
 $repassword = $_POST['repassword'];
@@ -61,7 +62,7 @@ function Pending($username, $password, $userphone, $truename, $usermajor, $users
         return "请再输入一次密码";
     }
     /*过滤*/
-    if(strpos($username, "<")|| strpos($password, "<")||strpos($userphone, "<")||strpos($truename, "<") ||strpos($usermajor, "<"))
+    if(xss($username)||xss($password)||xss($userphone)||xss($truename)||xss($usermajor))
     {
         return "不要试图攻击！！！";
     }
