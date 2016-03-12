@@ -6,17 +6,20 @@
  * Time: 14:29
  */
 require_once '../../DAO/DAO.php';
-require_once 'ch_json_encode.php';
-Mypage('run',null);
+//Mypage('run',1);
 function Mypage($table,$page)
 {
     $conn = connect();
     $str = "select * from {$table} ";
     $result = mysqli_query($conn,$str);
     $row = mysqli_fetch_assoc($result);
-    while($row)
-    {
-        echo ch_json_encode($row);
+    $i=($page-1)*10;
+    while($i<=($page*10-1)) {
+        $i++;
+        echo json_encode($row).'<br>';
         $row = mysqli_fetch_assoc($result);
+        if(!$row) {
+            break;
+        }
     }
 }

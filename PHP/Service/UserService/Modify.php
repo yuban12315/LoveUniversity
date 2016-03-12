@@ -16,7 +16,7 @@ if ($_SESSION == null) {
     $userid = $_SESSION['userid'];
     $str = "select * from user where UserId = '{$userid}'";
     $row = sel($str);
-    if ($_POST['username'] != null) {
+    /*if ($_POST['username'] != null) {
         if($_POST['username']!=$row['UserName']) {
             $username = $_POST['username'];
             $str = "update user set UserMajor = '{$username}' where UserId = '{$userid}'";
@@ -32,7 +32,7 @@ if ($_SESSION == null) {
             echo "用户名已被注册";
             die();
         }
-    }
+    }*/
     if ($_FILES['userphoto']['name'] != null) {
         $name = $_FILES['userphoto']['name'];
         $type = $_FILES['userphoto']['type'];

@@ -10,6 +10,7 @@ else {
     if (sel($str)) {
         echo "已有约会";
     } else {
+        $username = $_SESSION['username'];
         $str = "insert into run (UserId) VALUES ('{$userid}')";
         ins($str);
         $runinformation = $_POST['runinformation'];
@@ -17,6 +18,8 @@ else {
         $str = "update run set RunTime = '{$runtime}' where UserId = '{$userid}'";
         up($str);
         $str = "update run set RunIformation = '{$runinformation}' where UserId = '{$userid}'";
+        up($str);
+        $str = "update run set PostUser = '{$username}' where UserId = '{$userid}'";
         up($str);
         echo "创建成功";
     }
