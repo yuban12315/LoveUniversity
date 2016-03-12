@@ -7,3 +7,6 @@
  */
 session_start();
 
+if ($_SESSION['userid'] != null) {
+    echo json_encode($_SESSION);
+}
