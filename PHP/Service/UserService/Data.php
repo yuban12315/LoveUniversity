@@ -21,22 +21,22 @@ if($userid!=null) {
     $PaiData = sel($str3);
     $XueData = sel($str4);
     unset($PersonalData['PassWord'],$PersonalData['JwxtPassword'],$PersonalData['SecretKey']);
-    $array = $PersonalData;
+    $array['PersonalData'] = $PersonalData;
     if($FoodData!=null) {
         unset($FoodData['UserId']);
-        $array = array_merge($array,$FoodData);
+        $array['FoodData']=$FoodData;
     }
     if($RunData!=null) {
         unset($RunData['UserId']);
-        $array = array_merge($array,$RunData);
+        $array['RunData'] = $RunData;
     }
     if($PaiData!=null) {
         unset($PaiData['UserId']);
-        $array = array_merge($array,$PaiData);
+        $array['PaiData'] = $PaiData;
     }
     if($XueData!=null) {
         unset($XueData['UserId']);
-        $array = array_merge($array,$XueData);
+        $array['XueData'] = $XueData;
     }
     echo json_encode($array);
 }
