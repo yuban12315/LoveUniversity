@@ -6,8 +6,9 @@
  * Time: 19:00
  */
 session_start();
-require_once '../../../DAO/DAO.php';
-$userid = $_SESSION['userid'];
+require_once '../../DAO/DAO.php';
+//$userid = $_SESSION['userid'];
+$userid = 1;
 if($userid!=null) {
     $str = 'select * from user where UserId = "' . $userid . '"';
     $str1 = 'select * from food where UserId = "' . $userid . '"';
@@ -19,7 +20,25 @@ if($userid!=null) {
     $RunData = sel($str2);
     $PaiData = sel($str3);
     $XueData = sel($str4);
-    echo json_encode($PersonalData . $FoodData . $RunData . $PaiData . $XueData);
+    unset($PersonalData['PassWord'],$PersonalData['JwxtPassword'],$PersonalData['SecretKey']);
+    $array = $PersonalData;
+    if($FoodData!=null) {
+        unset($FoodData['UserId']);
+        $array = array_merge($array,$FoodData);
+    }
+    if($RunData!=null) {
+        unset($RunData['UserId']);
+        $array = array_merge($array,$RunData);
+    }
+    if($PaiData!=null) {
+        unset($PaiData['UserId']);
+        $array = array_merge($array,$PaiData);
+    }
+    if($XueData!=null) {
+        unset($XueData['UserId']);
+        $array = array_merge($array,$XueData);
+    }
+    echo json_encode($array);
 }
 ?>
 
