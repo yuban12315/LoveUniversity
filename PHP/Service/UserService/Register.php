@@ -119,5 +119,3 @@ function Pending($username, $password, $userphone, $truename, $usermajor, $users
     return "注册成功";
 }
 ?>
-
-

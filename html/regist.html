@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>登录</title>
+    <title>注册</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="../css/bootstrap.css" rel="stylesheet">
     <link href="../css/style.css" rel="stylesheet">
@@ -39,21 +39,14 @@
     <div class="row">
         <div class="lin">
             <div class="tit">
-                <img class="tr2" src="../img/login.png">
+                <img class="tr2" src="../img/regist.png">
             </div>
         </div>
-        <div class="form-login">
-            <div class="jumbotron col-lg-5 col-md-5 col-sm-11">
-                <h1 class="text-center">待建设</h1>
-            </div>
-            <div class="col-lg-2 col-md-2 col-sm-1">
-                <div class="line"></div>
-            </div>
-            <div class="jumbotron col-lg-5  col-md-5 col-sm-12 form">
+        <div class="form-regist ">
+            <div class="jumbotron col-lg-6  col-md-6 col-sm-6 form">
                 <form class="form" autocomplete="off">
                     <input type="text" class="form-control" id="username" placeholder="请输入用户名"><br>
-                    <input type="text" class="form-control" id="password" placeholder="请输入密码"><br>
-                    <but
+                    <input type="password" class="form-control" id="password" placeholder="请输入密码"><br>
                     <br><br>
                     <button type="button" class="btn btn-success" id="login">&nbsp;&nbsp;登录&nbsp;&nbsp;</button>
                 </form>
@@ -61,6 +54,7 @@
         </div>
     </div>
 </div>
+
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog"
      aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog">
@@ -75,7 +69,7 @@
                 </h1>
             </div>
             <div class="modal-body">
-                <h4 class="text-center" id="wrong">Failed</h4>
+                <h4 class="text-center" id="wrong">SDSDSDSD</h4>
             </div>
         </div>
     </div>
@@ -83,32 +77,9 @@
 
 <button style="display: none" id="alert" data-toggle="modal" data-target="#myModal"></button>
 
+
 <script src="../js/jQuery.js"></script>
 <script src="../js/bootstrap.js"></script>
 <script src="../js/cookies.js"></script>
-<script>
-    $(document).ready(function () {
-        $("#login").click(function () {
-            var url = '../PHP/Service/UserService/Login.php';
-            var username = $("#username").val();
-            var password = $("#password").val();
-            $.post(url, {
-                username: username,
-                password: password
-            }, function (data, status) {
-                var msg = '<p>'+data+'</p>';
-                $("#wrong").innerHTML = msg;
-                if (data[0] == '1') {
-                    setCookie('username',$("#username").val());
-                    location.href = '../index.html';
-                }
-                else {
-                   document.getElementById('wrong').innerHTML=msg;
-                    $("#alert").click();
-                }
-            })
-        })
-    })
-</script>
 </body>
 </html>

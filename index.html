@@ -41,7 +41,7 @@
                             <li><a href="html/profile.html">个人主页</a></li>
                             <li><a href="#">我的消息</a></li>
                             <li role="separator" class="divider"></li>
-                            <li><a href="#">退出登录</a></li>
+                            <li><a onclick="logOut">退出登录</a></li>
                         </ul>
                     </li>
                 </ul>
@@ -120,7 +120,6 @@
 <script src="js/headroom.js"></script>
 <script src="js/cookies.js"></script>
 <script src="js/index.js"></script>
-<script src="js/session.js"></script>
 <script>
     $(document).ready(function () {
         $("#header").headroom({
@@ -132,7 +131,7 @@
                 "unpinned": "swingOutX"
             }
         });
-        Loaded();
+      Loaded();
     })
 </script>
 </body>
