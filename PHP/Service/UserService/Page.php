@@ -15,6 +15,10 @@ function Mypage($table,$page)
     $row = mysqli_fetch_assoc($result);
     $i=($page-1)*10;
     while($i<=($page*10-1)) {
+        if($row['state']=='0')
+        {
+            continue;
+        }
         $i++;
         echo json_encode($row).'<br>';
         $row = mysqli_fetch_assoc($result);
