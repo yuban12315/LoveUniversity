@@ -29,6 +29,11 @@ if ($json == "1") {
 
     $str = "insert into user (UserName,PassWord,UserSex,UserPhone,UserPhoto) VALUES ('{$username}','{$password}','{$usersex}','{$userphone}','{$path}')";
     if (ins($str)) {
+        $str = "select * from user where UserName = '{$username}'";
+        $row = sel($str);
+        $_SESSION['userid'] = $row['UserId'];
+        $_SESSION['username'] = $row['UserName'];
+        $_SESSION['useridmd5'] = secret($_SESSION['userid']);
         echo $json;
     } else {
         echo "网络错误，注册失败";
