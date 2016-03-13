@@ -161,8 +161,17 @@
     width: 100%;
 }
 
+.item-lg{
+    width: 80%;
+}
+
 .item-md{
     width: 50%;
+}
+
+.item-sm{
+    width: 10%;
+    border: 1px #d4d4d4 solid;
 }
 
 .banner{
@@ -182,4 +191,28 @@
 
 .option{
     border-radius:0 ;
+}
+
+.profile-left{
+    float: left;
+    width: 200px;
+    height: 640px;
+    border: 2px #d4d4d4 solid;
+    border-top: 0;
+    color: black;
+}
+
+.profile-left li{
+    opacity: 0.5;
+}
+
+.profile-left li:hover{
+    opacity: 1;
+}
+
+.profile-right{
+    float: right;
+    width: 900px;
+    height: 640px;
+    background-color: #00ccff;
 }

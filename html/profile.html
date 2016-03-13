@@ -19,7 +19,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" onclick="location.href='../index.html'" >爱
+                <a class="navbar-brand" onclick="location.href='../index.html'">爱
                     <small>大学</small>
                 </a>
             </div>
@@ -32,24 +32,32 @@
         </nav>
     </div>
 </div>
+
 <div class="banner"></div>
+<div class="container">
+    <div class="profile-left ">
+        <ul class="nav text-center">
+            <li><h3 id="username"></h3></li>
+            <li><h3><span class="glyphicon glyphicon-user"></span> 我的信息</h3></li>
+            <li><h3><span class="glyphicon glyphicon-barcode"></span> 我的头像</h3></li>
+            <li><h3><span class="glyphicon glyphicon-tag"></span> 完善资料</h3></li>
+            <li><h3>sdsd</h3></li>
+        </ul>
+    </div>
+    <div class="container">
+        <div class="profile-right" id="test">
+        </div>
+    </div>
+</div>
+
+
 
 <script src="../js/jQuery.js"></script>
 <script src="../js/bootstrap.js"></script>
-<script src="../js/headroom.js"></script>
 <script src="../js/cookies.js"></script>
-<script src="../js/index.js"></script>
 <script>
     $(document).ready(function () {
-        $("#header").headroom({
-            "tolerance": 5,
-            "offset": 200,
-            "classes": {
-                "initial": "animated",
-                "pinned": "swingInX",
-                "unpinned": "swingOutX"
-            }
-        });
+        $("#username")[0].innerHTML='admin';
     })
 </script>
 </body>
