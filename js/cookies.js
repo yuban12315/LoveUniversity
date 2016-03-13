@@ -19,14 +19,20 @@ function getCookie(name) {
     return '';
 }
 
+function  clearCookie(name){
+    setCookie(name,'',-1);
+}
+
 function resetCookie(){
     var url = 'http://127.0.0.1/LoveUniversity/php/Service/UserService/session.php';
     $.getJSON(url, function (data) {
         var id=data.userid;
+         var id_0= getCookie('userid');
+        if(id_0!=id){
+            alert("Watch Out!!")
+            setCookie('userid',id);
+        }
         setCookie('userid',id);
     })
 }
 
-function  getName(){
-    var url=''
-}

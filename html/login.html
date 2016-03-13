@@ -86,29 +86,6 @@
 <script src="../js/jQuery.js"></script>
 <script src="../js/bootstrap.js"></script>
 <script src="../js/cookies.js"></script>
-<script>
-    $(document).ready(function () {
-        $("#login").click(function () {
-            var url = '../PHP/Service/UserService/Login.php';
-            var username = $("#username").val();
-            var password = $("#password").val();
-            $.post(url, {
-                username: username,
-                password: password
-            }, function (data, status) {
-                var msg = '<p>'+data+'</p>';
-                $("#wrong").innerHTML = msg;
-                if (data[0] == '1') {
-                    setCookie('username',$("#username").val());
-                    location.href = '../index.html';
-                }
-                else {
-                   document.getElementById('wrong').innerHTML=msg;
-                    $("#alert").click();
-                }
-            })
-        })
-    })
-</script>
+<script src="../js/login.js"></script>
 </body>
 </html>
