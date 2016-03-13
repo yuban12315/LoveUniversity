@@ -5,4 +5,5 @@
  * Date: 2016/3/12
  * Time: 15:29
  */
-unset($_SESSION);
+session_start();
+session_destroy();

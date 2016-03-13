@@ -7,11 +7,13 @@ require_once "XSS.php";
 $username = $_POST['username'];
 $password = $_POST['password'];
 $repassword = $_POST['repassword'];
-$truename = $_POST['truename'];
 $usersex = $_POST['usersex'];
+$userphone = $_POST['userphone'];
+/*
+$truename = $_POST['truename'];
 $usergrade = $_POST['usergrade'];
 $usermajor = $_POST['usermajor'];
-$userphone = $_POST['userphone'];
+*/
 /*
 $Punicode = $_POST['phoneunicode'];
 $phoneunicode = $_SESSION['phoneunicode'];
@@ -21,20 +23,19 @@ echo "验证码不正确";
 }
 */
 $path = "UserImage/System/Head.jpg";
-$json = Pending($username, $password, $userphone, $truename, $usermajor, $usersex, $usergrade, $repassword);
+$json = Pending($username, $password, $userphone, $usersex, $repassword);
 if ($json == "注册成功") {
 
     $str = "insert into user (UserName,PassWord,TrueName,UserSex,UserGrade,UserMajor,UserPhone,UserPhoto) VALUES ('{$username}','{$password}','{$truename}','{$usersex}','{$usergrade}','{$usermajor}','{$userphone}','{$path}')";
-    if(ins($str)) {
+    if (ins($str)) {
         echo $jason;
-    }
-    else {
+    } else {
         echo "网络错误，注册失败";
     }
 } else {
     echo $jason;
 }
-function Pending($username, $password, $userphone, $truename, $usermajor, $usersex, $usergrade, $repassword)
+function Pending($username, $password, $userphone, $usersex, $repassword)
 {
     /*判空*/
     if ($username == null) {
@@ -43,27 +44,29 @@ function Pending($username, $password, $userphone, $truename, $usermajor, $users
     if ($password == null) {
         return "请输入密码";
     }
+    if ($repassword == null) {
+        return "请再输入一次密码";
+    }
     if ($userphone == null) {
         return "请输入手机号";
     }
-    if ($truename == null) {
-        return "请输入真实姓名";
-    }
-    if ($usermajor == null) {
-        return "请输入专业";
-    }
+
     if ($usersex == null) {
         return "请选择性别";
+    }
+    /*
+    if ($truename == null) {
+    return "请输入真实姓名";
+}
+    if ($usermajor == null) {
+        return "请输入专业";
     }
     if ($usergrade == null) {
         return "请选择年级";
     }
-    if ($repassword == null) {
-        return "请再输入一次密码";
-    }
+  */
     /*过滤*/
-    if(xss($username)||xss($password)||xss($userphone)||xss($truename)||xss($usermajor))
-    {
+    if (xss($username) || xss($password) || xss($userphone)) {
         return "不要试图攻击！！！";
     }
     /*判断用户名格式*/
@@ -89,8 +92,7 @@ function Pending($username, $password, $userphone, $truename, $usermajor, $users
         return "用户名不应为纯数字";
     }
     /*判断密码格式*/
-    if($password!=$repassword)
-    {
+    if ($password != $repassword) {
         return "两次密码不一致";
     }
     if (strlen($password) <= 8 || strlen($password) >= 16) {
@@ -118,4 +120,5 @@ function Pending($username, $password, $userphone, $truename, $usermajor, $users
     }
     return "注册成功";
 }
+
 ?>

@@ -6,10 +6,13 @@
  * Time: 15:49
  */
 session_start();
-if($_SESSION!=null)
-{
+require_once '../../DAO/DAO.php';
+if (isset($_SESSION['userid'])) {
     $getuser = $_SESSION['username'];
     $postuser = "";
-
-
+    $str = "updata run set state = '0' where UserName = '{$postuser}";
+    up($str);
+    $str = "updata run set GetUser = '{$getuser}' where UserName = '{$postuser}";
+    up($str);
+    echo "成功";
 }

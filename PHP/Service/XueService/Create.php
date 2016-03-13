@@ -6,7 +6,7 @@ if (isset($_SESSION['userid'])) {
     $str = "select * from user where UserId = '{$userid}'";
     $row = sel($str);
     if ($row['JwxtNumber']) {
-        $str = "select * from run where UserId = '{$userid}'";
+        $str = "select * from xue where UserId = '{$userid}'";
         $row = sel($str);
         if ($row) {
             if ($row['state']) {
@@ -34,4 +34,3 @@ if (isset($_SESSION['userid'])) {
         echo '请完善个人信息';
     }
 }
-
