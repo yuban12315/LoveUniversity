@@ -79,7 +79,7 @@ function Pending($username, $password, $userphone, $usersex, $repassword)
     if ($password != $repassword) {
         return "两次密码不一致";
     }
-    if (strlen($password) <= 8 || strlen($password) >= 16) {
+    if (strlen($password) < 8 || strlen($password) > 16) {
         return "密码长度应为8-16位";
     }
     /*判断手机号格式*/
