@@ -22,7 +22,7 @@ if($Punicode!=$phoneunicode)
 echo "验证码不正确";
 }
 */
-$path = "UserImage/System/Head.jpg";
+$path = "http://7xrqhs.com1.z0.glb.clouddn.com/8cb3d8ca6386c8aeb755468de8c32ece.jpg";
 $json = Pending($username, $password, $userphone, $usersex, $repassword);
 if ($json == "1") {
 
