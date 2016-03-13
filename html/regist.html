@@ -71,7 +71,7 @@
                     &times;
                 </button>
                 <h1 class="modal-title" id="myModalLabel">
-                    登录失败
+                    注册失败
                 </h1>
             </div>
             <div class="modal-body">
@@ -81,14 +81,24 @@
     </div>
 </div>
 
+
 <button style="display: none" id="alert" data-toggle="modal" data-target="#myModal"></button>
 
 
-<div class="jumbotron item-bottom">
-    <h1 class="text-center">待建设</h1>
+<div class="container">
+    <div class=" item-bottom">
+        <h1 class="text-center">待建设</h1>
+    </div>
 </div>
 <script src="../js/jQuery.js"></script>
 <script src="../js/bootstrap.js"></script>
 <script src="../js/cookies.js"></script>
+<script>
+    $(document).ready(function () {
+        $("#regist").click(function () {
+            $("#alert").click()
+        })
+    })
+</script>
 </body>
 </html>

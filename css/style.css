@@ -1,3 +1,4 @@
+
 .animated {
     -webkit-animation-duration: .5s;
     -moz-animation-duration: .5s;
@@ -153,8 +154,7 @@
 }
 
 .item-bottom{
-    margin-bottom: 0;
-    bottom: 0px;
+    margin-bottom: 1px;
 }
 
 .img-max{
