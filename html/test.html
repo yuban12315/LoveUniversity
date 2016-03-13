@@ -40,19 +40,17 @@
 </div>
 <button id="test">Click</button>
 
+<p style="display: none" id="info"></p>
+
 <script src="../js/jQuery.js"></script>
-<script src="../js/jQuery-MD5.js"></script>
 <script src="../js/bootstrap.js"></script>
 <script>
     $(document).ready(function () {
-        $("#test").click(function () {
-            var url = 'http://127.0.0.1/LoveUniversity/php/Service/UserService/session.php';
-            $.getJSON(url, function (data) {
-                var id = data.userid;
-                id = $.md5(id);
-                alert(id);
-            })
-        })
+        var url = 'http://127.0.0.1/LoveUniversity/php/Service/UserService/Session.php';
+        $.getJSON(url, function (data) {
+            document.getElementById('info').innerHTML=data.userid;
+            alert(document.getElementById('info').innerHTML);
+        });
     })
 </script>
 </body>
