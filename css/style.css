@@ -152,8 +152,17 @@
     background-color: white;
 }
 
+.item-bottom{
+    margin-bottom: 0;
+    bottom: 0px;
+}
+
 .img-max{
     width: 100%;
+}
+
+.item-md{
+    width: 50%;
 }
 
 .banner{

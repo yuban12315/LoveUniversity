@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>注册</title>
+    <title>Love U | 注册</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="../css/bootstrap.css" rel="stylesheet">
     <link href="../css/style.css" rel="stylesheet">
@@ -47,8 +47,14 @@
                 <form class="form" autocomplete="off">
                     <input type="text" class="form-control" id="username" placeholder="用户名(不能为纯数字)"><br>
                     <input type="password" class="form-control" id="password" placeholder="密码(不少于6位)"><br>
-                    <br><br>
-                    <button type="button" class="btn btn-success" id="login">&nbsp;&nbsp;登录&nbsp;&nbsp;</button>
+                    <input type="password" class="form-control" id="password2" placeholder="重复密码 "><br>
+                    <input type="password" class="form-control" id="mobile" placeholder="手机号(只支持中国大陆)"><br>
+                    <select class="form-control item-md">
+                        <option>Boy</option>
+                        <option>Girl</option>
+                    </select>
+                    <br>
+                    <button type="button" class="btn btn-success" id="regist">&nbsp;&nbsp;注册&nbsp;&nbsp;</button>
                 </form>
             </div>
         </div>
@@ -78,6 +84,9 @@
 <button style="display: none" id="alert" data-toggle="modal" data-target="#myModal"></button>
 
 
+<div class="jumbotron item-bottom">
+    <h1 class="text-center">待建设</h1>
+</div>
 <script src="../js/jQuery.js"></script>
 <script src="../js/bootstrap.js"></script>
 <script src="../js/cookies.js"></script>
