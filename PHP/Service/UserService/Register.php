@@ -21,7 +21,7 @@ $path = "UserImage/System/Head.jpg";
 $json = Pending($username, $password, $userphone, $usersex, $repassword);
 if ($json == "注册成功") {
 
-    $str = "insert into user (UserName,PassWord,TrueName,UserSex,UserGrade,UserMajor,UserPhone,UserPhoto) VALUES ('{$username}','{$password}','{$truename}','{$usersex}','{$usergrade}','{$usermajor}','{$userphone}','{$path}')";
+    $str = "insert into user (UserName,PassWord,UserSex,UserPhone,UserPhoto) VALUES ('{$username}','{$password}','{$truename}','{$usersex}','{$usergrade}','{$usermajor}','{$userphone}','{$path}')";
     if (ins($str)) {
         echo $json;
     } else {

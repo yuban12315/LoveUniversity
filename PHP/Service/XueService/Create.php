@@ -13,17 +13,17 @@ if (isset($_SESSION['userid'])) {
                 echo "已有约会";
             } else {
                 $username = $_SESSION['username'];
-                $str = "insert into run (UserId) VALUES ('{$userid}')";
+                $str = "insert into xue (UserId) VALUES ('{$userid}')";
                 ins($str);
-                $runinformation = $_POST['runinformation'];
-                $runtime = $_POST['runtime'];
-                $str = "update run set RunTime = '{$runtime}' where UserId = '{$userid}'";
+                $xueinformation = $_POST['xueinformation'];
+                $xuetime = $_POST['xuetime'];
+                $str = "update xue set XueTime = '{$xuetime}' where UserId = '{$userid}'";
                 up($str);
-                $str = "update run set RunIformation = '{$runinformation}' where UserId = '{$userid}'";
+                $str = "update xue set XueIformation = '{$xueinformation}' where UserId = '{$userid}'";
                 up($str);
-                $str = "update run set PostUser = '{$username}' where UserId = '{$userid}'";
+                $str = "update xue set PostUser = '{$username}' where UserId = '{$userid}'";
                 up($str);
-                $str = "update run set state = '1' where UserId = '{$userid}'";
+                $str = "update xue set state = '1' where UserId = '{$userid}'";
                 up($str);
                 echo "创建成功";
             }
