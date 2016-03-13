@@ -10,11 +10,6 @@ $repassword = $_POST['repassword'];
 $usersex = $_POST['usersex'];
 $userphone = $_POST['userphone'];
 /*
-$truename = $_POST['truename'];
-$usergrade = $_POST['usergrade'];
-$usermajor = $_POST['usermajor'];
-*/
-/*
 $Punicode = $_POST['phoneunicode'];
 $phoneunicode = $_SESSION['phoneunicode'];
 if($Punicode!=$phoneunicode)
@@ -54,17 +49,6 @@ function Pending($username, $password, $userphone, $usersex, $repassword)
     if ($usersex == null) {
         return "请选择性别";
     }
-    /*
-    if ($truename == null) {
-    return "请输入真实姓名";
-}
-    if ($usermajor == null) {
-        return "请输入专业";
-    }
-    if ($usergrade == null) {
-        return "请选择年级";
-    }
-  */
     /*过滤*/
     if (xss($username) || xss($password) || xss($userphone)) {
         return "不要试图攻击！！！";
