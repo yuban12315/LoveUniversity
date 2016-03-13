@@ -28,12 +28,8 @@ function sel($str)
 function ins($str)
 {
     $conn = connect();
-    if (mysqli_query($conn, $str)) {
-        mysqli_close($conn);
-        return true;
-    } else {
-        return false;
-    }
+    mysqli_query($conn, $str);
+    mysqli_close($conn);
 }
 
 function up($str)
