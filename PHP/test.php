@@ -43,7 +43,7 @@ function upload()
 //unlink('UserImage/System/Head.jpg');
 /*
  *
- 二维码生成
+ 二维码生成23
 include 'phpqrcode/phpqrcode.php';
 $value = 'https://www.hao123.com/'; //二维码内容
 $errorCorrectionLevel = 'L';//容错级别

@@ -9,6 +9,12 @@ $password = $_POST['password'];
 $repassword = $_POST['repassword'];
 $usersex = $_POST['usersex'];
 $userphone = $_POST['userphone'];
+if($usersex=="Girl") {
+    $usersex = 0;
+}
+else {
+    $usersex = 1;
+}
 /*
 $Punicode = $_POST['phoneunicode'];
 $phoneunicode = $_SESSION['phoneunicode'];
@@ -19,7 +25,7 @@ echo "验证码不正确";
 */
 $path = "UserImage/System/Head.jpg";
 $json = Pending($username, $password, $userphone, $usersex, $repassword);
-if ($json == "注册成功") {
+if ($json == "1") {
 
     $str = "insert into user (UserName,PassWord,UserSex,UserPhone,UserPhoto) VALUES ('{$username}','{$password}','{$usersex}','{$userphone}','{$path}')";
     if (ins($str)) {
@@ -102,7 +108,7 @@ function Pending($username, $password, $userphone, $usersex, $repassword)
     if ($row2) {
         return "该手机号已被注册";
     }
-    return "注册成功";
+    return "1";
 }
 
 ?>
