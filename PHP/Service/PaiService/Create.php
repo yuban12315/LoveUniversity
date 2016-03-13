@@ -18,4 +18,10 @@ if (isset($_SESSION['userid'])) {
     $destination = "../../UserImage/Pai" . "$name";
     $rename = $userid.'.png';
     $path = 'http://7xrqhs.com1.z0.glb.clouddn.com/'.$rename;
+    buffer($type,$tmp_name,$destination);
+    upload($destination, $rename,'paimai');
+    unlink($destination);
+    $str = "insert into pai (UserId,PostUser,PaiMoney,UpTime,DownTime,PaiInformation,PaiImage,state) VALUES ('{$userid}','{$postuser}','{$paimoney}','{$uptime}','{$downtime}','{$paiinformation}','{$path}',1)";
+    ins($str);
+    echo "成功";
 }

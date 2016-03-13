@@ -43,7 +43,7 @@ if ($_SESSION == null) {
         $rename = $userid.'.png';
         $path = 'http://7xrqhs.com1.z0.glb.clouddn.com/'.$rename;
         if(buffer($type,$tmp_name,$destination)) {
-            upload($destination, $rename);
+            upload($destination, $rename,'loveu');
             unlink($destination);
             $str = "update user set UserPhoto = '{$path}' where UserId = '{$userid}'";
             if(up($str))

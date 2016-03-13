@@ -8,13 +8,13 @@
 require_once "../../php-sdk-master/autoload.php";
 use Qiniu\Auth;
 use Qiniu\Storage\UploadManager;
-function upload($path,$name)
+function upload($path,$name,$space)
 {
     $accessKey = 'gFO-8IYwjVPzNAmbAORHJCgGwIHzcyIbFhZ3yVIi';
     $secretKey = 'hllClWcBETkcn0aI8SROEe4Y1blV5gEQwgUHAQQu';
     $auth = new Auth($accessKey, $secretKey);
 // 要上传的空间
-    $bucket = 'loveu';
+    $bucket = $space;
 
 // 生成上传 Token
     $token = $auth->uploadToken($bucket);
