@@ -15,11 +15,3 @@ function Loaded() {
     }
 }
 
-function logOut() {
-    clearCookie('username');
-    clearCookie('userid');
-    url = 'http://127.0.0.1/LoveUniversity/php/Service/UserService/Logout.php';
-    $.get(url, function () {
-        location.reload();
-    });
-}
