@@ -1,8 +1,8 @@
 $(document).ready(function () {
     clearCookie('username');
     clearCookie('userid');
+    var url = '../PHP/Service/UserService/Login.php';
     $("#login").click(function () {
-        var url = '../PHP/Service/UserService/Login.php';
         var username = $("#username").val();
         var password = $("#password").val();
         $.post(url, {

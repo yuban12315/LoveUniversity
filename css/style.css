@@ -179,3 +179,7 @@
 .func:hover{
     opacity: 1;
 }
+
+.option{
+    border-radius:0 ;
+}

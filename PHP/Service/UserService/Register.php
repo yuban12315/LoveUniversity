@@ -23,12 +23,12 @@ if ($json == "注册成功") {
 
     $str = "insert into user (UserName,PassWord,TrueName,UserSex,UserGrade,UserMajor,UserPhone,UserPhoto) VALUES ('{$username}','{$password}','{$truename}','{$usersex}','{$usergrade}','{$usermajor}','{$userphone}','{$path}')";
     if (ins($str)) {
-        echo $jason;
+        echo $json;
     } else {
         echo "网络错误，注册失败";
     }
 } else {
-    echo $jason;
+    echo $json;
 }
 function Pending($username, $password, $userphone, $usersex, $repassword)
 {
