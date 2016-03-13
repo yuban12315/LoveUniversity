@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>NULL</title>
+    <link rel="icon" href="http://127.0.0.1/LoveUniversity/img/title.ico">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="../css/bootstrap.css" rel="stylesheet">
     <link href="../css/style.css" rel="stylesheet">
@@ -37,11 +38,11 @@
 <div class="container">
     <div class="profile-left ">
         <ul class="nav text-center">
-            <li><h3 id="username"></h3></li>
-            <li><h3><span class="glyphicon glyphicon-user"></span> 我的信息</h3></li>
-            <li><h3><span class="glyphicon glyphicon-barcode"></span> 我的头像</h3></li>
-            <li><h3><span class="glyphicon glyphicon-tag"></span> 完善资料</h3></li>
-            <li><h3>sdsd</h3></li>
+            <li><img class="img-thumbnail" src="http://127.0.0.1/LoveUniversity/php/UserImage/System/Head.jpg"></li>
+            <li><h3 class="list"  id="username"></h3></li>
+            <li><h3 class="list"><span class="glyphicon glyphicon-user"></span> 我的信息</h3></li>
+            <li><h3 class="list"><span class="glyphicon glyphicon-barcode"></span> 我的头像</h3></li>
+            <li><h3 class="list"><span class="glyphicon glyphicon-tag"></span> 完善资料</h3></li>
         </ul>
     </div>
     <div class="container">
@@ -58,6 +59,7 @@
 <script>
     $(document).ready(function () {
         $("#username")[0].innerHTML='admin';
+        document.title='admin的个人主页'
     })
 </script>
 </body>

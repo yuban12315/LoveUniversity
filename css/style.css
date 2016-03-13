@@ -202,12 +202,22 @@
     color: black;
 }
 
-.profile-left li{
+.list{
     opacity: 0.5;
+    width: 80%;
+    transition:width 1s;
+    -moz-transition:width 1s; /* Firefox 4 */
+    -webkit-transition:width 1s; /* Safari and Chrome */
+    -o-transition:width 1s; /* Opera */
 }
 
-.profile-left li:hover{
+.list:hover{
+    width: 100%;
     opacity: 1;
+}
+
+.profile-left  img{
+    width: 100%;
 }
 
 .profile-right{
