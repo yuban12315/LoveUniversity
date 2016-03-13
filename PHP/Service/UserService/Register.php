@@ -21,8 +21,8 @@ echo "验证码不正确";
 }
 */
 $path = "UserImage/System/Head.jpg";
-$jason = Pending($username, $password, $userphone, $truename, $usermajor, $usersex, $usergrade, $repassword);
-if ($jason == "注册成功") {
+$json = Pending($username, $password, $userphone, $truename, $usermajor, $usersex, $usergrade, $repassword);
+if ($json == "注册成功") {
 
     $str = "insert into user (UserName,PassWord,TrueName,UserSex,UserGrade,UserMajor,UserPhone,UserPhoto) VALUES ('{$username}','{$password}','{$truename}','{$usersex}','{$usergrade}','{$usermajor}','{$userphone}','{$path}')";
     if(ins($str)) {

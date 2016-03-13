@@ -9,5 +9,7 @@ session_start();
 if($_SESSION!=null)
 {
     $getuser = $_SESSION['username'];
+    $postuser = "";
+
 
 }
