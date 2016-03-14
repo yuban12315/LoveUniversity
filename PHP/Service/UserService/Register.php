@@ -4,12 +4,12 @@ header("Content-type: text/html; charset=utf-8");
 require_once "../../DAO/DAO.php";
 require_once "MD5.php";
 require_once "XSS.php";
-$username = $_POST['username'];
-$password = $_POST['password'];
-$repassword = $_POST['repassword'];
-$usersex = $_POST['usersex'];
-$userphone = $_POST['userphone'];
-$vcode = $_POST['vcode'];
+@$username = $_POST['username'];
+@$password = $_POST['password'];
+@$repassword = $_POST['repassword'];
+@$usersex = $_POST['usersex'];
+@$userphone = $_POST['userphone'];
+@$vcode = $_POST['vcode'];
 if ($usersex == "Girl") {
     $usersex = 0;
 } else {
