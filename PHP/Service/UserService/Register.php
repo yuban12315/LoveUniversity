@@ -33,6 +33,8 @@ if ($json == "1"&&$vcode == $_SESSION['vcode']) {
     $row = sel($str);
     $_SESSION['userid'] = $row['UserId'];
     $_SESSION['username'] = $row['UserName'];
+    $_SESSION['nickname'] = $row['NickName'];
+    $_SESSION['userphoto'] = $row['UserPhoto'];
     $_SESSION['useridmd5'] = secret($_SESSION['userid']);
     echo $json;
 } else {
