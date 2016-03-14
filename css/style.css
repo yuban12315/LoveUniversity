@@ -223,9 +223,7 @@
 }
 
 .list-divider{
-    margin-left: 10%;
-    width: 80%;
-    border: 1px #d4d4d4 solid;
+    margin-top: 30px;
 }
 
 .profile-right{
@@ -235,5 +233,19 @@
     height: 630px;
     border: 2px #d4d4d4 solid;
     border-bottom: 0;
-    background-color: #00ccff;
+}
+
+.profile{
+    font-size: 1.5em;
+    margin-left: 50px;
+    color: #8c8c8c;
+}
+
+.inline{
+    display: inline;
+    float: left;
+}
+
+.hidden{
+    display: none;
 }

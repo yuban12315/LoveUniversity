@@ -25,7 +25,7 @@
                 </a>
             </div>
             <div class="collapse navbar-collapse" id="example-navbar-collapse">
-                <ul class="nav pull-right navbar-nav" id="user">
+                <ul class="nav pull-right navbar-nav">
                     <li><a> <span class="glyphicon glyphicon-fire"></span></a></li>
                     <li><a onclick="location.href='../index.html'">返回主页</a></li>
                 </ul>
@@ -33,27 +33,47 @@
         </nav>
     </div>
 </div>
-
 <div class="banner"></div>
 <div class="container">
     <div class="profile-left ">
         <ul class="nav text-center">
+            <li class="list-divider"></li>
             <li class="item-lg"><img class="img-thumbnail"
                                      src="http://127.0.0.1/LoveUniversity/php/UserImage/System/Head.jpg"></li>
-            <li><h3 id="username"></h3></li>
             <li class="list-divider"></li>
             <li><h3 class="list" id="userInfo"><span class="glyphicon glyphicon-user"></span> 我的信息</h3></li>
             <li><h3 class="list" id="userHead"><span class="glyphicon glyphicon-barcode"></span> 我的头像</h3></li>
-            <li><h3 class="list" id="userData"><span class="glyphicon glyphicon-tag"></span> 完善资料</h3></li>
+            <li><h3 class="list" id="userData"><span class="glyphicon glyphicon-tag"></span> 更改资料</h3></li>
         </ul>
     </div>
     <div class="container">
-        <div class="profile-right" id="test">
-            
-        </div>
+        <div class="profile-right" id="content"></div>
     </div>
 </div>
 
+<div class="hidden">
+    <div id="profile">
+        <div class="container">
+            <ul class="nav profile">
+                <li class="list-divider"></li>
+                <li id="nickname">昵称：&nbsp;&nbsp;&nbsp;</li>
+                <li class="list-divider"></li>
+                <li id="username">账号：&nbsp;&nbsp;&nbsp;</li>
+                <li class="list-divider"></li>
+                <li id="truename">姓名：&nbsp;&nbsp;&nbsp;</li>
+                <li class="list-divider"></li>
+                <li id="sex">性别：&nbsp;&nbsp;&nbsp;</li>
+                <li class="list-divider"></li>
+                <li id="mobile">手机：&nbsp;&nbsp;&nbsp;</li>
+                <li class="list-divider"></li>
+                <li id="grade">专业：&nbsp;&nbsp;&nbsp;</li>
+            </ul>
+            <br><br><br>
+            <div class="alert alert-info item-md profile" role="alert" id="user"><h3 class="text-center" id="alert">
+                完善所有信息将解锁更多功能</h3></div>
+        </div>
+    </div>
+</div>
 <script src="../js/jQuery.js"></script>
 <script src="../js/bootstrap.js"></script>
 <script src="../js/cookies.js"></script>
@@ -61,18 +81,39 @@
     $(document).ready(function () {
         var url = 'http://127.0.0.1/LoveUniversity/php/Service/UserService/Data.php';
         $.getJSON(url, function (data) {
-            $("#username")[0].innerHTML = data.PersonalData.UserName;
-        })
-        document.title = 'admin的个人主页'
+            var Name = getData(data.PersonalData.UserName);
+            document.title = Name + '的个人主页';
+            if (data.PersonalData.TrueName != null || data.PersonalData.UserGrade != null || data.PersonalData.JwxtNumber != null || data.PersonalData.UserMajor != null)
+                $("#user").addClass('hidden');
+            $("#nickname")[0].innerHTML += data.PersonalData.NickName;
+            $("#username")[0].innerHTML += Name;
+            $("#truename")[0].innerHTML += getData(data.PersonalData.TrueName);
+            if (getData(data.PersonalData.UserSex)[0] == '1')
+                $("#sex")[0].innerHTML += '男';
+            else  $("#sex")[0].innerHTML += '女';
+            $("#mobile")[0].innerHTML += phone(data.PersonalData.UserPhone);
+            $("#content")[0].innerHTML = $("#profile")[0].innerHTML;
+        });
         $("#userInfo").click(function () {
-            $("#test")[0].innerHTML = 'sd'
+            $("#content")[0].innerHTML = $("#profile")[0].innerHTML;
         });
         $("#userHead").click(function () {
-            $("#test")[0].innerHTML = 'as'
+            $("#content")[0].innerHTML = 'as';
         });
         $("#userData").click(function () {
-            $("#test")[0].innerHTML = 'sdaad'
+            $("#content")[0].innerHTML = 'sdaad';
         });
+        function getData(data) {
+            if (data == '' || data == null)
+                return '';
+            else  return data;
+        }
+
+        function phone(val) {
+            var phone;
+            phone = val[0] + val[1] + val[2] + '****' + val[7] + val[8] + val[9] + val[10];
+            return phone;
+        }
     })
 </script>
 </body>
