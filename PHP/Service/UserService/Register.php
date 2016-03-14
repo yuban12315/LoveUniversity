@@ -27,7 +27,7 @@ $path = "http://7xrqhs.com1.z0.glb.clouddn.com/8cb3d8ca6386c8aeb755468de8c32ece.
 $json = Pending($username, $password, $userphone, $usersex, $repassword);
 if ($json == "1"&&$vcode == $_SESSION['vcode']) {
 
-    $str = "insert into user (UserName,PassWord,UserSex,UserPhone,UserPhoto) VALUES ('{$username}','{$password}','{$usersex}','{$userphone}','{$path}')";
+    $str = "insert into user (UserName,PassWord,UserSex,UserPhone,UserPhoto,NickName) VALUES ('{$username}','{$password}','{$usersex}','{$userphone}','{$path}','{$username}')";
     ins($str);
     $str = "select * from user where UserName = '{$username}'";
     $row = sel($str);

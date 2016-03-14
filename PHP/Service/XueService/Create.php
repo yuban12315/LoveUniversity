@@ -15,8 +15,8 @@ if (isset($_SESSION['userid'])) {
                 $username = $_SESSION['username'];
                 $str = "insert into xue (UserId) VALUES ('{$userid}')";
                 ins($str);
-                $xueinformation = $_POST['xueinformation'];
-                $xuetime = $_POST['xuetime'];
+                @$xueinformation = $_POST['xueinformation'];
+                @$xuetime = $_POST['xuetime'];
                 $str = "update xue set XueTime = '{$xuetime}' where UserId = '{$userid}'";
                 up($str);
                 $str = "update xue set XueIformation = '{$xueinformation}' where UserId = '{$userid}'";

@@ -7,6 +7,7 @@
  */
 session_start();
 require_once '../../DAO/DAO.php';
+require_once 'Rand.php';
 @$userphone = $_POST['userphone'];
 /*判断手机号格式*/
 
@@ -29,24 +30,13 @@ if ($row) {
 
 message($userphone);
 
-function randnum()
-{
-    $arr = array();
-    while (count($arr) < 4) {
-        $arr[] = rand(1, 9);
-        $arr = array_unique($arr);
-    }
-    $_SESSION['vcode'] = implode($arr);
-    return implode($arr);
-}
-
 function message($userphone)
 {
 
     $username = "yanyongjie";//短信宝帐户名
     $pass = md5("15296603340yyjqq");//短信宝帐户密码，md5加密后的字符串
 
-    $checkCode = randnum();
+    $checkCode = randnum(4);
     $content = "【爱大学】，您的验证码为" . $checkCode . "在1分钟内有效";
     $url = "http://www.smsbao.com/sms?u=" . $username . "&p=" . $pass . "&m=" . $userphone . "&c=" . $content;
     $html = file_get_contents($url);

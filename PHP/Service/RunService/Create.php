@@ -15,8 +15,8 @@ if (isset($_SESSION['userid'])) {
             } else {
                 $str = "insert into run (UserId) VALUES ('{$userid}')";
                 ins($str);
-                $runinformation = $_POST['runinformation'];
-                $runtime = $_POST['runtime'];
+                @$runinformation = $_POST['runinformation'];
+                @$runtime = $_POST['runtime'];
                 $str = "update run set RunTime = '{$runtime}' where UserId = '{$userid}'";
                 up($str);
                 $str = "update run set RunIformation = '{$runinformation}' where UserId = '{$userid}'";

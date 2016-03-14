@@ -1,15 +1,15 @@
 <?php
 session_start();
-require_once '../UserService/ImageChange.php';
+require_once '../UserService/Buffer.php';
 require_once '../UserService/Upload.php';
 require_once '../../DAO/DAO.php';
 if (isset($_SESSION['userid'])) {
     $userid = $_SESSION['userid'];
-    $postuser = $_POST['username'];
-    $paimoney = $_POST['paimoney'];
-    $uptime = $_POST['uptime'];
-    $downtime = $_POST['downtime'];
-    $paiinformation = $_POST['paiinformation'];
+    @$postuser = $_POST['username'];
+    @$paimoney = $_POST['paimoney'];
+    @$uptime = $_POST['uptime'];
+    @$downtime = $_POST['downtime'];
+    @$paiinformation = $_POST['paiinformation'];
     $name = $_FILES['paiimage']['name'];
     $type = $_FILES['paiimage']['type'];
     $tmp_name = $_FILES['paiimage']['tmp_name'];

@@ -15,9 +15,9 @@ if (isset($_SESSION['userid'])) {
                 $username = $_SESSION['username'];
                 $str = "insert into food (UserId) VALUES ('{$userid}')";
                 ins($str);
-                $foodinformation = $_POST['foodinformation'];
-                $foodtime = $_POST['foodtime'];
-                $foodarea = $_POST['foodarea'];
+                @$foodinformation = $_POST['foodinformation'];
+                @$foodtime = $_POST['foodtime'];
+                @$foodarea = $_POST['foodarea'];
                 $str = "update food set FoodTime = '{$foodtime}' where UserId = '{$userid}'";
                 up($str);
                 $str = "update food set FoodIformation = '{$foodinformation}' where UserId = '{$userid}'";
