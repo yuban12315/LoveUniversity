@@ -57,9 +57,9 @@ if ($_SESSION == null) {
     }
     if($_POST['oldpassword']!=null)
     {
-        $oldpassword = $_POST['oldpassword'];
-        $newpassword = $_POST['newpassword'];
-        $renewpassword = $_POST['renewpassword'];
+        @$oldpassword = $_POST['oldpassword'];
+        @$newpassword = $_POST['newpassword'];
+        @$renewpassword = $_POST['renewpassword'];
         $str = "select * from user where UserId ='{$userid}' and PassWord = '{$oldpassword}'";
         if(sel($str))
         {

@@ -8,8 +8,8 @@
 require_once '../../DAO/DAO.php';
 require_once 'MD5.php';
 session_start();
-$username = $_POST['username'];
-$password = $_POST['password'];
+@$username = $_POST['username'];
+@$password = $_POST['password'];
 /*
  $username = "admin";
  $password = "123456789";

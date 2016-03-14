@@ -7,7 +7,7 @@
  */
 session_start();
 require_once '../../DAO/DAO.php';
-$userphone = $_POST['userphone'];
+@$userphone = $_POST['userphone'];
 /*判断手机号格式*/
 
 if (strlen($userphone) != 11) {
