@@ -38,7 +38,8 @@
 <div class="container">
     <div class="profile-left ">
         <ul class="nav text-center">
-            <li class="item-lg"><img class="img-thumbnail" src="http://127.0.0.1/LoveUniversity/php/UserImage/System/Head.jpg"></li>
+            <li class="item-lg"><img class="img-thumbnail"
+                                     src="http://127.0.0.1/LoveUniversity/php/UserImage/System/Head.jpg"></li>
             <li><h3 id="username"></h3></li>
             <li class="list-divider"></li>
             <li><h3 class="list" id="userInfo"><span class="glyphicon glyphicon-user"></span> 我的信息</h3></li>
@@ -48,6 +49,7 @@
     </div>
     <div class="container">
         <div class="profile-right" id="test">
+            
         </div>
     </div>
 </div>
@@ -57,16 +59,19 @@
 <script src="../js/cookies.js"></script>
 <script>
     $(document).ready(function () {
-        $("#username")[0].innerHTML='admin';
-        document.title='admin的个人主页'
+        var url = 'http://127.0.0.1/LoveUniversity/php/Service/UserService/Data.php';
+        $.getJSON(url, function (data) {
+            $("#username")[0].innerHTML = data.PersonalData.UserName;
+        })
+        document.title = 'admin的个人主页'
         $("#userInfo").click(function () {
-            $("#test").load('profile/userInfo.html');
+            $("#test")[0].innerHTML = 'sd'
         });
         $("#userHead").click(function () {
-            $("#test").load('profile/userHead.html');
+            $("#test")[0].innerHTML = 'as'
         });
         $("#userData").click(function () {
-            $("#test").load('profile/userData.html');
+            $("#test")[0].innerHTML = 'sdaad'
         });
     })
 </script>

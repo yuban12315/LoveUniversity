@@ -197,6 +197,7 @@
 .profile-left{
     position: fixed;
     float: left;
+    margin-top: 10px;
     width: 200px;
     height: 640px;
     border: 2px #d4d4d4 solid;
@@ -230,7 +231,9 @@
 .profile-right{
     margin-top: 10px;
     float: right;
-    width: 900px;
-    height: 640px;
+    width: 80%;
+    height: 630px;
+    border: 2px #d4d4d4 solid;
+    border-bottom: 0;
     background-color: #00ccff;
 }
