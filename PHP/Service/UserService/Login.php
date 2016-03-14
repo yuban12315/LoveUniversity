@@ -10,10 +10,10 @@ require_once 'MD5.php';
 session_start();
 $username = $_POST['username'];
 $password = $_POST['password'];
-
- /*$username = "admin";
- $password = "1234567";*/
-
+/*
+ $username = "admin";
+ $password = "123456789";
+*/
 if($username==null)
 {
     echo "用户名不能为空！";

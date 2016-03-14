@@ -9,6 +9,7 @@ $password = $_POST['password'];
 $repassword = $_POST['repassword'];
 $usersex = $_POST['usersex'];
 $userphone = $_POST['userphone'];
+$phoneunicode = $_POST['phoneunicode'];
 if ($usersex == "Girl") {
     $usersex = 0;
 } else {
@@ -24,7 +25,7 @@ echo "验证码不正确";
 */
 $path = "http://7xrqhs.com1.z0.glb.clouddn.com/8cb3d8ca6386c8aeb755468de8c32ece.jpg";
 $json = Pending($username, $password, $userphone, $usersex, $repassword);
-if ($json == "1") {
+if ($json == "1"&&$phoneunicode == $_SESSION['phoneunicode']) {
 
     $str = "insert into user (UserName,PassWord,UserSex,UserPhone,UserPhoto) VALUES ('{$username}','{$password}','{$usersex}','{$userphone}','{$path}')";
     ins($str);
@@ -89,25 +90,14 @@ function Pending($username, $password, $userphone, $usersex, $repassword)
     if (strlen($password) < 8 || strlen($password) > 16) {
         return "密码长度应为8-16位";
     }
-    /*判断手机号格式*/
-    if (strlen($userphone) != 11) {
-        return "手机号应为11位纯数字";
-    }
-    for ($i = 0; $i < strlen($userphone); $i++) {
-        if ($userphone[$i] < '0' || $userphone[$i] > '9') {
-            return "手机号应为11位纯数字";
-        }
-    }
+
     /*判重*/
     $str1 = 'select * from user where UserName = "' . $username . '"';
-    $str2 = 'select * from user where UserPhone = "' . $userphone . '"';
+
     $row1 = sel($str1);
-    $row2 = sel($str2);
+
     if ($row1) {
         return "用户名已存在";
-    }
-    if ($row2) {
-        return "该手机号已被注册";
     }
     return "1";
 }

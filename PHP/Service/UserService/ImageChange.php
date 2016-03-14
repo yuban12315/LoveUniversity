@@ -21,3 +21,31 @@ function buffer($type, $tmp_name, $destination)
         return false;
     }
 }
+function change($url, $newwidth, $newheight)
+{
+    $img = $url;
+    $size = getimagesize($img);
+    $src_w = $size[0];
+    $src_h = $size[1];
+    $w = $newwidth;
+    $h = $newheight;
+    $h2 = $src_h * ($w / $src_w);
+    $w2 = $src_w * ($h / $src_h);
+    if ($h2 < $h) $h = $h2;
+    if ($w2 < $w) $w = $w2;
+    $new_image = imagecreatetruecolor($w, $h);
+    if ($size[2] == 1) {
+        $src_image = imagecreatefromgif($img);
+        imagecopyresampled($new_image, $src_image, 0, 0, 0, 0, $w, $h, $src_w, $src_h);
+    } elseif ($size[2] == 2) {
+        $src_image = imagecreatefromjpeg($img);
+        imagecopyresampled($new_image, $src_image, 0, 0, 0, 0, $w, $h, $src_w, $src_h);
+    } else {
+        $src_image = imagecreatefrompng($img);
+        imagecopyresampled($new_image, $src_image, 0, 0, 0, 0, $w, $h, $src_w, $src_h);
+    }
+    unlink($url);
+    imagejpeg($new_image,$url);
+    imagedestroy($new_image);
+    imagedestroy($src_image);
+}
