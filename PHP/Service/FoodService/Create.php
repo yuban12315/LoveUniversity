@@ -9,31 +9,20 @@ if (isset($_SESSION['userid'])) {
         $str = "select * from food where UserId = '{$userid}'";
         $row = sel($str);
         if ($row) {
-            if ($row['state']) {
+            if ($row['state'] == 1) {
                 echo "已有约会";
             } else {
-                $username = $_SESSION['username'];
-                $str = "insert into food (UserId) VALUES ('{$userid}')";
-                ins($str);
+                $postuser = $_SESSION['username'];
                 @$foodinformation = $_POST['foodinformation'];
                 @$foodtime = $_POST['foodtime'];
                 @$foodarea = $_POST['foodarea'];
-                $str = "update food set FoodTime = '{$foodtime}' where UserId = '{$userid}'";
-                up($str);
-                $str = "update food set FoodIformation = '{$foodinformation}' where UserId = '{$userid}'";
-                up($str);
-                $str = "update food set PostUser = '{$username}' where UserId = '{$userid}'";
-                up($str);
-                $str = "update food set FoodArea = '{$foodarea}' where UserId = '{$userid}'";
-                up($str);
-                $str = "update food set state = '1' where UserId = '{$userid}'";
-                up($str);
-                echo "创建成功";
+                @$fooodway = $_POST['foodway'];
+                $str = "insert into food (UserId,PostUser,FoodInformation,FoodTime,FoodArea,FoodWay,state) VALUES ('{$userid}','{$postuser}','{$foodinformation}','{$foodtime}','{$foodarea}','{$fooodway}',1)";
+                ins($str);
+                echo "1";
             }
         }
-    }
-    else
-    {
+    } else {
         echo '请完善个人信息';
     }
 }

@@ -13,19 +13,13 @@ if (isset($_SESSION['userid'])) {
             if ($row['state']) {
                 echo "已有约会";
             } else {
-                $str = "insert into run (UserId) VALUES ('{$userid}')";
-                ins($str);
                 @$runinformation = $_POST['runinformation'];
                 @$runtime = $_POST['runtime'];
-                $str = "update run set RunTime = '{$runtime}' where UserId = '{$userid}'";
-                up($str);
-                $str = "update run set RunIformation = '{$runinformation}' where UserId = '{$userid}'";
-                up($str);
-                $str = "update run set PostUser = '{$username}' where UserId = '{$userid}'";
-                up($str);
-                $str = "update run set state = '1' where UserId = '{$userid}'";
-                up($str);
-                echo "创建成功";
+                $postuser = $_SESSION['username'];
+                $str = "insert into run (UserId,PostUser,RunInformation,RunTime,state) VALUES ('{$userid}','{$postuser}','{$runinformation}','{$runtime}',1)";
+                ins($str);
+
+                echo "1";
             }
         }
     }
