@@ -9,7 +9,7 @@ $password = $_POST['password'];
 $repassword = $_POST['repassword'];
 $usersex = $_POST['usersex'];
 $userphone = $_POST['userphone'];
-$phoneunicode = $_POST['phoneunicode'];
+$vcode = $_POST['vcode'];
 if ($usersex == "Girl") {
     $usersex = 0;
 } else {
@@ -25,7 +25,7 @@ echo "验证码不正确";
 */
 $path = "http://7xrqhs.com1.z0.glb.clouddn.com/8cb3d8ca6386c8aeb755468de8c32ece.jpg";
 $json = Pending($username, $password, $userphone, $usersex, $repassword);
-if ($json == "1"&&$phoneunicode == $_SESSION['phoneunicode']) {
+if ($json == "1"&&$vcode == $_SESSION['vcode']) {
 
     $str = "insert into user (UserName,PassWord,UserSex,UserPhone,UserPhoto) VALUES ('{$username}','{$password}','{$usersex}','{$userphone}','{$path}')";
     ins($str);
