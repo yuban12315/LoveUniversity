@@ -162,6 +162,7 @@
 }
 
 .item-lg{
+    margin-left: 10%;
     width: 80%;
 }
 
@@ -194,11 +195,11 @@
 }
 
 .profile-left{
+    position: fixed;
     float: left;
     width: 200px;
     height: 640px;
     border: 2px #d4d4d4 solid;
-    border-top: 0;
     color: black;
 }
 
@@ -220,7 +221,14 @@
     width: 100%;
 }
 
+.list-divider{
+    margin-left: 10%;
+    width: 80%;
+    border: 1px #d4d4d4 solid;
+}
+
 .profile-right{
+    margin-top: 10px;
     float: right;
     width: 900px;
     height: 640px;
