@@ -162,6 +162,7 @@
 }
 
 .item-lg{
+    margin-left: 10%;
     width: 80%;
 }
 
@@ -194,23 +195,40 @@
 }
 
 .profile-left{
+    position: fixed;
     float: left;
     width: 200px;
     height: 640px;
     border: 2px #d4d4d4 solid;
-    border-top: 0;
     color: black;
 }
 
-.profile-left li{
+.list{
     opacity: 0.5;
+    width: 80%;
+    transition:width 1s;
+    -moz-transition:width 1s; /* Firefox 4 */
+    -webkit-transition:width 1s; /* Safari and Chrome */
+    -o-transition:width 1s; /* Opera */
 }
 
-.profile-left li:hover{
+.list:hover{
+    width: 100%;
     opacity: 1;
 }
 
+.profile-left  img{
+    width: 100%;
+}
+
+.list-divider{
+    margin-left: 10%;
+    width: 80%;
+    border: 1px #d4d4d4 solid;
+}
+
 .profile-right{
+    margin-top: 10px;
     float: right;
     width: 900px;
     height: 640px;
