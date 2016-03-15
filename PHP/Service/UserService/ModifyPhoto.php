@@ -24,9 +24,8 @@ function MP($str)
         $mm = randnum(5);
         $mm = get_md5_string($mm);
         $path = 'http://7xrqhs.com1.z0.glb.clouddn.com/' . $mm;
-        $destination = "../../../html/" . $src;
-        upload($destination, $path, 'loveu');
-        unlink($destination);
+        upload($src, $path, 'loveu');
+        //unlink($src);
         $str = "update user set UserPhoto = '{$path}' where UserId = '{$userid}'";
         up($str);
         echo "1";
