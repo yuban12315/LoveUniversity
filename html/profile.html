@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="../css/bootstrap.css" rel="stylesheet">
     <link href="../css/style.css" rel="stylesheet">
+    <link href="../css/cropper.css" rel="stylesheet">
 </head>
 <body>
 <div>
@@ -49,7 +50,6 @@
         <div class="profile-right" id="content"></div>
     </div>
 </div>
-
 <div class="hidden">
     <div id="profile">
         <div class="container">
@@ -76,6 +76,8 @@
 <script src="../js/jQuery.js"></script>
 <script src="../js/bootstrap.js"></script>
 <script src="../js/cookies.js"></script>
+<script src="../js/cropper.js"></script>
+<script src="../js/main.js"></script>
 <script>
     $(document).ready(function () {
         var url = 'http://127.0.0.1/LoveUniversity/php/Service/UserService/Data.php';
@@ -92,13 +94,14 @@
             else  $("#sex")[0].innerHTML += '女';
             $("#mobile")[0].innerHTML += phone(data.PersonalData.UserPhone);
             $("#content")[0].innerHTML = $("#profile")[0].innerHTML;
-            $("#head").attr('src',data.PersonalData.UserPhoto);
+            $("#head").attr('src','http://119.29.90.35/2.gif');
+            $("#head0").attr('src', 'http://119.29.90.35/2.gif');
         });
         $("#userInfo").click(function () {
             $("#content")[0].innerHTML = $("#profile")[0].innerHTML;
         });
         $("#userHead").click(function () {
-            $("#content")[0].innerHTML = 'as';
+            $("#content").load("test.html")
         });
         $("#userData").click(function () {
             $("#content")[0].innerHTML = 'sdaad';
