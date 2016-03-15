@@ -94,8 +94,8 @@
             else  $("#sex")[0].innerHTML += '女';
             $("#mobile")[0].innerHTML += phone(data.PersonalData.UserPhone);
             $("#content")[0].innerHTML = $("#profile")[0].innerHTML;
-            $("#head").attr('src','http://119.29.90.35/2.gif');
-            $("#head0").attr('src', 'http://119.29.90.35/2.gif');
+            $("#head").attr('src',data.PersonalData.UserPhoto);
+            $("#head0").attr('src', data.PersonalData.UserPhoto);
         });
         $("#userInfo").click(function () {
             $("#content")[0].innerHTML = $("#profile")[0].innerHTML;
