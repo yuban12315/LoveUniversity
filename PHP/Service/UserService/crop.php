@@ -1,5 +1,5 @@
 <?php
-require_once '../PHP/Service/UserService/ModifyPhoto.php';
+require_once 'ModifyPhoto.php';
 class CropAvatar {
     private $src;
     private $data;
