@@ -6,18 +6,11 @@
  * Time: 20:08
  */
 require_once '../../DAO/DAO.php';
-require_once 'Buffer.php';
-require_once 'Upload.php';
 require_once 'XSS.php';
-require_once 'Rand.php';
+
 session_start();
-$_SESSION['userid'] = 1;
-if ($_SESSION == null) {
-    echo "请登录";
-} else {
+if (isset($_SESSION['userid'])) {
     $userid = $_SESSION['userid'];
-    $str = "select * from user where UserId = '{$userid}'";
-    $row = sel($str);
     //修改昵称
     if (isset($_POST['nickname'])) {
         $newnickname = $_POST['newnickname'];
@@ -25,36 +18,8 @@ if ($_SESSION == null) {
             echo '不要试图攻击！！！';
         } else {
             $str = "update user set NickName = '{$newnickname}' where UserId = '{$userid}'";
-            echo '1';
-        }
-    }
-    //修改头像
-    if (isset($_FILES['userphoto'])) {
-        $name = $_FILES['userphoto']['name'];
-        $type = $_FILES['userphoto']['type'];
-        $tmp_name = $_FILES['userphoto']['tmp_name'];
-        $error = $_FILES['userphoto']['error'];
-        $size = $_FILES['userphoto']['size'];
-        $mm = randnum(10);
-        $mm = secret($mm);
-        $N = 'http://7xrqhs.com1.z0.glb.clouddn.com/'.$mm;
-        $str = "select * from user where UserPhoto = '{$N}'";
-        while(sel($str))
-        {
-            $mm = randnum(10);
-            $mm = secret($mm);
-            $N = 'http://7xrqhs.com1.z0.glb.clouddn.com/'.$mm;
-            $str = "select * from user where UserPhoto = '{$N}'";
-        }
-        $destination = "../../UserImage/User" . $mm.'.png';
-        $rename = $mm . '.png';
-        $path = 'http://7xrqhs.com1.z0.glb.clouddn.com/' . $rename;
-        if (buffer($type, $tmp_name, $destination)) {
-            upload($destination, $rename, 'loveu');
-            unlink($destination);
-            $str = "update user set UserPhoto = '{$path}' where UserId = '{$userid}'";
             up($str);
-            echo "1";
+            echo '1';
         }
     }
     //修改密码

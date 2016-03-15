@@ -12,20 +12,13 @@ if (isset($_SESSION['userid'])) {
             if ($row['state']) {
                 echo "已有约会";
             } else {
-                $username = $_SESSION['username'];
-                $str = "insert into xue (UserId) VALUES ('{$userid}')";
-                ins($str);
+                $postuser = $_SESSION['username'];
                 @$xueinformation = $_POST['xueinformation'];
                 @$xuetime = $_POST['xuetime'];
-                $str = "update xue set XueTime = '{$xuetime}' where UserId = '{$userid}'";
-                up($str);
-                $str = "update xue set XueIformation = '{$xueinformation}' where UserId = '{$userid}'";
-                up($str);
-                $str = "update xue set PostUser = '{$username}' where UserId = '{$userid}'";
-                up($str);
-                $str = "update xue set state = '1' where UserId = '{$userid}'";
-                up($str);
-                echo "创建成功";
+                @$xuearea = $_POST['xuearea'];
+                $str = "insert into xue (UserId,PostUser,XueArea,Xueinformation,XueTime,state) VALUES ('{$userid}','{$postuser}','{$xuearea}';'{$xueinformation}','{$xuetime}',1)";
+                ins($str);
+                echo "1";
             }
         }
     }

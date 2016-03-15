@@ -1,9 +1,9 @@
 <?php
-/*
-  $conn = mysqli_connect("183.175.12.160","root","31415926","loveu","3306");
+
+ /* $conn = mysqli_connect("183.175.12.160","root","31415926","loveu","3306");
 //$str = date("Y-m-d h:m:s");
-$str = '2016-01-03 16:55:55';
-mysqli_query($conn,"insert into run (UserId,PostUser,RunInformation,RunTime,state) VALUES (1,'1','haha','{$str}',1)");
+//$str = '2016-01-03 16:55:55';
+mysqli_query($conn,"select * from user where UserId = 1");
 */
 /*
  * 七牛云存储
