@@ -44,7 +44,7 @@ class CropAvatar {
 
             if ($type) {
                 $extension = image_type_to_extension($type);
-                $src = 'UserImage/User' . date('YmdHis') . '.original' . $extension;
+                $src = 'upload/' . date('YmdHis') . '.original' . $extension;
 
                 if ($type == IMAGETYPE_GIF || $type == IMAGETYPE_JPEG || $type == IMAGETYPE_PNG) {
 
@@ -74,7 +74,7 @@ class CropAvatar {
     }
 
     private function setDst() {
-        $this -> dst = 'UserImage/User/' . date('YmdHis') . '.png';
+        $this -> dst = 'upload/' . date('YmdHis') . '.png';
     }
 
     private function crop($src, $dst, $data) {
@@ -181,8 +181,6 @@ class CropAvatar {
 
             imagedestroy($src_img);
             imagedestroy($dst_img);
-            unlink($src);
-            $_SESSION['src'] = $dst;
         }
     }
 
@@ -240,6 +238,5 @@ $response = array(
     'result' => $crop -> getResult()
 );
 
-MP();
 echo json_encode($response);
 ?>
