@@ -10,14 +10,12 @@ require_once '../../DAO/DAO.php';
 require_once 'Buffer.php';
 require_once 'Upload.php';
 require_once 'Rand.php';
+function MP()
+{
 //修改头像
-if(isset($_SESSION['userid'])) {
-    $userid = $_SESSION['userid'];
-    if (isset($_FILES['userphoto'])) {
-        $name = $_FILES['userphoto']['name'];
-        $type = $_FILES['userphoto']['type'];
-        $tmp_name = $_FILES['userphoto']['tmp_name'];
-        if($type)
+    if (isset($_SESSION['userid'])) {
+        $userid = $_SESSION['userid'];
+        $src = $_SESSION['src'];
         $mm = randnum(10);
         $mm = md5($mm);
         $N = 'http://7xrqhs.com1.z0.glb.clouddn.com/' . $mm;
@@ -28,15 +26,13 @@ if(isset($_SESSION['userid'])) {
             $N = 'http://7xrqhs.com1.z0.glb.clouddn.com/' . $mm;
             $str = "select * from user where UserPhoto = '{$N}'";
         }
-        $destination = "../../UserImage/User" . $mm . '.png';
+        $destination = "../../UserImage/User" . $src . '.png';
         $rename = $mm . '.png';
         $path = 'http://7xrqhs.com1.z0.glb.clouddn.com/' . $rename;
-        if (buffer($type, $tmp_name, $destination)) {
-            upload($destination, $rename, 'loveu');
-            unlink($destination);
-            $str = "update user set UserPhoto = '{$path}' where UserId = '{$userid}'";
-            up($str);
-            echo "1";
-        }
+        upload($destination, $rename, 'loveu');
+        unlink($destination);
+        $str = "update user set UserPhoto = '{$path}' where UserId = '{$userid}'";
+        up($str);
+        echo "1";
     }
 }

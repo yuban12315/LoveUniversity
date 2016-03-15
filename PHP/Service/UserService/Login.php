@@ -14,6 +14,7 @@ session_start();
  $username = "admin";
  $password = "123456789";
 */
+
 if($username==null)
 {
     echo "用户名不能为空！";

@@ -1,4 +1,6 @@
 <?php
+session_start();
+require_once 'ModifyPhoto.php';
 class CropAvatar {
     private $src;
     private $data;
@@ -180,6 +182,7 @@ class CropAvatar {
             imagedestroy($src_img);
             imagedestroy($dst_img);
             unlink($src);
+            $_SESSION['src'] = $dst;
         }
     }
 
@@ -237,5 +240,6 @@ $response = array(
     'result' => $crop -> getResult()
 );
 
+MP();
 echo json_encode($response);
 ?>
