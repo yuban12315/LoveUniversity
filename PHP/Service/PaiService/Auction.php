@@ -18,7 +18,7 @@ if (isset($_SESSION['userid'])) {
     } else {
         if(isset($_POST['comment'])) {
             $comment = $_POST['comment'];
-            $str = "insert into comment (UserId,Comment,PaiId) VALUES ('{$userid}','{$comment}')"
+            $str = "insert into comment (UserId,Comment,PaiId) VALUES ('{$userid}','{$comment}')";
         }
         $str = "update pai set PaiMoney = '{$paimoney}' where PaiId = '{$paiid}'";
         up($str);

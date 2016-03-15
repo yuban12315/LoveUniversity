@@ -1,4 +1,5 @@
 <?php
+require_once '../PHP/Service/UserService/ModifyPhoto.php';
 class CropAvatar {
     private $src;
     private $data;
@@ -179,6 +180,7 @@ class CropAvatar {
 
             imagedestroy($src_img);
             imagedestroy($dst_img);
+            MP($dst);
         }
     }
 
