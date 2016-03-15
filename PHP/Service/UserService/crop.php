@@ -180,6 +180,7 @@ class CropAvatar {
 
             imagedestroy($src_img);
             imagedestroy($dst_img);
+            MP($dst);
         }
     }
 
@@ -238,5 +239,4 @@ $response = array(
 );
 
 echo json_encode($response);
-MP($dst);
 ?>
