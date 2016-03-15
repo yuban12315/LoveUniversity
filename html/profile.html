@@ -38,8 +38,7 @@
     <div class="profile-left ">
         <ul class="nav text-center">
             <li class="list-divider"></li>
-            <li class="item-lg"><img class="img-thumbnail"
-                                     src="http://127.0.0.1/LoveUniversity/php/UserImage/System/Head.jpg"></li>
+            <li class="item-lg"><img class="img-thumbnail" src="" id="head"></li>
             <li class="list-divider"></li>
             <li><h3 class="list" id="userInfo"><span class="glyphicon glyphicon-user"></span> 我的信息</h3></li>
             <li><h3 class="list" id="userHead"><span class="glyphicon glyphicon-barcode"></span> 我的头像</h3></li>
@@ -93,6 +92,7 @@
             else  $("#sex")[0].innerHTML += '女';
             $("#mobile")[0].innerHTML += phone(data.PersonalData.UserPhone);
             $("#content")[0].innerHTML = $("#profile")[0].innerHTML;
+            $("#head").attr('src',data.PersonalData.UserPhoto);
         });
         $("#userInfo").click(function () {
             $("#content")[0].innerHTML = $("#profile")[0].innerHTML;
