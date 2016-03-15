@@ -10,7 +10,7 @@ $(document).ready(function () {
             password: password
         }, function (data, status) {
             if (data[0] == '1') {
-                var url = 'http://127.0.0.1/LoveUniversity/php/Service/UserService/Session.php';
+                var url = '../PHP/Service/UserService/Session.php';
                 $.getJSON(url, function (data) {
                     var id =data.userid;
                     setCookie('username',username);
