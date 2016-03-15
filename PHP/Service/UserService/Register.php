@@ -12,8 +12,10 @@ require_once "XSS.php";
 @$vcode = $_POST['vcode'];
 if ($usersex == "Girl") {
     $usersex = 0;
+    $path = "http://7xrqhs.com1.z0.glb.clouddn.com/default0.jpg";
 } else {
     $usersex = 1;
+    $path = "http://7xrqhs.com1.z0.glb.clouddn.com/default1.jpg";
 }
 /*
 $Punicode = $_POST['phoneunicode'];
@@ -23,7 +25,6 @@ if($Punicode!=$phoneunicode)
 echo "验证码不正确";
 }
 */
-$path = "http://7xrqhs.com1.z0.glb.clouddn.com/8cb3d8ca6386c8aeb755468de8c32ece.jpg";
 $json = Pending($username, $password, $userphone, $usersex, $repassword);
 if ($json == "1"&&$vcode == $_SESSION['vcode']) {
 
