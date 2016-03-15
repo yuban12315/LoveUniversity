@@ -4,15 +4,13 @@
     <meta charset="UTF-8">
     <title>Bootstrap 实例 - 滚动监听（Scrollspy）插件</title>
     <link href="../css/bootstrap.css" rel="stylesheet">
-    <link href="../css/style.css" rel="stylesheet">
-    <link href="../css/cropper.css" rel="stylesheet">
 </head>
 <body>
 <div class="container" id="crop-avatar">
 
     <!-- Current avatar -->
     <div class="avatar-view" title="Change the avatar">
-        <img src="http://119.29.90.35/2.gif" alt="Avatar"/>
+        <img src="" alt="Avatar" id="head0"/>
     </div>
 
     <!-- Cropping modal -->
@@ -79,13 +77,17 @@
     <!-- Loading state -->
     <div class="loading"  ></div>
 </div>
-
 </body>
 <script src="../js/jQuery.js"></script>
 <script src="../js/bootstrap.js"></script>
 <script src="../js/cropper.js"></script>
 <script src="../js/main.js"></script>
 <script>
-
+    $(document).ready(function () {
+        var url = 'http://127.0.0.1/LoveUniversity/php/Service/UserService/Data.php';
+        $.getJSON(url, function (data) {
+            $("#head0").attr('src', data.PersonalData.UserPhoto);
+        });
+    })
 </script>
 </html>
