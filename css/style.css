@@ -182,6 +182,13 @@
     background-color: #00ccff;
 }
 
+.banner-lg{
+    width: 100%;
+    height: 110px;
+    margin-top: 50px;
+    background-color: #00ccff;
+}
+
 .func{
     opacity: 0.5;
 }
@@ -248,4 +255,9 @@
 
 .hidden{
     display: none;
+}
+
+.textarea{
+    resize: none;
+    font-size: 1.5em;
 }

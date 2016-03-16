@@ -20,24 +20,63 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" onclick="location.href='../index.html'" >爱
+                <a class="navbar-brand" onclick="location.href='../../index.html'">爱
                     <small>大学</small>
                 </a>
             </div>
             <div class="collapse navbar-collapse" id="example-navbar-collapse">
                 <ul class="nav pull-right navbar-nav" id="user">
-                    <li><a> <span class="glyphicon glyphicon-search"></span></a></li>
-                    <li><a onclick="location.href='login.html'">登录</a></li>
-                    <li><a onclick="location.href='regist.html'">注册</a></li>
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" id="username" data-toggle="dropdown" role="button"
+                           aria-haspopup="true"
+                           aria-expanded="false">NULL <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <p style="display:none;" id="info"></p>
+                            <li><a href="../profile.html">个人主页</a></li>
+                            <li><a href="#">我的消息</a></li>
+                            <li role="separator" class="divider"></li>
+                            <li><a onclick="logOut()">退出登录</a></li>
+                        </ul>
+                    </li>
                 </ul>
             </div>
         </nav>
     </div>
 </div>
 
+<div class="banner-lg"></div>
+
+
+<div class="container">
+    <form role="form" autocomplete="off">
+        <div class="form-group">
+            <label for="input-content"></label>
+            <textarea class="form-control textarea" rows="6" id="input-content" maxlength=""></textarea>
+        </div>
+    </form>
+</div>
+
 
 <script src="../../js/jQuery.js"></script>
 <script src="../../js/bootstrap.js"></script>
+<script src="../../js/headroom.js"></script>
 <script src="../../js/cookies.js"></script>
+<script src="../../js/index-service.js"></script>
+<script>
+    $(document).ready(function () {
+        $(document).keydown(function(e){
+            var curKey = e.which;
+            if(curKey == 13){
+                alert("我要提交表单了");
+            }
+        });
+        $("#test").click(function () {
+            var msg = $("#input-content").val();
+            $.post(url, {
+                msg: msg
+            })
+        })
+    })
+</script>
 </body>
 </html>

@@ -14,3 +14,16 @@ function Loaded() {
         document.getElementById('username').innerHTML = user + "<span class=\"caret\"></span>"
     }
 }
+
+$(document).ready(function () {
+    $("#header").headroom({
+        "tolerance": 5,
+        "offset": 200,
+        "classes": {
+            "initial": "animated",
+            "pinned": "swingInX",
+            "unpinned": "swingOutX"
+        }
+    });
+    Loaded();
+})

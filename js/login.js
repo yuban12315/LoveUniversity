@@ -2,6 +2,12 @@ $(document).ready(function () {
     clearCookie('username');
     clearCookie('userid');
     var url = '../PHP/Service/UserService/Login.php';
+    $(document).keydown(function(e){
+        var curKey = e.which;
+        if(curKey == 13){
+            $("#login").click();
+        }
+    });
     $("#login").click(function () {
         var username = $("#username").val();
         var password = $("#password").val();
