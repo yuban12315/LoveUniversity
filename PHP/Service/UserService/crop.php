@@ -180,6 +180,7 @@ class CropAvatar {
 
             imagedestroy($src_img);
             imagedestroy($dst_img);
+            unlink($src);
             MP($dst);
         }
     }

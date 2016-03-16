@@ -26,7 +26,7 @@ function MP($str)
         $N=$mm.'.png';
         $path = 'http://7xrqhs.com1.z0.glb.clouddn.com/' . $mm .'.png';
         upload($src,$N, 'loveu');
-        //unlink($src);
+        unlink($src);
         $str = "update user set UserPhoto = '{$path}' where UserId = '{$userid}'";
         up($str);
         echo "1";
