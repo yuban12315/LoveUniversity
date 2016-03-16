@@ -243,13 +243,15 @@
 
                 success: function (data) {
                     _this.submitDone(data);
+                    location.reload();
                 },
 
-                error: function (XMLHttpRequest, textStatus, errorThrown) {
-                    _this.submitFail(textStatus || errorThrown);
+                error: function () {
+                    location.reload();
                 },
 
                 complete: function () {
+                    location.reload();
                     _this.submitEnd();
                 }
             });
