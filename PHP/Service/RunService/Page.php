@@ -8,5 +8,5 @@
 require_once '../UserService/Page.php';
 $table = 'run';
 @$page = $_GET['page'];
-Mypage($table,$page,'RunTime');
+Mypage($table,$page,'RunTime','RunId');
 

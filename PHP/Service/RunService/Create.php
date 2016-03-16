@@ -18,13 +18,17 @@ if (isset($_SESSION['userid'])) {
                 $postuser = $_SESSION['username'];
                 $str = "insert into run (UserId,PostUser,RunInformation,RunTime,state) VALUES ('{$userid}','{$postuser}','{$runinformation}','{$runtime}',1)";
                 ins($str);
-
                 echo "1";
             }
+        } else {
+            @$runinformation = $_POST['runinformation'];
+            @$runtime = $_POST['runtime'];
+            $postuser = $_SESSION['username'];
+            $str = "insert into run (UserId,PostUser,RunInformation,RunTime,state) VALUES ('{$userid}','{$postuser}','{$runinformation}','{$runtime}',1)";
+            ins($str);
+            echo "1";
         }
-    }
-    else
-    {
+    } else {
         echo '请完善个人信息';
     }
 }

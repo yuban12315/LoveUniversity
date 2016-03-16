@@ -36,7 +36,7 @@ function message($userphone)
     $username = "yanyongjie";//短信宝帐户名
     $pass = md5("15296603340yyjqq");//短信宝帐户密码，md5加密后的字符串
 
-    $checkCode = randnum(4);
+    $checkCode = randnum(6);
     $content = "【爱大学】，您的验证码为" . $checkCode . "在1分钟内有效";
     $url = "http://www.smsbao.com/sms?u=" . $username . "&p=" . $pass . "&m=" . $userphone . "&c=" . $content;
     $html = file_get_contents($url);
