@@ -26,6 +26,4 @@ if (isset($_SESSION['userid'])) {
         up($str);
         echo '1';
     }
-
-
 }
