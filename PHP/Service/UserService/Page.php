@@ -7,7 +7,6 @@
  */
 require_once '../../DAO/DAO.php';
 require_once 'ch_json_encode.php';
-Mypage('run',1);
 function Mypage($table,$page,$time)
 {
     $conn = connect();
