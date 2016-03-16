@@ -3,10 +3,9 @@
  * Created by PhpStorm.
  * User: LC
  * Date: 2016/3/16
- * Time: 12:51
+ * Time: 14:03
  */
 require_once '../UserService/Page.php';
-$table = 'run';
+$table = 'xue';
 @$page = $_GET['page'];
-Mypage($table,$page,'RunTime');
-
+Mypage($table,$page,'XueTime');

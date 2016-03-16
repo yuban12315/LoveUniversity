@@ -8,7 +8,7 @@
 require_once '../../DAO/DAO.php';
 require_once 'ch_json_encode.php';
 Mypage('run',1);
-function Mypage($table,$page)
+function Mypage($table,$page,$time)
 {
     $conn = connect();
     $str = "select * from {$table} ";
@@ -16,7 +16,7 @@ function Mypage($table,$page)
     $row = mysqli_fetch_assoc($result);
     $i=0;
     while($i<=($page*10-1)&&$row) {
-        if($row['state']=='0')
+        if($row['state']=='0'||strtotime(date("y-m-d h:i:s"))<=strtotime($row[$time]))
         {
             continue;
         }
