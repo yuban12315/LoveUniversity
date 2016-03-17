@@ -8,7 +8,7 @@
 session_start();
 require_once '../../DAO/DAO.php';
 require_once 'ch_json_encode.php';
-if($_SESSION!=null) {
+if(isset($_SESSION['userid'])) {
     $userid = $_SESSION['userid'];
     $str = 'select * from user where UserId = "' . $userid . '"';
     /*

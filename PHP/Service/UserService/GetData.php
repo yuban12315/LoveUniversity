@@ -10,7 +10,7 @@ require_once 'ch_json_encode.php';
 if(isset($_GET['userid'])||isset($_GET['username'])||isset($_GET['userphone']))
 {
     if(isset($_GET['userid'])) {
-        $key = $_GET['userid'];
+        $key = (int)$_GET['userid'];
         $O = 'UserId';
     }
     if(isset($_GET['username'])){

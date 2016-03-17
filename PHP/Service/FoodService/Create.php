@@ -1,4 +1,5 @@
 <?php
+//创建
 session_start();
 require_once '../../DAO/DAO.php';
 require_once '../UserService/XSS.php';

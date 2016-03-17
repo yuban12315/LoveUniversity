@@ -7,7 +7,7 @@
  */
 require_once '../../DAO/DAO.php';
 require_once '../UserService/ch_json_encode.php';
-@$xueid = $_GET['xueid'];
+@$xueid = (int)$_GET['xueid'];
 $str = "select * from xue where XueId = '{$xueid}'";
 $row = sel($str);
 echo ch_json_encode($row);

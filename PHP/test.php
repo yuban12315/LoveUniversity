@@ -136,8 +136,11 @@ function change($url, $newwidth, $newheight)
     imagedestroy($src_image);
 }
 */
+/*
 require_once 'DAO/DAO.php';
 $_POST['user']=" ";
 echo isset($_POST['user']);
 echo empty($_POST['user']);
+*/
+echo date("y-m-d h:m:s");
 

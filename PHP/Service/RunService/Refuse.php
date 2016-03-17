@@ -5,6 +5,7 @@
  * Date: 2016/3/14
  * Time: 17:09
  */
+//拒绝
 session_start();
 require_once '../../DAO/DAO.php';
 if(isset($_SESSION['userid'])) {

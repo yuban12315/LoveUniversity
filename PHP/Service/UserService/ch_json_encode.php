@@ -26,5 +26,5 @@ function ch_urlencode($data) {
             }
         }
     }
-    return$data;
+    return $data;
 }
