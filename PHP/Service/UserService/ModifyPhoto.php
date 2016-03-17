@@ -14,7 +14,6 @@ function get_md5_string()
 {
     return md5(uniqid(microtime(true), true));
 }
-
 function MP($str)
 {
 //修改头像

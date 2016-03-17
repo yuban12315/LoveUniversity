@@ -1,6 +1,7 @@
 <?php
 session_start();
 require_once '../../DAO/DAO.php';
+require_once '../UserService/XSS.php';
 if (isset($_SESSION['userid'])) {
     $userid = $_SESSION['userid'];
     $str = "select * from user where UserId = '{$userid}'";
@@ -12,34 +13,39 @@ if (isset($_SESSION['userid'])) {
             if ($row['state'] == 1) {
                 echo "已有约会";
             } else {
-                if(isset($_POST['foodinformation'])&&isset($_POST['foodtime'])&&isset($_POST['foodarea'])&&isset($_POST['foodway'])) {
+                if (empty($_POST['foodinformation']) || empty($_POST['foodtime']) || empty($_POST['foodarea']) || empty($_POST['foodway'])) {
+                    echo '信息不能为空';
+                } else {
                     $postuser = $_SESSION['username'];
                     @$foodinformation = $_POST['foodinformation'];
                     @$foodtime = $_POST['foodtime'];
                     @$foodarea = $_POST['foodarea'];
                     @$fooodway = $_POST['foodway'];
+                    if (xss($foodinformation) || xss($foodtime) || xss($fooodway) || xss($foodarea)) {
+                        echo '不要试图攻击';
+                        die();
+                    }
                     $str = "insert into food (UserId,PostUser,FoodInformation,FoodTime,FoodArea,FoodWay,state) VALUES ('{$userid}','{$postuser}','{$foodinformation}','{$foodtime}','{$foodarea}','{$fooodway}',1)";
                     ins($str);
                     echo "1";
                 }
-                else{
-                    echo '信息不能为空';
-                }
             }
-        }
-        else{
-            if(isset($_POST['foodinformation'])&&isset($_POST['foodtime'])&&isset($_POST['foodarea'])&&isset($_POST['foodway'])) {
+        } else {
+            if (empty($_POST['foodinformation']) || empty($_POST['foodtime']) || empty($_POST['foodarea']) || empty($_POST['foodway'])) {
+                echo '信息不能为空';
+            } else {
                 $postuser = $_SESSION['username'];
                 @$foodinformation = $_POST['foodinformation'];
                 @$foodtime = $_POST['foodtime'];
                 @$foodarea = $_POST['foodarea'];
                 @$fooodway = $_POST['foodway'];
+                if (xss($foodinformation) || xss($foodtime) || xss($fooodway) || xss($foodarea)) {
+                    echo '不要试图攻击';
+                    die();
+                }
                 $str = "insert into food (UserId,PostUser,FoodInformation,FoodTime,FoodArea,FoodWay,state) VALUES ('{$userid}','{$postuser}','{$foodinformation}','{$foodtime}','{$foodarea}','{$fooodway}',1)";
                 ins($str);
                 echo "1";
-            }
-            else{
-                echo '信息不能为空';
             }
         }
     } else {
