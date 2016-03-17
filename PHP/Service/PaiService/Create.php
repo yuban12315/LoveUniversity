@@ -23,5 +23,5 @@ if (isset($_SESSION['userid'])) {
     unlink($destination);
     $str = "insert into pai (UserId,PostUser,PaiMoney,UpTime,DownTime,PaiInformation,PaiImage,state) VALUES ('{$userid}','{$postuser}','{$paimoney}','{$uptime}','{$downtime}','{$paiinformation}','{$path}',1)";
     ins($str);
-    echo "成功";
+    echo "1";
 }

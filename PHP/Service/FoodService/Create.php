@@ -22,6 +22,16 @@ if (isset($_SESSION['userid'])) {
                 echo "1";
             }
         }
+        else{
+            $postuser = $_SESSION['username'];
+            @$foodinformation = $_POST['foodinformation'];
+            @$foodtime = $_POST['foodtime'];
+            @$foodarea = $_POST['foodarea'];
+            @$fooodway = $_POST['foodway'];
+            $str = "insert into food (UserId,PostUser,FoodInformation,FoodTime,FoodArea,FoodWay,state) VALUES ('{$userid}','{$postuser}','{$foodinformation}','{$foodtime}','{$foodarea}','{$fooodway}',1)";
+            ins($str);
+            echo "1";
+        }
     } else {
         echo '请完善个人信息';
     }

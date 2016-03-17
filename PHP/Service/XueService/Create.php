@@ -21,6 +21,15 @@ if (isset($_SESSION['userid'])) {
                 echo "1";
             }
         }
+        else{
+            $postuser = $_SESSION['username'];
+            @$xueinformation = $_POST['xueinformation'];
+            @$xuetime = $_POST['xuetime'];
+            @$xuearea = $_POST['xuearea'];
+            $str = "insert into xue (UserId,PostUser,XueArea,Xueinformation,XueTime,state) VALUES ('{$userid}','{$postuser}','{$xuearea}';'{$xueinformation}','{$xuetime}',1)";
+            ins($str);
+            echo "1";
+        }
     }
     else
     {

@@ -8,4 +8,4 @@
 require_once '../UserService/Page.php';
 $table = 'food';
 @$page = $_GET['page'];
-Mypage($table,$page,'FoodTime');
+Mypage($table,$page,'FoodTime','FoodId');
