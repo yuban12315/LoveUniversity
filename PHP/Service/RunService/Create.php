@@ -6,7 +6,7 @@ if (isset($_SESSION['userid'])) {
     $username = $_SESSION['username'];
     $str = "select * from user where UserId = '{$userid}'";
     $row = sel($str);
-    if ($row['JwxtNumber']) {
+    if (isset($row['JwxtNumber'])) {
         $str = "select * from run where UserId = '{$userid}'";
         $row = sel($str);
         if ($row) {
