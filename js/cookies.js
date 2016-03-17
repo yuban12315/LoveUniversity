@@ -29,10 +29,11 @@ function resetCookie(){
         var id=data.userid;
          var id_0= getCookie('userid');
         if(id_0!=id){
-            alert("Watch Out!!")
+            alert("Watch Out!!");
             setCookie('userid',id);
         }
         setCookie('userid',id);
+        setCookie('username',data.username);
     })
 }
 

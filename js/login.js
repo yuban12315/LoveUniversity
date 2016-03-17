@@ -19,7 +19,8 @@ $(document).ready(function () {
                 var url = '../PHP/Service/UserService/Session.php';
                 $.getJSON(url, function (data) {
                     var id =data.userid;
-                    setCookie('username',username);
+                    var name=data.username;
+                    setCookie('username',name);
                     setCookie('userid',id);
                     location.href='../index.html';
                 });
