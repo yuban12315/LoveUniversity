@@ -6,3 +6,6 @@
  * Time: 13:19
  */
 require_once '../UserService/Page.php';
+$table = 'pai';
+@$page = $_GET['page'];
+Mypage($table,$page,'DownTime','PaiId');
