@@ -1,6 +1,7 @@
 <?php
 session_start();
 require_once '../../DAO/DAO.php';
+require_once '../UserService/XSS.php';
 if (isset($_SESSION['userid'])) {
     $userid = $_SESSION['userid'];
     $username = $_SESSION['username'];
@@ -13,29 +14,35 @@ if (isset($_SESSION['userid'])) {
             if ($row['state']) {
                 echo "已有约会";
             } else {
-                if($_POST['runinformation']&&$_POST['runtime']) {
-                    @$runinformation = $_POST['runinformation'];
-                    @$runtime = $_POST['runtime'];
-                    $postuser = $_SESSION['username'];
-                    $str = "insert into run (UserId,PostUser,RunInformation,RunTime,state) VALUES ('{$userid}','{$postuser}','{$runinformation}','{$runtime}',1)";
-                    ins($str);
-                   echo '1';
+                    if (empty($_POST['runinformation']) || empty($_POST['runtime'])) {
+                        echo '信息不能为空';
+                    } else {
+                        @$runinformation = $_POST['runinformation'];
+                        @$runtime = $_POST['runtime'];
+                        if (xss($runinformation) || xss($runtime)) {
+                            echo '请不要试图攻击!!!';
+                            die();
+                        }
+                        $postuser = $_SESSION['username'];
+                        $str = "insert into run (UserId,PostUser,RunInformation,RunTime,state) VALUES ('{$userid}','{$postuser}','{$runinformation}','{$runtime}',1)";
+                        ins($str);
+                        echo '1';
+                    }
                 }
-                else{
-                    echo '信息不能为空';
-                }
-            }
         } else {
-            if($_POST['runtime']&&$_POST['runinformation']) {
+            if (empty($_POST['runtime']) || empty($_POST['runinformation'])) {
+                echo '信息不能为空';
+            } else {
                 @$runinformation = $_POST['runinformation'];
                 @$runtime = $_POST['runtime'];
+                if (xss($runinformation)) {
+                    echo '请不要试图攻击!!!';
+                    die();
+                }
                 $postuser = $_SESSION['username'];
                 $str = "insert into run (UserId,PostUser,RunInformation,RunTime,state) VALUES ('{$userid}','{$postuser}','{$runinformation}','{$runtime}',1)";
                 ins($str);
-                echo "1";
-            }
-            else{
-                echo '信息不能为空';
+                echo "";
             }
         }
     } else {
