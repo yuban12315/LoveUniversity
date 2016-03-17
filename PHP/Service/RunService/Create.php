@@ -19,7 +19,7 @@ if (isset($_SESSION['userid'])) {
                     $postuser = $_SESSION['username'];
                     $str = "insert into run (UserId,PostUser,RunInformation,RunTime,state) VALUES ('{$userid}','{$postuser}','{$runinformation}','{$runtime}',1)";
                     ins($str);
-                   echo $_POST['runtime'];
+                   echo '1';
                 }
                 else{
                     echo '信息不能为空';
