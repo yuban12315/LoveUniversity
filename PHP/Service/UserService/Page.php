@@ -16,13 +16,15 @@ function Mypage($table,$page,$time,$ID)
     $i=0;
     while($i<=($page*10-1)&&$row) {
 
-        if(strtotime(date("y-m-d h:i:s"))<=strtotime($row[$time]))
+        if(strtotime(date("y-m-d h:i:s"))>=strtotime($row[$time]))
         {
-            $str = "update {$table} set state = 0 where {$ID} = {$row[$ID]}";
+            $id = $row[$ID];
+            echo $id;
+            $str = "update {$table} set state = 0 where {$ID} = '{$id}'";
             up($str);
         }
 
-        if($row['state']==0)
+        if($row['state']==0||strtotime(date("y-m-d h:i:s"))>=strtotime($row[$time]))
         {
             $row = mysqli_fetch_assoc($result);
             continue;

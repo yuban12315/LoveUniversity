@@ -6,4 +6,4 @@
  * Time: 13:32
  */
 require_once '../UserService/Total.php';
-Total('food');
+Total('pai');

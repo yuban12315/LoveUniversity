@@ -6,6 +6,6 @@
  * Time: 13:22
  */
 require_once '../UserService/Page.php';
-$table = 'food';
+$table = 'pai';
 @$page = $_GET['page'];
-Mypage($table,$page,'FoodTime','FoodId');
+Mypage($table,$page,'DownTime','PaiId');
