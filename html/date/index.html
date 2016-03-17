@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>LoveU | 约</title>
+    <link rel="icon" href="http://127.0.0.1/LoveUniversity/img/title.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="../../css/bootstrap.css" rel="stylesheet">
+    <link href="../../css/style.css" rel="stylesheet">
+    <link href="../../css/datetimepicker.css" rel="stylesheet" media="screen">
+</head>
+<body>
+<div>
+    <div class="row">
+        <nav class="navbar navbar-default navbar-fixed-top header" id="header" role="navigation">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse"
+                        data-target="#example-navbar-collapse">
+                    <span class="sr-only">切换导航</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" onclick="location.href='../../index.html'">爱
+                    <small>大学</small>
+                </a>
+            </div>
+            <div class="collapse navbar-collapse" id="example-navbar-collapse">
+                <ul class="nav pull-right navbar-nav" id="user">
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" id="username" data-toggle="dropdown" role="button"
+                           aria-haspopup="true"
+                           aria-expanded="false">NULL <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <p style="display:none;" id="info"></p>
+                            <li><a href="../profile.html">个人主页</a></li>
+                            <li><a href="#">我的消息</a></li>
+                            <li role="separator" class="divider"></li>
+                            <li><a onclick="logOut()">退出登录</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+</div>
+<div class="banner-lg"></div>
+<div class="panner">
+    <ul class="nav big text-center">
+        <li class="big"><h1 class="panner-option" href="#input">&nbsp;约？&nbsp;</h1></li>
+    </ul>
+</div>
+
+
+<div class="container" id='content'>
+    <div class="col-lg-12">
+
+    </div>
+</div>
+
+<div id="model">
+    <ul class="info">
+        <li>sdsd</li>
+        <li>sdsd</li>
+        <li>sdsd</li>
+    </ul>
+</div>
+<div class="row" id="input">
+    <div class="container">
+        <form role="form" autocomplete="off">
+            <div class="form-group">
+                <label for="input-content"></label>
+                <textarea class="form-control textarea" rows="3" id="input-content">&nbsp;&nbsp;</textarea>
+                <div class="input-group col-lg-4 col-md-5 col-sm-6 ">
+                    <span class="input-group-addon "><span class="glyphicon glyphicon-calendar"></span>约定时间</span>
+                    <input size="16" type="text" value="" readonly class="form_datetime form-control  big"
+                           id="datetime">
+                </div>
+                <button class="btn btn-default big " id="word">200</button>
+                <button type="button" class="btn btn-success big pull-right" id="submit">&nbsp;&nbsp;发表&nbsp;&nbsp;</button>
+            </div>
+
+        </form>
+    </div>
+</div>
+
+<script src="../../js/jQuery.js"></script>
+<script src="../../js/bootstrap.js"></script>
+<script src="../../js/headroom.js"></script>
+<script src="../../js/cookies.js"></script>
+<script src="../../js/index-service.js"></script>
+<script src="../../js/datetimepicker.js"></script>
+<script src="../../js/fr.js"></script>
+<script>
+    $(document).ready(function () {
+        $(".form_datetime").datetimepicker({format: 'yyyy-mm-dd hh:ii'});
+        $("#submit").click(function () {
+            var url = '../../PHP/Service/RunService/Create.php';
+            var msg = $("#input-content").val();
+            var datetime = $("#datetime").val() + ':00';
+            $.post('http://127.0.0.1/LoveUniversity/PHP/Service/RunService/Create.php', {
+                runtime: datetime,
+                runinformation: msg
+            }, function (data) {
+                if (data[0] == '1')
+                //  location.reload();
+                else {
+                    alert(data);
+                }
+            });
+        });
+        $(function () {
+            $("#input-content").keyup(function () {
+                var len = $(this).val().length;
+                if (len > 200) {
+                    $(this).val($(this).val().substring(0, 199));
+                    $("#word").text(0);
+                }
+                else {
+                    var num = 200 - len;
+                    $("#word").text(num);
+                }
+            });
+        });
+    });
+</script>
+</body>
+</html>
