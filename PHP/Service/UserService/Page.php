@@ -16,7 +16,6 @@ function Mypage($table, $page, $time, $ID)
     $row = mysqli_fetch_assoc($result);
     $i = 0;
 
-    echo '[';
     while ($i <= ($page * 10 - 1) && $row) {
         /*
         if (strtotime(date("y-m-d h:i:s")) >= strtotime($row[$time])) {
@@ -38,6 +37,5 @@ function Mypage($table, $page, $time, $ID)
         $row = mysqli_fetch_assoc($result);
     }
     echo '{"Num":"' . ($i % 10 + 1) . '"}';
-    echo "]";
 
 }
