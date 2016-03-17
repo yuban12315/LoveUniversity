@@ -15,19 +15,23 @@ function Mypage($table,$page,$time,$ID)
     $row = mysqli_fetch_assoc($result);
     $i=0;
     while($i<=($page*10-1)&&$row) {
+
         if(strtotime(date("y-m-d h:i:s"))<=strtotime($row[$time]))
         {
             $str = "update {$table} set state = 0 where {$ID} = {$row[$ID]}";
             up($str);
         }
-        if($row['state']=='0'||strtotime(date("y-m-d h:i:s"))<=strtotime($row[$time]))
+
+        if($row['state']==0)
         {
+            $row = mysqli_fetch_assoc($result);
             continue;
         }
         $i++;
+
         if($i>=($page-1)*10) {
             echo ch_json_encode($row) . '<br>';
-            $row = mysqli_fetch_assoc($result);
         }
+        $row = mysqli_fetch_assoc($result);
     }
 }
