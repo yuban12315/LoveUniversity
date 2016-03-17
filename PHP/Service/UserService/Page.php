@@ -7,7 +7,6 @@
  */
 require_once '../../DAO/DAO.php';
 require_once 'ch_json_encode.php';
-Mypage('run', 1, 'RunTime', 'RunId');
 function Mypage($table, $page, $time, $ID)
 {
     $conn = connect();
@@ -17,7 +16,7 @@ function Mypage($table, $page, $time, $ID)
     $i = 0;
 
     while ($i <= ($page * 10 - 1) && $row) {
-        /*
+
         if (strtotime(date("y-m-d h:i:s")) >= strtotime($row[$time])) {
             $id = $row[$ID];
             $str = "update {$table} set state = 0 where {$ID} = '{$id}'";
@@ -27,7 +26,7 @@ function Mypage($table, $page, $time, $ID)
             $row = mysqli_fetch_assoc($result);
             continue;
         }
-        */
+
         unset($row['GetUser']);
         $i++;
         if ($i >= ($page - 1) * 10) {
