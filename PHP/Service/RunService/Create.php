@@ -26,7 +26,7 @@ if (isset($_SESSION['userid'])) {
                 }
             }
         } else {
-            if(isset($_POST['runinformation'])&&isset($_POST['runtime'])) {
+            if($_POST['runtime']&&$_POST['runinformation']) {
                 @$runinformation = $_POST['runinformation'];
                 @$runtime = $_POST['runtime'];
                 $postuser = $_SESSION['username'];
