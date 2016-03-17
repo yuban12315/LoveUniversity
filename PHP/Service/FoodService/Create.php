@@ -12,6 +12,23 @@ if (isset($_SESSION['userid'])) {
             if ($row['state'] == 1) {
                 echo "已有约会";
             } else {
+                if(isset($_POST['foodinformation'])&&isset($_POST['foodtime'])&&isset($_POST['foodarea'])&&isset($_POST['foodway'])) {
+                    $postuser = $_SESSION['username'];
+                    @$foodinformation = $_POST['foodinformation'];
+                    @$foodtime = $_POST['foodtime'];
+                    @$foodarea = $_POST['foodarea'];
+                    @$fooodway = $_POST['foodway'];
+                    $str = "insert into food (UserId,PostUser,FoodInformation,FoodTime,FoodArea,FoodWay,state) VALUES ('{$userid}','{$postuser}','{$foodinformation}','{$foodtime}','{$foodarea}','{$fooodway}',1)";
+                    ins($str);
+                    echo "1";
+                }
+                else{
+                    echo '信息不能为空';
+                }
+            }
+        }
+        else{
+            if(isset($_POST['foodinformation'])&&isset($_POST['foodtime'])&&isset($_POST['foodarea'])&&isset($_POST['foodway'])) {
                 $postuser = $_SESSION['username'];
                 @$foodinformation = $_POST['foodinformation'];
                 @$foodtime = $_POST['foodtime'];
@@ -21,16 +38,9 @@ if (isset($_SESSION['userid'])) {
                 ins($str);
                 echo "1";
             }
-        }
-        else{
-            $postuser = $_SESSION['username'];
-            @$foodinformation = $_POST['foodinformation'];
-            @$foodtime = $_POST['foodtime'];
-            @$foodarea = $_POST['foodarea'];
-            @$fooodway = $_POST['foodway'];
-            $str = "insert into food (UserId,PostUser,FoodInformation,FoodTime,FoodArea,FoodWay,state) VALUES ('{$userid}','{$postuser}','{$foodinformation}','{$foodtime}','{$foodarea}','{$fooodway}',1)";
-            ins($str);
-            echo "1";
+            else{
+                echo '信息不能为空';
+            }
         }
     } else {
         echo '请完善个人信息';

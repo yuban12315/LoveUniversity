@@ -12,16 +12,22 @@ if (isset($_SESSION['userid'])) {
             if ($row['state']) {
                 echo "已有约会";
             } else {
-                $postuser = $_SESSION['username'];
-                @$xueinformation = $_POST['xueinformation'];
-                @$xuetime = $_POST['xuetime'];
-                @$xuearea = $_POST['xuearea'];
-                $str = "insert into xue (UserId,PostUser,XueArea,Xueinformation,XueTime,state) VALUES ('{$userid}','{$postuser}','{$xuearea}';'{$xueinformation}','{$xuetime}',1)";
-                ins($str);
-                echo "1";
+                if(isset($_POST['xueinformation'])&&isset($_POST['xuetime'])&&isset($_POST['xuearea'])) {
+                    $postuser = $_SESSION['username'];
+                    @$xueinformation = $_POST['xueinformation'];
+                    @$xuetime = $_POST['xuetime'];
+                    @$xuearea = $_POST['xuearea'];
+                    $str = "insert into xue (UserId,PostUser,XueArea,Xueinformation,XueTime,state) VALUES ('{$userid}','{$postuser}','{$xuearea}';'{$xueinformation}','{$xuetime}',1)";
+                    ins($str);
+                    echo "1";
+                }
+                else{
+                    echo '信息不能为空';
+                }
             }
         }
         else{
+            if(isset($_POST['xueinformation'])&&isset($_POST['xuetime'])&&isset($_POST['xuearea'])) {
             $postuser = $_SESSION['username'];
             @$xueinformation = $_POST['xueinformation'];
             @$xuetime = $_POST['xuetime'];
@@ -29,6 +35,10 @@ if (isset($_SESSION['userid'])) {
             $str = "insert into xue (UserId,PostUser,XueArea,Xueinformation,XueTime,state) VALUES ('{$userid}','{$postuser}','{$xuearea}';'{$xueinformation}','{$xuetime}',1)";
             ins($str);
             echo "1";
+            }
+            else{
+                echo '信息不能为空';
+            }
         }
     }
     else
