@@ -15,9 +15,9 @@ function Mypage($table, $page, $time, $ID)
     $result = mysqli_query($conn, $str);
     $row = mysqli_fetch_assoc($result);
     $i = 0;
-    echo '[<br>';
+    echo '[';
     while ($i <= ($page * 10 - 1) && $row) {
-        /*
+
                 if(strtotime(date("y-m-d h:i:s"))>=strtotime($row[$time]))
                 {
                     $id = $row[$ID];
@@ -28,14 +28,14 @@ function Mypage($table, $page, $time, $ID)
                 {
                     $row = mysqli_fetch_assoc($result);
                     continue;
-                }*/
+                }
         $i++;
         if ($i >= ($page - 1) * 10) {
             echo ch_json_encode($row);
-            echo ",<br>";
+            echo ",";
         }
         $row = mysqli_fetch_assoc($result);
     }
-    echo '{"Num":"'.($i%10+1).'"}<br>';
+    echo '{"Num":"'.($i%10+1).'"}';
     echo "]";
 }
