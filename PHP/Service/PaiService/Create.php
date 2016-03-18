@@ -32,7 +32,7 @@ if (isset($_SESSION['userid'])) {
             buffer($type, $tmp_name, $destination);
             upload($destination, $rename, 'paimai');
             unlink($destination);
-            $str = "insert into pai (UserId,PostUser,PaiMoney,UpTime,DownTime,PaiInformation,PaiImage,state) VALUES ('{$userid}','{$postuser}','{$paimoney}','{$uptime}','{$downtime}','{$paiinformation}','{$path}',1)";
+            $str = "insert into pai (UserId,PostUser,PaiMoney,UpTime,DownTime,PaiInformation,PaiImage,state) VALUES ({$userid},'{$postuser}','{$paimoney}','{$uptime}','{$downtime}','{$paiinformation}','{$path}',1)";
             ins($str);
             echo "1";
 
