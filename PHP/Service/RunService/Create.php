@@ -8,6 +8,7 @@ if (isset($_SESSION['userid'])) {
     $username = $_SESSION['username'];
     $str = "select * from user where UserId = '{$userid}'";
     $row = sel($str);
+    $postimage = $row['UserPhoto'];
     if (isset($row['JwxtNumber'])) {
         $str = "select * from run where UserId = '{$userid}'";
         $row = sel($str);
@@ -25,7 +26,7 @@ if (isset($_SESSION['userid'])) {
                             die();
                         }
                         $postuser = $_SESSION['username'];
-                        $str = "insert into run (UserId,PostUser,RunInformation,RunTime,state) VALUES ('{$userid}','{$postuser}','{$runinformation}','{$runtime}',1)";
+                        $str = "insert into run (UserId,PostUser,RunInformation,RunTime,state,PostImage) VALUES ('{$userid}','{$postuser}','{$runinformation}','{$runtime}',1,'{$postimage}')";
                         ins($str);
                         echo '1';
                     }
@@ -41,7 +42,7 @@ if (isset($_SESSION['userid'])) {
                     die();
                 }
                 $postuser = $_SESSION['username'];
-                $str = "insert into run (UserId,PostUser,RunInformation,RunTime,state) VALUES ('{$userid}','{$postuser}','{$runinformation}','{$runtime}',1)";
+                $str = "insert into run (UserId,PostUser,RunInformation,RunTime,state,PostImage) VALUES ('{$userid}','{$postuser}','{$runinformation}','{$runtime}',1,'{$postimage}')";
                 ins($str);
                 echo "";
             }

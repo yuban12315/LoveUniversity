@@ -7,6 +7,7 @@ if (isset($_SESSION['userid'])) {
     $userid = $_SESSION['userid'];
     $str = "select * from user where UserId = '{$userid}'";
     $row = sel($str);
+    $postimage = $row['UserPhoto'];
     if (isset($row['JwxtNumber'])) {
         $str = "select * from food where UserId = '{$userid}'";
         $row = sel($str);
@@ -26,7 +27,7 @@ if (isset($_SESSION['userid'])) {
                         echo '不要试图攻击';
                         die();
                     }
-                    $str = "insert into food (UserId,PostUser,FoodInformation,FoodTime,FoodArea,FoodWay,state) VALUES ('{$userid}','{$postuser}','{$foodinformation}','{$foodtime}','{$foodarea}','{$fooodway}',1)";
+                    $str = "insert into food (UserId,PostUser,FoodInformation,FoodTime,FoodArea,FoodWay,state,PostImage) VALUES ('{$userid}','{$postuser}','{$foodinformation}','{$foodtime}','{$foodarea}','{$fooodway}',1,'{$postimage}')";
                     ins($str);
                     echo "1";
                 }
@@ -44,7 +45,7 @@ if (isset($_SESSION['userid'])) {
                     echo '不要试图攻击';
                     die();
                 }
-                $str = "insert into food (UserId,PostUser,FoodInformation,FoodTime,FoodArea,FoodWay,state) VALUES ('{$userid}','{$postuser}','{$foodinformation}','{$foodtime}','{$foodarea}','{$fooodway}',1)";
+                $str = "insert into food (UserId,PostUser,FoodInformation,FoodTime,FoodArea,FoodWay,state,PostImage) VALUES ('{$userid}','{$postuser}','{$foodinformation}','{$foodtime}','{$foodarea}','{$fooodway}',1,'{$postimage}')";
                 ins($str);
                 echo "1";
             }

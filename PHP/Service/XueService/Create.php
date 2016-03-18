@@ -6,6 +6,7 @@ if (isset($_SESSION['userid'])) {
     $userid = $_SESSION['userid'];
     $str = "select * from user where UserId = '{$userid}'";
     $row = sel($str);
+    $postimage = $row['UserPhoto'];
     if (isset($row['JwxtNumber'])) {
         $str = "select * from xue where UserId = '{$userid}'";
         $row = sel($str);
@@ -24,7 +25,7 @@ if (isset($_SESSION['userid'])) {
                         echo '不要试图攻击';
                         die();
                     }
-                    $str = "insert into xue (UserId,PostUser,XueArea,Xueinformation,XueTime,state) VALUES ('{$userid}','{$postuser}','{$xuearea}';'{$xueinformation}','{$xuetime}',1)";
+                    $str = "insert into xue (UserId,PostUser,XueArea,Xueinformation,XueTime,state,PostImage) VALUES ('{$userid}','{$postuser}','{$xuearea}';'{$xueinformation}','{$xuetime}',1,'{$postimage}')";
                     ins($str);
                     echo "1";
                 }
@@ -41,7 +42,7 @@ if (isset($_SESSION['userid'])) {
                     echo '不要试图攻击';
                     die();
                 }
-                $str = "insert into xue (UserId,PostUser,XueArea,Xueinformation,XueTime,state) VALUES ('{$userid}','{$postuser}','{$xuearea}';'{$xueinformation}','{$xuetime}',1)";
+                $str = "insert into xue (UserId,PostUser,XueArea,Xueinformation,XueTime,state,PostImage) VALUES ('{$userid}','{$postuser}','{$xuearea}';'{$xueinformation}','{$xuetime}',1,'{$postimage}')";
                 ins($str);
                 echo "1";
             }
