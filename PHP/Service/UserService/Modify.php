@@ -12,7 +12,7 @@ session_start();
 if (isset($_SESSION['userid'])) {
     $userid = $_SESSION['userid'];
     //修改昵称
-    if (isset($_POST['nickname'])) {
+    if (!empty($_POST['nickname'])) {
         $newnickname = $_POST['newnickname'];
         if (xss($newnickname)) {
             echo '不要试图攻击！！！';
@@ -23,7 +23,7 @@ if (isset($_SESSION['userid'])) {
         }
     }
     //修改密码
-    if (isset($_POST['oldpassword'])) {
+    if (!empty($_POST['oldpassword'])) {
         $oldpassword = $_POST['oldpassword'];
         $newpassword = $_POST['newpassword'];
         $renewpassword = $_POST['renewpassword'];
@@ -47,6 +47,21 @@ if (isset($_SESSION['userid'])) {
                 }
             }
         }
+    }
+    //教务系统
+    if(!empty($_POST['jwxtnumber'])&&!empty($_POST['jwxtpassword']))
+    {
+        @$jwxtnumber = $_POST['jwxtnumber'];
+        @$jwxtpassword = $_POST['jwxtpassword'];
+        /*提交登录请求验证帐号密码
+        if(login($jwxtnumber,$jwxtpassword))
+        {
+        }*/
+        $str = "update user set JwxtNumber = '{$jwxtnumber}' where UserId = '{$userid}'";
+        up($str);
+        $str = "update user set JwxtPassword = '{$jwxtpassword}' where UserId = '{$userid}'";
+        up($str);
+        echo '1';
     }
 }
 
