@@ -143,5 +143,9 @@ echo isset($_POST['user']);
 echo empty($_POST['user']);
 */
 //echo date("y-m-d h:m:s");
-echo md5(uniqid(microtime(true), true));
+//echo md5(uniqid(microtime(true), true));
+require_once 'DAO/DAO.php';
+$userid = 27;
+$str = "select * from user where UserId = {$userid}";
+echo sel($str)['UserName'];
 
