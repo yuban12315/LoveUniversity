@@ -27,7 +27,7 @@ if (isset($_SESSION['userid'])) {
             $error = $_FILES['paiimage']['error'];
             $size = $_FILES['paiimage']['size'];
             $destination = "../../UserImage/Pai" . "$name";
-            $rename = $userid . '.png';
+            $rename = md5(uniqid(microtime(true), true)) . '.png';
             $path = 'http://7xrqhs.com1.z0.glb.clouddn.com/' . $rename;
             buffer($type, $tmp_name, $destination);
             upload($destination, $rename, 'paimai');

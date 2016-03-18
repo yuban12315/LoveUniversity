@@ -142,5 +142,6 @@ $_POST['user']=" ";
 echo isset($_POST['user']);
 echo empty($_POST['user']);
 */
-echo date("y-m-d h:m:s");
+//echo date("y-m-d h:m:s");
+echo md5(uniqid(microtime(true), true));
 

@@ -43,5 +43,4 @@ function Mypage($table, $page, $time, $ID)
     }
     $array['Num'] = ($sum);
     echo ch_json_encode($array);
-
 }

@@ -9,7 +9,6 @@ session_start();
 require_once '../../DAO/DAO.php';
 require_once 'Buffer.php';
 require_once 'Upload.php';
-require_once 'Rand.php';
 function get_md5_string()
 {
     return md5(uniqid(microtime(true), true));
@@ -20,8 +19,7 @@ function MP($str)
     if (isset($_SESSION['userid'])) {
         $userid = $_SESSION['userid'];
         $src = $str;
-        $mm = randnum(5);
-        $mm = get_md5_string($mm);
+        $mm = get_md5_string();
         $N=$mm.'.png';
         $path = 'http://7xrqhs.com1.z0.glb.clouddn.com/' . $mm .'.png';
         upload($src,$N, 'loveu');
