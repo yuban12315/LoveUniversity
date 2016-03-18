@@ -11,4 +11,5 @@ if($_SESSION)
     $array = $_SESSION;
     unset($array['useridmd5']);
     echo json_encode($array);
+
 }
