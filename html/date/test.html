@@ -9,17 +9,19 @@
     <link href="../../css/style.css" rel="stylesheet">
 </head>
 <body>
-<button id="test" style="width: 50%;height: 100px; "> Click</button>
-
-
+<button id="test" style="width: 50%;height: 100px; ">ON Click</button>
 
 <script src="../../js/jQuery.js"></script>
+<script src="../../js/service/date.js"></script>
 <script>
-    $(document).ready(function () {
+   $(document).ready(function () {
+       /*$.ajaxSetup({
+           async : false
+       });*/
         $("#test").click(function () {
-            var url='http://127.0.0.1/LoveUniversity/php/Service/RunService/Page.php?page=1';
-            $.getJSON(url, function (data) {
-                alert(data[0].RunId);
+            var url='../..//php/Service/UserService/GetData.php?userid=1';
+            $.getJSON(url, function (data, status) {
+
             })
         });
     });

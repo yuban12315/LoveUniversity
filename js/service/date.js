@@ -2,7 +2,7 @@ function creat(nickname, avator, datetime, msg, userid) {
     var data;
     data = '<div class="col-lg-6 col-md-12 col-sm-12 info">'
         + '<div class="col-lg-4  col-md-6 col-sm-6">'
-        + '<img class="img-thumbnail" ' + 'src=' + avator + '></div>'
+        + '<img class="img-thumbnail info-img" ' + 'src="' + avator + '"></div>'
         + '<div class="col-lg-4 col-md-6 col-sm-6"><h2 class="text-center">' + nickname + '</h2></div>'
         + '<div class="col-lg-4 col-md-6 col-sm-6">'
         + '<h2 class="text-center">' + datetime + '</h2>'
@@ -19,22 +19,34 @@ function date(obj) {
     var user = obj.nextElementSibling.innerHTML;
 }
 
-function  show(){
-    var url='../../PHP/Service/RunService/Sum.php';
+function show(page) {
+    var url = '../../PHP/Service/RunService/Page.php?page='+page;
+    $.ajaxSetup({
+        async: false
+    });
     $.getJSON(url, function (data, status) {
-        var num=data.num;
-        var sum=0;
-        var nickname;
-        var avator;
+        var num = data.Num;
+        var sum = 0;
         var datetime;
         var msg;
         var userid;
-        while(sum<num){
-            nickname=data[sum].NickName;
-            userid=data[sum].UserId;
+        setInterval(function () {
+            if (sum != num) {
+                userid = data[sum].UserId;
+                datetime = data[sum].RunTime;
+                msg = data[sum].RunInformation;
+                url = '../../php/Service/UserService/GetData.php?userid=' + data[sum].UserId;
+                $.getJSON(url, function (data2) {
+                    avator = data2.UserPhoto;
+                    nickname = data2.NickName;
+                    msg = creat(data2.NickName, data2.UserPhoto, datetime, msg, userid);
+                    $("#content")[0].innerHTML += msg;
+                });
+                sum++;
+            }
+        }, 1)
+    });
 
-        }
-    })
 }
 
 function submit() {
@@ -72,4 +84,10 @@ $(document).ready(function () {
             }
         });
     });
+    $.get('../../PHP/Service/RunService/Total.php', function (data) {
+        if(data[0]!='1'){
+            $("#more").fadeIn('slow');
+        }
+    });
+    show(1);
 });

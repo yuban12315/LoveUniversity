@@ -277,10 +277,12 @@
     border-radius: 10px;
     margin-bottom:30px;
     margin-top: 20px;
+    height: 300px;
 }
 
 .info h3{
     margin-bottom: 30px;
+    height: 50px;
 }
 
 .divide{
@@ -289,4 +291,10 @@
     height: 2px;
     background-color: #d4d4d4;
     border-radius: 50px;
+}
+
+.info-img{
+    width: 150px;
+    height: 150px;
+    margin: 0;
 }
