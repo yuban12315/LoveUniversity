@@ -9,19 +9,18 @@
     <link href="../../css/style.css" rel="stylesheet">
 </head>
 <body>
-<button id="test" style="width: 50%;height: 100px; "> Click</button>
-
-
+<form>
+    <label for="_sex"></label>
+    <select class="form-control item-md" name="sex" id="_sex" >
+        <option class="form-control option" value="0">Boy</option>
+        <option class="form-control option" value="1">Girl</option>
+    </select>
+</form>
 
 <script src="../../js/jQuery.js"></script>
 <script>
     $(document).ready(function () {
-        $("#test").click(function () {
-            var url='http://127.0.0.1/php/Service/RunService/Page.php?page=1';
-            $.getJSON(url, function (data) {
-                alert(data.Num);
-            })
-        });
+        document.getElementById('_sex').value=1;
     });
 </script>
 </body>

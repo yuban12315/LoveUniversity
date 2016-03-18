@@ -1,4 +1,4 @@
-function creat(nickname, avator, datetime, msg, userid) {
+function creat(nickname, avator, datetime, msg, runid) {
     var data;
     data = '<div class="col-lg-6 col-md-12 col-sm-12 info">'
         + '<div class="col-lg-4  col-md-6 col-sm-6">'
@@ -10,13 +10,21 @@ function creat(nickname, avator, datetime, msg, userid) {
         + '<div class="col-lg-12">'
         + '<h3 class="text-center">' + msg + '</h3>'
         + ' <button class="btn btn-sm big pull-right" onclick="date(this)">约</button>'
-        + '<p class="hidden">' + userid + '</p>'
+        + '<p class="hidden">' + runid + '</p>'
         + '</div></div>';
     return data;
 }
 
 function date(obj) {
-    var user = obj.nextElementSibling.innerHTML;
+    var runid = obj.nextElementSibling.innerHTML;
+    var url='../../PHP/Service/RunService/appoint.php';
+    $.post(url,{
+        runid: runid
+    }, function (data) {
+        if(data[0]=='1'){
+            alert(data);
+        }
+    })
 }
 
 function show(page) {
@@ -30,16 +38,18 @@ function show(page) {
         var datetime;
         var msg;
         var userid;
+        var runid;
         setInterval(function () {
             if (sum != num) {
                 userid = data[sum].UserId;
                 datetime = data[sum].RunTime;
                 msg = data[sum].RunInformation;
+                runid=data[sum].RunId;
                 url = '../../php/Service/UserService/GetData.php?userid=' + data[sum].UserId;
                 $.getJSON(url, function (data2) {
                     avator = data2.UserPhoto;
                     nickname = data2.NickName;
-                    msg = creat(data2.NickName, data2.UserPhoto, datetime, msg, userid);
+                    msg = creat(data2.NickName, data2.UserPhoto, datetime, msg, runid);
                     $("#content")[0].innerHTML += msg;
                 });
                 sum++;
