@@ -23,5 +23,7 @@ if(isset($_GET['userid'])||isset($_GET['username'])||isset($_GET['userphone']))
     }
     $str = "select * from user where {$O} = '{$key}'";
     $row = sel($str);
+    unset($row['PassWord']);
+    unset($row['JwxtPassword']);
     echo ch_json_encode($row);
 }

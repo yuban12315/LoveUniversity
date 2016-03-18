@@ -9,6 +9,6 @@
 require_once '../UserService/Page.php';
 $table = 'run';
 //@$page = (int)$_GET['page'];
-$page =1;
+$page = 1;
 Mypage($table,$page,'RunTime','RunId');
 

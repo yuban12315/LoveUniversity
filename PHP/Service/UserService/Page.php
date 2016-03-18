@@ -33,7 +33,7 @@ function Mypage($table, $page, $time, $ID)
         }
         $row = mysqli_fetch_assoc($result);
     }
-    $array[$i] = ($i%10)+1;
+    $array['Num'] = ($i%10)+1;
     echo ch_json_encode($array);
 
 }
