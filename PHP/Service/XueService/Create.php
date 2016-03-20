@@ -7,7 +7,7 @@ if (isset($_SESSION['userid'])) {
     $str = "select * from user where UserId = '{$userid}'";
     $row = sel($str);
     $postimage = $row['UserPhoto'];
-    if (isset($row['JwxtNumber'])) {
+    if (!empty($row['JwxtNumber'])) {
         $str = "select * from xue where UserId = '{$userid}'";
         $row = sel($str);
         if ($row) {

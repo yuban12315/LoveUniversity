@@ -18,9 +18,9 @@ function Total($table)
         $row = mysqli_fetch_assoc($result);
     }
     if ($total % 10 == 0) {
-        $total = $total / 10;
+        $total = floor($total / 10);
     } else {
-        $total = $total / 10 + 1;
+        $total = floor($total / 10) + 1;
     }
     echo $total;
 }
