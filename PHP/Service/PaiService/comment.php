@@ -10,15 +10,22 @@ require_once '../../DAO/DAO.php';
 if (isset($_SESSION['userid'])) {
     if (!empty($_POST['comment'])) {
         $userid = $_SESSION['userid'];
-        @$paiid = (int)$_POST['paiid'];
-        $comment = $_POST['comment'];
-        if (xss($comment)) {
-            echo '不要试图攻击';
+        $str1 = "select * from user where UserId = {$userid}";
+        $row1 = sel($str1);
+        if (empty($row1['JwxtNumber'])) {
+            echo '请完善个人信息';
             die();
+        } else {
+            @$paiid = (int)$_POST['paiid'];
+            $comment = $_POST['comment'];
+            if (xss($comment)) {
+                echo '不要试图攻击';
+                die();
+            }
+            $str = "insert into comment (UserId,Comment,PaiId) VALUE ({$userid},'{$comment}',{$paiid})";
+            ins($str);
+            echo '1';
         }
-        $str = "insert into comment (UserId,Comment,PaiId) VALUE ({$userid},'{$comment}',{$paiid})";
-        ins($str);
-        echo '1';
     } else {
         echo '评论不能为空';
     }

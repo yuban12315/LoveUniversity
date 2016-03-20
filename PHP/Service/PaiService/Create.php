@@ -8,7 +8,7 @@ if (isset($_SESSION['userid'])) {
     $userid = $_SESSION['userid'];
     $str = "select * from user where UserId = '{$userid}'";
     $row = sel($str);
-    if (isset($row['JwxtNumber'])) {
+    if (!empty($row['JwxtNumber'])) {
         if (empty($_POST['username']) || empty($_POST['paimoney']) || empty($_POST['downtime']) || empty($_POST['paiinformation'])) {
             echo '拍卖信息不完整';
         } else {

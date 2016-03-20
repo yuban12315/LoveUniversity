@@ -11,14 +11,21 @@ if (isset($_SESSION['userid'])) {
     $getuser = $_SESSION['userid'];
     $str = "select * from run where GetUser = {$getuser}";
     $row = sel($str);
-    if ($row && (strtotime(date("y-m-d h:i:s")) < strtotime($row['XueTime']))) {
-        echo '已有约会';
+    $str1 = "select * from user where UserId = {$getuser}";
+    $row1 = sel($str1);
+    if (empty($row1['JwxtNumber'])) {
+        echo '请完善个人信息';
+        die();
     } else {
-        $xueid = (int)$_POST['xueid'];
-        $str = "update xue set state = 0 where XueId = {$xueid}";
-        up($str);
-        $str = "update xue set GetUser = '{$getuser}' where XueId = {$xueid}}";
-        up($str);
-        echo "1";
+        if ($row && (strtotime(date("y-m-d h:i:s")) < strtotime($row['XueTime']))) {
+            echo '已有约会';
+        } else {
+            $xueid = (int)$_POST['xueid'];
+            $str = "update xue set state = 0 where XueId = {$xueid}";
+            up($str);
+            $str = "update xue set GetUser = '{$getuser}' where XueId = {$xueid}}";
+            up($str);
+            echo "1";
+        }
     }
 }
