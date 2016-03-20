@@ -14,6 +14,6 @@ if (isset($_SESSION['userid'])) {
         up($str);
         $str = "update food set GetUser = '{$getuser}' where FoodId = {$foodid}";
         up($str);
-        echo "成功";
+        echo "1";
     }
 }

@@ -19,6 +19,6 @@ if (isset($_SESSION['userid'])) {
         up($str);
         $str = "update xue set GetUser = '{$getuser}' where XueId = {$xueid}}";
         up($str);
-        echo "成功";
+        echo "1";
     }
 }
