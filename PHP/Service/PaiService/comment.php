@@ -8,10 +8,14 @@
 session_start();
 require_once '../../DAO/DAO.php';
 if (isset($_SESSION['userid'])) {
-    if (isset($_POST['comment'])) {
+    if (!empty($_POST['comment'])) {
         $userid = $_SESSION['userid'];
         @$paiid = (int)$_POST['paiid'];
         $comment = $_POST['comment'];
+        if (xss($comment)) {
+            echo '不要试图攻击';
+            die();
+        }
         $str = "insert into comment (UserId,Comment,PaiId) VALUE ({$userid},'{$comment}',{$paiid})";
         ins($str);
         echo '1';

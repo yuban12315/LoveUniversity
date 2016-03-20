@@ -144,8 +144,18 @@ echo empty($_POST['user']);
 */
 //echo date("y-m-d h:m:s");
 //echo md5(uniqid(microtime(true), true));
+/*
 require_once 'DAO/DAO.php';
 $userid = 27;
 $str = "select * from user where UserId = {$userid}";
 echo sel($str)['UserName'];
+*/
+
+$url='http://183.175.14.250:8888/JwxtCourseWeb/?zjh=0151122350&mm=15248113901';
+$html = file_get_contents($url);
+$array =  json_decode($html);
+$c1 = (string)$array[0]->courseInfo;
+echo $c1;
+
+
 
