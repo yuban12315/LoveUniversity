@@ -6,7 +6,6 @@
  * Time: 19:41
  */
 require_once '../../DAO/DAO.php';
-classservice('0151122350','15248113901','1');
 function loginservice($jwxtnumber,$jwxtpassword)
 {
     $url = "http://183.175.14.250:8888/JwxtInterface/check.html?zjh={$jwxtnumber}&mm={$jwxtpassword}";
@@ -31,10 +30,22 @@ function classservice($jwxtnumber,$jwxtpassword,$userid)
         $i++;
     }
 }
-function inforservice($jwxtnumber,$jwxtpassword)
+function inforservice($jwxtnumber,$userid)
 {
     $url = "http://183.175.14.250:8888/JwxtInterface/info.html?zjh={$jwxtnumber}";
     $html = file_get_contents($url);
     $array = json_decode($html);
-
+    print_r($array);
+    $truename = $array->name;
+    $usersex = $array->sex;
+    $usergrade = $array->classname;
+    $usermajor = $array->profession;
+    $str = "update user set TrueName = '{$truename}' where UserId = {$userid}";
+    up($str);
+    $str = "update user set UserSex = '{$usersex}' where UserId = {$userid}";
+    up($str);
+    $str = "update user set UserGrade = '{$usergrade}' where UserId = {$userid}";
+    up($str);
+    $str = "update user set UserMajor = '{$usermajor}' where UserId = {$userid}";
+    up($str);
 }
