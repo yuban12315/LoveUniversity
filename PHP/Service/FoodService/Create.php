@@ -5,9 +5,7 @@ require_once '../../DAO/DAO.php';
 require_once '../UserService/XSS.php';
 if (isset($_SESSION['userid'])) {
     $userid = $_SESSION['userid'];
-    $str = "select * from user where UserId = '{$userid}'";
-    $row = sel($str);
-    $postimage = $row['UserPhoto'];
+    $postimage = $_SESSION['UserPhoto'];
     if (!empty($row['JwxtNumber'])) {
         $str = "select * from food where UserId = '{$userid}'";
         $row = sel($str);

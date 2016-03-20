@@ -6,9 +6,7 @@ require_once '../UserService/XSS.php';
 if (isset($_SESSION['userid'])) {
     $userid = $_SESSION['userid'];
     $username = $_SESSION['username'];
-    $str = "select * from user where UserId = '{$userid}'";
-    $row = sel($str);
-    $postimage = $row['UserPhoto'];
+    $postimage = $_SESSION['UserPhoto'];
     if (!empty($row['JwxtNumber'])) {
         $str = "select * from run where UserId = '{$userid}'";
         $row = sel($str);
@@ -27,7 +25,7 @@ if (isset($_SESSION['userid'])) {
                         die();
                     }
                     $postuser = $_SESSION['username'];
-                    $str = "insert into run (UserId,PostUser,RunInformation,RunTime,state,PostImage) VALUES ('{$userid}','{$postuser}','{$runinformation}','{$runtime}',1,'{$postimage}')";
+                    $str = "insert into run (UserId,PostUser,RunInformation,RunTime,state,PostImage,RunArea) VALUES ('{$userid}','{$postuser}','{$runinformation}','{$runtime}',1,'{$postimage}','{$runarea}')";
                     ins($str);
                     echo '1';
                 }
@@ -44,7 +42,7 @@ if (isset($_SESSION['userid'])) {
                     die();
                 }
                 $postuser = $_SESSION['username'];
-                $str = "insert into run (UserId,PostUser,RunInformation,RunTime,state,PostImage) VALUES ('{$userid}','{$postuser}','{$runinformation}','{$runtime}',1,'{$postimage}')";
+                $str = "insert into run (UserId,PostUser,RunInformation,RunTime,state,PostImage,RunArea) VALUES ('{$userid}','{$postuser}','{$runinformation}','{$runtime}',1,'{$postimage}','{$runarea}')";
                 ins($str);
                 echo "";
             }

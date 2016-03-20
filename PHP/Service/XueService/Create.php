@@ -4,9 +4,7 @@ require_once '../../DAO/DAO.php';
 require_once '../UserService/XSS.php';
 if (isset($_SESSION['userid'])) {
     $userid = $_SESSION['userid'];
-    $str = "select * from user where UserId = '{$userid}'";
-    $row = sel($str);
-    $postimage = $row['UserPhoto'];
+    $postimage = $_SESSION['UserPhoto'];
     if (!empty($row['JwxtNumber'])) {
         $str = "select * from xue where UserId = '{$userid}'";
         $row = sel($str);
@@ -25,7 +23,7 @@ if (isset($_SESSION['userid'])) {
                         echo '不要试图攻击';
                         die();
                     }
-                    $str = "insert into xue (UserId,PostUser,XueArea,Xueinformation,XueTime,state,PostImage) VALUES ('{$userid}','{$postuser}','{$xuearea}';'{$xueinformation}','{$xuetime}',1,'{$postimage}')";
+                    $str = "insert into xue (UserId,PostUser,XueArea,XueInformation,XueTime,state,PostImage) VALUES ('{$userid}','{$postuser}','{$xuearea}','{$xueinformation}','{$xuetime}',1,'{$postimage}')";
                     ins($str);
                     echo "1";
                 }
@@ -42,7 +40,7 @@ if (isset($_SESSION['userid'])) {
                     echo '不要试图攻击';
                     die();
                 }
-                $str = "insert into xue (UserId,PostUser,XueArea,Xueinformation,XueTime,state,PostImage) VALUES ('{$userid}','{$postuser}','{$xuearea}';'{$xueinformation}','{$xuetime}',1,'{$postimage}')";
+                $str = "insert into xue (UserId,PostUser,XueArea,XueInformation,XueTime,state,PostImage) VALUES ('{$userid}','{$postuser}','{$xuearea}','{$xueinformation}','{$xuetime}',1,'{$postimage}')";
                 ins($str);
                 echo "1";
             }
