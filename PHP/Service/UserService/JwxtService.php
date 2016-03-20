@@ -25,6 +25,7 @@ function classservice($jwxtnumber, $jwxtpassword, $userid)
         $information = $array[$i]->courseInfo;
         $number = (int)$array[$i]->no;
         $day = (int)$array[$i]->day;
+        //$str = "select * from "
         $str = "insert into class (UserId,Day,Number,Information) VALUES ('{$userid}','{$day}','{$number}','{$information}')";
         ins($str);
         $i++;
@@ -43,7 +44,7 @@ function inforservice($jwxtnumber, $userid)
     } else {
         $usersex = 0;
     }
-    $usergrade = $array->classname;
+    $usergrade = $array->className;
     $usermajor = $array->profession;
     $str = "update user set TrueName = '{$truename}' where UserId = {$userid}";
     up($str);
