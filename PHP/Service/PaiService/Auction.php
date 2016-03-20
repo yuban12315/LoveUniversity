@@ -16,14 +16,17 @@ if (isset($_SESSION['userid'])) {
         echo '不要试图攻击';
         die();
     }
-    $sum2=0;
+    $sum2 = 0;
     for ($i = 0; $i < strlen($paimoney); $i++) {
         if ($paimoney[$i] > '9' || $paimoney[$i] < '0') {
             $sum2++;
             break;
         }
     }
-    if($sum2)
+    if ($sum2) {
+        echo '请输入正确的价格';
+        die();
+    }
     $paiid = (int)$_POST['paiid'];
     $str = "select * from pai where PaiId = {$paiid}";
     $row = sel($str);
@@ -34,8 +37,13 @@ if (isset($_SESSION['userid'])) {
             echo '竞拍已结束';
         } else {
             if (!(empty($_POST['comment']))) {
-                $comment = $_POST['comment'];
+                @$comment = $_POST['comment'];
+                if (xss($comment)) {
+                    echo '不要试图攻击';
+                    die();
+                }
                 $str = "insert into comment (UserId,Comment,PaiId) VALUES ({$userid},{$comment})";
+                ins($str);
             }
             $str = "update pai set PaiMoney = {$paimoney} where PaiId = {$paiid}";
             up($str);

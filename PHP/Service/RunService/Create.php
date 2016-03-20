@@ -38,7 +38,7 @@ if (isset($_SESSION['userid'])) {
                 @$runinformation = $_POST['runinformation'];
                 @$runtime = $_POST['runtime'];
                 if (xss($runinformation)) {
-                    echo '请不要试图攻击!!!';
+                    echo '不要试图攻击!!!';
                     die();
                 }
                 $postuser = $_SESSION['username'];
