@@ -7,7 +7,7 @@
  */
 require_once '../../DAO/DAO.php';
 require_once 'XSS.php';
-
+require_once 'JwxtService.php';
 session_start();
 if (isset($_SESSION['userid'])) {
     $userid = $_SESSION['userid'];
@@ -49,19 +49,21 @@ if (isset($_SESSION['userid'])) {
         }
     }
     //教务系统
-    if(!empty($_POST['jwxtnumber'])&&!empty($_POST['jwxtpassword']))
-    {
+    if (!empty($_POST['jwxtnumber']) && !empty($_POST['jwxtpassword'])) {
         @$jwxtnumber = $_POST['jwxtnumber'];
         @$jwxtpassword = $_POST['jwxtpassword'];
-        /*提交登录请求验证帐号密码
-        if(login($jwxtnumber,$jwxtpassword))
-        {
-        }*/
-        $str = "update user set JwxtNumber = '{$jwxtnumber}' where UserId = '{$userid}'";
-        up($str);
-        $str = "update user set JwxtPassword = '{$jwxtpassword}' where UserId = '{$userid}'";
-        up($str);
-        echo '1';
+        //提交登录请求验证帐号密码
+        if (loginservice($jwxtnumber, $jwxtpassword)) {
+            classservice($jwxtnumber, $jwxtpassword, $userid);
+            inforservice($jwxtnumber, $userid);
+            $str = "update user set JwxtNumber = '{$jwxtnumber}' where UserId = '{$userid}'";
+            up($str);
+            $str = "update user set JwxtPassword = '{$jwxtpassword}' where UserId = '{$userid}'";
+            up($str);
+            echo '1';
+        } else {
+            echo "教务系统帐号密码不匹配";
+        }
     }
 }
 
