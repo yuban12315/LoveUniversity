@@ -35,7 +35,6 @@ function inforservice($jwxtnumber,$userid)
     $url = "http://183.175.14.250:8888/JwxtInterface/info.html?zjh={$jwxtnumber}";
     $html = file_get_contents($url);
     $array = json_decode($html);
-    print_r($array);
     $truename = $array->name;
     $usersex = $array->sex;
     $usergrade = $array->classname;

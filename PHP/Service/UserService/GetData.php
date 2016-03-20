@@ -25,5 +25,7 @@ if(isset($_GET['userid'])||isset($_GET['username'])||isset($_GET['userphone']))
     $row = sel($str);
     unset($row['PassWord']);
     unset($row['JwxtPassword']);
+    unset($row['JwxtNumber']);
+    unset($row['SecretKey']);
     echo ch_json_encode($row);
 }
