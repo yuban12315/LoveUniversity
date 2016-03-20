@@ -11,7 +11,8 @@ require_once '../../DAO/DAO.php';
 if (isset($_SESSION['userid'])) {
     $getuser = $_SESSION['userid'];
     $str = "select * from run where GetUser = {$getuser} and state = 1";
-    if (sel($str)) {
+     $row = sel($str);
+    if ($row&&(strtotime(date("y-m-d h:i:s")) < strtotime($row['RunTime']))) {
         echo '已有约会';
     } else {
         $runid = (int)$_POST['runid'];
