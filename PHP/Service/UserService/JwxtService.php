@@ -17,6 +17,8 @@ function loginservice($jwxtnumber, $jwxtpassword)
 
 function classservice($jwxtnumber, $jwxtpassword, $userid)
 {
+    $str = "select * from class where UserId = {$userid}";
+    $row = sel($str);
     $url = "http://183.175.14.250:8888/JwxtInterface/course.html?zjh={$jwxtnumber}&mm={$jwxtpassword}";
     $html = file_get_contents($url);
     $array = json_decode($html);
@@ -25,8 +27,11 @@ function classservice($jwxtnumber, $jwxtpassword, $userid)
         $information = $array[$i]->courseInfo;
         $number = (int)$array[$i]->no;
         $day = (int)$array[$i]->day;
-        //$str = "select * from "
-        $str = "insert into class (UserId,Day,Number,Information) VALUES ('{$userid}','{$day}','{$number}','{$information}')";
+        if ($row) {
+            $str = "update class set Information = {$information}";
+        } else {
+            $str = "insert into class (UserId,Day,Number,Information) VALUES ('{$userid}','{$day}','{$number}','{$information}')";
+        }
         ins($str);
         $i++;
     }
