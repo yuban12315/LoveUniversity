@@ -7,7 +7,7 @@ function Loaded() {
         var msg = " <ul class=\"nav pull-right navbar-nav\" id=\"user\">" +
             " <li><a> <span class=\"glyphicon glyphicon-search\"></span></a></li>" +
             " <li><a onclick=\"location.href='../login.html'\">登录</a></li>" +
-            "<li><a onclick=\"location.href='../regist.html'\">注册</a></li> </ul>"
+            "<li><a onclick=\"location.href='../regist.html'\">注册</a></li> </ul>";
         document.getElementById('user').innerHTML = msg;
     }
     else {

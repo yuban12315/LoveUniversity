@@ -272,7 +272,7 @@
 
 .info{
     border: 2px solid #d4d4d4;
-    background-color: lightcyan;
+    color: #000;
     border-top:  none;
     border-bottom: none;
     border-radius: 10px;
@@ -303,5 +303,22 @@
 .banner-bot{
     width: 100%;
     height: 300px;
+}
 
+.choose{
+    color: #d4d4d4;
+}
+
+.choose:hover{
+    background-color: #d4d4d4;
+    color: white;
+}
+
+.add{
+    margin-top: 50px;
+}
+
+.clicked{
+    background-color: #d4d4d4;
+    color: white;
 }

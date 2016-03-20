@@ -44,19 +44,38 @@
     </div>
 </div>
 <div class="banner-lg"></div>
+<div class="container" id="choose">
+    <div class="row">
+        <div class="col-lg-6 col-md-12 col-sm-12 jumbotron choose clicked" id="_run">
+            <h2 class="text-center">跑步</h2>
+        </div>
+        <div class="col-lg-6 col-md-12 col-sm-12 jumbotron choose add" id="_study">
+            <h2 class="text-center ">自习</h2>
+        </div>
+    </div>
+</div>
 
 <div class="row">
     <div class="container" id='content'></div>
 </div>
-<div class=" container jumbotron text-center hidden" id='more'><h2>更多信息</h2></div>
+
+<div class="row">
+    <div class="container" id="content2"></div>
+</div>
+
+<div class=" container jumbotron text-center" id='more'><h2>更多信息</h2></div>
 <div class="row" id="input">
     <div class="container">
         <form role="form" autocomplete="off">
             <div class="form-group">
+                <div class="input-group col-lg-4 col-md-5 col-sm-6">
+                    <span class="input-group-addon "><span class="glyphicon glyphicon-home"></span> 约定地点</span>
+                    <input type="text" value="" class="form-control  big" id="dateplace">
+                </div>
                 <label for="input-content"></label>
-                <textarea class="form-control textarea" rows="3" id="input-content"></textarea>
+                <textarea class="form-control textarea" rows="3" id="input-content" placeholder="描述"></textarea>
                 <div class="input-group col-lg-4 col-md-5 col-sm-6 ">
-                    <span class="input-group-addon "><span class="glyphicon glyphicon-calendar"></span>约定时间</span>
+                    <span class="input-group-addon "><span class="glyphicon glyphicon-calendar"></span> 约定时间</span>
                     <input size="16" type="text" value="" readonly class="form_datetime form-control  big"
                            id="datetime">
                 </div>
