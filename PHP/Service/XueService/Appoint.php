@@ -21,11 +21,18 @@ if (isset($_SESSION['userid'])) {
             echo '已有约会';
         } else {
             $xueid = (int)$_POST['xueid'];
-            $str = "update xue set state = 0 where XueId = {$xueid}";
-            up($str);
-            $str = "update xue set GetUser = '{$getuser}' where XueId = {$xueid}}";
-            up($str);
-            echo "1";
+            $str = "select * from xue where XueId = {$xueid}";
+            $row = sel($str);
+            if ($row['state'] == 1) {
+                $str = "update xue set state = 0 where XueId = {$xueid}";
+                up($str);
+                $str = "update xue set GetUser = '{$getuser}' where XueId = {$xueid}}";
+                up($str);
+                echo "1";
+            }
+            else{
+                echo '你来晚了，ta已经被约了';
+            }
         }
     }
 }

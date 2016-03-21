@@ -25,10 +25,17 @@ if (isset($_SESSION['userid'])) {
                 die();
             }
             @$giveid = $_POST['giveid'];
-            $userid = $_SESSION['userid'];
-            $str = "insert into get (UserId,GetInformation,GiveId) VALUES ('{$userid}','{$getinformation}','{$giveid}')";
-            ins($str);
-            echo '1';
+            $str = "select * from give where GiveId = {$giveid}";
+            $row = sel($str);
+            if ($row['state'] == 1) {
+                $userid = $_SESSION['userid'];
+                $str = "insert into get (UserId,GetInformation,GiveId) VALUES ('{$userid}','{$getinformation}','{$giveid}')";
+                ins($str);
+                echo '1';
+            }
+            else{
+                echo '你来晚了，ta已经被约了';
+            }
         }
     }
 }

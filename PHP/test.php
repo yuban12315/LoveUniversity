@@ -172,8 +172,11 @@ $postimage = "111";
 $userid = $_SESSION['userid'];
 */
 $conn = mysqli_connect('183.175.12.160', 'root', '31415926', 'loveu', '3306');
-$str = "insert into xue (UserId,PostUser,XueArea,XueInformation,state,PostImage) VALUES (25,'111','111';'111',1,'111')";
-mysqli_query($conn, $str);
+$str = "select count(*) from run where state = 1";
+$result = mysqli_query($conn, $str);
+$row = mysqli_fetch_assoc($result);
+echo $row['count(*)'];
+
 
 
 

@@ -22,11 +22,17 @@ if (isset($_SESSION['userid'])) {
             echo '已有约会';
         } else {
             $runid = (int)$_POST['runid'];
-            $str = "update run set state = 0 where  RunId = {$runid}";
-            up($str);
-            $str = "update run set GetUser = '{$getuser}' where RunId = {$runid}";
-            up($str);
-            echo "1";
+            $str = "select * from run where RunId = {$runid}";
+            $row = sel($str);
+            if ($row['state'] == 1) {
+                $str = "update run set state = 0 where  RunId = {$runid}";
+                up($str);
+                $str = "update run set GetUser = '{$getuser}' where RunId = {$runid}";
+                up($str);
+                echo "1";
+            } else {
+                echo '你来晚了，ta已经被约了';
+            }
         }
     }
 }
