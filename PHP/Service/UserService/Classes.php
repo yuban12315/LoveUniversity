@@ -8,7 +8,7 @@
 session_start();
 require_once '../../DAO/DAO.php';
 require_once 'ch_json_encode.php';
-//$_SESSION['userid'] = 1;
+$_SESSION['userid'] = 25;
 if(isset($_SESSION['userid']))
 {
     $userid = $_SESSION['userid'];
@@ -23,5 +23,5 @@ if(isset($_SESSION['userid']))
         $array[$row['Day']][$row['Number']] = $row['Information'];
         $row = mysqli_fetch_assoc($result);
     }
-    echo ch_json_encode($array);
+    echo json_encode($array);
 }

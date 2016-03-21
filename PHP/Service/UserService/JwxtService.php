@@ -6,7 +6,6 @@
  * Time: 19:41
  */
 require_once '../../DAO/DAO.php';
-
 function loginservice($jwxtnumber, $jwxtpassword)
 {
     $url = "http://183.175.14.250:8888/JwxtInterface/check.html?zjh={$jwxtnumber}&mm={$jwxtpassword}";
