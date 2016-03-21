@@ -150,12 +150,30 @@ $userid = 27;
 $str = "select * from user where UserId = {$userid}";
 echo sel($str)['UserName'];
 */
-
+/*
 $url='http://183.175.14.250:8888/JwxtCourseWeb/?zjh=0151122350&mm=15248113901';
 $html = file_get_contents($url);
 $array =  json_decode($html);
 $c1 = (string)$array[0]->courseInfo;
-echo $c1;
+echo $c1;*/
+//echo floor(8/10);
+//require_once 'DAO/DAO.php';
+/*
+$_SESSION['userid'] = 27;
+$_SESSION['username'] = 'admin';
+$_POST['xueinformation'] =  "11111";
+$_POST['xuetime'] = "2016-06-01 12:12:12";
+$_POST['xuearea'] = "11";
+$postuser = $_SESSION['username'];
+@$xueinformation = $_POST['xueinformation'];
+@$xuetime = $_POST['xuetime'];
+@$xuearea = $_POST['xuearea'];
+$postimage = "111";
+$userid = $_SESSION['userid'];
+*/
+$conn = mysqli_connect('183.175.12.160', 'root', '31415926', 'loveu', '3306');
+$str = "insert into xue (UserId,PostUser,XueArea,XueInformation,state,PostImage) VALUES (25,'111','111';'111',1,'111')";
+mysqli_query($conn, $str);
 
 
 
