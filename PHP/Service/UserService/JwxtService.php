@@ -6,6 +6,7 @@
  * Time: 19:41
  */
 require_once '../../DAO/DAO.php';
+
 function loginservice($jwxtnumber, $jwxtpassword)
 {
     $url = "http://183.175.14.250:8888/JwxtInterface/check.html?zjh={$jwxtnumber}&mm={$jwxtpassword}";
@@ -28,7 +29,7 @@ function classservice($jwxtnumber, $jwxtpassword, $userid)
         $number = (int)$array[$i]->no;
         $day = (int)$array[$i]->day;
         if ($row) {
-            $str = "update class set Information = {$information}";
+            $str = "update class set Information = {$information} where UserId = $userid";
         } else {
             $str = "insert into class (UserId,Day,Number,Information) VALUES ('{$userid}','{$day}','{$number}','{$information}')";
         }
