@@ -9,14 +9,15 @@ if (isset($_SESSION['userid'])) {
     $str = "select * from user where UserId = '{$userid}'";
     $row = sel($str);
     if (!empty($row['JwxtNumber'])) {
-        if (empty($_POST['username']) || empty($_POST['paimoney']) || empty($_POST['downtime']) || empty($_POST['paiinformation'])) {
+        if (empty($_POST['username']) || empty($_POST['paimoney']) || empty($_POST['downtime']) || empty($_POST['paiinformation'])||empty($_POST['paititle'])) {
             echo '拍卖信息不完整';
         } else {
             @$postuser = $_POST['username'];
             @$paimoney = $_POST['paimoney'];
             @$downtime = $_POST['downtime'];
             @$paiinformation = $_POST['paiinformation'];
-            if (xss($paimoney) || xss($paiinformation) || xss($downtime)) {
+            @$paititle = $_POST['paititle'];
+            if (xss($paimoney) || xss($paiinformation) || xss($downtime)||xss($paititle)) {
                 echo '不要试图攻击';
                 die();
             }
@@ -26,13 +27,11 @@ if (isset($_SESSION['userid'])) {
             $tmp_name = $_FILES['paiimage']['tmp_name'];
             $error = $_FILES['paiimage']['error'];
             $size = $_FILES['paiimage']['size'];
-            $destination = "../../UserImage/Pai" . "$name";
+            $destination = $tmp_name;
             $rename = md5(uniqid(microtime(true), true)) . '.png';
             $path = 'http://7xrqhs.com1.z0.glb.clouddn.com/' . $rename;
-            buffer($type, $tmp_name, $destination);
             upload($destination, $rename, 'paimai');
-            unlink($destination);
-            $str = "insert into pai (UserId,PostUser,PaiMoney,UpTime,DownTime,PaiInformation,PaiImage,state) VALUES ({$userid},'{$postuser}','{$paimoney}','{$uptime}','{$downtime}','{$paiinformation}','{$path}',1)";
+            $str = "insert into pai (UserId,PostUser,PaiMoney,UpTime,DownTime,PaiInformation,PaiImage,state,PaiTitle) VALUES ({$userid},'{$postuser}','{$paimoney}','{$uptime}','{$downtime}','{$paiinformation}','{$path}',1,'{$paititle}')";
             ins($str);
             echo "1";
 
