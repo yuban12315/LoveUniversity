@@ -21,7 +21,7 @@ function classservice($jwxtnumber, $jwxtpassword, $userid)
     $row = sel($str);
     if ($row) {
         $str = "delete from class where UserId = {$userid}";
-        sel($str);
+        del($str);
     }
     $url = "http://183.175.14.250:8888/JwxtInterface/course.html?zjh={$jwxtnumber}&mm={$jwxtpassword}";
     $html = file_get_contents($url);
