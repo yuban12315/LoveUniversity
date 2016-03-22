@@ -62,6 +62,7 @@ if (isset($_SESSION['userid'])) {
             up($str);
             $str = "update user set JwxtPassword = '{$jwxtpassword}' where UserId = '{$userid}'";
             up($str);
+            $_SESSION['jwxtnumber'] = $jwxtnumber;
         } else {
             echo "教务系统帐号密码不匹配";
             $bj = 0;
