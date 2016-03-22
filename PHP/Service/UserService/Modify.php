@@ -50,10 +50,12 @@ if (isset($_SESSION['userid'])) {
     }
 
     //教务系统
-    @$jwxtnumber = $_POST['jwxtnumber'];
-    @$jwxtpassword = $_POST['jwxtpassword'];
+    //@$jwxtnumber = $_POST['jwxtnumber'];
+    //@$jwxtpassword = $_POST['jwxtpassword'];
+    $jwxtnumber = "";
+    $jwxtpassword = "";
     $bj = 1;
-    if ($jwxtnumber && $jwxtpassword) {
+    if ($jwxtnumber || $jwxtpassword) {
         //提交登录请求验证帐号密码
         if (loginservice($jwxtnumber, $jwxtpassword) == '1') {
             classservice($jwxtnumber, $jwxtpassword, $userid);
@@ -67,7 +69,8 @@ if (isset($_SESSION['userid'])) {
             $bj = 0;
         }
     }
-    if ($bj == 1) {
+    if($bj==1)
+    {
         echo '1';
     }
 }
