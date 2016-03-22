@@ -63,6 +63,7 @@ if (isset($_SESSION['userid'])) {
             up($str);
         } else {
             echo "教务系统帐号密码不匹配";
+            die();
         }
     }
     echo '1';
