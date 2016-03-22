@@ -7,7 +7,7 @@ if (isset($_SESSION['userid'])) {
     $userid = $_SESSION['userid'];
     $username = $_SESSION['username'];
     $postimage = $_SESSION['userphoto'];
-    if (!empty($row['JwxtNumber'])) {
+    if (!empty($_SESSION['jwxtnumber'])) {
         $str = "select * from run where UserId = '{$userid}'";
         $row = sel($str);
         if ($row) {

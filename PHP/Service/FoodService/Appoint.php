@@ -15,7 +15,7 @@ if (isset($_SESSION['userid'])) {
         if ($row && (strtotime(date("y-m-d h:i:s")) < strtotime($row['FoodTime']))) {
             echo '已有约会';
         } else {
-            $foodid = (int)$_POST['foodid'];
+            @$foodid = (int)$_POST['foodid'];
             $str = "select * from food where FoodId = {$foodid}";
             $row = sel($str);
             if ($row['state'] == 1) {

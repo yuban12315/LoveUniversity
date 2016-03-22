@@ -5,7 +5,7 @@ require_once '../UserService/XSS.php';
 if (isset($_SESSION['userid'])) {
     $userid = $_SESSION['userid'];
     $postimage = $_SESSION['userphoto'];
-    if (!empty($row['JwxtNumber'])) {
+    if (!empty($_SESSION['jwxtnumber'])) {
         $str = "select * from xue where UserId = '{$userid}'";
         $row = sel($str);
         if ($row) {
