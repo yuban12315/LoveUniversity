@@ -2,8 +2,8 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>LoveU | 请客</title>
-    <link rel="icon" href="../../img/title.ico">
+    <title>LoveU | 请客 | 上传</title>
+    <link rel="icon" href="../LoveUniversity/img/title.ico">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="../../css/bootstrap.css" rel="stylesheet">
     <link href="../../css/style.css" rel="stylesheet">
@@ -45,6 +45,30 @@
 </div>
 <div class="banner-lg"></div>
 
+<div class="row" id="input">
+    <div class="container">
+        <form role="form" autocomplete="off">
+            <div class="form-group">
+                <div class="input-group col-lg-4 col-md-5 col-sm-6">
+                    <span class="input-group-addon "><span class="glyphicon glyphicon-home"></span> 约定地点</span>
+                    <input type="text" value="" class="form-control  big" id="dateplace">
+                </div>
+                <label for="input-content"></label>
+                <textarea class="form-control textarea" rows="3" id="input-content" placeholder="描述"></textarea>
+                <div class="input-group col-lg-4 col-md-5 col-sm-6 ">
+                    <span class="input-group-addon "><span class="glyphicon glyphicon-calendar"></span> 约定时间</span>
+                    <input size="16" type="text" value="" readonly class="form_datetime form-control  big"
+                           id="datetime">
+                </div>
+                <button class="btn btn-default big " id="word">200</button>
+                <button type="button" class="btn btn-success big pull-right" id="submit">
+                    &nbsp;&nbsp;发表&nbsp;&nbsp;</button>
+            </div>
+
+        </form>
+    </div>
+</div>
+
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog"
      aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog">
@@ -74,9 +98,31 @@
 <script src="../../js/datetimepicker.js"></script>
 <script src="../../js/fr.js"></script>
 <script>
-   $(document).ready(function () {
-       $(".form_datetime").datetimepicker({format: 'yyyy-mm-dd hh:ii'});
-   })
+    $(document).ready(function () {
+        $(".form_datetime").datetimepicker({format: 'yyyy-mm-dd hh:ii'});
+    });
+    function photo() {
+        $("#file0").change(function () {
+            var objUrl = getObjectURL(this.files[0]);
+            console.log("objUrl = " + objUrl);
+            if (objUrl) {
+                $("#img0").attr("src", objUrl);
+            }
+            $("#file0").slideUp('fast');
+            $("#img0").slideDown('fast');
+        });
+        function getObjectURL(file) {
+            var url = null;
+            if (window.createObjectURL != undefined) { // basic
+                url = window.createObjectURL(file);
+            } else if (window.URL != undefined) { // mozilla(firefox)
+                url = window.URL.createObjectURL(file);
+            } else if (window.webkitURL != undefined) { // webkit or chrome
+                url = window.webkitURL.createObjectURL(file);
+            }
+            return url;
+        }
+    }
 </script>
 </body>
 </html>
