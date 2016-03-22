@@ -15,7 +15,7 @@ if (isset($_SESSION['userid'])) {
 
     //修改昵称
     if (!empty($_POST['nickname'])) {
-        @$newnickname = $_POST['newnickname'];
+        @$newnickname = $_POST['nickname'];
         if (xss($newnickname)) {
             echo '不要试图攻击！！！';
         } else {
@@ -52,7 +52,6 @@ if (isset($_SESSION['userid'])) {
     //教务系统
     @$jwxtnumber = $_POST['jwxtnumber'];
     @$jwxtpassword = $_POST['jwxtpassword'];
-    echo $jwxtnumber;
     if ($jwxtnumber&&$jwxtpassword) {
         //提交登录请求验证帐号密码
         if (loginservice($jwxtnumber, $jwxtpassword)=='1') {
