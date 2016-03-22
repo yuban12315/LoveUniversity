@@ -50,10 +50,8 @@ if (isset($_SESSION['userid'])) {
     }
 
     //教务系统
-    //@$jwxtnumber = $_POST['jwxtnumber'];
-    //@$jwxtpassword = $_POST['jwxtpassword'];
-    $jwxtnumber = "";
-    $jwxtpassword = "";
+    @$jwxtnumber = $_POST['jwxtnumber'];
+    @$jwxtpassword = $_POST['jwxtpassword'];
     $bj = 1;
     if ($jwxtnumber || $jwxtpassword) {
         //提交登录请求验证帐号密码
