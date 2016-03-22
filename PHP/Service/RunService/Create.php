@@ -6,7 +6,7 @@ require_once '../UserService/XSS.php';
 if (isset($_SESSION['userid'])) {
     $userid = $_SESSION['userid'];
     $username = $_SESSION['username'];
-    $postimage = $_SESSION['UserPhoto'];
+    $postimage = $_SESSION['userphoto'];
     if (!empty($row['JwxtNumber'])) {
         $str = "select * from run where UserId = '{$userid}'";
         $row = sel($str);

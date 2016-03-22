@@ -50,6 +50,7 @@ if($row) {
         $_SESSION['nickname'] = $row['NickName'];
         $_SESSION['userphoto'] = $row['UserPhoto'];
         $_SESSION['useridmd5'] = secret($_SESSION['userid']);
+        $_SESSION['jwxtnumber'] = $row['JwxtNumber'];
         echo '1';
     }
 }

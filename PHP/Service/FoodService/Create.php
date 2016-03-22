@@ -3,10 +3,20 @@
 session_start();
 require_once '../../DAO/DAO.php';
 require_once '../UserService/XSS.php';
+/*
+$_SESSION['userid'] = 25;
+$_SESSION['username'] = 'admin';
+$_SESSION['userphoto'] = "http://7xrqhs.com1.z0.glb.clouddn.com/3b442b1ed7b0194d292af7e601e6e84f.png";
+$_SESSION['jwxtnumber'] = '0151122350';
+$_POST['foodinformation'] = 'hahaha';
+$_POST['foodtime'] = '2016-06-06 16:00:00';
+$_POST['foodarea'] = 'hahaha';
+$_POST['foodway'] = '55kai';
+*/
 if (isset($_SESSION['userid'])) {
     $userid = $_SESSION['userid'];
-    $postimage = $_SESSION['UserPhoto'];
-    if (!empty($row['JwxtNumber'])) {
+    $postimage = $_SESSION['userphoto'];
+    if (!empty($_SESSION['jwxtnumber'])) {
         $str = "select * from food where UserId = '{$userid}'";
         $row = sel($str);
         if ($row) {
