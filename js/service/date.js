@@ -1,4 +1,4 @@
-function creat(nickname, avator, datetime, msg, id) {
+function creat(nickname, avator, datetime, place,msg, id) {
     var data;
     data = '<div class="col-lg-6 col-md-12 col-sm-12 info">'
         + '<div class="col-lg-4  col-md-6 col-sm-6">'
@@ -6,6 +6,9 @@ function creat(nickname, avator, datetime, msg, id) {
         + '<div class="col-lg-4 col-md-6 col-sm-6"><h2 class="text-center">' + nickname + '</h2></div>'
         + '<div class="col-lg-4 col-md-6 col-sm-6">'
         + '<h2 class="text-center">' + datetime + '</h2>'
+        + '</div>'
+        + '<div class="col-lg-4 col-md-6 col-sm-6">'
+        + '<h2 class="text-center">' + place+ '</h2>'
         + '</div>'
         + '<div class="col-lg-12">'
         + '<h3 class="text-center">' + msg + '</h3>'
@@ -21,10 +24,10 @@ function date(obj) {
     $.post(url, {
         runid: runid
     }, function (data) {
-        if (data[0] == '1') {
-            alert(data);
-        }
-    })
+        $("#wrong")[0].innerHTML = data;
+        $("#alert").click();
+    });
+
 }
 
 function show(){
@@ -70,18 +73,20 @@ function show1(page) {
         var msg;
         var userid;
         var runid;
+        var place;
         $("#content")[0].innerHTML='';
         setInterval(function () {
             if (sum != num) {
                 userid = data[sum].UserId;
                 datetime = data[sum].RunTime;
+                place=data[sum].RunArea;
                 msg = data[sum].RunInformation;
                 runid = data[sum].RunId;
                 url = '../../php/Service/UserService/GetData.php?userid=' + data[sum].UserId;
                 $.getJSON(url, function (data2) {
                     avator = data2.UserPhoto;
                     nickname = data2.NickName;
-                    msg = creat(data2.NickName, data2.UserPhoto, datetime, msg, runid);
+                    msg = creat(data2.NickName, data2.UserPhoto, datetime, place,msg, runid);
                     $("#content")[0].innerHTML += msg;
                 });
                 sum++;

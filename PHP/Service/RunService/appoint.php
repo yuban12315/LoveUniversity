@@ -31,7 +31,7 @@ if (isset($_SESSION['userid'])) {
                 up($str);
                 echo "1";
             } else {
-                echo '你来晚了，ta已经被约了';
+                echo '你来晚了，TA已经被约了';
             }
         }
     }
