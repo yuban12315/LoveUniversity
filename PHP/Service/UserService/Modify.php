@@ -9,7 +9,7 @@ require_once '../../DAO/DAO.php';
 require_once 'XSS.php';
 require_once 'JwxtService.php';
 session_start();
-$_SESSION['userid'] = 27;
+//$_SESSION['userid'] = 27;
 if (isset($_SESSION['userid'])) {
     $userid = $_SESSION['userid'];
 
