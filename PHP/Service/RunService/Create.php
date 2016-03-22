@@ -44,7 +44,7 @@ if (isset($_SESSION['userid'])) {
                 $postuser = $_SESSION['username'];
                 $str = "insert into run (UserId,PostUser,RunInformation,RunTime,state,PostImage,RunArea) VALUES ('{$userid}','{$postuser}','{$runinformation}','{$runtime}',1,'{$postimage}','{$runarea}')";
                 ins($str);
-                echo "";
+                echo "1";
             }
         }
     } else {
