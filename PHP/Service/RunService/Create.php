@@ -3,6 +3,15 @@
 session_start();
 require_once '../../DAO/DAO.php';
 require_once '../UserService/XSS.php';
+/*
+$_SESSION['userid'] = 27;
+$_SESSION['username'] = 'misakamikoto';
+$_SESSION['userphoto']="...";
+$_POST['runinformation']= '111';
+$_POST['runtime'] = '2017-01-08 16:16:16';
+$_POST['runarea'] = '111';
+$_SESSION['jwxtnumber'] = '0151122350';
+*/
 if (isset($_SESSION['userid'])) {
     $userid = $_SESSION['userid'];
     $username = $_SESSION['username'];
