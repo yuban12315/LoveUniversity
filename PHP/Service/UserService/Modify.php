@@ -9,24 +9,25 @@ require_once '../../DAO/DAO.php';
 require_once 'XSS.php';
 require_once 'JwxtService.php';
 session_start();
+$_SESSION['userid'] = 27;
 if (isset($_SESSION['userid'])) {
     $userid = $_SESSION['userid'];
+
     //修改昵称
     if (!empty($_POST['nickname'])) {
-        $newnickname = $_POST['newnickname'];
+        @$newnickname = $_POST['newnickname'];
         if (xss($newnickname)) {
             echo '不要试图攻击！！！';
         } else {
             $str = "update user set NickName = '{$newnickname}' where UserId = '{$userid}'";
             up($str);
-            echo '1';
         }
     }
     //修改密码
     if (!empty($_POST['oldpassword'])) {
-        $oldpassword = $_POST['oldpassword'];
-        $newpassword = $_POST['newpassword'];
-        $renewpassword = $_POST['renewpassword'];
+        @$oldpassword = $_POST['oldpassword'];
+        @$newpassword = $_POST['newpassword'];
+        @$renewpassword = $_POST['renewpassword'];
         if (xss($newpassword)) {
             echo '不要试图攻击！！！';
         } else {
@@ -38,7 +39,6 @@ if (isset($_SESSION['userid'])) {
                     if ($newpassword != $renewpassword) {
                         $str = "update user set PassWord = '{$newpassword}' where UserId = '{$userid}'";
                         up($str);
-                        echo "1";
                     } else {
                         echo "两次密码不一致";
                     }
@@ -48,23 +48,25 @@ if (isset($_SESSION['userid'])) {
             }
         }
     }
+
     //教务系统
-    if (!empty($_POST['jwxtnumber']) && !empty($_POST['jwxtpassword'])) {
-        @$jwxtnumber = $_POST['jwxtnumber'];
-        @$jwxtpassword = $_POST['jwxtpassword'];
+    @$jwxtnumber = $_POST['jwxtnumber'];
+    @$jwxtpassword = $_POST['jwxtpassword'];
+    echo $jwxtnumber;
+    if ($jwxtnumber&&$jwxtpassword) {
         //提交登录请求验证帐号密码
-        if (loginservice($jwxtnumber, $jwxtpassword)) {
+        if (loginservice($jwxtnumber, $jwxtpassword)=='1') {
             classservice($jwxtnumber, $jwxtpassword, $userid);
             inforservice($jwxtnumber, $userid);
             $str = "update user set JwxtNumber = '{$jwxtnumber}' where UserId = '{$userid}'";
             up($str);
             $str = "update user set JwxtPassword = '{$jwxtpassword}' where UserId = '{$userid}'";
             up($str);
-            echo '1';
         } else {
             echo "教务系统帐号密码不匹配";
         }
     }
+    echo '1';
 }
 
 
