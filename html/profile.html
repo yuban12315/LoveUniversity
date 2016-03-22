@@ -43,7 +43,7 @@
             <li class="list-divider"></li>
             <li><h3 class="list" id="userInfo"><span class="glyphicon glyphicon-user"></span> 我的信息</h3></li>
             <li><h3 class="list" id="userHead"><span class="glyphicon glyphicon-barcode"></span> 我的头像</h3></li>
-            <li><h3 class="list" id="userData"><span class="glyphicon glyphicon-tag"></span> 详细资料</h3></li>
+            <li><h3 class="list" id="userData"><span class="glyphicon glyphicon-tag"></span> 修改资料</h3></li>
         </ul>
     </div>
     <div class="container">
@@ -72,79 +72,12 @@
                 完善所有信息将解锁更多功能</h3></div>
         </div>
     </div>
-    <div id="change">
-        <div class="container item-md">
-            <div class="input-group-lg ">
-                <br><br><br><br><br><br><br>
-                <div class="input-group input-group-lg">
-                    <div class="input-group-addon btn btn-default">昵称</div>
-                    <input type="text" class="form-control" id="nick"><br>
-                </div>
-                <br>
-                <div class="input-group input-group-lg">
-                    <input type="text" class="form-control" id="true">
-                    <div class="input-group-addon btn btn-default">姓名</div>
-                </div>
-                <br>
-                <div class="input-group input-group-lg">
-                    <div class="input-group-addon btn btn-default">学号</div>
-                    <input type="text" class="form-control" id="Jwxt"><br>
-                </div>
-                <br>
-                <div class="input-group input-group-lg">
-                    <input type="text" class="form-control" id="Jwxtpass">
-                    <div class="input-group-addon btn btn-default">教务系统密码</div>
-                </div>
-                <br><br><br><br>
-                <button class="btn btn-success big pull-right">保存</button>
-            </div>
-        </div>
-    </div>
 </div>
 <script src="../js/jQuery.js"></script>
 <script src="../js/bootstrap.js"></script>
 <script src="../js/cookies.js"></script>
 <script src="../js/cropper.js"></script>
 <script src="../js/main.js"></script>
-<script>
-    $(document).ready(function () {
-        var url = 'http://127.0.0.1/LoveUniversity/php/Service/UserService/Data.php';
-        $.getJSON(url, function (data) {
-            var Name = getData(data.PersonalData.UserName);
-            document.title = Name + '的个人主页';
-            if (data.PersonalData.TrueName != null && data.PersonalData.UserGrade != null && data.PersonalData.JwxtNumber != null && data.PersonalData.UserMajor != null)
-                $("#user").addClass('hidden');
-            $("#nickname")[0].innerHTML += data.PersonalData.NickName;
-            $("#username")[0].innerHTML += Name;
-            $("#truename")[0].innerHTML += getData(data.PersonalData.TrueName);
-            if (getData(data.PersonalData.UserSex)[0] == '1')
-                $("#sex")[0].innerHTML += '男';
-            else  $("#sex")[0].innerHTML += '女';
-            $("#mobile")[0].innerHTML += phone(data.PersonalData.UserPhone);
-            $("#content")[0].innerHTML = $("#profile")[0].innerHTML;
-            $("#head").attr('src', data.PersonalData.UserPhoto);
-            $("#head0").attr('src', data.PersonalData.UserPhoto);
-        });
-        $("#userInfo").click(function () {
-            $("#content")[0].innerHTML = $("#profile")[0].innerHTML;
-        });
-        $("#userHead").click(function () {
-            $("#content").load("avator.html")
-        });
-        $("#userData").click(function () {
-            $("#content")[0].innerHTML = $("#change")[0].innerHTML;
-        });
-        function getData(data) {
-            if (data == '' || data == null)
-                return '';
-            else  return data;
-        }
-        function phone(val) {
-            var phone;
-            phone = val[0] + val[1] + val[2] + '****' + val[7] + val[8] + val[9] + val[10];
-            return phone;
-        }
-    })
-</script>
+<script src="../js/service/profile.js"></script>
 </body>
 </html>
