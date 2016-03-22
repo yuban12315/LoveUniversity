@@ -52,21 +52,24 @@ if (isset($_SESSION['userid'])) {
     //教务系统
     @$jwxtnumber = $_POST['jwxtnumber'];
     @$jwxtpassword = $_POST['jwxtpassword'];
-    if ($jwxtnumber&&$jwxtpassword) {
+    $bj = 0;
+    if ($jwxtnumber && $jwxtpassword) {
         //提交登录请求验证帐号密码
-        if (loginservice($jwxtnumber, $jwxtpassword)=='1') {
+        if (loginservice($jwxtnumber, $jwxtpassword) == '1') {
             classservice($jwxtnumber, $jwxtpassword, $userid);
             inforservice($jwxtnumber, $userid);
             $str = "update user set JwxtNumber = '{$jwxtnumber}' where UserId = '{$userid}'";
             up($str);
             $str = "update user set JwxtPassword = '{$jwxtpassword}' where UserId = '{$userid}'";
             up($str);
+            $bj = 1;
         } else {
             echo "教务系统帐号密码不匹配";
-            die();
         }
     }
-    echo '1';
+    if ($bj == 1) {
+        echo '1';
+    }
 }
 
 
