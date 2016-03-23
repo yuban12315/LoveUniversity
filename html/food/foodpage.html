@@ -2,8 +2,8 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>LoveU | 请客 | 上传</title>
-    <link rel="icon" href="../LoveUniversity/img/title.ico">
+    <title>LoveU | 请客 | 详情</title>
+    <link rel="icon" href="../../img/title.ico">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="../../css/bootstrap.css" rel="stylesheet">
     <link href="../../css/style.css" rel="stylesheet">
@@ -45,27 +45,16 @@
 </div>
 <div class="banner-lg"></div>
 
-<div class="row" id="input">
-    <div class="container">
-        <form role="form" autocomplete="off">
-            <div class="form-group">
-                <div class="input-group col-lg-4 col-md-5 col-sm-6">
-                    <span class="input-group-addon "><span class="glyphicon glyphicon-home"></span> 约定地点</span>
-                    <input type="text" value="" class="form-control  big" id="dateplace">
-                </div>
-                <label for="input-content"></label>
-                <textarea class="form-control textarea" rows="3" id="input-content" placeholder="描述"></textarea>
-                <div class="input-group col-lg-4 col-md-5 col-sm-6 ">
-                    <span class="input-group-addon "><span class="glyphicon glyphicon-calendar"></span> 约定时间</span>
-                    <input size="16" type="text" value="" readonly class="form_datetime form-control  big"
-                           id="datetime">
-                </div>
-                <button class="btn btn-default big " id="word">200</button>
-                <button type="button" class="btn btn-success big pull-right" id="submit">
-                    &nbsp;&nbsp;发表&nbsp;&nbsp;</button>
-            </div>
-
-        </form>
+<div class="container">
+    <div class="col-lg-12 col-md-12 col-sm-12 info">
+        <div class="col-lg-2  col-md-2 col-sm-2">
+            <img class="img-thumbnail info-longimg"
+                 src="http://i1.hdslb.com/u_user/activities/instruments/img/22.png">
+        </div>
+        <div class="col-lg-2  col-md-2 col-sm-2"><h2 class="text-center"> nickname </h2></div>
+        <div class="col-lg-3  col-md-3 col-sm-3"><h2 class="text-center"> place </h2></div>
+        <div class="col-lg-3  col-md-3 col-sm-3"><h2 class="text-center"> datetime </h2></div>
+        <div class="col-lg-2  col-md-2 col-sm-2"><h2 class="text-center"> deal </h2></div>
     </div>
 </div>
 
@@ -88,6 +77,7 @@
         </div>
     </div>
 </div>
+
 <button style="display: none" id="alert" data-toggle="modal" data-target="#myModal"></button>
 <div class="banner-bot"></div>
 <script src="../../js/jQuery.js"></script>

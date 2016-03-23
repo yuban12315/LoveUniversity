@@ -44,6 +44,10 @@
     </div>
 </div>
 <div class="banner-lg"></div>
+<div class="row">
+    <div class="container" id='content'></div>
+</div>
+<div class=" container jumbotron text-center" id='more'><h2>更多信息</h2></div>
 
 <div class="row" id="input">
     <div class="container">
@@ -106,43 +110,6 @@
 <script src="../../js/index-service.js"></script>
 <script src="../../js/datetimepicker.js"></script>
 <script src="../../js/fr.js"></script>
-<script>
-    $(document).ready(function () {
-        $(".form_datetime").datetimepicker({format: 'yyyy-mm-dd hh:ii'});
-        $("#submit").click(function () {
-            var url='../../PHP/Service/FoodService/Create.php'
-            var place=$("#dateplace").val();
-            var deal = getData($('input[name="deal"]:checked').val());
-            var msg=$("#input-content").val();
-            var datetime = $("#datetime").val()+':00';
-            var reg=new RegExp("\n","g");
-            msg = msg.replace(reg,'；');
-            $.post(url,{
-                foodarea:place,
-                foodway:deal,
-                foodinformation:msg,
-                foodtime:datetime
-            }, function (data) {
-                if(data[0]=='1'){
-                    alert("success");
-                }
-                else $("#word").text(data);
-            })
-        })
-        $(function () {
-            $("#input-content").keyup(function () {
-                var len = $(this).val().length;
-                if (len > 200) {
-                    $(this).val($(this).val().substring(0, 199));
-                    $("#word").text(0);
-                }
-                else {
-                    var num = 200 - len;
-                    $("#word").text(num);
-                }
-            });
-        });
-    })
-</script>
+<script src="../../js/service/food.js"></script>
 </body>
 </html>
