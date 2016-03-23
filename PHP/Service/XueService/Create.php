@@ -25,6 +25,7 @@ if (isset($_SESSION['userid'])) {
                     echo '不要试图攻击';
                     die();
                 }
+                $xueinformation = preg_replace("'([\r\n])[\s]+'", "", $xueinformation);
                 $str = "insert into xue (UserId,PostUser,XueArea,XueInformation,XueTime,state,PostImage) VALUES ('{$userid}','{$postuser}','{$xuearea}','{$xueinformation}','{$xuetime}',1,'{$postimage}')";
                 ins($str);
                 echo "1";
