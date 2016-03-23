@@ -131,15 +131,19 @@ function submit() {
     var choose = getCookie('choose');
     var url;
     var msg;
+
     var datetime;
+    var place;
+    msg = $("#input-content").val();
+    datetime = $("#datetime").val();
+    place=$("#dateplace").val();
+    datetime += ':00';
     if (choose == 'run') {
         url = '../../PHP/Service/RunService/Create.php';
-        msg = $("#input-content").val();
-        datetime = $("#datetime").val();
-        datetime += ':00';
         $.post('http://127.0.0.1/LoveUniversity/PHP/Service/RunService/Create.php', {
             runtime: datetime,
-            runinformation: msg
+            runinformation: msg,
+            runarea:place
         }, function (data) {
             if (data[0] == '1')
                 location.reload();
@@ -150,12 +154,10 @@ function submit() {
     }
     else {
         url = '../../PHP/Service/XueService/Create.php';
-        msg = $("#input-content").val();
-        datetime = $("#datetime").val();
-        datetime += ':00';
         $.post(url, {
             xuetime: datetime,
-            xueinformation: msg
+            xueinformation: msg,
+            xuearea:place
         }, function (data) {
             if (data[0] == '1')
                 location.reload();
