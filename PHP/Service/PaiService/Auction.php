@@ -8,11 +8,10 @@
 session_start();
 require_once '../../DAO/DAO.php';
 require_once '../UserService/XSS.php';
+require_once '../Payment/Pay.php';
 if (isset($_SESSION['userid'])) {
     $userid = $_SESSION['userid'];
-    $str1 = "select * from user where UserId = {$userid}";
-    $row1 = sel($str1);
-    if (empty($row1['JwxtNumber'])) {
+    if (empty($_SESSION['jwxtnumber'])) {
         echo '请完善个人信息';
         die();
     } else {
@@ -55,6 +54,9 @@ if (isset($_SESSION['userid'])) {
                 up($str);
                 $str = "update pai set GetUser = {$getuser} where PaiId = {$paiid}";
                 up($str);
+                $str = "select * from pai where PaiId = {$paiid}";
+                $row = sel($str);
+                pay($userid,$paimoney,$row['UserId'],);
                 echo '1';
             }
         }

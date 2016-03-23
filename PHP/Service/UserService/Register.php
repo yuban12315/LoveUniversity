@@ -37,6 +37,8 @@ if ($json == "1"&&$vcode == $_SESSION['vcode']) {
     $_SESSION['nickname'] = $row['NickName'];
     $_SESSION['userphoto'] = $row['UserPhoto'];
     $_SESSION['useridmd5'] = secret($_SESSION['userid']);
+    $str = "insert into money (UserId,Money) VALUES ({$row['UserId']},0)";
+    ins($str);
     echo $json;
 } else {
     echo $json;
