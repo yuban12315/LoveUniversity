@@ -20,40 +20,22 @@ if (isset($_SESSION['userid'])) {
         $str = "select * from run where UserId = '{$userid}'";
         $row = sel($str);
         if ($row) {
-            if ($row['state']) {
-                echo "已有约会";
-            } else {
-                if (empty($_POST['runinformation']) || empty($_POST['runtime'])) {
-                    echo '信息不能为空';
-                } else {
-                    @$runinformation = $_POST['runinformation'];
-                    @$runtime = $_POST['runtime'];
-                    @$runarea = $_POST['runarea'];
-                    if (xss($runinformation) || xss($runarea)) {
-                        echo '请不要试图攻击!!!';
-                        die();
-                    }
-                    $postuser = $_SESSION['username'];
-                    $str = "insert into run (UserId,PostUser,RunInformation,RunTime,state,PostImage,RunArea) VALUES ('{$userid}','{$postuser}','{$runinformation}','{$runtime}',1,'{$postimage}','{$runarea}')";
-                    ins($str);
-                    echo '1';
-                }
-            }
+            echo "已有约会";
         } else {
-            if (empty($_POST['runtime']) || empty($_POST['runinformation'])) {
+            if (empty($_POST['runinformation']) || empty($_POST['runtime'])) {
                 echo '信息不能为空';
             } else {
                 @$runinformation = $_POST['runinformation'];
                 @$runtime = $_POST['runtime'];
                 @$runarea = $_POST['runarea'];
                 if (xss($runinformation) || xss($runarea)) {
-                    echo '不要试图攻击!!!';
+                    echo '请不要试图攻击!!!';
                     die();
                 }
                 $postuser = $_SESSION['username'];
                 $str = "insert into run (UserId,PostUser,RunInformation,RunTime,state,PostImage,RunArea) VALUES ('{$userid}','{$postuser}','{$runinformation}','{$runtime}',1,'{$postimage}','{$runarea}')";
                 ins($str);
-                echo "1";
+                echo '1';
             }
         }
     } else {
