@@ -130,12 +130,14 @@ function submit() {
     var datetime;
     var place;
     msg = $("#input-content").val();
+    var reg=new RegExp("\n","g");
+    msg = msg.replace(reg,'；');
     datetime = $("#datetime").val();
     place = $("#dateplace").val();
     datetime += ':00';
     if (choose == 'run') {
         url = '../../PHP/Service/RunService/Create.php';
-        $.post('http://127.0.0.1/LoveUniversity/PHP/Service/RunService/Create.php', {
+        $.post('../../PHP/Service/RunService/Create.php', {
             runtime: datetime,
             runinformation: msg,
             runarea: place

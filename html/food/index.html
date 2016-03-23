@@ -52,7 +52,7 @@
                 <div class="input-group col-lg-8 col-md-12 col-sm-12">
                     <span class="input-group-addon "><span class="glyphicon glyphicon-home"></span> 约定地点</span>
                     <input type="text" value="" class="form-control  big" id="dateplace">
-                    <span class="input-group-addon ">
+                    <span class="input-group-addon">
                         <label class="radio-inline">
                             <input type="radio" name="deal" value="我请客">我请客
                         </label>
@@ -64,7 +64,6 @@
                     </label>
                     </span>
                 </div>
-
                 <label for="input-content"></label>
                 <textarea class="form-control textarea" rows="3" id="input-content" placeholder="描述"></textarea>
                 <div class="input-group col-lg-4 col-md-5 col-sm-6 ">
@@ -76,7 +75,6 @@
                 <button type="button" class="btn btn-success big pull-right" id="submit">
                     &nbsp;&nbsp;发表&nbsp;&nbsp;</button>
             </div>
-
         </form>
     </div>
 </div>
@@ -112,11 +110,38 @@
     $(document).ready(function () {
         $(".form_datetime").datetimepicker({format: 'yyyy-mm-dd hh:ii'});
         $("#submit").click(function () {
+            var url='../../PHP/Service/FoodService/Create.php'
             var place=$("#dateplace").val();
-            var msg=
             var deal = getData($('input[name="deal"]:checked').val());
-
+            var msg=$("#input-content").val();
+            var datetime = $("#datetime").val()+':00';
+            var reg=new RegExp("\n","g");
+            msg = msg.replace(reg,'；');
+            $.post(url,{
+                foodarea:place,
+                foodway:deal,
+                foodinformation:msg,
+                foodtime:datetime
+            }, function (data) {
+                if(data[0]=='1'){
+                    alert("success");
+                }
+                else $("#word").text(data);
+            })
         })
+        $(function () {
+            $("#input-content").keyup(function () {
+                var len = $(this).val().length;
+                if (len > 200) {
+                    $(this).val($(this).val().substring(0, 199));
+                    $("#word").text(0);
+                }
+                else {
+                    var num = 200 - len;
+                    $("#word").text(num);
+                }
+            });
+        });
     })
 </script>
 </body>
