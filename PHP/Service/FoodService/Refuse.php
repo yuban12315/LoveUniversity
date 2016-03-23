@@ -10,7 +10,7 @@ session_start();
 require_once '../../DAO/DAO.php';
 if(isset($_SESSION['userid'])) {
     $userid = $_SESSION['userid'];
-    $foodid = (int)$_POST['foodid'];
+    @$foodid = (int)$_POST['foodid'];
     $str = "update food set state  = 1 where FoodId = '{$foodid}'";
     up($str);
     $str = "update food set GetUser  = null where FoodId = '{$foodid}'";
