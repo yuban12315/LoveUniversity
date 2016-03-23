@@ -10,17 +10,17 @@
 </head>
 <body>
 <form>
-    <label for="_sex"></label>
-    <select class="form-control item-md" name="sex" id="_sex" >
-        <option class="form-control option" value="0">Boy</option>
-        <option class="form-control option" value="1">Girl</option>
-    </select>
+    <input type="radio" name="testradio" value="jquery获取radio的值" />jquery获取radio的值
+    <input type="radio" name="testradio" value="jquery获取checkbox的值" />jquery获取checkbox的值
+    <input type="radio" name="testradio" value="jquery获取select的值" />jquery获取select的值
 </form>
-
+<button class="btn btn-success" id="test">Click</button>
 <script src="../../js/jQuery.js"></script>
 <script>
     $(document).ready(function () {
-        document.getElementById('_sex').value=1;
+      $("#test").click(function () {
+          alert($('input[name="testradio"]:checked').val())
+      })
     });
 </script>
 </body>

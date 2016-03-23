@@ -52,15 +52,17 @@
                 <div class="input-group col-lg-8 col-md-12 col-sm-12">
                     <span class="input-group-addon "><span class="glyphicon glyphicon-home"></span> 约定地点</span>
                     <input type="text" value="" class="form-control  big" id="dateplace">
-                    <span class="input-group-addon "><label class="radio-inline">
-                        <input type="radio" name="inlineRadioOptions" id="inlineRadio1" value="1">我请客
+                    <span class="input-group-addon ">
+                        <label class="radio-inline">
+                            <input type="radio" name="deal" value="我请客">我请客
+                        </label>
+                    <label class="radio-inline">
+                        <input type="radio" name="deal" value="AA制"> AA制
                     </label>
                     <label class="radio-inline">
-                        <input type="radio" name="inlineRadioOptions" id="inlineRadio2" value="2"> AA制
+                        <input type="radio" name="deal" value="Ta请客"> Ta请客
                     </label>
-                    <label class="radio-inline">
-                        <input type="radio" name="inlineRadioOptions" id="inlineRadio3" value="3"> Ta请客
-                    </label></span>
+                    </span>
                 </div>
 
                 <label for="input-content"></label>
@@ -110,7 +112,10 @@
     $(document).ready(function () {
         $(".form_datetime").datetimepicker({format: 'yyyy-mm-dd hh:ii'});
         $("#submit").click(function () {
-            
+            var place=$("#dateplace").val();
+            var msg=
+            var deal = getData($('input[name="deal"]:checked').val());
+
         })
     })
 </script>

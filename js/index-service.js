@@ -15,6 +15,12 @@ function Loaded() {
     }
 }
 
+function getData(data) {
+    if (data == '' || data == null)
+        return '';
+    else  return data;
+}
+
 $(document).ready(function () {
     $("#header").headroom({
         "tolerance": 5,

@@ -1,4 +1,4 @@
-function creat(nickname, avator, datetime, place,msg, id) {
+function creat(nickname, avator, datetime, place, msg, id) {
     var data;
     data = '<div class="col-lg-6 col-md-12 col-sm-12 info">'
         + '<div class="col-lg-4  col-md-6 col-sm-6">'
@@ -8,7 +8,7 @@ function creat(nickname, avator, datetime, place,msg, id) {
         + '<h2 class="text-center">' + datetime + '</h2>'
         + '</div>'
         + '<div class="col-lg-4 col-md-6 col-sm-6">'
-        + '<h2 class="text-center">' + place+ '</h2>'
+        + '<h2 class="text-center">' + place + '</h2>'
         + '</div>'
         + '<div class="col-lg-12">'
         + '<h3 class="text-center">' + msg + '</h3>'
@@ -27,16 +27,15 @@ function date(obj) {
         $("#wrong")[0].innerHTML = data;
         $("#alert").click();
     });
-
 }
 
-function show(){
+function show() {
     var sum = 1;
     var num = 1;
-   var choose=getCookie('choose');
-    if(choose=='run'){
-        show1(1);
+    var choose = getCookie('choose');
+    if (choose == 'run') {
         $.get('../../PHP/Service/RunService/Total.php', function (data) {
+            show1(1);
             if (data[0] != '1') {
                 $("#more").removeClass('hidden');
                 num = data;
@@ -46,7 +45,7 @@ function show(){
             }
         });
     }
-    else{
+    else {
         $.get('../../PHP/Service/XueService/Total.php', function (data) {
             show2(1);
             if (data[0] != '1') {
@@ -58,7 +57,6 @@ function show(){
             }
         });
     }
-
 }
 
 function show1(page) {
@@ -74,19 +72,17 @@ function show1(page) {
         var userid;
         var runid;
         var place;
-        $("#content")[0].innerHTML='';
+        $("#content")[0].innerHTML = '';
         setInterval(function () {
             if (sum != num) {
                 userid = data[sum].UserId;
                 datetime = data[sum].RunTime;
-                place=data[sum].RunArea;
+                place = data[sum].RunArea;
                 msg = data[sum].RunInformation;
                 runid = data[sum].RunId;
                 url = '../../php/Service/UserService/GetData.php?userid=' + data[sum].UserId;
                 $.getJSON(url, function (data2) {
-                    avator = data2.UserPhoto;
-                    nickname = data2.NickName;
-                    msg = creat(data2.NickName, data2.UserPhoto, datetime, place,msg, runid);
+                    msg = creat(data2.NickName, data2.UserPhoto, datetime, place, msg, runid);
                     $("#content")[0].innerHTML += msg;
                 });
                 sum++;
@@ -105,20 +101,20 @@ function show2(page) {
         var sum = 0;
         var datetime;
         var msg;
+        var place;
         var userid;
         var xueid;
-        $("#content2")[0].innerHTML='';
+        $("#content2")[0].innerHTML = '';
         setInterval(function () {
             if (sum != num) {
                 userid = data[sum].UserId;
                 datetime = data[sum].XueTime;
                 msg = data[sum].XueInformation;
+                place = data[sum].XueArea;
                 xueid = data[sum].XueId;
                 url = '../../php/Service/UserService/GetData.php?userid=' + data[sum].UserId;
                 $.getJSON(url, function (data2) {
-                    avator = data2.UserPhoto;
-                    nickname = data2.NickName;
-                    msg = creat(data2.NickName, data2.UserPhoto, datetime, msg, xueid);
+                    msg = creat(data2.NickName, data2.UserPhoto, datetime, place, msg, xueid);
                     $("#content2")[0].innerHTML += msg;
                 });
                 sum++;
@@ -131,19 +127,18 @@ function submit() {
     var choose = getCookie('choose');
     var url;
     var msg;
-
     var datetime;
     var place;
     msg = $("#input-content").val();
     datetime = $("#datetime").val();
-    place=$("#dateplace").val();
+    place = $("#dateplace").val();
     datetime += ':00';
     if (choose == 'run') {
         url = '../../PHP/Service/RunService/Create.php';
         $.post('http://127.0.0.1/LoveUniversity/PHP/Service/RunService/Create.php', {
             runtime: datetime,
             runinformation: msg,
-            runarea:place
+            runarea: place
         }, function (data) {
             if (data[0] == '1')
                 location.reload();
@@ -157,7 +152,7 @@ function submit() {
         $.post(url, {
             xuetime: datetime,
             xueinformation: msg,
-            xuearea:place
+            xuearea: place
         }, function (data) {
             if (data[0] == '1')
                 location.reload();
@@ -186,7 +181,7 @@ $(document).ready(function () {
         $("#_run").removeClass('clicked');
         $("#content").fadeOut("slow");
         $("#content2").fadeIn("slow");
-    })
+    });
     $(".form_datetime").datetimepicker({format: 'yyyy-mm-dd hh:ii'});
     $("#submit").click(function () {
         submit();
