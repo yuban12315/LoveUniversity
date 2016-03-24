@@ -8,7 +8,8 @@
 session_start();
 require_once '../../DAO/DAO.php';
 require_once 'ch_json_encode.php';
-$_SESSION['userid'] = 25;
+@$table = $_GET['table'];
+check($table);
 function check($table)
 {
     if (isset($_SESSION['userid'])) {
@@ -16,7 +17,7 @@ function check($table)
         $array1 = null;
         $array2 = null;
         $conn = connect();
-        $str = "select * from {$table} where GetUser = {$getuser}";
+        $str = "select * from {$table} where GetUser = {$getuser} ORDER BY ID ";
         $result = mysqli_query($conn,$str);
         $row = mysqli_fetch_assoc($result);
         $i = 0;

@@ -6,4 +6,5 @@
  * Time: 13:05
  */
 require_once '../../DAO/DAO.php';
-$str = "select * from "
+$str = "select * from get ORDER BY ID DESC";
+$row = sel($str);
