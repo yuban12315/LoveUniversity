@@ -14,8 +14,18 @@ $_POST['xueid'] = 7;
 if($_SESSION['userid'])
 {
     $userid = $_SESSION['userid'];
+    @$table = $_POST['table'];
     @$id = (int)$_POST['id'];
-    @$idname = $_POST['idname'];
+    $idname = '';
+    switch($table)
+    {
+        case 'xue':$idname = 'XueId';break;
+        case 'run':$idname = 'RunId';break;
+        case 'food':$idname = 'FoodId';break;
+        case 'pai':$idname = 'PaiId';break;
+        case 'help':$idname = 'HelpId';break;
+        case 'give':$idname = 'GiveId';break;
+    }
     $str = "update xue set state  = 1 where {$idname} = '{$id}' and GetUser = {$userid}";
     up($str);
     $str = "update xue set GetUser  = null where {$idname} = '{$id}' and GetUser = {$userid}";

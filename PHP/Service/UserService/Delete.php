@@ -14,8 +14,18 @@ $_SESSION['userid'] = 18;
 if($_SESSION['userid'])
 {
     $userid = $_SESSION['userid'];
-    @$id = $_POST['id'];
-    @$idname = $_POST['idname'];
+    @$table = $_POST['table'];
+    @$id = (int)$_POST['id'];
+    $idname = '';
+    switch($table)
+    {
+        case 'xue':$idname = 'XueId';break;
+        case 'run':$idname = 'RunId';break;
+        case 'food':$idname = 'FoodId';break;
+        case 'pai':$idname = 'PaiId';break;
+        case 'help':$idname = 'HelpId';break;
+        case 'give':$idname = 'GiveId';break;
+    }
     $str = "delete from xue where {$idname} = {$id} and UserId = {$userid}";
     del($str);
     echo '1';
