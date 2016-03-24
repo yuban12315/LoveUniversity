@@ -9,28 +9,35 @@ session_start();
 require_once '../../DAO/DAO.php';
 require_once '../UserService/Upload.php';
 require_once '../UserService/XSS.php';
+/*测试调用创建
+$_SESSION['userid'] = 25;
+$_SESSION['jwxtnumber'] = '111';
+$_SESSION['username'] = 'admin';
+$_POST['giveinformation'] = '111';
+$_FILES['giveimage']['name'] = '11';
+$rename = '111';
+*/
 if (isset($_SESSION['userid'])) {
     $userid = $_SESSION['userid'];
-    $str1 = "select * from user where UserId = {$userid}";
-    $row1 = sel($str1);
-    if (empty($row1['JwxtNumber'])) {
+    if (empty($_SESSION['jwxtnumber'])) {
         echo '请完善个人信息';
         die();
     } else {
         $giveuser = $_SESSION['username'];
-        if (empty($_POST['giveinformation']) || empty($_FILES['name'])) {
+        if (empty($_POST['giveinformation']) || empty($_FILES['giveimage']['name'])) {
             echo '信息不能为空';
         } else {
-            $giveinformation = $_POST['giveinformation'];
+            @$giveinformation = $_POST['giveinformation'];
             if (xss($giveinformation)) {
                 echo '不要试图攻击';
                 die();
             }
             $rename = md5(uniqid(microtime(true), true)) . '.png';
-            $tmp_name = $_FILES['photo']['tmp_name'];
+            $tmp_name = $_FILES['giveimage']['tmp_name'];
             upload($tmp_name, $rename, 'give');
             $path = 'http://7xrqhs.com1.z0.glb.clouddn.com/' . $rename;
             $str = "insert into give (UserId,GiveUser,GiveImage,GiveInformation,state) VALUES ('{$userid}','{$giveuser}','{$path}','{$giveinformation}',1)";
+            ins($str);
             echo '1';
         }
     }
