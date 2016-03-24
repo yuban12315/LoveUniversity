@@ -8,7 +8,7 @@
 session_start();
 require_once '../../DAO/DAO.php';
 require_once 'ch_json_encode.php';
-/*调用测试
+/*
 $_GET['table'] = 'pai';
 $_SESSION['userid'] = 25;
 */
@@ -45,15 +45,17 @@ function check($table,$ID)
         $str = "select * from {$table} where UserId = {$getuser} order by {$ID} desc";
         $result = mysqli_query($conn,$str);
         $row = mysqli_fetch_assoc($result);
-        $i = 0;
+        $i1 = 0;
         while($row)
         {
-            $array2[$i] = $row;
-            $i++;
+            $array2[$i1] = $row;
+            $i1++;
             $row = mysqli_fetch_assoc($result);
         }
         $array['get'] = $array1;
+        $array['getnum'] = $i;
         $array['post'] = $array2;
+        $array['postnum'] = $i1;
         echo ch_json_encode($array);
     }
 }

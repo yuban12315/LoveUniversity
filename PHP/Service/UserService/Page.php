@@ -8,7 +8,7 @@
 session_start();
 require_once '../../DAO/DAO.php';
 require_once 'ch_json_encode.php';
-Mypage('xue',2,'XueTime','XueId');
+//Mypage('xue',2,'XueTime','XueId');
 function Mypage($table, $page, $time, $ID)
 {
     $conn = connect();
