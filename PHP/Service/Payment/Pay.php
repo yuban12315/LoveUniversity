@@ -6,7 +6,6 @@
  * Time: 19:14
  */
 require_once '../../DAO/DAO.php';
-session_start();
 /*支付调用方法
 $_SESSION['userid'] = 25;
 pay(10,27,'123456789');
@@ -27,13 +26,13 @@ function pay($payid,$num, $getid, $paypassword)
                 $money = $row['Money'] + $num;
                 $str = "update money set Money = {$money} where UserId = {$getid}";
                 up($str);
-                echo '1';
+                return '1';
             } else {
-                echo '余额不足，请充值';
+                return '余额不足，请充值';
             }
         }
         else{
-            echo '支付密码错误，请重新输入';
+            return '支付密码错误，请重新输入';
         }
     }
 }
