@@ -46,73 +46,34 @@
 <div class="banner-lg"></div>
 
 <div class="container">
-    <div class="col-lg-12 col-md-12 col-sm-12 info">
-        <div class="col-lg-2  col-md-2 col-sm-2">
+    <div class="col-lg-12 col-md-12 col-sm-12 info-long">
+        <div class="col-lg-4  col-md-4 col-sm-4">
             <img class="img-thumbnail info-longimg"
-                 src="http://i1.hdslb.com/u_user/activities/instruments/img/22.png">
+                 src="http://7xrqhs.com1.z0.glb.clouddn.com/0ce81242c2609076733fa408681db49f.png">
         </div>
-        <div class="col-lg-2  col-md-2 col-sm-2"><h2 class="text-center"> nickname </h2></div>
-        <div class="col-lg-3  col-md-3 col-sm-3"><h2 class="text-center"> place </h2></div>
-        <div class="col-lg-3  col-md-3 col-sm-3"><h2 class="text-center"> datetime </h2></div>
-        <div class="col-lg-2  col-md-2 col-sm-2"><h2 class="text-center"> deal </h2></div>
+        <div class="col-lg-4  col-md-4 col-sm-4"><h2 class="text-center" id="nickname"> nickname </h2>
+        </div>
+        <div class="col-lg-4  col-md-4 col-sm-4"><h2 class="text-center" id="place"> place </h2>
+        </div>
+        <div class="col-lg-4  col-md-4 col-sm-4"><h2 class="text-center" id="deal"> deal </h2>
+        </div>
+        <div class="col-lg-4  col-md-4 col-sm-4"><h2 class="text-center" id="datetime"> datetime </h2>
+        </div>
+        <div class="col-lg-12 col-md-12 col-sm-12"><h2 class="text-center" id="msg"> msg </h2>
+        </div>
+        <p class="hidden" id="foodid"></p>
     </div>
 </div>
 
-<div class="modal fade" id="myModal" tabindex="-1" role="dialog"
-     aria-labelledby="myModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close"
-                        data-dismiss="modal" aria-hidden="true">
-                    &times;
-                </button>
-                <h1 class="modal-title" id="myModalLabel">
-                    约会失败！
-                </h1>
-            </div>
-            <div class="modal-body">
-                <h4 class="text-center" id="wrong">SDSDSDSD</h4>
-            </div>
-        </div>
-    </div>
-</div>
 
-<button style="display: none" id="alert" data-toggle="modal" data-target="#myModal"></button>
 <div class="banner-bot"></div>
 <script src="../../js/jQuery.js"></script>
 <script src="../../js/bootstrap.js"></script>
 <script src="../../js/headroom.js"></script>
 <script src="../../js/cookies.js"></script>
 <script src="../../js/index-service.js"></script>
-<script src="../../js/datetimepicker.js"></script>
-<script src="../../js/fr.js"></script>
 <script>
-    $(document).ready(function () {
-        $(".form_datetime").datetimepicker({format: 'yyyy-mm-dd hh:ii'});
-    });
-    function photo() {
-        $("#file0").change(function () {
-            var objUrl = getObjectURL(this.files[0]);
-            console.log("objUrl = " + objUrl);
-            if (objUrl) {
-                $("#img0").attr("src", objUrl);
-            }
-            $("#file0").slideUp('fast');
-            $("#img0").slideDown('fast');
-        });
-        function getObjectURL(file) {
-            var url = null;
-            if (window.createObjectURL != undefined) { // basic
-                url = window.createObjectURL(file);
-            } else if (window.URL != undefined) { // mozilla(firefox)
-                url = window.URL.createObjectURL(file);
-            } else if (window.webkitURL != undefined) { // webkit or chrome
-                url = window.webkitURL.createObjectURL(file);
-            }
-            return url;
-        }
-    }
+
 </script>
 </body>
 </html>

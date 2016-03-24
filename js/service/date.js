@@ -12,7 +12,7 @@ function creat(nickname, avator, datetime, place, msg, id) {
         + '</div>'
         + '<div class="col-lg-12">'
         + '<h3 class="text-center">' + msg + '</h3>'
-        + ' <button class="btn btn-sm big pull-right" onclick="date(this)">约</button>'
+        + ' <button class="btn btn-info big pull-right" onclick="date(this)">约</button>'
         + '<p class="hidden">' + id + '</p>'
         + '</div></div>';
     return data;

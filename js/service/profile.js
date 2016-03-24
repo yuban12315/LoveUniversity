@@ -2,7 +2,7 @@ function data() {
     var url = '../PHP/Service/UserService/Data.php';
     $.getJSON(url, function (data) {
         var Name = getData(data.PersonalData.UserName);
-        document.title = Name + '的个人主页';
+        document.title = Name + '的个人资料';
         if (data.PersonalData.TrueName != null && data.PersonalData.UserGrade != null && data.PersonalData.JwxtNumber != null && data.PersonalData.UserMajor != null)
             $("#user").addClass('hidden');
         $("#nickname")[0].innerHTML += data.PersonalData.NickName;

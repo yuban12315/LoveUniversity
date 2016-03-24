@@ -45,3 +45,10 @@ function logOut() {
         location.reload();
     });
 }
+
+
+function getData(data) {
+    if (data == '' || data == null)
+        return '';
+    else  return data;
+}

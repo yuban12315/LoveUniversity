@@ -1,16 +1,27 @@
-function creat(avator, nickname, place, datetime, id, deal) {
-    var msg = '<div class="col-lg-12 col-md-12 col-sm-12 info-long" onclick="more(this)">'
-        + '<div class="col-lg-2  col-md-2 col-sm-2">'
-        + '<img class="img-thumbnail info-longimg"'
-        + 'src="' + avator + '"> </div>'
-        + '<div class="col-lg-2  col-md-2 col-sm-2"><h2 class="text-center">' + nickname + ' </h2></div>'
-        + '<div >'
-        + '<div class="col-lg-3  col-md-3 col-sm-3"><h2 class="text-center" >' + place + '</h2></div>'
-        + '<div class="col-lg-3  col-md-3 col-sm-3"><h2 class="text-center"> ' + datetime + ' </h2></div>'
-        + '<div class="col-lg-2  col-md-2 col-sm-2"><h2 class="text-center" > ' + deal + ' </h2></div> </div>'
-        + '</div>'
-        + '<p class="hidden foodid">' + id + '</p>';
+function creat(avator, nickname, place, datetime, msg, id, deal) {
+    var msg = '<div class="col-lg-12 col-md-12 col-sm-12 info">'
+        + '<div class="col-lg-4  col-md-4 col-sm-4">'
+        + '<img class="img-thumbnail info-img"'
+        + 'src="' + avator + '"></div>'
+        + '<div class="col-lg-4  col-md-4 col-sm-4"><h2 class="text-center" id="nickname"> ' + nickname + '</h2></div>'
+        + '<div class="col-lg-4  col-md-4 col-sm-4"><h2 class="text-center" id="place"> ' + place + ' </h2></div>'
+        + '<div class="col-lg-4  col-md-4 col-sm-4"><h2 class="text-center" id="deal"> ' + deal + '</h2></div>'
+        + '<div class="col-lg-4  col-md-4 col-sm-4"><h2 class="text-center" id="datetime"> ' + datetime + ' </h2></div>'
+        + '<div class="col-lg-12 col-md-12 col-sm-12"><h2 class="text-center" id="msg">' + msg + '</h2></div>'
+        + '<button class="btn btn-info pull-right big" onclick="date(this)">约</button>'
+        + '<p class="hidden" id="foodid">'+id+'</p> </div>';
     return msg;
+}
+
+function date(obj) {
+    var foodid = obj.nextElementSibling.innerHTML;
+    var url = '../../PHP/Service/FoodService/appoint.php';
+    $.post(url, {
+        foodid: foodid
+    }, function (data) {
+        $("#wrong")[0].innerHTML = data;
+        $("#alert").click();
+    });
 }
 
 function submit() {
@@ -36,8 +47,8 @@ function submit() {
 
 function more(obj) {
     var ms = obj.nextElementSibling.innerHTML;
-    setCookie('foodpage',ms);
-    location.href='foodpage.html';
+    setCookie('foodpage', ms);
+    location.href = 'foodpage.html';
 }
 
 function page(page) {
@@ -53,7 +64,8 @@ function page(page) {
         var foodid;
         var place;
         var deal;
-        // $("#content")[0].innerHTML = '';
+        var msg;
+         $("#content")[0].innerHTML = '';
         setInterval(function () {
             if (sum != num) {
                 userid = data[sum].UserId;
@@ -61,9 +73,10 @@ function page(page) {
                 place = data[sum].FoodArea;
                 foodid = data[sum].FoodId;
                 deal = data[sum].FoodWay;
+                msg = data[sum].FoodInformation;
                 url = '../../php/Service/UserService/GetData.php?userid=' + data[sum].UserId;
                 $.getJSON(url, function (data2) {
-                    msg = creat(data2.UserPhoto, data2.NickName, place, datetime, foodid, deal);
+                    msg = creat(data2.UserPhoto, data2.NickName, place, datetime, msg, foodid, deal);
                     $("#content")[0].innerHTML += msg;
                 });
                 sum++;
