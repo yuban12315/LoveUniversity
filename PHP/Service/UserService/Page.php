@@ -5,6 +5,7 @@
  * Date: 2016/3/12
  * Time: 14:29
  */
+session_start();
 require_once '../../DAO/DAO.php';
 require_once 'ch_json_encode.php';
 function Mypage($table, $page, $time, $ID)
@@ -25,7 +26,11 @@ function Mypage($table, $page, $time, $ID)
             $row = mysqli_fetch_assoc($result);
             continue;
         }
-
+        if($row['UserId'] = $_SESSION['userid'])
+        {
+            $row = mysqli_fetch_assoc($result);
+            continue;
+        }
         unset($row['GetUser']);
         $i++;
         if ($i >= ($page - 1) * 10) {
