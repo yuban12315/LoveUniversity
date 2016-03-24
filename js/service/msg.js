@@ -7,7 +7,41 @@ function data() {
     });
 }
 
-function creat_food(avator, nickname, place, datetime, msg, id, deal) {
+function creat_food(avator, nickname, place, datetime, msg, id, deal,part) {
+    var msg = '<div class="col-lg-12 col-md-12 col-sm-12 info">'
+        + '<div class="col-lg-4  col-md-4 col-sm-4">'
+        + '<img class="img-thumbnail info-img"src="' + avator + '"></div>'
+        + '<div class="col-lg-4  col-md-4 col-sm-4"><h2 class="text-center" id="nickname"> ' + nickname + '</h2></div>'
+        + '<div class="col-lg-4  col-md-4 col-sm-4"></span><h2 class="text-center" id="place"> ' + place + ' </h2></div>'
+        + '<div class="col-lg-4  col-md-4 col-sm-4"><h2 class="text-center" id="deal"> ' + deal + '</h2></div>'
+        + '<div class="col-lg-4  col-md-4 col-sm-4"><h2 class="text-center" id="datetime"> ' + datetime + ' </h2></div>'
+        + '<div class="col-lg-12 col-md-12 col-sm-12"><h2 class="text-center" id="msg">' + msg + '<span class="glyphicon glyphicon-cutlery"></h2></div>'
+        + '<button class="btn btn-info pull-right big" onclick="del(this)"><span class="glyphicon glyphicon-triangle-top"></span>撤回</button>'
+        + '<p class="hidden" >' + id + '</p>'
+        + '<p class="hidden" >' + part + '</p></div>';
+    return msg;
+}
+
+function creat_date(nickname, avator, datetime, place, msg, id, getuser,part) {
+    var msg = '<div class="col-lg-12 col-md-12 col-sm-12 info">'
+        + '<div class="col-lg-4  col-md-6 col-sm-6">'
+        + '<img class="img-thumbnail info-img" ' + 'src="' + avator + '"></div>'
+        + '<div class="col-lg-4 col-md-6 col-sm-6"><h2 class="text-center">' + nickname + '</h2></div>'
+        + '<div class="col-lg-4 col-md-6 col-sm-6">'
+        + '<h2 class="text-center">' + datetime + '</h2></div>'
+        + '<div class="col-lg-4 col-md-6 col-sm-6">'
+        + '<h2 class="text-center">' + place + '</h2></div>'
+        + '<div class="col-lg-12">'
+        + '<h3 class="text-center">' + msg + '<span class="glyphicon glyphicon-fire"></h3>'
+        + '<button class="btn btn-info pull-right big" onclick="del(this)"><span class="glyphicon glyphicon-triangle-top"></span>撤回</button>'
+        + '<p class="hidden">' + id + '</p>'
+        + '<p class="hidden">' + part + '</p></div>'
+        + '<div class="col-lg-12">'
+        + '<h3 class="text-center">' + getuser + '</h3></div></div>';
+    return msg;
+}
+
+function creat_food1(avator, nickname, place, datetime, msg, id, deal) {
     var msg = '<div class="col-lg-12 col-md-12 col-sm-12 info">'
         + '<div class="col-lg-4  col-md-4 col-sm-4">'
         + '<img class="img-thumbnail info-img"src="' + avator + '"></div>'
@@ -20,7 +54,7 @@ function creat_food(avator, nickname, place, datetime, msg, id, deal) {
     return msg;
 }
 
-function creat_date(nickname, avator, datetime, place, msg, id, getuser) {
+function creat_date1(nickname, avator, datetime, place, msg, id, getuser) {
     var msg = '<div class="col-lg-12 col-md-12 col-sm-12 info">'
         + '<div class="col-lg-4  col-md-6 col-sm-6">'
         + '<img class="img-thumbnail info-img" ' + 'src="' + avator + '"></div>'
@@ -36,11 +70,11 @@ function creat_date(nickname, avator, datetime, place, msg, id, getuser) {
         + '<p class="hidden">' + id + '</p>'
         + '</div>'
         + '<div class="col-lg-12">'
-        + '<h3 class="text-center">' +getuser+'</h3>'
+        + '<h3 class="text-center">' + getuser + '</h3>'
         + '</div></div>';
     return msg;
 }
-
+//<button class="btn btn-info pull-right big" onclick="del(this)"><span class="glyphicon glyphicon-triangle-top"></span>悔约</button>
 function Show(part) {
     var url = '../PHP/Service/UserService/Check.php?table=';
     $.ajaxSetup({
@@ -67,15 +101,15 @@ function Show(part) {
                     if (getuser == '') {
                         getuser = '还没有人接受你的邀请';
                     }
-                    else{
+                    else {
                         url = '../php/Service/UserService/GetData.php?userid=' + getuser;
                         $.getJSON(url, function (data) {
-                           getuser='接受者：'+data.NickName;
+                            getuser = '接受者：' + data.NickName;
                         });
                     }
                     url = '../php/Service/UserService/GetData.php?userid=' + userid;
                     $.getJSON(url, function (data2) {
-                        msg = creat_date(data2.NickName, data2.UserPhoto, datetime, place, msg, runid, getuser);
+                        msg = creat_date(data2.NickName, data2.UserPhoto, datetime, place, msg, runid, getuser,'run');
                         $("#content")[0].innerHTML = msg + $("#content")[0].innerHTML;
                     });
                     sum++;
@@ -104,15 +138,15 @@ function Show(part) {
                     if (getuser == '') {
                         getuser = '还没有人接受你的邀请';
                     }
-                    else{
+                    else {
                         url = '../php/Service/UserService/GetData.php?userid=' + getuser;
                         $.getJSON(url, function (data) {
-                            getuser='接受者：'+data.NickName;
+                            getuser = '接受者：' + data.NickName;
                         });
                     }
                     url = '../php/Service/UserService/GetData.php?userid=' + userid;
                     $.getJSON(url, function (data2) {
-                        msg = creat_date(data2.NickName, data2.UserPhoto, datetime, place, msg, xueid,getuser);
+                        msg = creat_date(data2.NickName, data2.UserPhoto, datetime, place, msg, xueid, getuser,'xue');
                         $("#content")[0].innerHTML = msg + $("#content")[0].innerHTML;
                     });
                     sum++;
@@ -140,8 +174,8 @@ function Show(part) {
                     msg = data.post[sum].FoodInformation;
                     url = '../php/Service/UserService/GetData.php?userid=' + data.post[sum].UserId;
                     $.getJSON(url, function (data2) {
-                        msg = creat_food(data2.UserPhoto, data2.NickName, place, datetime, msg, foodid, deal);
-                        $("#content")[0].innerHTML += msg;
+                        msg = creat_food(data2.UserPhoto, data2.NickName, place, datetime, msg, foodid, deal,'food');
+                        $("#content")[0].innerHTML = msg + $("#content")[0].innerHTML;
                     });
                     sum++;
                 }
@@ -173,7 +207,7 @@ function Show1(part) {
                     runid = data.get[sum].RunId;
                     url = '../php/Service/UserService/GetData.php?userid=' + userid;
                     $.getJSON(url, function (data2) {
-                        msg = creat_date(data2.NickName, data2.UserPhoto, datetime, place, msg, runid,'');
+                        msg = creat_date1(data2.NickName, data2.UserPhoto, datetime, place, msg, runid, '');
                         $("#content")[0].innerHTML = msg + $("#content")[0].innerHTML;
                     });
                     sum++;
@@ -200,7 +234,7 @@ function Show1(part) {
                     xueid = data.get[sum].XueId;
                     url = '../php/Service/UserService/GetData.php?userid=' + userid;
                     $.getJSON(url, function (data2) {
-                        msg = creat_date(data2.NickName, data2.UserPhoto, datetime, place, msg, xueid,'');
+                        msg = creat_date1(data2.NickName, data2.UserPhoto, datetime, place, msg, xueid, '');
                         $("#content")[0].innerHTML = msg + $("#content")[0].innerHTML;
                     });
                     sum++;
@@ -228,8 +262,8 @@ function Show1(part) {
                     msg = data.get[sum].FoodInformation;
                     url = '../php/Service/UserService/GetData.php?userid=' + data.get[sum].UserId;
                     $.getJSON(url, function (data2) {
-                        msg = creat_food(data2.UserPhoto, data2.NickName, place, datetime, msg, foodid, deal,'');
-                        $("#content")[0].innerHTML += msg;
+                        msg = creat_food1(data2.UserPhoto, data2.NickName, place, datetime, msg, foodid, deal, '');
+                        $("#content")[0].innerHTML = msg + $("#content")[0].innerHTML;
                     });
                     sum++;
                 }
@@ -237,16 +271,23 @@ function Show1(part) {
         });
     }
 }
+
+function del(obj) {
+    var id = obj.nextElementSibling.innerHTML;
+    var part=obj.nextElementSibling.nextElementSibling.innerHTML;
+    alert(part);
+}
+
 $(document).ready(function () {
     data();
     $("#initiated").click(function () {
-        $("#content")[0].innerHTML='';
+        $("#content")[0].innerHTML = '';
         Show('run');
         Show('xue');
         Show('food');
     });
     $("#accepted").click(function () {
-        $("#content")[0].innerHTML='';
+        $("#content")[0].innerHTML = '';
         Show1('run');
         Show1('xue');
         Show1('food');
