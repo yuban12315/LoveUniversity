@@ -8,6 +8,7 @@
 session_start();
 require_once '../../DAO/DAO.php';
 require_once 'ch_json_encode.php';
+$_SESSION['userid'] = 25;
 function check($table)
 {
     if (isset($_SESSION['userid'])) {

@@ -8,14 +8,17 @@
 session_start();
 require_once '../../DAO/DAO.php';
 require_once 'ch_json_encode.php';
+Mypage('xue',2,'XueTime','XueId');
 function Mypage($table, $page, $time, $ID)
 {
     $conn = connect();
-    $str = "select * from {$table} ";
+    $start = ($page - 1) * 10;
+    $end = ($page * 10 - 1);
+    $str = "select * from {$table} limit {$start},{$end} ";
     $result = mysqli_query($conn, $str);
     $row = mysqli_fetch_assoc($result);
     $i = 0;
-    while ($i <= ($page * 10 - 1) && !empty($row)) {
+    while (!empty($row)) {
 
         if (strtotime(date("y-m-d h:i:s")) >= strtotime($row[$time])) {
             $id = $row[$ID];
@@ -34,9 +37,7 @@ function Mypage($table, $page, $time, $ID)
         }
         unset($row['GetUser']);
         $i++;
-        if ($i >= ($page - 1) * 10) {
-            $array[$i-1] = $row;
-        }
+        $array[$i-1] = $row;
         $row = mysqli_fetch_assoc($result);
     }
     if($i%10==0&&$i!=0)
