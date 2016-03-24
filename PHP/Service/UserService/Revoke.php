@@ -26,9 +26,9 @@ if($_SESSION['userid'])
         case 'help':$idname = 'HelpId';break;
         case 'give':$idname = 'GiveId';break;
     }
-    $str = "update xue set state  = 1 where {$idname} = '{$id}' and GetUser = {$userid}";
+    $str = "update {$table} set state  = 1 where {$idname} = '{$id}' and GetUser = {$userid}";
     up($str);
-    $str = "update xue set GetUser  = null where {$idname} = '{$id}' and GetUser = {$userid}";
+    $str = "update {$table} set GetUser  = null where {$idname} = '{$id}' and GetUser = {$userid}";
     up($str);
     echo '1';
 }
