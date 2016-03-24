@@ -14,10 +14,11 @@ $_POST['xueid'] = 7;
 if($_SESSION['userid'])
 {
     $userid = $_SESSION['userid'];
-    @$xueid = (int)$_POST['xueid'];
-    $str = "update xue set state  = 1 where XueId = '{$xueid}' and GetUser = {$userid}";
+    @$id = (int)$_POST['id'];
+    @$idname = $_POST['idname'];
+    $str = "update xue set state  = 1 where {$idname} = '{$id}' and GetUser = {$userid}";
     up($str);
-    $str = "update xue set GetUser  = null where XueId = '{$xueid}' and GetUser = {$userid}";
+    $str = "update xue set GetUser  = null where {$idname} = '{$id}' and GetUser = {$userid}";
     up($str);
     echo '1';
 }

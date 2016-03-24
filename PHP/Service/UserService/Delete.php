@@ -14,8 +14,9 @@ $_SESSION['userid'] = 18;
 if($_SESSION['userid'])
 {
     $userid = $_SESSION['userid'];
-    @$xueid = $_POST['xueid'];
-    $str = "delete from xue where XueId = {$xueid} and UserId = {$userid}";
+    @$id = $_POST['id'];
+    @$idname = $_POST['idname'];
+    $str = "delete from xue where {$idname} = {$id} and UserId = {$userid}";
     del($str);
     echo '1';
 }
