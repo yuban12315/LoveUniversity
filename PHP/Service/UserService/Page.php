@@ -26,10 +26,11 @@ function Mypage($table, $page, $time, $ID)
             $row = mysqli_fetch_assoc($result);
             continue;
         }
-        if($row['UserId'] == $_SESSION['userid'])
-        {
-            $row = mysqli_fetch_assoc($result);
-            continue;
+        if(isset($_SESSION['userid'])) {
+            if ($row['UserId'] == $_SESSION['userid']) {
+                $row = mysqli_fetch_assoc($result);
+                continue;
+            }
         }
         unset($row['GetUser']);
         $i++;
