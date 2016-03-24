@@ -10,9 +10,9 @@ require_once '../../DAO/DAO.php';
 if(isset($_SESSION['userid'])) {
     $userid = $_SESSION['userid'];
     $xueid = (int)$_POST['xueid'];
-    $str = "update xue set state  = 1 where FoodId = '{$xueid}'";
+    $str = "update xue set state  = 1 where XueId = '{$xueid}' and UserId = {$userid}";
     up($str);
-    $str = "update xue set GetUser  = null where FoodId = '{$xueid}'";
+    $str = "update xue set GetUser  = null where XueId = '{$xueid}' and UserId = {$userid}";
     up($str);
     echo '1';
 }
