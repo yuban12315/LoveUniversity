@@ -29,7 +29,7 @@ if (isset($_SESSION['userid'])) {
             $row = sel($str);
             if ($row['state'] == 1) {
                 $userid = $_SESSION['userid'];
-                $str = "insert into get (UserId,GetInformation,GiveId) VALUES ('{$userid}','{$getinformation}','{$giveid}')";
+                $str = "insert into gets (UserId,GetInformation,GiveId) VALUES ('{$userid}','{$getinformation}','{$giveid}')";
                 ins($str);
                 echo '1';
             }
