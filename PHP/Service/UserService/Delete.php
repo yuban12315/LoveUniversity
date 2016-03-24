@@ -26,7 +26,7 @@ if($_SESSION['userid'])
         case 'help':$idname = 'HelpId';break;
         case 'give':$idname = 'GiveId';break;
     }
-    $str = "delete from xue where {$idname} = {$id} and UserId = {$userid}";
+    $str = "delete from {$table} where {$idname} = {$id} and UserId = {$userid}";
     del($str);
     echo '1';
 }
