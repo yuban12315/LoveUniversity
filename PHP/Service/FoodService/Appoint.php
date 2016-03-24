@@ -2,9 +2,13 @@
 //约
 session_start();
 require_once '../../DAO/DAO.php';
+/*
+$_SESSION['userid'] = 25;
+$_POST['foodid'] = 5;
+*/
 if (isset($_SESSION['userid'])) {
     $getuser = $_SESSION['userid'];
-    $str = "select * from run where GetUser = {$getuser}";
+    $str = "select * from food where GetUser = {$getuser}";
     $row = sel($str);
     $str1= "select * from user where UserId = {$getuser}";
     $row1 = sel($str1);
