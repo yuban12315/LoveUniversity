@@ -8,11 +8,15 @@
 session_start();
 require_once '../../DAO/DAO.php';
 require_once '../UserService/XSS.php';
+/*
+$_SESSION['userid'] = 27;
+$_POST['giveid'] = 6;
+$_SESSION['jwxtnumber'] = '111';
+$_POST['getinformation'] = '111';
+*/
 if (isset($_SESSION['userid'])) {
     $userid = $_SESSION['userid'];
-    $str1 = "select * from user where UserId = {$userid}";
-    $row1 = sel($str1);
-    if (empty($row1['JwxtNumber'])) {
+    if (empty($_SESSION['jwxtnumber'])) {
         echo '请完善个人信息';
         die();
     } else {

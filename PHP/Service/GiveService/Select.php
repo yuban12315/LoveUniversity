@@ -7,6 +7,11 @@
  */
 session_start();
 require_once '../../DAO/DAO.php';
+/*调用选择测试
+$_POST['giveid'] = 6;
+$_POST['getuser'] = 1;
+$_SESSION['userid'] = 25;
+*/
 if(isset($_SESSION['userid']))
 {
     $userid = $_SESSION['userid'];
