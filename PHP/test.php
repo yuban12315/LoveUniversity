@@ -1,6 +1,6 @@
 <?php
 
- /* $conn = mysqli_connect("183.175.12.160","root","31415926","loveu","3306");
+/* $conn = mysqli_connect("183.175.12.160","root","31415926","loveu","3306");
 //$str = date("Y-m-d h:m:s");
 //$str = '2016-01-03 16:55:55';
 mysqli_query($conn,"select * from user where UserId = 1");
@@ -184,6 +184,7 @@ $result = mysqli_query($conn, $str);
 $row = mysqli_fetch_assoc($result);
 echo $row['count(*)'];
 */
+/*
 test();
 echo '1';
 function test()
@@ -191,6 +192,13 @@ function test()
     echo 'ERROR';
     die();
 }
+*/
+require_once 'Service/UserService/Upload.php';
+$tmp_name = $_FILES['file']['tmp_name'];
+upload($tmp_name, $rename, 'give');
+$path = 'http://7xrqhs.com1.z0.glb.clouddn.com/' . $rename;
+echo '1';
+
 
 
 
