@@ -18,25 +18,29 @@ $_FILES['giveimage']['name'] = '11';
 $rename = '111';
 */
 if (isset($_SESSION['userid'])) {
-    $userid = $_SESSION['userid'];
-    if (empty($_SESSION['jwxtnumber'])) {
-        echo '请完善个人信息';
-        die();
-    } else {
-        $giveuser = $_SESSION['username'];
-        if (empty($_POST['giveinformation']) || empty($_FILES['giveimage']['name'])) {
-            echo '信息不能为空';
+    if (isset($_SESSION['bjbj'])) {
+        $userid = $_SESSION['userid'];
+        if (empty($_SESSION['jwxtnumber'])) {
+            echo '请完善个人信息';
+            die();
         } else {
-            @$giveinformation = $_POST['giveinformation'];
-            if (xss($giveinformation)) {
-                echo '不要试图攻击';
-                die();
+            $giveuser = $_SESSION['username'];
+            if (empty($_POST['giveinformation']) || empty($_FILES['giveimage']['name'])) {
+                echo '信息不能为空';
+            } else {
+                @$giveinformation = $_POST['giveinformation'];
+                if (xss($giveinformation)) {
+                    echo '不要试图攻击';
+                    die();
+                }
+                $path = $_SESSION['bjbj'];
+                unset($_SESSION['bjbj']);
+                $str = "insert into give (UserId,GiveUser,GiveImage,GiveInformation,state) VALUES ('{$userid}','{$giveuser}','{$path}','{$giveinformation}',1)";
+                ins($str);
+                echo '1';
             }
-            $path = $_SESSION['bjbj'];
-            unset($_SESSION['bjbj']);
-            $str = "insert into give (UserId,GiveUser,GiveImage,GiveInformation,state) VALUES ('{$userid}','{$giveuser}','{$path}','{$giveinformation}',1)";
-            ins($str);
-            echo '1';
         }
+    } else {
+        echo '请选择图片';
     }
 }
