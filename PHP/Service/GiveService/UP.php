@@ -12,7 +12,7 @@ require_once '../UserService/Upload.php';
 if (isset($_SESSION['userid'])) {
     $userid = $_SESSION['userid'];
     if (empty($_SESSION['jwxtnumber'])) {
-        echo '请完善个人信息';
+        echo '0';
         die();
     } else {
         $src = $_FILES['file']['tmp_name'];
@@ -21,7 +21,6 @@ if (isset($_SESSION['userid'])) {
         $path = 'http://7xrqhs.com1.z0.glb.clouddn.com/' . $mm . '.png';
         upload($src, $N, 'give');
         $_SESSION['bjbj'] = $path;
-        echo "1";
     }
 }
 function get_md5_string()
