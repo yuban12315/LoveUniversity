@@ -25,18 +25,19 @@ if (isset($_SESSION['userid'])) {
                 echo '请输入正确的时间';
             } else {
                 $uptime = date("y-m-d h:m:s");
-                $name = $_FILES['paiimage']['name'];
-                $type = $_FILES['paiimage']['type'];
-                $tmp_name = $_FILES['paiimage']['tmp_name'];
-                $error = $_FILES['paiimage']['error'];
-                $size = $_FILES['paiimage']['size'];
-                $destination = $tmp_name;
-                $rename = md5(uniqid(microtime(true), true)) . '.png';
-                $path = 'http://7xrqhs.com1.z0.glb.clouddn.com/' . $rename;
-                upload($destination, $rename, 'paimai');
-                $str = "insert into pai (UserId,PostUser,PaiMoney,UpTime,DownTime,PaiInformation,PaiImage,state,PaiTitle) VALUES ({$userid},'{$postuser}','{$paimoney}','{$uptime}','{$downtime}','{$paiinformation}','{$path}',1,'{$paititle}')";
-                ins($str);
-                echo "1";
+                if ($_FILES["file"]["error"] > 0) {
+                    echo "Return Code: " . $_FILES["file"]["error"];
+                } else {
+                    $name = $_FILES['file']['name'];
+                    $tmp_name = $_FILES['file']['tmp_name'];
+                    $destination = $tmp_name;
+                    $rename = md5(uniqid(microtime(true), true)) . '.png';
+                    $path = 'http://7xrqhs.com1.z0.glb.clouddn.com/' . $rename;
+                    upload($destination, $rename, 'paimai');
+                    $str = "insert into pai (UserId,PostUser,PaiMoney,UpTime,DownTime,PaiInformation,PaiImage,state,PaiTitle) VALUES ({$userid},'{$postuser}','{$paimoney}','{$uptime}','{$downtime}','{$paiinformation}','{$path}',1,'{$paititle}')";
+                    ins($str);
+                    echo "1";
+                }
             }
         }
     } else {
