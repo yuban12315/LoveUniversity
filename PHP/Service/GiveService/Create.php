@@ -33,12 +33,16 @@ if (isset($_SESSION['userid'])) {
                 die();
             }
             $rename = md5(uniqid(microtime(true), true)) . '.png';
-            $tmp_name = $_FILES['giveimage']['tmp_name'];
-            upload($tmp_name, $rename, 'give');
-            $path = 'http://7xrqhs.com1.z0.glb.clouddn.com/' . $rename;
-            $str = "insert into give (UserId,GiveUser,GiveImage,GiveInformation,state) VALUES ('{$userid}','{$giveuser}','{$path}','{$giveinformation}',1)";
-            ins($str);
-            echo '1';
+            if ($_FILES["file"]["error"] > 0) {
+                echo "Return Code: " . $_FILES["file"]["error"];
+            } else {
+                $tmp_name = $_FILES['file']['tmp_name'];
+                upload($tmp_name, $rename, 'give');
+                $path = 'http://7xrqhs.com1.z0.glb.clouddn.com/' . $rename;
+                $str = "insert into give (UserId,GiveUser,GiveImage,GiveInformation,state) VALUES ('{$userid}','{$giveuser}','{$path}','{$giveinformation}',1)";
+                ins($str);
+                echo '1';
+            }
         }
     }
 }
