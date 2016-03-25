@@ -25,7 +25,7 @@ if (isset($_SESSION['userid'])) {
             die();
         } else {
             $giveuser = $_SESSION['username'];
-            if (empty($_POST['giveinformation']) || empty($_FILES['giveimage']['name'])) {
+            if (empty($_POST['giveinformation'])) {
                 echo '信息不能为空';
             } else {
                 @$giveinformation = $_POST['giveinformation'];
