@@ -20,7 +20,6 @@ if (isset($_SESSION['userid'])) {
         $N = $mm . '.png';
         $path = 'http://7xrqhs.com1.z0.glb.clouddn.com/' . $mm . '.png';
         upload($src, $N, 'give');
-        unlink($src);
         $_SESSION['bjbj'] = $path;
         echo "1";
     }
