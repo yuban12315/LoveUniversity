@@ -30,7 +30,6 @@ function upload($path,$name,$space)
 
 // 调用 UploadManager 的 putFile 方法进行文件的上传
     list($ret, $err) = $uploadMgr->putFile($token, $key, $filePath);
-    echo "\n====> putFile result: \n";
     if ($err !== null) {
         var_dump($err);
     } else {
