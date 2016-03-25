@@ -38,17 +38,21 @@ if (isset($_SESSION['userid'])) {
                 @$helpmoney = (int)$_POST['helpmoney'];
                 @$helpinformation = $_POST['helpinformation'];
                 @$paypassword = $_POST['paypassword'];
-                if (xss($helpmoney) || xss($helpinformation)) {
-                    echo "不要试图攻击";
+                if (strtotime(date("y-m-d h:i:s")) >= strtotime($time)) {
+                    echo '请输入正确的时间';
                 } else {
-                    $data = pay($userid, $helpmoney, 0, $paypassword);
-                    if ($data == '1') {
-                        $helpimage = $_SESSION['userphoto'];
-                        $str = "insert into help (UserId,PostUser,HelpMoney,Time,HelpInformation,state,HelpImage,Finish) VALUES ({$userid},'{$postuser}',{$helpmoney},'{$time}','{$helpinformation}',1,'{$helpimage}',1)";
-                        ins($str);
-                        echo '1';
+                    if (xss($helpmoney) || xss($helpinformation)) {
+                        echo "不要试图攻击";
                     } else {
-                        echo $data;
+                        $data = pay($userid, $helpmoney, 0, $paypassword);
+                        if ($data == '1') {
+                            $helpimage = $_SESSION['userphoto'];
+                            $str = "insert into help (UserId,PostUser,HelpMoney,DownTime,HelpInformation,state,HelpImage,Finish) VALUES ({$userid},'{$postuser}',{$helpmoney},'{$time}','{$helpinformation}',1,'{$helpimage}',1)";
+                            ins($str);
+                            echo '1';
+                        } else {
+                            echo $data;
+                        }
                     }
                 }
             }

@@ -32,10 +32,14 @@ if (isset($_SESSION['userid'])) {
                     echo '请不要试图攻击!!!';
                     die();
                 }
-                $postuser = $_SESSION['username'];
-                $str = "insert into run (UserId,PostUser,RunInformation,RunTime,state,PostImage,RunArea) VALUES ('{$userid}','{$postuser}','{$runinformation}','{$runtime}',1,'{$postimage}','{$runarea}')";
-                ins($str);
-                echo '1';
+                if (strtotime(date("y-m-d h:i:s")) >= strtotime($runtime)) {
+                    echo '请输入正确的时间';
+                } else {
+                    $postuser = $_SESSION['username'];
+                    $str = "insert into run (UserId,PostUser,RunInformation,RunTime,state,PostImage,RunArea) VALUES ('{$userid}','{$postuser}','{$runinformation}','{$runtime}',1,'{$postimage}','{$runarea}')";
+                    ins($str);
+                    echo '1';
+                }
             }
         }
     } else {
