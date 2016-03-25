@@ -171,10 +171,12 @@ $postuser = $_SESSION['username'];
 $postimage = "111";
 $userid = $_SESSION['userid'];
 */
+/*
 @$str = $_POST['test'];
 echo $str;
 strtr($str,'/n',"");
 echo $str;
+*/
 /*
 $conn = mysqli_connect('183.175.12.160', 'root', '31415926', 'loveu', '3306');
 $str = "select count(*) from run where state = 1";
@@ -182,6 +184,13 @@ $result = mysqli_query($conn, $str);
 $row = mysqli_fetch_assoc($result);
 echo $row['count(*)'];
 */
+test();
+echo '1';
+function test()
+{
+    echo 'ERROR';
+    die();
+}
 
 
 

@@ -24,8 +24,10 @@ function pay($payid,$num, $getid, $paypassword)
                 $str = "select * from money where UserId = {$getid}";
                 $row = sel($str);
                 $money = $row['Money'] + $num;
-                $str = "update money set Money = {$money} where UserId = {$getid}";
-                up($str);
+                if($getid!=0) {
+                    $str = "update money set Money = {$money} where UserId = {$getid}";
+                    up($str);
+                }
                 return '1';
             } else {
                 return '余额不足，请充值';

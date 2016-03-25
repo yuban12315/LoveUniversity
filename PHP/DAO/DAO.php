@@ -12,7 +12,8 @@ function connect()
     if ($conn) {
         return $conn;
     } else {
-        return false;
+        echo 'error';
+        die();
     }
 }
 
@@ -28,8 +29,14 @@ function sel($str)
 function ins($str)
 {
     $conn = connect();
-    mysqli_query($conn, $str);
-    mysqli_close($conn);
+    if(mysqli_query($conn, $str)) {
+        mysqli_close($conn);
+        return true;
+    }
+    else{
+        echo 'error';
+        die();
+    }
 }
 
 function up($str)
@@ -39,7 +46,8 @@ function up($str)
         mysqli_close($conn);
         return true;
     } else {
-        return false;
+        echo 'error';
+        die();
     }
 }
 
@@ -51,7 +59,8 @@ function del($str)
         mysqli_close($conn);
         return true;
     } else {
-        return false;
+        echo 'error';
+        die();
     }
 
 }
