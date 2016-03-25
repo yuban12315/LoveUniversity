@@ -24,8 +24,7 @@ function MP($str)
         $path = 'http://7xrqhs.com1.z0.glb.clouddn.com/' . $mm .'.png';
         upload($src,$N, 'give');
         unlink($src);
-        $str = "update user set UserPhoto = '{$path}' where UserId = '{$userid}'";
-        up($str);
+        $_SESSION['bjbj'] = $path;
         echo "1";
     }
 }
