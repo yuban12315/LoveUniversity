@@ -24,14 +24,18 @@ if (isset($_SESSION['userid'])) {
             $runid = (int)$_POST['runid'];
             $str = "select * from run where RunId = {$runid}";
             $row = sel($str);
-            if ($row['state'] == 1) {
-                $str = "update run set state = 0 where  RunId = {$runid}";
-                up($str);
-                $str = "update run set GetUser = '{$getuser}' where RunId = {$runid}";
-                up($str);
-                echo "1";
+            if ($row) {
+                if ($row['state'] == 1) {
+                    $str = "update run set state = 0 where  RunId = {$runid}";
+                    up($str);
+                    $str = "update run set GetUser = '{$getuser}' where RunId = {$runid}";
+                    up($str);
+                    echo "1";
+                } else {
+                    echo '你来晚了，TA已经被约了';
+                }
             } else {
-                echo '你来晚了，TA已经被约了';
+                echo '约会已被删除';
             }
         }
     }

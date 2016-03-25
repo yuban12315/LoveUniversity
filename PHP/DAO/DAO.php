@@ -29,11 +29,10 @@ function sel($str)
 function ins($str)
 {
     $conn = connect();
-    if(mysqli_query($conn, $str)) {
+    if (mysqli_query($conn, $str)) {
         mysqli_close($conn);
         return true;
-    }
-    else{
+    } else {
         echo 'error';
         die();
     }
@@ -54,15 +53,8 @@ function up($str)
 function del($str)
 {
     $conn = connect();
-
-    if (mysqli_query($conn, $str)) {
-        mysqli_close($conn);
-        return true;
-    } else {
-        echo 'error';
-        die();
-    }
-
+    mysqli_query($conn, $str);
+    mysqli_close($conn);
 }
 
 ?>

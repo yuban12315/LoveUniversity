@@ -28,19 +28,29 @@ if (isset($_SESSION['userid'])) {
             $getuser = $_SESSION['userid'];
             @$helpid = $_POST['helpid'];
             @$comment = $_POST['comment'];
-            $str = "update help set GetUser = {$getuser} where HelpId = {$helpid}";
-            up($str);
-            $str = "update help set state = 0 where HelpId = {$helpid}";
-            up($str);
-            if (!empty($comment)) {
-                if (xss($comment)) {
-                    echo "不要试图攻击";
+            $str = "select * from help where HelpId = {$helpid}";
+            $row = sel($str);
+            if ($row) {
+                if ($row['state'] == 1) {
+                    $str = "update help set GetUser = {$getuser} where HelpId = {$helpid}";
+                    up($str);
+                    $str = "update help set state = 0 where HelpId = {$helpid}";
+                    up($str);
+                    if (!empty($comment)) {
+                        if (xss($comment)) {
+                            echo "不要试图攻击";
+                        } else {
+                            $str = "insert into helpcomment (UserId,Comment,HelpId) VALUES ({$getuser},'{$comment}',{$helpid})";
+                            ins($str);
+                        }
+                    }
+                    echo '1';
                 } else {
-                    $str = "insert into helpcomment (UserId,Comment,HelpId) VALUES ({$getuser},'{$comment}',{$helpid})";
-                    ins($str);
+                    echo '你来晚了，已经有人帮助他了';
                 }
+            } else {
+                echo '该信息已被删除';
             }
-            echo '1';
         }
     }
 }

@@ -31,14 +31,17 @@ if (isset($_SESSION['userid'])) {
             @$giveid = $_POST['giveid'];
             $str = "select * from give where GiveId = {$giveid}";
             $row = sel($str);
-            if ($row['state'] == 1) {
-                $userid = $_SESSION['userid'];
-                $str = "insert into gets (UserId,GetInformation,GiveId) VALUES ('{$userid}','{$getinformation}','{$giveid}')";
-                ins($str);
-                echo '1';
-            }
-            else{
-                echo '你来晚了，ta已经被约了';
+            if ($row) {
+                if ($row['state'] == 1) {
+                    $userid = $_SESSION['userid'];
+                    $str = "insert into gets (UserId,GetInformation,GiveId) VALUES ('{$userid}','{$getinformation}','{$giveid}')";
+                    ins($str);
+                    echo '1';
+                } else {
+                    echo '你来晚了，礼物已经被主人送出了';
+                }
+            } else {
+                echo '礼物被主人删除了';
             }
         }
     }
