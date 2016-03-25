@@ -22,8 +22,6 @@ if(isset($_SESSION['userid'])) {
         case 'xue':$idname = 'XueId';break;
         case 'run':$idname = 'RunId';break;
         case 'food':$idname = 'FoodId';break;
-        case 'pai':$idname = 'PaiId';break;
-        case 'help':$idname = 'HelpId';break;
         case 'give':$idname = 'GiveId';break;
     }
     $str = "update {$table} set state  = 1 where {$idname} = {$id} and UserId = {$userid}";
