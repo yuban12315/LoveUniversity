@@ -16,6 +16,7 @@ $_SESSION['username'] = 'admin';
 $_POST['helpmoney'] = 1;
 $_POST['helpinformation'] = '111';
 $_POST['paypassword'] = '123456789';
+$_POST['time'] = '2016-07-08 16:18:00';
 $_SESSION['userphoto'] = '111';
 */
 if (isset($_SESSION['userid'])) {
