@@ -29,19 +29,24 @@ if (isset($_SESSION['userid'])) {
                 die();
             }
             @$giveid = $_POST['giveid'];
-            $str = "select * from give where GiveId = {$giveid}";
-            $row = sel($str);
-            if ($row) {
-                if ($row['state'] == 1) {
-                    $userid = $_SESSION['userid'];
-                    $str = "insert into gets (UserId,GetInformation,GiveId) VALUES ('{$userid}','{$getinformation}','{$giveid}')";
-                    ins($str);
-                    echo '1';
-                } else {
-                    echo '你来晚了，礼物已经被主人送出了';
-                }
+            $str = "select * from gets where UserId = {$userid} and GiveId = {$giveid}";
+            if (sel($str)) {
+                echo '不要尝试刷评论';
             } else {
-                echo '礼物被主人删除了';
+                $str = "select * from give where GiveId = {$giveid}";
+                $row = sel($str);
+                if ($row) {
+                    if ($row['state'] == 1) {
+                        $userid = $_SESSION['userid'];
+                        $str = "insert into gets (UserId,GetInformation,GiveId) VALUES ('{$userid}','{$getinformation}','{$giveid}')";
+                        ins($str);
+                        echo '1';
+                    } else {
+                        echo '你来晚了，礼物已经被主人送出了';
+                    }
+                } else {
+                    echo '礼物被主人删除了';
+                }
             }
         }
     }
