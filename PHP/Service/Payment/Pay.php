@@ -10,7 +10,7 @@ require_once '../../DAO/DAO.php';
 $_SESSION['userid'] = 25;
 pay(10,27,'123456789');
 */
-function pay($payid,$num, $getid, $paypassword)
+function pay($payid, $num, $getid, $paypassword)
 {
     if (isset($_SESSION['userid'])) {
         $userid = $payid;
@@ -21,10 +21,10 @@ function pay($payid,$num, $getid, $paypassword)
                 $money = $row['Money'] - $num;
                 $str = "update money set Money = {$money} where UserId = $userid";
                 up($str);
-                $str = "select * from money where UserId = {$getid}";
-                $row = sel($str);
-                $money = $row['Money'] + $num;
-                if($getid!=0) {
+                if ($getid != 0) {
+                    $str = "select * from money where UserId = {$getid}";
+                    $row = sel($str);
+                    $money = $row['Money'] + $num;
                     $str = "update money set Money = {$money} where UserId = {$getid}";
                     up($str);
                 }
@@ -32,8 +32,7 @@ function pay($payid,$num, $getid, $paypassword)
             } else {
                 return '余额不足，请充值';
             }
-        }
-        else{
+        } else {
             return '支付密码错误，请重新输入';
         }
     }
