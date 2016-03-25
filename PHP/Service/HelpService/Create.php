@@ -44,7 +44,7 @@ if (isset($_SESSION['userid'])) {
                     $data = pay($userid, $helpmoney, 0, $paypassword);
                     if ($data == '1') {
                         $helpimage = $_SESSION['userphoto'];
-                        $str = "insert into help (UserId,PostUser,HelpMoney,Time,HelpInformation,state,HelpImage) VALUES ({$userid},'{$postuser}',{$helpmoney},'{$time}','{$helpinformation}',1,'{$helpimage}')";
+                        $str = "insert into help (UserId,PostUser,HelpMoney,Time,HelpInformation,state,HelpImage,Finish) VALUES ({$userid},'{$postuser}',{$helpmoney},'{$time}','{$helpinformation}',1,'{$helpimage}',1)";
                         ins($str);
                         echo '1';
                     } else {
