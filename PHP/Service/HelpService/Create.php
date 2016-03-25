@@ -9,10 +9,14 @@ session_start();
 require_once '../../DAO/DAO.php';
 require_once '../UserService/XSS.php';
 require_once '../Payment/Pay.php';
-/*
+/*测试创建Help
 $_SESSION['userid'] = 25;
 $_SESSION['jwxtnumber'] = '111';
-$_POST['']
+$_SESSION['username'] = 'admin';
+$_POST['helpmoney'] = 1;
+$_POST['helpinformation'] = '111';
+$_POST['paypassword'] = '123456789';
+$_SESSION['userphoto'] = '111';
 */
 if (isset($_SESSION['userid'])) {
     $userid = $_SESSION['userid'];
