@@ -33,6 +33,7 @@ if (isset($_SESSION['userid'])) {
                 die();
             }
             $path = $_SESSION['bjbj'];
+            unset($_SESSION['bjbj']);
             $str = "insert into give (UserId,GiveUser,GiveImage,GiveInformation,state) VALUES ('{$userid}','{$giveuser}','{$path}','{$giveinformation}',1)";
             ins($str);
             echo '1';

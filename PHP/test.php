@@ -193,11 +193,17 @@ function test()
     die();
 }
 */
+/*
 require_once 'Service/UserService/Upload.php';
 $tmp_name = $_FILES['file']['tmp_name'];
 upload($tmp_name, $rename, 'give');
 $path = 'http://7xrqhs.com1.z0.glb.clouddn.com/' . $rename;
 echo '1';
+*/
+
+
+
+
 
 
 
