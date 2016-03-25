@@ -12,7 +12,7 @@ require_once '../UserService/Upload.php';
 if (isset($_SESSION['userid'])) {
     $userid = $_SESSION['userid'];
     if (empty($_SESSION['jwxtnumber'])) {
-        echo '0';
+        echo '请完善个人信息';
         die();
     } else {
         $src = $_FILES['file']['tmp_name'];
