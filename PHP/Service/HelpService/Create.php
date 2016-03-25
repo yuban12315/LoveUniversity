@@ -33,6 +33,7 @@ if (isset($_SESSION['userid'])) {
             if (empty($_POST['helpmoney']) || empty($_POST['helpinformation'])) {
                 echo "信息不能为空";
             } else {
+                @$time = $_POST['time'];
                 @$helpmoney = (int)$_POST['helpmoney'];
                 @$helpinformation = $_POST['helpinformation'];
                 @$paypassword = $_POST['paypassword'];
@@ -41,9 +42,8 @@ if (isset($_SESSION['userid'])) {
                 } else {
                     $data = pay($userid, $helpmoney, 0, $paypassword);
                     if ($data == '1') {
-                        $uptime = date("y-m-d h:m:s");
                         $helpimage = $_SESSION['userphoto'];
-                        $str = "insert into help (UserId,PostUser,HelpMoney,UpTime,HelpInformation,state,HelpImage) VALUES ({$userid},'{$postuser}',{$helpmoney},'{$uptime}','{$helpinformation}',1,'{$helpimage}')";
+                        $str = "insert into help (UserId,PostUser,HelpMoney,Time,HelpInformation,state,HelpImage) VALUES ({$userid},'{$postuser}',{$helpmoney},'{$time}','{$helpinformation}',1,'{$helpimage}')";
                         ins($str);
                         echo '1';
                     } else {
