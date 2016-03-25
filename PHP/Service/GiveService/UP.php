@@ -18,7 +18,7 @@ if (isset($_SESSION['userid'])) {
         $src = $_FILES['file']['tmp_name'];
         $mm = get_md5_string();
         $N = $mm . '.png';
-        $path = 'http://7xrqhs.com1.z0.glb.clouddn.com/' . $mm . '.png';
+        $path = 'http://7xrxgm.com1.z0.glb.clouddn.com/' . $mm . '.png';
         upload($src, $N, 'give');
         $_SESSION['bjbj'] = $path;
     }
