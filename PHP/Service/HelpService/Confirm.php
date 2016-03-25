@@ -8,10 +8,12 @@
 session_start();
 require_once '../../DAO/DAO.php';
 require_once '../Payment/Get.php';
+/*调用测试：确认
 $_SESSION['userid'] = 25;
 $_POST['helpid'] = 1;
 $_POST['paypassword'] = '123456789';
-if ($_SESSION['userid']) {
+*/
+if (isset($_SESSION['userid'])) {
     $userid = $_SESSION['userid'];
     @$helpid = $_POST['helpid'];
     @$paypassword = $_POST['paypassword'];
