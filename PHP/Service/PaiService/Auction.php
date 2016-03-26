@@ -9,10 +9,11 @@ session_start();
 require_once '../../DAO/DAO.php';
 require_once '../UserService/XSS.php';
 require_once '../Payment/Pay.php';
+require_once '../Payment/Get.php';
 /*拍卖测试
-$_SESSION['userid'] = 27;
+$_SESSION['userid'] =35;
 $_SESSION['jwxtnumber'] = '111';
-$_POST['paimoney'] = 13;
+$_POST['paimoney'] = 17;
 $_POST['paiid'] = 1;
 $_POST['paypassword'] = '123456789';
 $_POST['comment'] = '111';
@@ -54,12 +55,19 @@ if (isset($_SESSION['userid'])) {
                             $str = "insert into comment (UserId,Comment,PaiId) VALUES ({$userid},'{$comment}',{$paiid})";
                             ins($str);
                         }
+                        $str = "select * from pai where PaiId = {$paiid}";
+                        $row = sel($str);
+                        if(!empty($row['GetUser'])) {
+                            get(0, $row['PaiMoney'], $row['GetUser']);
+                        }
                         $str = "update pai set PaiMoney = {$paimoney} where PaiId = {$paiid}";
                         up($str);
                         $str = "update pai set GetUser = {$getuser} where PaiId = {$paiid}";
                         up($str);
+                        /*迷之代码
                         $str = "select * from pai where PaiId = {$paiid}";
                         $row = sel($str);
+                        */
                         echo '1';
                     } else {
                         echo $data;
