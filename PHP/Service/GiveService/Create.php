@@ -13,7 +13,7 @@ require_once '../UserService/XSS.php';
 $_SESSION['userid'] = 25;
 $_SESSION['jwxtnumber'] = '111';
 $_SESSION['username'] = 'admin';
-$_POST['giveinformation'] = '111';
+$_POST['giveinformation'] = '111';v
 $_FILES['giveimage']['name'] = '11';
 $rename = '111';
 */

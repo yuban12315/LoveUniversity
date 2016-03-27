@@ -53,27 +53,20 @@
     <div class="container">
         <form role="form" autocomplete="off">
             <div class="form-group">
-                <div class="input-group col-lg-8 col-md-12 col-sm-12">
-                    <span class="input-group-addon "><span class="glyphicon glyphicon-home"></span> 约定地点</span>
-                    <input type="text" value="" class="form-control  big" id="dateplace">
-                    <span class="input-group-addon">
-                        <label class="radio-inline">
-                            <input type="radio" name="deal" value="我请客">我请客
-                        </label>
-                    <label class="radio-inline">
-                        <input type="radio" name="deal" value="AA制"> AA制
-                    </label>
-                    <label class="radio-inline">
-                        <input type="radio" name="deal" value="Ta请客"> Ta请客
-                    </label>
-                    </span>
-                </div>
                 <label for="input-content"></label>
                 <textarea class="form-control textarea" rows="3" id="input-content" placeholder="描述"></textarea>
-                <div class="input-group col-lg-4 col-md-5 col-sm-6 ">
-                    <span class="input-group-addon "><span class="glyphicon glyphicon-calendar"></span> 约定时间</span>
+                <div class="input-group col-lg-8 col-md-12 col-sm-12">
+                    <span class="input-group-addon "><span class="glyphicon glyphicon-calendar"></span> 时间</span>
                     <input size="16" type="text" value="" readonly class="form_datetime form-control  big"
-                           id="datetime">
+                           id="time">
+                    <span class="input-group-addon "><span class="glyphicon glyphicon-usd"></span> 悬赏</span>
+                    <input type="text" value="0" class="form-control  big" id="money">
+                    <span class="input-group-addon btn btn-sm" id="down">
+                            <span class="glyphicon glyphicon-menu-down"></span>
+                    </span>
+                    <span class="input-group-addon btn btn-sm" id="up">
+                        <span class=" glyphicon glyphicon-menu-up"></span>
+                    </span>
                 </div>
                 <button class="btn btn-default big " id="word">200</button>
                 <button type="button" class="btn btn-success big pull-right" id="submit">
@@ -110,6 +103,32 @@
 <script src="../../js/index-service.js"></script>
 <script src="../../js/datetimepicker.js"></script>
 <script src="../../js/fr.js"></script>
-<script src="../../js/service/food.js"></script>
+<script>
+    $(document).ready(function () {
+        $(".form_datetime").datetimepicker({format: 'yyyy-mm-dd hh:ii'});
+        money();
+        $("#submit").click(function () {
+            submit();
+        })
+    });
+    function money() {
+        $("#up").click(function () {
+            $("#money").val(parseInt($("#money").val()) + 1);
+        });
+        $("#down").click(function () {
+            if (parseInt($("#money").val()) > 0) {
+                $("#money").val(parseInt($("#money").val()) - 1);
+            }
+        });
+    }
+    function submit(){
+        var msg=$("#input-content").val();
+        var money=$("#money").val();
+        var time=$("#time").val()+':00';
+        var reg=new RegExp("\n","g");
+        msg = msg.replace(reg,'；');
+        alert(msg+money+time);
+    }
+</script>
 </body>
 </html>
