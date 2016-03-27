@@ -7,4 +7,5 @@
  */
 require_once '../UserService/Comment.php';
 @$page = (int)$_GET['page'];
-comment('gets',$page,'GiveId',1,'GetId');
+@$giveid = (int)$_GET['giveid'];
+comment('gets',$page,'GiveId',$giveid,'GetId');
