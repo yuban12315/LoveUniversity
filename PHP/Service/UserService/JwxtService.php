@@ -14,7 +14,6 @@ function loginservice($jwxtnumber, $jwxtpassword)
     else
         return false;
 }
-
 function classservice($jwxtnumber, $jwxtpassword, $userid)
 {
     $str = "select * from class where UserId = {$userid}";
