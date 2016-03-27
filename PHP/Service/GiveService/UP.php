@@ -17,14 +17,34 @@ if (isset($_SESSION['userid'])) {
     } else {
         $src = $_FILES['file']['tmp_name'];
         $type = $_FILES['file']['type'];
+        $size = $_FILES['files']['size'];
+        if ($size > 1 * 1024 * 1024) {
+            echo '图片文件过大';
+            die();
+        }
         $mm = get_md5_string();
         $N = $mm . '.png';
         $path = 'http://7xrxgm.com1.z0.glb.clouddn.com/' . $mm . '.png';
-        switch($type)
-        {
-            case "image/jpeg":$image = @imagecreatefromjpeg ($src);imagejpeg ($image,"Buffer/{$N}",9);break;
-            case "image/jpg":$image = @imagecreatefromjpeg ($src);imagejpeg ($image,"Buffer/{$N}",9);break;
-            case "image/png":$image = @imagecreatefrompng ($src);imagepng ($image,"Buffer/{$N}",9);break;
+        switch ($type) {
+            case "image/jpeg":
+                $image = @imagecreatefromjpeg($src);
+                imagejpeg($image, "Buffer/{$N}", 9);
+                break;
+            case "image/pjpeg":
+                $image = @imagecreatefromjpeg($src);
+                imagejpeg($image, "Buffer/{$N}", 9);
+                break;
+            case "image/jpg":
+                $image = @imagecreatefromjpeg($src);
+                imagejpeg($image, "Buffer/{$N}", 9);
+                break;
+            case "image/png":
+                $image = @imagecreatefrompng($src);
+                imagepng($image, "Buffer/{$N}", 9);
+                break;
+            default:
+                echo '图片格式不正确';
+                die();
         }
         $_SESSION['bjbj'] = $path;
         upload($src, $N, 'give');
