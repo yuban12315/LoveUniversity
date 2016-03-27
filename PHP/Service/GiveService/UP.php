@@ -22,12 +22,14 @@ if (isset($_SESSION['userid'])) {
         $path = 'http://7xrxgm.com1.z0.glb.clouddn.com/' . $mm . '.png';
         switch($type)
         {
-            case "jpeg":$image = @imagecreatefromjpeg ($src);imagejpeg ($image,"Buffer/{$N}",9);break; /*压缩等级0-9，压缩后9最小，1最大*/
-            case "jpg":$image = @imagecreatefromjpeg ($src);imagejpeg ($image,"Buffer/{$N}",9);break; /*压缩等级0-9，压缩后9最小，1最大*/
+            case "image/jpeg":$image = @imagecreatefromjpeg ($src);imagejpeg ($image,"Buffer/{$N}",9);break;
+            case "image/jpg":$image = @imagecreatefromjpeg ($src);imagejpeg ($image,"Buffer/{$N}",9);break;
+            case "image/png":$image = @imagecreatefrompng ($src);imagepng ($image,"Buffer/{$N}",9);break;
         }
+        $_SESSION['bjbj'] = $path;
         upload($src, $N, 'give');
         unlink("Buffer/{$N}");
-        $_SESSION['bjbj'] = $path;
+
     }
 }
 function get_md5_string()
