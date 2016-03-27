@@ -16,11 +16,15 @@ if (isset($_SESSION['userid'])) {
         die();
     } else {
         $src = $_FILES['file']['tmp_name'];
+        $type = $_FILES['file']['type'];
         $mm = get_md5_string();
         $N = $mm . '.png';
         $path = 'http://7xrxgm.com1.z0.glb.clouddn.com/' . $mm . '.png';
-        $image = @imagecreatefromjpeg ($src);
-        imagejpeg ($image,"Buffer/{$N}",9); /*压缩等级0-9，压缩后9最小，1最大*/
+        switch($type)
+        {
+            case "jpeg":$image = @imagecreatefromjpeg ($src);imagejpeg ($image,"Buffer/{$N}",9);break; /*压缩等级0-9，压缩后9最小，1最大*/
+            case "jpg":$image = @imagecreatefromjpeg ($src);imagejpeg ($image,"Buffer/{$N}",9);break; /*压缩等级0-9，压缩后9最小，1最大*/
+        }
         upload($src, $N, 'give');
         unlink("Buffer/{$N}");
         $_SESSION['bjbj'] = $path;
