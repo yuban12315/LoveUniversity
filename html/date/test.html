@@ -9,19 +9,81 @@
     <link href="../../css/style.css" rel="stylesheet">
 </head>
 <body>
-<form>
-    <input type="radio" name="testradio" value="jquery获取radio的值" />jquery获取radio的值
-    <input type="radio" name="testradio" value="jquery获取checkbox的值" />jquery获取checkbox的值
-    <input type="radio" name="testradio" value="jquery获取select的值" />jquery获取select的值
-</form>
 <button class="btn btn-success" id="test">Click</button>
+<div class="row">
+    <div class="container" id='content'>
+    </div>
+</div>
+
+<div class="load" id="loading"></div>
+
 <script src="../../js/jQuery.js"></script>
 <script>
     $(document).ready(function () {
+        show1(1);
       $("#test").click(function () {
-          alert($('input[name="testradio"]:checked').val())
+          $("#loading").fadeIn();
       })
     });
+
 </script>
+
+<script>
+    function creat(nickname, avator, datetime, place, msg, id) {
+        var data;
+        data = '<div class="col-lg-6 col-md-12 col-sm-12 info">'
+                + '<div class="col-lg-4  col-md-6 col-sm-6">'
+                + '<img class="img-thumbnail info-img" ' + 'src="' + avator + '"></div>'
+                + '<div class="col-lg-4 col-md-6 col-sm-6"><h2 class="text-center">' + nickname + '</h2></div>'
+                + '<div class="col-lg-4 col-md-6 col-sm-6">'
+                + '<h2 class="text-center">' + datetime + '</h2>'
+                + '</div>'
+                + '<div class="col-lg-4 col-md-6 col-sm-6">'
+                + '<h2 class="text-center">' + place + '</h2>'
+                + '</div>'
+                + '<div class="col-lg-12">'
+                + '<h3 class="text-center">' + msg + '</h3>'
+                + ' <button class="btn btn-info big pull-right" onclick="date(this)">约</button>'
+                + '<p class="hidden">' + id + '</p>'
+                + '</div></div>';
+        return data;
+    }
+
+    function show1(page) {
+        var url = '../../PHP/Service/RunService/Page.php?page=' + page;
+        $.ajaxSetup({
+            async: false
+        });
+        $.getJSON(url, function (data, status) {
+            var num = data.Num;
+            var sum = 0;
+            var datetime;
+            var msg;
+            var userid;
+            var runid;
+            var place;
+            $("#content")[0].innerHTML = '';
+            setInterval(function () {
+                if (sum != num) {
+                    userid = data[sum].UserId;
+                    datetime = data[sum].RunTime;
+                    place = data[sum].RunArea;
+                    msg = data[sum].RunInformation;
+                    runid = data[sum].RunId;
+                    url = '../../php/Service/UserService/GetData.php?userid=' + data[sum].UserId;
+                    $.getJSON(url, function (data2) {
+                        msg = creat(data2.NickName, data2.UserPhoto, datetime, place, msg, runid);
+                        $("#content")[0].innerHTML += msg;
+                    });
+                    sum++;
+                }
+            },1);
+            setTimeout(function () {
+                $("#loading").fadeOut();
+            },1000);
+        });
+    }
+</script>
+
 </body>
 </html>

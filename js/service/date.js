@@ -1,8 +1,8 @@
-function creat(nickname, avator, datetime, place, msg, id) {
+function creat(nickname, avatar, datetime, place, msg, id) {
     var data;
     data = '<div class="col-lg-6 col-md-12 col-sm-12 info">'
         + '<div class="col-lg-4  col-md-6 col-sm-6">'
-        + '<img class="img-thumbnail info-img" ' + 'src="' + avator + '"></div>'
+        + '<img class="img-thumbnail info-img" ' + 'src="' + avatar + '"></div>'
         + '<div class="col-lg-4 col-md-6 col-sm-6"><h2 class="text-center">' + nickname + '</h2></div>'
         + '<div class="col-lg-4 col-md-6 col-sm-6">'
         + '<h2 class="text-center">' + datetime + '</h2>'

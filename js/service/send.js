@@ -1,26 +1,60 @@
-/**
- * Created by miku on 2016/3/27.
- */
-$(document).ready(function () {
-    setCookie('status', '0');
-    photo();
-    $(function () {
-        $("#input-content").keyup(function () {
-            var len = $(this).val().length;
-            if (len > 200) {
-                $(this).val($(this).val().substring(0, 199));
-                $("#word").text(0);
-            }
-            else {
-                var num = 200 - len;
-                $("#word").text(num);
-            }
-        });
+function creat(nickname, avatar, msg, id) {
+    var data = '<div class="col-lg-12 col-md-12 col-sm-12 long" onclick="detail(this)">'
+        + '<div class="col-lg-3 col-md-3 col-sm-3 ">'
+        + '<img class="info-img img-thumbnail" src="' + avatar + '"></div>'
+        + '<div class="col-lg-2 col-md-2 col-sm-2 text-center">'
+        + '<h2 class="text-center">' + nickname + '</h2></div>'
+        + '<div class="col-lg-7 col-md-7 col-sm-7">'
+        + '<h2 class="text-center">' + msg + '</h2></div></div>'
+        + '<p class="hidden">' + id + '</p>';
+    return data;
+}
+
+function show(page){
+    var url='../../PHP/Service/GiveService/Page.php?page='+page;
+    $.ajaxSetup({
+        async: false
     });
-    $("#submit").click(function () {
-        doUpload();
+    $.getJSON(url, function (data) {
+        var num=data.Num;
+        var sum=0;
+        var userid;
+        var nickname;
+        var avator;
+        var msg;
+        var id;
+        $("#content")[0].innerHTML='';
+        setInterval(function () {
+            if(sum!=num){
+                id=data[sum].GiveId;
+                msg=data[sum].GiveInformation;
+                userid=data[sum].UserId;
+                url = '../../php/Service/UserService/GetData.php?userid=' + data[sum].UserId;
+                $.getJSON(url, function (data2) {
+                    msg = creat(data2.NickName, data2.UserPhoto, msg, id);
+                    $("#content")[0].innerHTML += msg;
+                });
+                sum++;
+            }
+        },1);
+    })
+}
+
+function page(){
+    var sum = 1;
+    var num = 1;
+    $.get('../../PHP/Service/GiveService/Total.php', function (data) {
+        show(1);
+        if (data[0] != '1') {
+            $("#more").removeClass('hidden');
+            num = data;
+        }
+        else {
+            $("#more").addClass('hidden');
+        }
     });
-});
+}
+
 function photo() {
     $("#file0").change(function () {
         setCookie('status', '1');
@@ -45,6 +79,11 @@ function photo() {
         return url;
     }
 }
+
+function detail(obj){
+    alert(obj.nextElementSibling.innerHTML);
+}
+
 function submit() {
     $.post('../../PHP/Service/GiveService/Create.php', {
         giveinformation: $("#input-content").val()
@@ -52,6 +91,7 @@ function submit() {
         $("#word").text(data);
     })
 }
+
 function doUpload() {
     //url
     var status = getCookie('status');
@@ -78,3 +118,26 @@ function doUpload() {
         });
     }
 }
+
+$(document).ready(function () {
+    setCookie('status', '0');
+    photo();
+    page();
+    $("#loading").fadeOut();
+    $(function () {
+        $("#input-content").keyup(function () {
+            var len = $(this).val().length;
+            if (len > 200) {
+                $(this).val($(this).val().substring(0, 199));
+                $("#word").text(0);
+            }
+            else {
+                var num = 200 - len;
+                $("#word").text(num);
+            }
+        });
+    });
+    $("#submit").click(function () {
+        doUpload();
+    });
+});

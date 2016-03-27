@@ -298,6 +298,21 @@
     margin: 0;
 }
 
+.long{
+    border: 2px solid #d4d4d4;
+    color: #000;
+    border-top:  none;
+    border-bottom: none;
+    border-radius: 10px;
+    margin-bottom:30px;
+    margin-top: 20px;
+    height: 160px;
+}
+
+.long:hover{
+    background-color: #d4d4d4;
+}
+
 .banner-bot{
     width: 100%;
     height: 300px;
@@ -327,15 +342,12 @@
     border: 2px solid #d4d4d4;
 }
 
-.lood{
-    display: none;
+.load{
     position: absolute;
-    top: 0;
+    top: 50px;
     right: 0;
     bottom: 0;
     left: 0;
     background: #fff url("../img/loading.gif") no-repeat center center;
-    opacity: .75;
-    filter: alpha(opacity=75);
     z-index: 20140628;
 }
