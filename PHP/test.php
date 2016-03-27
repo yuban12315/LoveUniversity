@@ -1,5 +1,4 @@
 <?php
-
 /* $conn = mysqli_connect("183.175.12.160","root","31415926","loveu","3306");
 //$str = date("Y-m-d h:m:s");
 //$str = '2016-01-03 16:55:55';
@@ -200,8 +199,9 @@ upload($tmp_name, $rename, 'give');
 $path = 'http://7xrqhs.com1.z0.glb.clouddn.com/' . $rename;
 echo '1';
 */
-
-
+// 保存到指定路径
+$image = @imagecreatefromjpeg ("test/test.jpg");
+imagejpeg ($image,'test/test1.png',9); /*压缩等级0-9，压缩后9最小，1最大*/
 
 
 
