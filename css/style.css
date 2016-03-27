@@ -113,7 +113,7 @@
     background-color: white;
 }
 
-#user{
+#user {
     margin-right: 50px;
 }
 
@@ -124,87 +124,88 @@
 }
 
 .tit {
-    width:170px;
+    width: 170px;
     margin: 0 auto;
     position: relative
 }
 
-.tr2{
-    width:100%;
+.tr2 {
+    width: 100%;
 }
-.form-login{
+
+.form-login {
     margin-top: 30px;
 }
 
-.form-regist{
+.form-regist {
     margin-top: 30px;
     margin-left: 20%;
     width: 100%;
 }
 
-.line{
+.line {
     width: 49.5%;
     height: 200px;
     border-right: 2px solid #ddd;
 }
 
-.form{
+.form {
     background-color: white;
 }
 
-.item-bottom{
+.item-bottom {
     margin-bottom: 1px;
 }
 
-.img-max{
+.img-max {
     width: 100%;
 }
 
-.item-lg{
+.item-lg {
     margin-left: 10%;
     width: 80%;
 }
 
-.item-md{
+.item-md {
     width: 50%;
 }
 
-.item-sm{
+.item-sm {
     width: 10%;
     border: 1px #d4d4d4 solid;
 }
 
-.item-sm2{
+.item-sm2 {
     width: 30%;
 }
 
-.banner{
+.banner {
     width: 100%;
     height: 60px;
     margin-top: 50px;
     background-color: #00ccff;
 }
 
-.banner-lg{
+.banner-lg {
     width: 100%;
     height: 110px;
     margin-top: 50px;
     background-color: #00ccff;
 }
 
-.func{
+.func {
     opacity: 0.5;
 }
 
-.func:hover{
+.func:hover {
     opacity: 1;
 }
 
-.option{
-    border-radius:0 ;
+.option {
+    border-radius: 0;
 }
 
-.profile-left{
+.profile-left {
     float: left;
     margin-top: 10px;
     width: 200px;
@@ -213,29 +214,29 @@
     color: black;
 }
 
-.list{
+.list {
     opacity: 0.5;
     width: 80%;
-    transition:width 1s;
-    -moz-transition:width 1s; /* Firefox 4 */
-    -webkit-transition:width 1s; /* Safari and Chrome */
-    -o-transition:width 1s; /* Opera */
+    transition: width 1s;
+    -moz-transition: width 1s; /* Firefox 4 */
+    -webkit-transition: width 1s; /* Safari and Chrome */
+    -o-transition: width 1s; /* Opera */
 }
 
-.list:hover{
+.list:hover {
     width: 100%;
     opacity: 1;
 }
 
-.profile-left  img{
+.profile-left img {
     width: 100%;
 }
 
-.list-divider{
+.list-divider {
     margin-top: 30px;
 }
 
-.profile-right{
+.profile-right {
     margin-top: 10px;
     float: right;
     width: 80%;
@@ -244,47 +245,47 @@
     border-bottom: 0;
 }
 
-.profile{
+.profile {
     font-size: 1.5em;
     margin-left: 50px;
     color: #8c8c8c;
 }
 
-.inline{
+.inline {
     display: inline;
     float: left;
 }
 
-.hidden{
+.hidden {
     display: none;
 }
 
-.textarea{
+.textarea {
     resize: none;
     font-size: 1.5em;
 }
 
-.big{
+.big {
     font-size: 1.5em;
 }
 
-.info{
+.info {
     border: 2px solid #d4d4d4;
     color: #000;
-    border-top:  none;
+    border-top: none;
     border-bottom: none;
     border-radius: 10px;
-    margin-bottom:30px;
+    margin-bottom: 30px;
     margin-top: 20px;
     height: 300px;
 }
 
-.info h3{
+.info h3 {
     margin-bottom: 30px;
     height: 50px;
 }
 
-.divide{
+.divide {
     float: right;
     width: 70%;
     height: 2px;
@@ -292,57 +293,57 @@
     border-radius: 50px;
 }
 
-.info-img{
+.info-img {
     width: 150px;
     height: 150px;
     margin: 0;
 }
 
-.long{
+.long {
     border: 2px solid #d4d4d4;
     color: #000;
-    border-top:  none;
+    border-top: none;
     border-bottom: none;
     border-radius: 10px;
-    margin-bottom:30px;
+    margin-bottom: 30px;
     margin-top: 20px;
-    height: 160px;
+    height: 152px;
 }
 
-.long:hover{
+.long:hover {
     background-color: #d4d4d4;
 }
 
-.banner-bot{
+.banner-bot {
     width: 100%;
     height: 300px;
 }
 
-.choose{
+.choose {
     color: #d4d4d4;
 }
 
-.choose:hover{
+.choose:hover {
     background-color: #d4d4d4;
     color: white;
 }
 
-.add{
+.add {
     margin-top: 50px;
 }
 
-.clicked{
+.clicked {
     background-color: #d4d4d4;
     color: white;
 }
 
-.upload{
+.upload {
     width: 300px;
     height: 300px;
     border: 2px solid #d4d4d4;
 }
 
-.load{
+.load {
     position: absolute;
     top: 50px;
     right: 0;
@@ -350,4 +351,21 @@
     left: 0;
     background: #fff url("../img/loading.gif") no-repeat center center;
     z-index: 20140628;
+}
+
+.comment {
+    word-break:break-all;
+    text-align: center;
+    width: 80%;
+    margin-left: 10%;
+    margin-top: 20px;
+    height: 80px;
+    border: 3px solid #d4d4d4;
+    border-top:none;
+    border-bottom:none;
+}
+
+.comment img {
+    height: 50px;
+    width: 50px;
 }

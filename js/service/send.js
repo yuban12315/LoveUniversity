@@ -84,6 +84,7 @@ function photo() {
 function detail(obj){
     var id=obj.nextElementSibling.innerHTML;
     setCookie('master',id);
+    location.href='details.html';
 }
 
 function submit() {

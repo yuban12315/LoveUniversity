@@ -46,12 +46,24 @@
 <div class="banner-lg"></div>
 <div class="row">
     <div class="container" id='content'>
-        <div class="col-lg-12 col-md-12 col-sm-12">
-
+        <div class="col-lg-12 col-md-12 col-sm-12 long">
+            <div class="col-lg-3 col-md-3 col-sm-3 ">
+                <img class="info-img img-thumbnail" src="" alt="" id="img">
+            </div>
+            <div class="col-lg-2 col-md-2 col-sm-2 text-center">
+                <h2 class="text-center" id="nickname">nickname</h2>
+            </div>
+            <div class="col-lg-7 col-md-7 col-sm-7">
+                <h2 class="text-center" id="msg"> msg </h2>
+            </div>
+        </div>
+        <div class="col-lg-12 col-md-12">
+            <h2>留言区：</h2>
+            <div id="comment"></div>
         </div>
     </div>
 </div>
-<div class="row" id="comment">
+<div class="row" id="com">
     <div class="container">
         <form role="form" autocomplete="off" id="form">
             <div class="form-group">
@@ -97,18 +109,55 @@
 <script src="../../js/cookies.js"></script>
 <script src="../../js/index-service.js"></script>
 <script>
-    function comment(page){
-        var url='../../PHP/Service/GiveService/GetComment.php';
-        var id=getCookie('master');
-        $.getJSON(url,{
-            page:page,
-            giveid:id
-        })
+    function comment(avatar, nickname, msg, userid) {
+        var data = '<div class="comment">'
+                + '<div class="col-lg-2">'
+                + '<img src="' + avatar + '"> </div>'
+                + '<div class="col-lg-2">'
+                + '<p class="big"> ' + nickname + '</div>'
+                + '<div class="col-lg-8">'
+                + '<p class="big" >' + msg + '</p>'
+                + '</div> </div>'
+                + '<p class="hidden">' + userid + '</p>';
+        return data;
+    }
+
+    function details(page) {
+        var url = '../../PHP/Service/GiveService/GetComment.php';
+        var id = getCookie('master');
+
+        $.getJSON(url, {
+            page: page,
+            giveid: id
+        }, function (data) {
+            var num = data.Num;
+            var sum = 0;
+            var userid;
+            var nickname;
+            var avatar;
+            var msg;
+            $("#comment")[0].innerHTML = '';
+            setInterval(function () {
+                if (sum != num) {
+                    msg = data[sum].GetInformation;
+                    userid = data[sum].UserId;
+                    url = '../../php/Service/UserService/GetData.php?userid=' + data[sum].UserId;
+                    $.getJSON(url, function (data2) {
+                        avatar = data2.UserPhoto;
+                        msg = comment( avatar,data2.NickName, msg, id);
+
+                        $("#comment")[0].innerHTML += msg;
+                    });
+                    sum++;
+                }
+            }, 1);
+        });
     }
 
     function submit() {
         var url = '../../PHP/Service/GiveService/Get.php';
         var id = getCookie('master');
+
         $.post(url, {
             giveid: id,
             getinformation: $("#input-content").val()
@@ -118,11 +167,14 @@
     }
 
     $(document).ready(function () {
+        $.ajaxSetup({
+            async: false
+        });
         $("#submit").click(function () {
             submit();
-        })
-        comment(1);
-    })
+        });
+        details(1);
+    });
 </script>
 </body>
 </html>
