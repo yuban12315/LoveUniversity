@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>LoveU | 互助</title>
+    <title>LoveU | 赠送 |</title>
     <link rel="icon" href="../../img/title.ico">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="../../css/bootstrap.css" rel="stylesheet">
@@ -45,36 +45,31 @@
 </div>
 <div class="banner-lg"></div>
 <div class="row">
-    <div class="container" id='content'></div>
-</div>
-<div class=" container jumbotron text-center" id='more'><h2>更多信息</h2></div>
+    <div class="container" id='content'>
+        <div class="col-lg-12 col-md-12 col-sm-12">
 
-<div class="row" id="input">
+        </div>
+    </div>
+</div>
+<div class="row" id="comment">
     <div class="container">
-        <form role="form" autocomplete="off">
+        <form role="form" autocomplete="off" id="form">
             <div class="form-group">
                 <label for="input-content"></label>
-                <textarea class="form-control textarea" rows="3" id="input-content" placeholder="描述"></textarea>
-                <div class="input-group col-lg-8 col-md-12 col-sm-12">
-                    <span class="input-group-addon "><span class="glyphicon glyphicon-calendar"></span> 时间</span>
-                    <input size="16" type="text" value="" readonly class="form_datetime form-control  big"
-                           id="time">
-                    <span class="input-group-addon "><span class="glyphicon glyphicon-usd"></span> 悬赏</span>
-                    <input type="text" value="0" class="form-control  big" id="money">
-                    <span class="input-group-addon btn btn-sm" id="down">
-                            <span class="glyphicon glyphicon-menu-down"></span>
-                    </span>
-                    <span class="input-group-addon btn btn-sm" id="up">
-                        <span class=" glyphicon glyphicon-menu-up"></span>
-                    </span>
+                <textarea class="form-control textarea" rows="3" id="input-content" placeholder=""></textarea>
+                <div class="col-lg-12">
+                    <div class="col-lg-2">
+                        <button class="btn btn-default big " id="word">200</button>
+                    </div>
+                    <div class="col-lg-2 pull-right">
+                        <button type="button" class="btn btn-success big pull-right" id="submit">&nbsp;&nbsp;回复&nbsp;&nbsp;</button>
+                    </div>
                 </div>
-                <button class="btn btn-default big " id="word">200</button>
-                <button type="button" class="btn btn-success big pull-right" id="submit">
-                    &nbsp;&nbsp;发表&nbsp;&nbsp;</button>
             </div>
         </form>
     </div>
 </div>
+<!--div class="load" id="loading"></div-->
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog"
      aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog">
@@ -101,34 +96,33 @@
 <script src="../../js/headroom.js"></script>
 <script src="../../js/cookies.js"></script>
 <script src="../../js/index-service.js"></script>
-<script src="../../js/datetimepicker.js"></script>
-<script src="../../js/fr.js"></script>
 <script>
+    function comment(page){
+        var url='../../PHP/Service/GiveService/GetComment.php';
+        var id=getCookie('master');
+        $.getJSON(url,{
+            page:page,
+            giveid:id
+        })
+    }
+
+    function submit() {
+        var url = '../../PHP/Service/GiveService/Get.php';
+        var id = getCookie('master');
+        $.post(url, {
+            giveid: id,
+            getinformation: $("#input-content").val()
+        }, function (data) {
+            $("#word").text(data);
+        })
+    }
+
     $(document).ready(function () {
-        $(".form_datetime").datetimepicker({format: 'yyyy-mm-dd hh:ii'});
-        money();
         $("#submit").click(function () {
             submit();
         })
-    });
-    function money() {
-        $("#up").click(function () {
-            $("#money").val(parseInt($("#money").val()) + 1);
-        });
-        $("#down").click(function () {
-            if (parseInt($("#money").val()) > 0) {
-                $("#money").val(parseInt($("#money").val()) - 1);
-            }
-        });
-    }
-    function submit(){
-        var msg=$("#input-content").val();
-        var money=$("#money").val();
-        var time=$("#time").val()+':00';
-        var reg=new RegExp("\n","g");
-        msg = msg.replace(reg,'；');
-        alert(msg+money+time);
-    }
+        comment(1);
+    })
 </script>
 </body>
 </html>
