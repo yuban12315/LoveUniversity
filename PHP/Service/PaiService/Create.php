@@ -4,16 +4,24 @@ require_once '../UserService/Buffer.php';
 require_once '../UserService/Upload.php';
 require_once '../../DAO/DAO.php';
 require_once '../UserService/XSS.php';
+/*拍卖创建测试
+$_SESSION['userid'] = 27;
+$_SESSION['paibj'] = '1111';
+$_SESSION['username'] = 'misakamikoto';
+$_SESSION['jwxtnumber'] = '111';
+$_POST['paimoney'] = '1';
+$_POST['downtime'] = '2016-07-08 16:00:00';
+$_POST['paiinformation'] = 'ahahha';
+$_POST['paititle'] = 'dididi';
+*/
 if (isset($_SESSION['userid'])) {
     if (isset($_SESSION['paibj'])) {
         $userid = $_SESSION['userid'];
-        $str = "select * from user where UserId = '{$userid}'";
-        $row = sel($str);
-        if (!empty($row['JwxtNumber'])) {
-            if (empty($_POST['username']) || empty($_POST['paimoney']) || empty($_POST['downtime']) || empty($_POST['paiinformation']) || empty($_POST['paititle'])) {
+        if (!empty($_SESSION['jwxtnumber'])) {
+            if (empty($_POST['paimoney']) || empty($_POST['downtime']) || empty($_POST['paiinformation']) || empty($_POST['paititle'])) {
                 echo '拍卖信息不完整';
             } else {
-                @$postuser = $_POST['username'];
+                @$postuser = $_SESSION['username'];
                 @$paimoney = $_POST['paimoney'];
                 @$downtime = $_POST['downtime'];
                 @$paiinformation = $_POST['paiinformation'];
