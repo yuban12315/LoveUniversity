@@ -21,7 +21,8 @@ if (isset($_SESSION['userid'])) {
         $path = 'http://7xrxgm.com1.z0.glb.clouddn.com/' . $mm . '.png';
         $image = @imagecreatefromjpeg ($src);
         imagejpeg ($image,"Buffer/{$N}",9); /*压缩等级0-9，压缩后9最小，1最大*/
-        upload($src, "Buffer/{$N}", 'give');
+        upload($src, $N, 'give');
+        unlink("Buffer/{$N}");
         $_SESSION['bjbj'] = $path;
     }
 }

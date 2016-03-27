@@ -19,7 +19,10 @@ if (isset($_SESSION['userid'])) {
         $mm = get_md5_string();
         $N = $mm . '.png';
         $path = 'http://7xrrdm.com1.z0.glb.clouddn.com/' . $mm . '.png';
+        $image = @imagecreatefromjpeg ($src);
+        imagejpeg ($image,"Buffer/{$N}",9); /*压缩等级0-9，压缩后9最小，1最大*/
         upload($src, $N, 'pai');
+        unlink("Buffer/{$N}");
         $_SESSION['paibj'] = $path;
     }
 }
