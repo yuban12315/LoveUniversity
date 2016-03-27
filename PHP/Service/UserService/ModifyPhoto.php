@@ -26,6 +26,14 @@ function MP($str)
         unlink($src);
         $str = "update user set UserPhoto = '{$path}' where UserId = '{$userid}'";
         up($str);
+        $str = "update food set PostImage = '{$path}' where UserId = '{$userid}'";
+        up($str);
+        $str = "update help set HelpImage = '{$path}' where UserId = '{$userid}'";
+        up($str);
+        $str = "update run set PostImage = '{$path}' where UserId = '{$userid}'";
+        up($str);
+        $str = "update xue set PostImage = '{$path}' where UserId = '{$userid}'";
+        up($str);
         echo "1";
     }
 }
