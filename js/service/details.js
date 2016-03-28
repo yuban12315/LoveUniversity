@@ -1,13 +1,29 @@
 function comment(avatar, nickname, msg, userid) {
-    var data = '<div class="comment">'
-        + '<div class="col-lg-2">'
-        + '<img src="' + avatar + '"> </div>'
-        + '<div class="col-lg-2">'
-        + '<p class="big"> ' + nickname + '</div>'
-        + '<div class="col-lg-8">'
-        + '<p class="big" >' + msg + '</p>'
-        + '</div> </div>'
-        + '<p class="hidden">' + userid + '</p>';
+    var data ;
+    if(CheckUser()){
+        data = '<div class="comment">'
+            + '<div class="col-lg-2">'
+            + '<img src="' + avatar + '"> </div>'
+            + '<div class="col-lg-2">'
+            + '<p class="big"> ' + nickname + '</div>'
+            + '<div class="col-lg-6">'
+            + '<p class="big" >' + msg + '</p></div>'
+            +'<div class="col-lg-2 send">'
+            +'<button class="btn btn-info big" onclick="send(this)">送给Ta</button>'
+            + '<p class="hidden">' + userid + '</p>'
+            + '</div> </div>';
+    }
+    else{
+        data = '<div class="comment">'
+            + '<div class="col-lg-2">'
+            + '<img src="' + avatar + '"> </div>'
+            + '<div class="col-lg-2">'
+            + '<p class="big"> ' + nickname + '</div>'
+            + '<div class="col-lg-6">'
+            + '<p class="big" >' + msg + '</p></div>'
+            + '</div> '
+            + '<p class="hidden">' + userid + '</p>';
+    }
     return data;
 }
 
@@ -18,10 +34,9 @@ function details(page) {
         page: page,
         giveid: id
     }, function (data) {
-        var num = data.Num;
+        var num = data.num;
         var sum = 0;
         var userid;
-        var nickname;
         var avatar;
         var msg;
         $("#comment")[0].innerHTML = '';
@@ -29,10 +44,10 @@ function details(page) {
             if (sum != num) {
                 msg = data[sum].GetInformation;
                 userid = data[sum].UserId;
-                url = '../../php/Service/UserService/GetData.php?userid=' + data[sum].UserId;
+                url = '../../php/Service/UserService/GetData.php?userid=' + userid;
                 $.getJSON(url, function (data2) {
                     avatar = data2.UserPhoto;
-                    msg = comment(avatar, data2.NickName, msg, id);
+                    msg = comment(avatar, data2.NickName, msg, userid);
                     $("#comment")[0].innerHTML += msg;
                 });
                 sum++;
@@ -58,22 +73,17 @@ function submit() {
     })
 }
 
-$(document).ready(function () {
-    $.ajaxSetup({
-        async: false
-    });
-    $("#submit").click(function () {
-        submit();
-    });
-    $.getJSON('../../PHP/Service/GiveService/Details.php',{
-        giveid:getCookie('master')
-    }, function (data) {
-        $("#msg")[0].innerHTML=data.GiveInformation;
-        $("#img").attr('src',data.GiveImage);
-        var url='../../php/Service/UserService/GetData.php?userid='+data.UserId;
-        $.getJSON(url, function (data) {
-            $("#nickname")[0].innerHTML=data.NickName;
-        })
-    })
-    details(1);
-});
+function send(obj){
+    var msg=obj.nextElementSibling.innerHTML;
+    alert(msg);
+}
+
+function CheckUser(){
+    var userid=getCookie('userid');
+    var id=getCookie('masterID');
+    if(userid==id){
+        $("#com").addClass('hidden');
+        return 1;
+    }
+    else return 0;
+}

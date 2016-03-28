@@ -110,5 +110,28 @@
 <script src="../../js/cookies.js"></script>
 <script src="../../js/index-service.js"></script>
 <script src="../../js/service/details.js"></script>
+<script>
+    $(document).ready(function () {
+        $.ajaxSetup({
+            async: false
+        });
+        resetCookie();
+        $("#submit").click(function () {
+            submit();
+        });
+        $.getJSON('../../PHP/Service/GiveService/Details.php',{
+            giveid:getCookie('master')
+        }, function (data) {
+            $("#msg")[0].innerHTML=data.GiveInformation;
+            $("#img").attr('src',data.GiveImage);
+            setCookie('masterID',data.UserId);
+            var url='../../php/Service/UserService/GetData.php?userid='+data.UserId;
+            $.getJSON(url, function (data) {
+                $("#nickname")[0].innerHTML=data.NickName;
+            });
+        });
+        details(1);
+    });
+</script>
 </body>
 </html>

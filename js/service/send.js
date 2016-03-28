@@ -122,26 +122,3 @@ function doUpload() {
     }
 }
 
-$(document).ready(function () {
-    setCookie('status', '0');
-    clearCookie('master');
-    photo();
-    page();
-    $("#loading").fadeOut();
-    $(function () {
-        $("#input-content").keyup(function () {
-            var len = $(this).val().length;
-            if (len > 200) {
-                $(this).val($(this).val().substring(0, 199));
-                $("#word").text(0);
-            }
-            else {
-                var num = 200 - len;
-                $("#word").text(num);
-            }
-        });
-    });
-    $("#submit").click(function () {
-        doUpload();
-    });
-});
