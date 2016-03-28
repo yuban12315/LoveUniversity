@@ -9,14 +9,17 @@ session_start();
 require_once '../../DAO/DAO.php';
 if (isset($_SESSION['userid'])) {
     $getuser = $_SESSION['userid'];
-    $str = "select * from xue where GetUser = {$getuser}";
+    $str = "select * from xue where UserId = '{$getuser}' and state = 1";
     $row = sel($str);
+    $str1 = "select * from xue where GetUser = {$getuser}";
+    $row1 = sel($str1);
+
     if (empty($_SESSION['jwxtnumber'])) {
         echo '请完善个人信息';
         die();
     } else {
-        if ($row && (strtotime(date("y-m-d h:i:s")) > strtotime($row['XueTime']))) {
-            echo '已有约会';
+        if ($row || ($row1 && (strtotime(date("y-m-d h:i:s")) > strtotime($row1['XueTime'])))) {
+            echo "已有约会";
         } else {
             $xueid = (int)$_POST['xueid'];
             $str = "select * from xue where XueId = {$xueid}";

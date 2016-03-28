@@ -8,14 +8,17 @@ $_POST['foodid'] = 5;
 */
 if (isset($_SESSION['userid'])) {
     $getuser = $_SESSION['userid'];
-    $str = "select * from food where GetUser = {$getuser}";
+    $str = "select * from food where UserId = {$getuser} and state = 1";
     $row = sel($str);
+    $str1 = "select * from food where GetUser = {$getuser}";
+    $row1 = sel($str1);
+
     if (empty($_SESSION['jwxtnumber'])) {
         echo '请完善个人信息';
         die();
     } else {
-        if ($row && (strtotime(date("y-m-d h:i:s")) > strtotime($row['FoodTime']))) {
-            echo '已有约会';
+        if ($row || ($row1 && (strtotime(date("y-m-d h:i:s")) > strtotime($row1['FoodTime'])))) {
+            echo "已有约会";
         } else {
             @$foodid = (int)$_POST['foodid'];
             $str = "select * from food where FoodId = {$foodid}";
