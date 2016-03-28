@@ -32,11 +32,16 @@ if (isset($_SESSION['userid'])) {
             $row = sel($str);
             if ($row) {
                 if ($row['state'] == 1) {
-                    $str = "update help set GetUser = {$getuser} where HelpId = {$helpid}";
-                    up($str);
-                    $str = "update help set state = 0 where HelpId = {$helpid}";
-                    up($str);
-                    echo '1';
+                    if(strtotime(date("y-m-d h:i:s")) < strtotime($row['FoodTime'])){
+                        echo '该信息已过期';
+                    }
+                    else {
+                        $str = "update help set GetUser = {$getuser} where HelpId = {$helpid}";
+                        up($str);
+                        $str = "update help set state = 0 where HelpId = {$helpid}";
+                        up($str);
+                        echo '1';
+                    }
                 } else {
                     echo '你来晚了，已经有人帮助他了';
                 }

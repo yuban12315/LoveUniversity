@@ -17,9 +17,16 @@ if(isset($_SESSION['userid']))
     $userid = $_SESSION['userid'];
     @$giveid = (int)$_POST['giveid'];
     @$getuser = (int)$_POST['getuser'];
-    $str = "update give set GetUser = {$getuser} where GiveId = {$giveid}";
-    up($str);
-    $str = "update give set state = 0 where GiveId = {$giveid}";
-    up($str);
-    echo '1';
+    $str = "select * from give where GiveId = {$giveid} and UserId = {$userid}";
+    $row = sel($str);
+    if(empty($row['GetUser'])) {
+        $str = "update give set GetUser = {$getuser} where GiveId = {$giveid}";
+        up($str);
+        $str = "update give set state = 0 where GiveId = {$giveid}";
+        up($str);
+        echo '1';
+    }
+    else{
+        echo '送出去的东西泼出去的水，礼物送人了不可以收回的哦';
+    }
 }

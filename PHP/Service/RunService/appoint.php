@@ -14,7 +14,6 @@ if (isset($_SESSION['userid'])) {
     $row = sel($str);
     $str1 = "select * from run where GetUser = {$getuser}";
     $row1 = sel($str);
-
     if (empty($_SESSION['jwxtnumber'])) {
         echo '请完善个人信息';
         die();
@@ -22,21 +21,25 @@ if (isset($_SESSION['userid'])) {
         if ($row || ($row1 && (strtotime(date("y-m-d h:i:s")) > strtotime($row1['RunTime'])))) {
             echo "已有约会";
         } else {
-            $runid = (int)$_POST['runid'];
-            $str = "select * from run where RunId = {$runid}";
-            $row = sel($str);
-            if ($row) {
-                if ($row['state'] == 1) {
-                    $str = "update run set state = 0 where  RunId = {$runid}";
-                    up($str);
-                    $str = "update run set GetUser = '{$getuser}' where RunId = {$runid}";
-                    up($str);
-                    echo "1";
-                } else {
-                    echo '你来晚了，TA已经被约了';
-                }
+            if (strtotime(date("y-m-d h:i:s")) < strtotime($row1['RunTime'])) {
+                echo '约会已过期';
             } else {
-                echo '约会已被删除';
+                $runid = (int)$_POST['runid'];
+                $str = "select * from run where RunId = {$runid}";
+                $row = sel($str);
+                if ($row) {
+                    if ($row['state'] == 1) {
+                        $str = "update run set state = 0 where  RunId = {$runid}";
+                        up($str);
+                        $str = "update run set GetUser = '{$getuser}' where RunId = {$runid}";
+                        up($str);
+                        echo "1";
+                    } else {
+                        echo '你来晚了，TA已经被约了';
+                    }
+                } else {
+                    echo '约会已被删除';
+                }
             }
         }
     }
