@@ -26,30 +26,38 @@ if (isset($_SESSION['userid'])) {
         $mm = get_md5_string();
         $N = $mm . '.png';
         $path = 'http://7xrxgm.com1.z0.glb.clouddn.com/' . $mm . '.png';
+        /*
         switch ($type) {
             case "jpeg":
                 $image = @imagecreatefromjpeg($src);
                 imagejpeg($image, "Buffer/{$N}", 9);
+                echo 1;
                 break;
             case "pjpeg":
                 $image = @imagecreatefromjpeg($src);
                 imagejpeg($image, "Buffer/{$N}", 9);
+                echo 1;
                 break;
             case "jpg":
                 $image = @imagecreatefromjpeg($src);
                 imagejpeg($image, "Buffer/{$N}", 9);
+                echo 1;
                 break;
             case "png":
                 $image = @imagecreatefrompng($src);
                 imagepng($image, "Buffer/{$N}", 9);
+                echo 1;
                 break;
             default:
                 $_SESSION['bjbj'] = '图片格式不正确';
                 die();
         }
+        */
+        $image = @imagecreatefromjpeg($src);
+        imagejpeg($image, "Buffer/{$N}", 9);
         $_SESSION['bjbj'] = $path;
-        upload($src, $N, 'give');
-        unlink("Buffer/{$N}");
+        upload("Buffer/{$N}", $N, 'give');
+        //unlink("Buffer/{$N}");
 
     }
 }
