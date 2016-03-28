@@ -25,11 +25,11 @@ function date(obj) {
 }
 
 function submit() {
-    var url = '../../PHP/Service/FoodService/Create.php'
+    var url = '../../PHP/Service/FoodService/Create.php';
     var place = $("#dateplace").val();
     var deal = getData($('input[name="deal"]:checked').val());
     var msg = $("#input-content").val();
-    var datetime = $("#datetime").val() + ':00';
+    var datetime = $(".form_datetime").val() + ':00';
     var reg = new RegExp("\n", "g");
     msg = msg.replace(reg, '；');
     $.post(url, {
@@ -98,23 +98,3 @@ function show() {
     })
 }
 
-$(document).ready(function () {
-    $(".form_datetime").datetimepicker({format: 'yyyy-mm-dd hh:ii'});
-    $("#submit").click(function () {
-        submit();
-    });
-    $(function () {
-        $("#input-content").keyup(function () {
-            var len = $(this).val().length;
-            if (len > 200) {
-                $(this).val($(this).val().substring(0, 199));
-                $("#word").text(0);
-            }
-            else {
-                var num = 200 - len;
-                $("#word").text(num);
-            }
-        });
-    });
-    show();
-});

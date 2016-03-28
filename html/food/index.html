@@ -72,8 +72,7 @@
                 <textarea class="form-control textarea" rows="3" id="input-content" placeholder="描述"></textarea>
                 <div class="input-group col-lg-4 col-md-5 col-sm-6 ">
                     <span class="input-group-addon "><span class="glyphicon glyphicon-calendar"></span> 约定时间</span>
-                    <input size="16" type="text" value="" readonly class="form_datetime form-control  big"
-                           id="datetime">
+                    <input size="16" type="text"  readonly class="form_datetime form-control  big" id="datetime">
                 </div>
                 <button class="btn btn-default big " id="word">200</button>
                 <button type="button" class="btn btn-success big pull-right" id="submit">
@@ -111,5 +110,30 @@
 <script src="../../js/datetimepicker.js"></script>
 <script src="../../js/fr.js"></script>
 <script src="../../js/service/food.js"></script>
+<script>
+    $(document).ready(function () {
+        $.ajaxSetup({
+            async: false
+        });
+        $(".form_datetime").datetimepicker({format: 'yyyy-mm-dd hh:ii'});
+        $("#submit").click(function () {
+             submit();
+        });
+        $(function () {
+            $("#input-content").keyup(function () {
+                var len = $(this).val().length;
+                if (len > 200) {
+                    $(this).val($(this).val().substring(0, 199));
+                    $("#word").text(0);
+                }
+                else {
+                    var num = 200 - len;
+                    $("#word").text(num);
+                }
+            });
+        });
+        show();
+    });
+</script>
 </body>
 </html>

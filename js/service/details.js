@@ -1,6 +1,6 @@
 function comment(avatar, nickname, msg, userid) {
-    var data ;
-    if(CheckUser()){
+    var data;
+    if (CheckUser()) {
         data = '<div class="comment">'
             + '<div class="col-lg-2">'
             + '<img src="' + avatar + '"> </div>'
@@ -8,12 +8,12 @@ function comment(avatar, nickname, msg, userid) {
             + '<p class="big"> ' + nickname + '</div>'
             + '<div class="col-lg-6">'
             + '<p class="big" >' + msg + '</p></div>'
-            +'<div class="col-lg-2 send">'
-            +'<button class="btn btn-info big" onclick="send(this)">送给Ta</button>'
+            + '<div class="col-lg-2 send">'
+            + '<button class="btn btn-info big" onclick="send(this)">送给Ta</button>'
             + '<p class="hidden">' + userid + '</p>'
             + '</div> </div>';
     }
-    else{
+    else {
         data = '<div class="comment">'
             + '<div class="col-lg-2">'
             + '<img src="' + avatar + '"> </div>'
@@ -64,24 +64,32 @@ function submit() {
         giveid: id,
         getinformation: $("#input-content").val()
     }, function (data) {
-        if(data[0]!='1'){
+        if (data[0] != '1') {
             $("#word").text(data);
         }
-        else{
+        else {
             location.reload();
         }
     })
 }
 
-function send(obj){
-    var msg=obj.nextElementSibling.innerHTML;
-    alert(msg);
+function send(obj) {
+    var id = obj.nextElementSibling.innerHTML;
+    var giveid = getCookie('master');
+    $.post('../../PHP/Service/GiveService/Select.php', {
+        giveid: giveid,
+        getuser: id
+    }, function (data) {
+        if (data[0] == '1') {
+            $("#alert").click();
+        }
+    })
 }
 
-function CheckUser(){
-    var userid=getCookie('userid');
-    var id=getCookie('masterID');
-    if(userid==id){
+function CheckUser() {
+    var userid = getCookie('userid');
+    var id = getCookie('masterID');
+    if (userid == id) {
         $("#com").addClass('hidden');
         return 1;
     }
