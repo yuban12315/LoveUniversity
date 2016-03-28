@@ -16,9 +16,10 @@ if (isset($_SESSION['userid'])) {
         die();
     } else {
         $src = $_FILES['file']['tmp_name'];
+        $type = $_FILES['file']['type'];
         $name = $_FILES['file']['name'];
         $size = $_FILES['file']['size'];
-        $type =  strtolower(end(explode(".",$name)));
+       // $type =  strtolower(end(explode(".",$name)));
         if ($size == 0) {
             $_SESSION['bjbj'] =  '图片文件过大';
             die();
@@ -26,39 +27,30 @@ if (isset($_SESSION['userid'])) {
         $mm = get_md5_string();
         $N = $mm . '.png';
         $path = 'http://7xrxgm.com1.z0.glb.clouddn.com/' . $mm . '.png';
-        /*
+
         switch ($type) {
-            case "jpeg":
+            case "image/jpeg":
                 $image = @imagecreatefromjpeg($src);
                 imagejpeg($image, "Buffer/{$N}", 9);
-                echo 1;
-                break;
-            case "pjpeg":
-                $image = @imagecreatefromjpeg($src);
-                imagejpeg($image, "Buffer/{$N}", 9);
-                echo 1;
-                break;
-            case "jpg":
-                $image = @imagecreatefromjpeg($src);
-                imagejpeg($image, "Buffer/{$N}", 9);
-                echo 1;
+                echo 'hahaha';
                 break;
             case "png":
                 $image = @imagecreatefrompng($src);
                 imagepng($image, "Buffer/{$N}", 9);
-                echo 1;
+                echo 'hahaha';
                 break;
             default:
                 $_SESSION['bjbj'] = '图片格式不正确';
                 die();
         }
-        */
+
+     /*
         $image = @imagecreatefromjpeg($src);
         imagejpeg($image, "Buffer/{$N}", 9);
         $_SESSION['bjbj'] = $path;
         upload("Buffer/{$N}", $N, 'give');
-        //unlink("Buffer/{$N}");
-
+        unlink("Buffer/{$N}");
+*/
     }
 }
 function get_md5_string()
