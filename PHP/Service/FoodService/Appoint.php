@@ -12,7 +12,6 @@ if (isset($_SESSION['userid'])) {
     $row = sel($str);
     $str1 = "select * from food where GetUser = {$getuser}";
     $row1 = sel($str1);
-
     if (empty($_SESSION['jwxtnumber'])) {
         echo '请完善个人信息';
         die();

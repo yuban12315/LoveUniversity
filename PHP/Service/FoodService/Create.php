@@ -17,7 +17,7 @@ if (isset($_SESSION['userid'])) {
     $userid = $_SESSION['userid'];
     $postimage = $_SESSION['userphoto'];
     if (!empty($_SESSION['jwxtnumber'])) {
-        $str = "select * from food where UserId = '{$userid}' and ";
+        $str = "select * from food where UserId = '{$userid}' and state = 1";
         $row = sel($str);
         $str1 = "select * from food where GetUser = {$userid}";
         $row1 = sel($str1);
