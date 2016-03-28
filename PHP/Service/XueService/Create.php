@@ -13,7 +13,9 @@ if (isset($_SESSION['userid'])) {
     if (!empty($_SESSION['jwxtnumber'])) {
         $str = "select * from xue where UserId = '{$userid}' and state = 1";
         $row = sel($str);
-        if ($row) {
+        $str1 = "select * from xue where GetUser = {$userid}";
+        $row1 = sel($str1);
+        if ($row||($row1 && (strtotime(date("y-m-d h:i:s")) > strtotime($row1['XueTime'])))) {
             echo "已有约会";
         } else {
             if (empty($_POST['xueinformation']) || empty($_POST['xuetime']) || empty($_POST['xuearea'])) {
@@ -23,7 +25,7 @@ if (isset($_SESSION['userid'])) {
                 @$xueinformation = xss($_POST['xueinformation']);
                 @$xuetime = $_POST['xuetime'];
                 @$xuearea = xss($_POST['xuearea']);
-                if (strtotime(date("y-m-d h:i:s")) <= strtotime($xuetime)) {
+                if (strtotime(date("y-m-d h:i:s")) >= strtotime($xuetime)) {
                     echo '请输入正确的时间';
                 } else {
                     $str = "insert into xue (UserId,PostUser,XueArea,XueInformation,XueTime,state,PostImage) VALUES ('{$userid}','{$postuser}','{$xuearea}','{$xueinformation}','{$xuetime}',1,'{$postimage}')";

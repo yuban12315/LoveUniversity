@@ -17,9 +17,11 @@ if (isset($_SESSION['userid'])) {
     $username = $_SESSION['username'];
     $postimage = $_SESSION['userphoto'];
     if (!empty($_SESSION['jwxtnumber'])) {
-        $str = "select * from run where UserId = '{$userid}'";
+        $str = "select * from run where UserId = '{$userid}' and state = 1";
         $row = sel($str);
-        if ($row) {
+        $str1 = "select * from run where GetUser = {$userid}";
+        $row1 = sel($str);
+        if ($row||($row1&&(strtotime(date("y-m-d h:i:s")) > strtotime($row1['RunTime'])))) {
             echo "已有约会";
         } else {
             if (empty($_POST['runinformation']) || empty($_POST['runtime'])) {
@@ -28,7 +30,7 @@ if (isset($_SESSION['userid'])) {
                 @$runinformation = xss($_POST['runinformation']);
                 @$runtime = $_POST['runtime'];
                 @$runarea = xss($_POST['runarea']);
-                if (strtotime(date("y-m-d h:i:s")) <= strtotime($runtime)) {
+                if (strtotime(date("y-m-d h:i:s")) >= strtotime($runtime)) {
                     echo '请输入正确的时间';
                 } else {
                     $postuser = $_SESSION['username'];

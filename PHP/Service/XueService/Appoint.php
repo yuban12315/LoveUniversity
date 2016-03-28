@@ -9,11 +9,9 @@ session_start();
 require_once '../../DAO/DAO.php';
 if (isset($_SESSION['userid'])) {
     $getuser = $_SESSION['userid'];
-    $str = "select * from run where GetUser = {$getuser}";
+    $str = "select * from xue where GetUser = {$getuser}";
     $row = sel($str);
-    $str1 = "select * from user where UserId = {$getuser}";
-    $row1 = sel($str1);
-    if (empty($row1['JwxtNumber'])) {
+    if (empty($_SESSION['jwxtnumber'])) {
         echo '请完善个人信息';
         die();
     } else {

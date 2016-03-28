@@ -26,7 +26,7 @@ if (isset($_SESSION['userid'])) {
                 @$downtime = $_POST['downtime'];
                 @$paiinformation = xss($_POST['paiinformation']);
                 @$paititle = xss($_POST['paititle']);
-                if (strtotime(date("y-m-d h:i:s")) <= strtotime($downtime)) {
+                if (strtotime(date("y-m-d h:i:s")) >= strtotime($downtime)) {
                     echo '请输入正确的时间';
                 } else {
                     $uptime = date("y-m-d h:m:s");

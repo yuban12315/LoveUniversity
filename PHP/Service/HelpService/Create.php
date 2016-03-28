@@ -38,7 +38,7 @@ if (isset($_SESSION['userid'])) {
                 @$helpmoney = (int)$_POST['helpmoney'];
                 @$helpinformation = xss($_POST['helpinformation']);
                 @$paypassword = $_POST['paypassword'];
-                if (strtotime(date("y-m-d h:i:s")) <= strtotime($time)) {
+                if (strtotime(date("y-m-d h:i:s")) >= strtotime($time)) {
                     echo '请输入正确的时间';
                 } else {
                     $data = pay($userid, $helpmoney, 0, $paypassword);
