@@ -23,11 +23,7 @@ if (isset($_SESSION['userid'])) {
         if (empty($_POST['getinformation'])) {
             echo "信息不能为空";
         } else {
-            $getinformation = $_POST['getinformation'];
-            if (xss($getinformation)) {
-                echo '不要试图攻击';
-                die();
-            }
+            $getinformation = xss($_POST['getinformation']);
             @$giveid = $_POST['giveid'];
             $str = "select * from gets where UserId = {$userid} and GiveId = {$giveid}";
             if (sel($str)) {

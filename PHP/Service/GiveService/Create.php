@@ -29,11 +29,7 @@ if (isset($_SESSION['userid'])) {
                 if (empty($_POST['giveinformation'])) {
                     echo '信息不能为空';
                 } else {
-                    @$giveinformation = $_POST['giveinformation'];
-                    if (xss($giveinformation)) {
-                        echo '不要试图攻击';
-                        die();
-                    }
+                    @$giveinformation = xss($_POST['giveinformation']);
                     $path = $_SESSION['bjbj'];
                     unset($_SESSION['bjbj']);
                     $str = "insert into give (UserId,GiveUser,GiveImage,GiveInformation,state) VALUES ('{$userid}','{$giveuser}','{$path}','{$giveinformation}',1)";

@@ -26,15 +26,10 @@ if (isset($_SESSION['userid'])) {
                 echo '信息不能为空';
             } else {
                 $postuser = $_SESSION['username'];
-                @$foodinformation = $_POST['foodinformation'];
+                @$foodinformation = xss($_POST['foodinformation']);
                 @$foodtime = $_POST['foodtime'];
-                @$foodarea = $_POST['foodarea'];
-                @$fooodway = $_POST['foodway'];
-
-                if (xss($foodinformation) || xss($foodtime) || xss($fooodway) || xss($foodarea)) {
-                    echo '不要试图攻击';
-                    die();
-                }
+                @$foodarea = xss($_POST['foodarea']);
+                @$fooodway = xss($_POST['foodway']);
                 if (strtotime(date("y-m-d h:i:s")) >= strtotime($foodtime)) {
                     echo '请输入正确的时间';
                 } else {

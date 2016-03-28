@@ -4,11 +4,11 @@ header("Content-type: text/html; charset=utf-8");
 require_once "../../DAO/DAO.php";
 require_once "MD5.php";
 require_once "XSS.php";
-@$username = $_POST['username'];
-@$password = $_POST['password'];
+@$username = xss($_POST['username']);
+@$password = xss($_POST['password']);
 @$repassword = $_POST['repassword'];
 @$usersex = $_POST['usersex'];
-@$userphone = $_POST['userphone'];
+@$userphone = xss($_POST['userphone']);
 @$vcode = $_POST['vcode'];
 if ($usersex == "Girl") {
     $usersex = 0;
@@ -61,10 +61,6 @@ function Pending($username, $password, $userphone, $usersex, $repassword)
 
     if ($usersex == null) {
         return "请选择性别";
-    }
-    /*过滤*/
-    if (xss($username) || xss($password) || xss($userphone)) {
-        return "不要试图攻击！！！";
     }
     /*判断用户名格式*/
     if (strlen($username >= 18)) {

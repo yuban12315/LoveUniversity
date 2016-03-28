@@ -15,36 +15,28 @@ if (isset($_SESSION['userid'])) {
 
     //修改昵称
     if (!empty($_POST['nickname'])) {
-        @$newnickname = $_POST['nickname'];
-        if (xss($newnickname)) {
-            echo '不要试图攻击！！！';
-        } else {
-            $str = "update user set NickName = '{$newnickname}' where UserId = '{$userid}'";
-            up($str);
-        }
+        @$newnickname = xss($_POST['nickname']);
+        $str = "update user set NickName = '{$newnickname}' where UserId = '{$userid}'";
+        up($str);
     }
     //修改密码
     if (!empty($_POST['oldpassword'])) {
         @$oldpassword = $_POST['oldpassword'];
-        @$newpassword = $_POST['newpassword'];
+        @$newpassword = xss($_POST['newpassword']);
         @$renewpassword = $_POST['renewpassword'];
-        if (xss($newpassword)) {
-            echo '不要试图攻击！！！';
+        if (strlen($newpassword) < 8 || strlen($newpassword) > 16) {
+            echo "密码长度应为8-16位";
         } else {
-            if (strlen($newpassword) < 8 || strlen($newpassword) > 16) {
-                echo "密码长度应为8-16位";
-            } else {
-                $str = "select * from user where UserId ='{$userid}' and PassWord = '{$oldpassword}'";
-                if (sel($str)) {
-                    if ($newpassword != $renewpassword) {
-                        $str = "update user set PassWord = '{$newpassword}' where UserId = '{$userid}'";
-                        up($str);
-                    } else {
-                        echo "两次密码不一致";
-                    }
+            $str = "select * from user where UserId ='{$userid}' and PassWord = '{$oldpassword}'";
+            if (sel($str)) {
+                if ($newpassword != $renewpassword) {
+                    $str = "update user set PassWord = '{$newpassword}' where UserId = '{$userid}'";
+                    up($str);
                 } else {
-                    echo "密码错误";
+                    echo "两次密码不一致";
                 }
+            } else {
+                echo "密码错误";
             }
         }
     }
@@ -68,8 +60,7 @@ if (isset($_SESSION['userid'])) {
             $bj = 0;
         }
     }
-    if($bj==1)
-    {
+    if ($bj == 1) {
         echo '1';
     }
 }

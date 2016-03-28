@@ -25,13 +25,9 @@ if (isset($_SESSION['userid'])) {
             if (empty($_POST['runinformation']) || empty($_POST['runtime'])) {
                 echo '信息不能为空';
             } else {
-                @$runinformation = $_POST['runinformation'];
+                @$runinformation = xss($_POST['runinformation']);
                 @$runtime = $_POST['runtime'];
-                @$runarea = $_POST['runarea'];
-                if (xss($runinformation) || xss($runarea)) {
-                    echo '请不要试图攻击!!!';
-                    die();
-                }
+                @$runarea = xss($_POST['runarea']);
                 if (strtotime(date("y-m-d h:i:s")) >= strtotime($runtime)) {
                     echo '请输入正确的时间';
                 } else {

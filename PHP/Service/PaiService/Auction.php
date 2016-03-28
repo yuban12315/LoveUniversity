@@ -31,10 +31,6 @@ if (isset($_SESSION['userid'])) {
         } else {
             $getuser = $_SESSION['userid'];
             @$paimoney = (int)$_POST['paimoney'];
-            if (xss($paimoney)) {
-                echo '不要试图攻击';
-                die();
-            }
             $paiid = (int)$_POST['paiid'];
             $str = "select * from pai where PaiId = {$paiid}";
             $row = sel($str);
@@ -47,11 +43,7 @@ if (isset($_SESSION['userid'])) {
                     $data = pay($userid, $paimoney, $row['UserId'], $_POST['paypassword']);
                     if ($data == '1') {
                         if (!(empty($_POST['comment']))) {
-                            @$comment = $_POST['comment'];
-                            if (xss($comment)) {
-                                echo '不要试图攻击';
-                                die();
-                            }
+                            @$comment = xss($_POST['comment']);
                             $str = "insert into comment (UserId,Comment,PaiId) VALUES ({$userid},'{$comment}',{$paiid})";
                             ins($str);
                         }

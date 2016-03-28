@@ -2,9 +2,11 @@
 session_start();
 require_once '../../DAO/DAO.php';
 require_once '../UserService/XSS.php';
+/*调用测试
 $_SESSION['userid'] = 33;
 $_SESSION['userphoto'] = '111';
 $_SESSION['jwxtnumber'] = '111';
+*/
 if (isset($_SESSION['userid'])) {
     $userid = $_SESSION['userid'];
     $postimage = $_SESSION['userphoto'];
@@ -18,13 +20,9 @@ if (isset($_SESSION['userid'])) {
                 echo '信息不能为空';
             } else {
                 $postuser = $_SESSION['username'];
-                @$xueinformation = $_POST['xueinformation'];
+                @$xueinformation = xss($_POST['xueinformation']);
                 @$xuetime = $_POST['xuetime'];
-                @$xuearea = $_POST['xuearea'];
-                if (xss($xueinformation) || xss($xuearea) || xss($xuetime)) {
-                    echo '不要试图攻击';
-                    die();
-                }
+                @$xuearea = xss($_POST['xuearea']);
                 if (strtotime(date("y-m-d h:i:s")) >= strtotime($xuetime)) {
                     echo '请输入正确的时间';
                 } else {

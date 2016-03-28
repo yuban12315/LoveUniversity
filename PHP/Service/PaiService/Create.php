@@ -22,14 +22,10 @@ if (isset($_SESSION['userid'])) {
                 echo '拍卖信息不完整';
             } else {
                 @$postuser = $_SESSION['username'];
-                @$paimoney = $_POST['paimoney'];
+                @$paimoney = xss($_POST['paimoney']);
                 @$downtime = $_POST['downtime'];
-                @$paiinformation = $_POST['paiinformation'];
-                @$paititle = $_POST['paititle'];
-                if (xss($paimoney) || xss($paiinformation) || xss($downtime) || xss($paititle)) {
-                    echo '不要试图攻击';
-                    die();
-                }
+                @$paiinformation = xss($_POST['paiinformation']);
+                @$paititle = xss($_POST['paititle']);
                 if (strtotime(date("y-m-d h:i:s")) >= strtotime($downtime)) {
                     echo '请输入正确的时间';
                 } else {

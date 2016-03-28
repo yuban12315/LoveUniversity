@@ -7,8 +7,8 @@
  */
 function xss($str)
 {
-    $sum1 = strlen($str);
     $str = htmlspecialchars($str);
+    $str = str_replace(PHP_EOL, '', $str);
     $str = str_replace( '/', "", $str);
     $str = str_replace("", "", $str);
     $str = str_replace("&gt", "", $str);
@@ -43,11 +43,5 @@ function xss($str)
     $str=str_replace("''","'",$str);
     $str=str_replace("css","'",$str);
     $str=str_replace("CSS","'",$str);
-    $sum2 = strlen($str);
-    if($sum1!=$sum2) {
-        return true;
-    }
-    else{
-        return false;
-    }
+    return $str;
 }
