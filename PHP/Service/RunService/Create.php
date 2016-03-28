@@ -28,7 +28,7 @@ if (isset($_SESSION['userid'])) {
                 @$runinformation = xss($_POST['runinformation']);
                 @$runtime = $_POST['runtime'];
                 @$runarea = xss($_POST['runarea']);
-                if (strtotime(date("y-m-d h:i:s")) >= strtotime($runtime)) {
+                if (strtotime(date("y-m-d h:i:s")) <= strtotime($runtime)) {
                     echo '请输入正确的时间';
                 } else {
                     $postuser = $_SESSION['username'];

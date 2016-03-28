@@ -12,13 +12,11 @@ if (isset($_SESSION['userid'])) {
     $getuser = $_SESSION['userid'];
     $str = "select * from run where GetUser = {$getuser}";
     $row = sel($str);
-    $str1 = "select * from user where UserId = {$getuser}";
-    $row1 = sel($str1);
-    if (empty($row1['JwxtNumber'])) {
+    if (empty($_SESSION['jwxtnumber'])) {
         echo '请完善个人信息';
         die();
     } else {
-        if ($row && (strtotime(date("y-m-d h:i:s")) < strtotime($row['RunTime']))) {
+        if ($row && (strtotime(date("y-m-d h:i:s")) > strtotime($row['RunTime']))) {
             echo '已有约会';
         } else {
             $runid = (int)$_POST['runid'];

@@ -23,7 +23,7 @@ if (isset($_SESSION['userid'])) {
                 @$xueinformation = xss($_POST['xueinformation']);
                 @$xuetime = $_POST['xuetime'];
                 @$xuearea = xss($_POST['xuearea']);
-                if (strtotime(date("y-m-d h:i:s")) >= strtotime($xuetime)) {
+                if (strtotime(date("y-m-d h:i:s")) <= strtotime($xuetime)) {
                     echo '请输入正确的时间';
                 } else {
                     $str = "insert into xue (UserId,PostUser,XueArea,XueInformation,XueTime,state,PostImage) VALUES ('{$userid}','{$postuser}','{$xuearea}','{$xueinformation}','{$xuetime}',1,'{$postimage}')";

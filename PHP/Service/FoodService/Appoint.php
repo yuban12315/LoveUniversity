@@ -14,7 +14,7 @@ if (isset($_SESSION['userid'])) {
         echo '请完善个人信息';
         die();
     } else {
-        if ($row && (strtotime(date("y-m-d h:i:s")) < strtotime($row['FoodTime']))) {
+        if ($row && (strtotime(date("y-m-d h:i:s")) > strtotime($row['FoodTime']))) {
             echo '已有约会';
         } else {
             @$foodid = (int)$_POST['foodid'];

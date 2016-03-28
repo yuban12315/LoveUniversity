@@ -30,7 +30,7 @@ if (isset($_SESSION['userid'])) {
                 @$foodtime = $_POST['foodtime'];
                 @$foodarea = xss($_POST['foodarea']);
                 @$fooodway = xss($_POST['foodway']);
-                if (strtotime(date("y-m-d h:i:s")) >= strtotime($foodtime)) {
+                if (strtotime(date("y-m-d h:i:s")) <= strtotime($foodtime)) {
                     echo '请输入正确的时间';
                 } else {
                     $str = "insert into food (UserId,PostUser,FoodInformation,FoodTime,FoodArea,FoodWay,state,PostImage) VALUES ('{$userid}','{$postuser}','{$foodinformation}','{$foodtime}','{$foodarea}','{$fooodway}',1,'{$postimage}')";

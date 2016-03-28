@@ -200,10 +200,15 @@ $path = 'http://7xrqhs.com1.z0.glb.clouddn.com/' . $rename;
 echo '1';
 */
 // 保存到指定路径
+/*
 $image = @imagecreatefromjpeg ("test/test.jpg");
 imagejpeg ($image,'test/test1.png',9); /*压缩等级0-9，压缩后9最小，1最大*/
 
 
+if(strtotime(date("y-m-d h:i:s")) > strtotime("2015-09-08 08:08:08"))
+{
+    echo 1;
+}
 
 
 
