@@ -2,12 +2,11 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>LoveU | 赠送 |</title>
+    <title>LoveU | 拍卖 | 详情</title>
     <link rel="icon" href="../../img/title.ico">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="../../css/bootstrap.css" rel="stylesheet">
     <link href="../../css/style.css" rel="stylesheet">
-    <link href="../../css/datetimepicker.css" rel="stylesheet">
 </head>
 <body>
 <div>
@@ -46,16 +45,38 @@
 <div class="banner-lg"></div>
 <div class="row">
     <div class="container" id='content'>
-        <div class="col-lg-12 col-md-12 col-sm-12 long">
+        <div class="col-lg-12 col-md-12 col-sm-12 info">
             <div class="col-lg-3 col-md-3 col-sm-3 ">
-                <img class="info-img img-thumbnail" src="" alt="" id="img">
+                <img class="img img-thumbnail" src="" alt="" id="img">
             </div>
             <div class="col-lg-2 col-md-2 col-sm-2 text-center">
                 <h2 class="text-center" id="nickname">nickname</h2>
             </div>
             <div class="col-lg-7 col-md-7 col-sm-7">
-                <h2 class="text-center" id="msg"> msg </h2>
+                <h2 class="text-center" id="title"> msg </h2>
             </div>
+            <div class="col-lg-5 col-md-5 col-sm-5">
+                <ul class="nav">
+                    <li><h3  id="DownTime">下架时间：</h3></li>
+                    <li><h3  id="money">当前价格：</h3></li>
+                    <li><h3  id="GetUser">当前最高价者：</h3></li>
+                </ul>
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-4">
+                <form role="form" autocomplete="off">
+                   <div class="col-lg-6 input-group">
+                       <span class="input-group-addon btn" id="down">-1</span>
+                       <input type="text" class="form-control" id="Addmoney">
+                       <span class="input-group-addon btn" id="up">+1</span>
+                   </div>
+                    <br>
+                    <button class="btn btn-info" id="buy">出价</button>
+                </form>
+            </div>
+        </div>
+        <div class="col-lg-12 col-md-12">
+            <h2 class="text-center">介绍</h2>
+            <h3 id="msg" class="msg"> </h3>
         </div>
         <div class="col-lg-12 col-md-12">
             <h2>留言区：</h2>
@@ -81,7 +102,6 @@
         </form>
     </div>
 </div>
-<!--div class="load" id="loading"></div-->
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog"
      aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog">
@@ -92,11 +112,11 @@
                     &times;
                 </button>
                 <h1 class="modal-title" id="myModalLabel">
-                   赠送选择结束
+                    交易完成
                 </h1>
             </div>
             <div class="modal-body">
-                <h4 class="text-center" id="wrong">你已经选择把礼物送给Ta了</h4>
+                <h4 class="text-center" id="wrong">找个时间和Ta碰个面吧</h4>
             </div>
         </div>
     </div>
@@ -109,30 +129,50 @@
 <script src="../../js/headroom.js"></script>
 <script src="../../js/cookies.js"></script>
 <script src="../../js/index-service.js"></script>
-<script src="../../js/service/details.js"></script>
+<script src="../../js/service/trade.js"></script>
 <script>
     $(document).ready(function () {
+        setTimeout(function () {
+            $("#loading").fadeOut();
+        },300);
         $.ajaxSetup({
             async: false
         });
+        money();
         resetCookie();
         $("#submit").click(function () {
             submit();
         });
-        $.getJSON('../../PHP/Service/GiveService/Details.php',{
-            giveid:getCookie('master')
+        $.getJSON('../../PHP/Service/PaiService/Details.php',{
+            paiid:getCookie('master')
         }, function (data) {
-            $("#msg")[0].innerHTML=data.GiveInformation;
-            $("#img").attr('src',data.GiveImage);
+           $("#msg")[0].innerHTML=' '+data.PaiInformation;
+            $("#img").attr('src',data.PaiImage);
             setCookie('masterID',data.UserId);
-            var url='../../php/Service/UserService/GetData.php?userid='+data.UserId;
+            $("#title")[0].innerHTML=data.PaiTitle;
+            $("#DownTime")[0].innerHTML+=data.DownTime;
+            $("#money")[0].innerHTML+=data.PaiMoney+'元';
+            $("#Addmoney").val(parseInt(data.PaiMoney)+1);
+            var url='../../php/Service/UserService/GetData.php?userid='+data.GetUser;
+            $.getJSON(url, function (data) {
+                $("#GetUser")[0].innerHTML+=data.NickName;
+            });
+             url='../../php/Service/UserService/GetData.php?userid='+data.UserId;
             $.getJSON(url, function (data) {
                 $("#nickname")[0].innerHTML=data.NickName;
             });
-
         });
-        details(1);
-
+        //details(1);
+        function money() {
+            $("#up").click(function () {
+                $("#Addmoney").val(parseInt($("#Addmoney").val()) + 1);
+            });
+            $("#down").click(function () {
+                if (parseInt($("#Addmoney").val()) > 0) {
+                    $("#Addmoney").val(parseInt($("#Addmoney").val()) - 1);
+                }
+            });
+        }
     });
 </script>
 </body>

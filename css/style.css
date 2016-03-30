@@ -370,6 +370,10 @@
     width: 50px;
 }
 
+.msg{
+    word-break:break-all;
+}
+
 .food{
     background-image: url("../img/food.jpg");
     background-size: 100%;
@@ -381,7 +385,6 @@
     background-size: 100%;
     border-radius: 15px;
 }
-
 .send{
     background-image: url("../img/send.jpg");
     background-size: 100%;
@@ -404,4 +407,8 @@
     background-image: url("../img/help.jpg");
     background-size: 100%;
     border-radius: 15px;
+}
+
+.img{
+    width: 300px;
 }
