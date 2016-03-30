@@ -8,7 +8,7 @@
 require_once '../../DAO/DAO.php';
 function loginservice($jwxtnumber, $jwxtpassword)
 {
-    $url = "http://183.175.14.250:8888/JwxtInterface/check.html?zjh={$jwxtnumber}&mm={$jwxtpassword}";
+    $url = "http://csb.hupeng.wang:8080/JwxtInterface/check.html?zjh={$jwxtnumber}&mm={$jwxtpassword}";
     if (file_get_contents($url) == '1')
         return true;
     else
@@ -22,7 +22,7 @@ function classservice($jwxtnumber, $jwxtpassword, $userid)
         $str = "delete from class where UserId = {$userid}";
         del($str);
     }
-    $url = "http://183.175.14.250:8888/JwxtInterface/course.html?zjh={$jwxtnumber}&mm={$jwxtpassword}";
+    $url = "http://csb.hupeng.wang:8080/JwxtInterface/course.html?zjh={$jwxtnumber}&mm={$jwxtpassword}";
     $html = file_get_contents($url);
     $array = json_decode($html);
     $i = 0;
@@ -38,7 +38,7 @@ function classservice($jwxtnumber, $jwxtpassword, $userid)
 
 function inforservice($jwxtnumber, $userid)
 {
-    $url = "http://183.175.14.250:8888/JwxtInterface/info.html?zjh={$jwxtnumber}";
+    $url = "http://csb.hupeng.wang:8080/JwxtInterface/info.html?zjh={$jwxtnumber}";
     $html = file_get_contents($url);
     $array = json_decode($html);
     $truename = $array->name;
