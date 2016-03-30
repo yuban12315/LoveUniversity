@@ -7,7 +7,7 @@
  */
 require_once '../../DAO/DAO.php';
 require_once '../UserService/ch_json_encode.php';
-@$runid = (int)$_GET['paiid'];
+@$paiid = (int)$_GET['paiid'];
 $str = "select * from pai where PaiId = '{$paiid}'";
 $row = sel($str);
 echo ch_json_encode($row);
