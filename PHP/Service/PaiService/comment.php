@@ -7,11 +7,12 @@
  */
 session_start();
 //调用测试
+/*
 $_SESSION['userid'] = '25';
 $_POST['comment'] = '111';
 $_POST['paiid'] = 2;
 $_SESSION['jwxtnumber'] = '111';
-
+*/
 require_once '../../DAO/DAO.php';
 require_once '../UserService/XSS.php';
 if (isset($_SESSION['userid'])) {

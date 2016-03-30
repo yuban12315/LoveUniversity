@@ -34,6 +34,10 @@ if (isset($_SESSION['userid'])) {
             $paiid = (int)$_POST['paiid'];
             $str = "select * from pai where PaiId = {$paiid}";
             $row = sel($str);
+            if ($row['UserId'] == $userid) {
+                echo '不可以恶意抬价哦';
+                die();
+            }
             if ($paimoney <= $row['PaiMoney']) {
                 echo '竞拍价格必须高于当前价格';
             } else {
@@ -49,7 +53,7 @@ if (isset($_SESSION['userid'])) {
                         }
                         $str = "select * from pai where PaiId = {$paiid}";
                         $row = sel($str);
-                        if(!empty($row['GetUser'])) {
+                        if (!empty($row['GetUser'])) {
                             get(0, $row['PaiMoney'], $row['GetUser']);
                         }
                         $str = "update pai set PaiMoney = {$paimoney} where PaiId = {$paiid}";
