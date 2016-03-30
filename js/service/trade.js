@@ -68,17 +68,6 @@ function show() {
     })
 }
 
-function money() {
-    $("#up").click(function () {
-        $("#money").val(parseInt($("#money").val()) + 1);
-    });
-    $("#down").click(function () {
-        if (parseInt($("#money").val()) > 0) {
-            $("#money").val(parseInt($("#money").val()) - 1);
-        }
-    });
-}
-
 function submit() {
     var url = '../../PHP/Service/HelpService/Create.php';
     var msg = $("#input-content").val();
