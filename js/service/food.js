@@ -9,7 +9,7 @@ function creat(avator, nickname, place, datetime, msg, id, deal) {
         + '<div class="col-lg-4  col-md-4 col-sm-4"><h2 class="text-center" id="datetime"> ' + datetime + ' </h2></div>'
         + '<div class="col-lg-12 col-md-12 col-sm-12"><h2 class="text-center" id="msg">' + msg + '</h2></div>'
         + '<button class="btn btn-info pull-right big" onclick="date(this)">约</button>'
-        + '<p class="hidden" id="foodid">'+id+'</p> </div>';
+        + '<p class="hidden" >'+id+'</p> </div>';
     return msg;
 }
 

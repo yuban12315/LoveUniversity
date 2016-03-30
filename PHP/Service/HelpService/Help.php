@@ -32,7 +32,7 @@ if (isset($_SESSION['userid'])) {
             $row = sel($str);
             if ($row) {
                 if ($row['state'] == 1) {
-                    if(strtotime(date("y-m-d h:i:s")) < strtotime($row['DownTime'])){
+                    if(strtotime(date("y-m-d h:i:s")) > strtotime($row['DownTime'])){
                         echo '该信息已过期';
                     }
                     else {

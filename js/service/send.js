@@ -91,6 +91,10 @@ function submit() {
     $.post('../../PHP/Service/GiveService/Create.php', {
         giveinformation: $("#input-content").val()
     }, function (data) {
+        if(data[0]=='1'){
+            location.reload();
+        }
+        else
         $("#word").text(data);
     })
 }

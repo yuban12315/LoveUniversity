@@ -45,7 +45,8 @@
 </div>
 <div class="banner-lg"></div>
 <div class="row">
-    <div class="container" id='content'></div>
+    <div class="container" id='content'>
+    </div>
 </div>
 <div class=" container jumbotron text-center" id='more'><h2>更多信息</h2></div>
 
@@ -55,7 +56,7 @@
             <div class="form-group">
                 <label for="input-content"></label>
                 <textarea class="form-control textarea" rows="3" id="input-content" placeholder="描述"></textarea>
-                <div class="input-group col-lg-8 col-md-12 col-sm-12">
+                <div class="input-group col-lg-12 col-md-12 col-sm-12">
                     <span class="input-group-addon "><span class="glyphicon glyphicon-calendar"></span> 时间</span>
                     <input size="16" type="text" value="" readonly class="form_datetime form-control  big"
                            id="time">
@@ -67,6 +68,10 @@
                     <span class="input-group-addon btn btn-sm" id="up">
                         <span class=" glyphicon glyphicon-menu-up"></span>
                     </span>
+                    <span class="input-group-addon btn btn-sm" >
+                       支付密码
+                    </span>
+                    <input type="text" value="" class="form-control  big" id="paypassword">
                 </div>
                 <button class="btn btn-default big " id="word">200</button>
                 <button type="button" class="btn btn-success big pull-right" id="submit">
@@ -103,32 +108,20 @@
 <script src="../../js/index-service.js"></script>
 <script src="../../js/datetimepicker.js"></script>
 <script src="../../js/fr.js"></script>
+<script src="../../js/service/cooperate.js"></script>
 <script>
     $(document).ready(function () {
+        $.ajaxSetup({
+            async: false
+        });
         $(".form_datetime").datetimepicker({format: 'yyyy-mm-dd hh:ii'});
         money();
+        show();
         $("#submit").click(function () {
             submit();
         })
     });
-    function money() {
-        $("#up").click(function () {
-            $("#money").val(parseInt($("#money").val()) + 1);
-        });
-        $("#down").click(function () {
-            if (parseInt($("#money").val()) > 0) {
-                $("#money").val(parseInt($("#money").val()) - 1);
-            }
-        });
-    }
-    function submit(){
-        var msg=$("#input-content").val();
-        var money=$("#money").val();
-        var time=$("#time").val()+':00';
-        var reg=new RegExp("\n","g");
-        msg = msg.replace(reg,'；');
-        alert(msg+money+time);
-    }
+
 </script>
 </body>
 </html>

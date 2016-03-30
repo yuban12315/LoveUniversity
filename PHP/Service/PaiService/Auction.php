@@ -37,7 +37,7 @@ if (isset($_SESSION['userid'])) {
             if ($paimoney <= $row['PaiMoney']) {
                 echo '竞拍价格必须高于当前价格';
             } else {
-                if (strtotime(date("y-m-d h:i:s")) < strtotime($row['DownTime'])) {
+                if (strtotime(date("y-m-d h:i:s")) > strtotime($row['DownTime'])) {
                     echo '竞拍已结束';
                 } else {
                     $data = pay($userid, $paimoney, $row['UserId'], $_POST['paypassword']);
