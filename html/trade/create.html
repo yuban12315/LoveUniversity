@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>LoveU | 互助</title>
+    <title>LoveU | 拍卖 |发布</title>
     <link rel="icon" href="../../img/title.ico">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="../../css/bootstrap.css" rel="stylesheet">
@@ -25,6 +25,8 @@
                     <small>大学</small>
                 </a>
             </div>
+
+
             <div class="collapse navbar-collapse" id="example-navbar-collapse">
                 <ul class="nav pull-right navbar-nav" id="user">
                     <li class="dropdown">
@@ -33,53 +35,20 @@
                            aria-expanded="false">NULL <span class="caret"></span></a>
                         <ul class="dropdown-menu">
                             <li><a href="../profile.html">个人主页</a></li>
-                            <li><a href="../message.html">我的消息</a></li>
+                            <li><a href="#">我的消息</a></li>
                             <li role="separator" class="divider"></li>
                             <li><a onclick="logOut()">退出登录</a></li>
                         </ul>
                     </li>
+                </ul>
+                <ul class="nav  navbar-nav pull-right">
+                    <li class="active big"><a href="create.html">发布</a></li>
                 </ul>
             </div>
         </nav>
     </div>
 </div>
 <div class="banner-lg"></div>
-<div class="row">
-    <div class="container" id='content'>
-    </div>
-</div>
-<div class=" container jumbotron text-center" id='more'><h2>更多信息</h2></div>
-
-<div class="row" id="input">
-    <div class="container">
-        <form role="form" autocomplete="off">
-            <div class="form-group">
-                <label for="input-content"></label>
-                <textarea class="form-control textarea" rows="3" id="input-content" placeholder="描述"></textarea>
-                <div class="input-group col-lg-12 col-md-12 col-sm-12">
-                    <span class="input-group-addon "><span class="glyphicon glyphicon-calendar"></span> 时间</span>
-                    <input size="16" type="text" value="" readonly class="form_datetime form-control  big"
-                           id="time">
-                    <span class="input-group-addon "><span class="glyphicon glyphicon-usd"></span> 悬赏</span>
-                    <input type="text" value="0" class="form-control  big" id="money">
-                    <span class="input-group-addon btn btn-sm" id="down">
-                            <span class="glyphicon glyphicon-menu-down"></span>
-                    </span>
-                    <span class="input-group-addon btn btn-sm" id="up">
-                        <span class=" glyphicon glyphicon-menu-up"></span>
-                    </span>
-                    <span class="input-group-addon btn btn-sm" >
-                       支付密码
-                    </span>
-                    <input type="text" value="" class="form-control  big" id="paypassword">
-                </div>
-                <button class="btn btn-default big " id="word">200</button>
-                <button type="button" class="btn btn-success big pull-right" id="submit">
-                    &nbsp;&nbsp;发表&nbsp;&nbsp;</button>
-            </div>
-        </form>
-    </div>
-</div>
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog"
      aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog">
@@ -90,7 +59,7 @@
                     &times;
                 </button>
                 <h1 class="modal-title" id="myModalLabel">
-                    发起失败！
+                    发布失败！
                 </h1>
             </div>
             <div class="modal-body">
@@ -100,8 +69,6 @@
     </div>
 </div>
 <button style="display: none" id="alert" data-toggle="modal" data-target="#myModal"></button>
-<div class="banner-bot"></div>
-<div class="load" id="loading"></div>
 <script src="../../js/jQuery.js"></script>
 <script src="../../js/bootstrap.js"></script>
 <script src="../../js/headroom.js"></script>
@@ -109,20 +76,5 @@
 <script src="../../js/index-service.js"></script>
 <script src="../../js/datetimepicker.js"></script>
 <script src="../../js/fr.js"></script>
-<script src="../../js/service/cooperate.js"></script>
-<script>
-    $(document).ready(function () {
-        $.ajaxSetup({
-            async: false
-        });
-        $(".form_datetime").datetimepicker({format: 'yyyy-mm-dd hh:ii'});
-        money();
-        show();
-        $("#submit").click(function () {
-            submit();
-        })
-    });
-
-</script>
 </body>
 </html>

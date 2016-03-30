@@ -57,6 +57,9 @@ function show() {
             }
         });
     }
+    setTimeout(function () {
+        $("#loading").fadeOut();
+    },300);
 }
 
 function show1(page) {
@@ -165,40 +168,3 @@ function submit() {
     }
 }
 
-$(document).ready(function () {
-    setCookie('choose', 'run');
-    show();
-    $("#_run").click(function () {
-        $("#_run").addClass('clicked');
-        setCookie('choose', 'run');
-        show();
-        $("#_study").removeClass('clicked');
-        $("#content").fadeIn("slow");
-        $("#content2").fadeOut("slow");
-    });
-    $("#_study").click(function () {
-        $("#_study").addClass('clicked');
-        setCookie('choose', 'study');
-        show();
-        $("#_run").removeClass('clicked');
-        $("#content").fadeOut("slow");
-        $("#content2").fadeIn("slow");
-    });
-    $(".form_datetime").datetimepicker({format: 'yyyy-mm-dd hh:ii'});
-    $("#submit").click(function () {
-        submit();
-    });
-    $(function () {
-        $("#input-content").keyup(function () {
-            var len = $(this).val().length;
-            if (len > 200) {
-                $(this).val($(this).val().substring(0, 199));
-                $("#word").text(0);
-            }
-            else {
-                var num = 200 - len;
-                $("#word").text(num);
-            }
-        });
-    });
-});

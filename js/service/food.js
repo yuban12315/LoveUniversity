@@ -83,6 +83,9 @@ function page(page) {
             }
         }, 1);
     });
+    setTimeout(function () {
+        $("#loading").fadeOut();
+    },300);
 }
 
 function show() {
