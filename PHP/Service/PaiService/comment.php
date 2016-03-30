@@ -22,11 +22,16 @@ if (isset($_SESSION['userid'])) {
             echo '请完善个人信息';
             die();
         } else {
-            @$paiid = (int)$_POST['paiid'];
-            $comment = xss($_POST['comment']);
-            $str = "insert into comment (UserId,Comment,PaiId) VALUE ({$userid},'{$comment}',{$paiid})";
-            ins($str);
-            echo '1';
+            $str = "select * from comment where UserId = {$userid}";
+            if (sel($str)) {
+                echo '留言机会只有一次哦';
+            } else {
+                @$paiid = (int)$_POST['paiid'];
+                $comment = xss($_POST['comment']);
+                $str = "insert into comment (UserId,Comment,PaiId) VALUE ({$userid},'{$comment}',{$paiid})";
+                ins($str);
+                echo '1';
+            }
         }
     } else {
         echo '评论不能为空';

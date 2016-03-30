@@ -13,21 +13,22 @@ Mypage($table,$page);
 function Mypage($table, $page)
 {
     $conn = connect();
-    $str = "select * from {$table} ";
+    $start = ($page - 1) * 10;
+    $end = ($page * 10 - 2);
+    $str = "select * from {$table} where state = 1 limit {$start},{$end} ";
     $result = mysqli_query($conn, $str);
     $row = mysqli_fetch_assoc($result);
     $i = 0;
-    while ($i <= ($page * 10 - 1) && !empty($row)) {
-        if ($row['state'] == 0 ) {
-            $row = mysqli_fetch_assoc($result);
-            continue;
+    while (!empty($row)) {
+        if(isset($_SESSION['userid'])) {
+            if ($row['UserId'] == $_SESSION['userid']) {
+                $row = mysqli_fetch_assoc($result);
+                continue;
+            }
         }
-
         unset($row['GetUser']);
         $i++;
-        if ($i >= ($page - 1) * 10) {
-            $array[$i-1] = $row;
-        }
+        $array[$i-1] = $row;
         $row = mysqli_fetch_assoc($result);
     }
     if($i%10==0&&$i!=0)
