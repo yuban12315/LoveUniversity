@@ -7,6 +7,5 @@
  */
 require_once '../UserService/Page.php';
 $table = 'help';
-//@$page = (int)$_GET['page'];
-$page =1 ;
+@$page = (int)$_GET['page'];
 Mypage($table,$page,'DownTime','HelpId');
