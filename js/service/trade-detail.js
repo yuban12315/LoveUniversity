@@ -38,7 +38,7 @@ function details(page) {
         $("#comment")[0].innerHTML = '';
         setInterval(function () {
             if (sum != num) {
-                msg = data[sum].GetInformation;
+                msg = data[sum].Comment;
                 userid = data[sum].UserId;
                 url = '../../PHP/Service/UserService/GetData.php?userid=' + userid;
                 $.getJSON(url, function (data2) {
