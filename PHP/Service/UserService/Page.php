@@ -14,7 +14,7 @@ function Mypage($table, $page, $time, $ID)
     $conn = connect();
     $start = ($page - 1) * 10;
     $end = ($page * 10 - 2);
-    $str = "select * from {$table} limit {$start},{$end} ";
+    $str = "select * from {$table} where state = 1 limit {$start},{$end} ";
     $result = mysqli_query($conn, $str);
     $row = mysqli_fetch_assoc($result);
     $i = 0;
