@@ -70,7 +70,12 @@
                        <span class="input-group-addon btn" id="up">+1</span>
                    </div>
                     <br>
-                    <button class="btn btn-info" id="buy">出价</button>
+                   <div class="col-lg-10 input-group">
+                       <span class="input-group-addon">支付密码</span>
+                       <input class="form-control" type="password" id="paypassword">
+                   </div>
+                    <br>
+                    <input type="button" class="btn btn-info" id="buy" value="出价">
                 </form>
             </div>
         </div>
@@ -84,6 +89,7 @@
         </div>
     </div>
 </div>
+<br><br><br>
 <div class="row" id="com">
     <div class="container">
         <form role="form" autocomplete="off" id="form">
@@ -112,11 +118,11 @@
                     &times;
                 </button>
                 <h1 class="modal-title" id="myModalLabel">
-                    交易完成
+                    交易失败
                 </h1>
             </div>
             <div class="modal-body">
-                <h4 class="text-center" id="wrong">找个时间和Ta碰个面吧</h4>
+                <h4 class="text-center" id="wrong"></h4>
             </div>
         </div>
     </div>
@@ -130,6 +136,7 @@
 <script src="../../js/cookies.js"></script>
 <script src="../../js/index-service.js"></script>
 <script src="../../js/service/trade.js"></script>
+<script src="../../js/service/trade-detail.js"></script>
 <script>
     $(document).ready(function () {
         setTimeout(function () {
@@ -140,39 +147,28 @@
         });
         money();
         resetCookie();
+        Show();
         $("#submit").click(function () {
             submit();
         });
-        $.getJSON('../../PHP/Service/PaiService/Details.php',{
-            paiid:getCookie('master')
-        }, function (data) {
-           $("#msg")[0].innerHTML=' '+data.PaiInformation;
-            $("#img").attr('src',data.PaiImage);
-            setCookie('masterID',data.UserId);
-            $("#title")[0].innerHTML=data.PaiTitle;
-            $("#DownTime")[0].innerHTML+=data.DownTime;
-            $("#money")[0].innerHTML+=data.PaiMoney+'元';
-            $("#Addmoney").val(parseInt(data.PaiMoney)+1);
-            var url='../../php/Service/UserService/GetData.php?userid='+data.GetUser;
-            $.getJSON(url, function (data) {
-                $("#GetUser")[0].innerHTML+=data.NickName;
-            });
-             url='../../php/Service/UserService/GetData.php?userid='+data.UserId;
-            $.getJSON(url, function (data) {
-                $("#nickname")[0].innerHTML=data.NickName;
-            });
-        });
-        //details(1);
-        function money() {
-            $("#up").click(function () {
-                $("#Addmoney").val(parseInt($("#Addmoney").val()) + 1);
-            });
-            $("#down").click(function () {
-                if (parseInt($("#Addmoney").val()) > 0) {
-                    $("#Addmoney").val(parseInt($("#Addmoney").val()) - 1);
+        $("#buy").click(function () {
+            $.post('../../PHP/Service/PaiService/Auction.php',{
+                paiid:getCookie('master'),
+                paimoney:$("#Addmoney").val(),
+                paypassword:$("#paypassword").val()
+            }, function (data) {
+                if(data[0]=='1'){
+                    location.reload();
                 }
-            });
-        }
+                else{
+                    $("#wrong")[0].innerHTML=data;
+                    $("#alert").click();
+                }
+            })
+        });
+
+        //details(1);
+
     });
 </script>
 </body>

@@ -48,7 +48,7 @@ function page(page) {
                 helpid = data[sum].HelpId;
                 money = data[sum].HelpMoney;
                 msg = data[sum].HelpInformation;
-                url = '../../php/Service/UserService/GetData.php?userid=' + data[sum].UserId;
+                url = '../../PHP/Service/UserService/GetData.php?userid=' + data[sum].UserId;
                 $.getJSON(url, function (data2) {
                     msg = creat(data2.UserPhoto, data2.NickName, time, money, msg, helpid);
                     $("#content")[0].innerHTML += msg;

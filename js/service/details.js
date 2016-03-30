@@ -44,7 +44,7 @@ function details(page) {
             if (sum != num) {
                 msg = data[sum].GetInformation;
                 userid = data[sum].UserId;
-                url = '../../php/Service/UserService/GetData.php?userid=' + userid;
+                url = '../../PHP/Service/UserService/GetData.php?userid=' + userid;
                 $.getJSON(url, function (data2) {
                     avatar = data2.UserPhoto;
                     msg = comment(avatar, data2.NickName, msg, userid);

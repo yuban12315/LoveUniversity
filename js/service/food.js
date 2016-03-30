@@ -74,7 +74,7 @@ function page(page) {
                 foodid = data[sum].FoodId;
                 deal = data[sum].FoodWay;
                 msg = data[sum].FoodInformation;
-                url = '../../php/Service/UserService/GetData.php?userid=' + data[sum].UserId;
+                url = '../../PHP/Service/UserService/GetData.php?userid=' + data[sum].UserId;
                 $.getJSON(url, function (data2) {
                     msg = creat(data2.UserPhoto, data2.NickName, place, datetime, msg, foodid, deal);
                     $("#content")[0].innerHTML += msg;

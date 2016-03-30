@@ -30,7 +30,7 @@ function show(page){
                 msg=data[sum].GiveInformation;
                 userid=data[sum].UserId;
                 avator=data[sum].GiveImage;
-                url = '../../php/Service/UserService/GetData.php?userid=' + data[sum].UserId;
+                url = '../../PHP/Service/UserService/GetData.php?userid=' + data[sum].UserId;
                 $.getJSON(url, function (data2) {
                     msg = creat(data2.NickName, avator, msg, id);
                     $("#content")[0].innerHTML += msg;

@@ -102,12 +102,12 @@ function Show(part) {
                         getuser = '还没有人接受你的邀请';
                     }
                     else {
-                        url = '../php/Service/UserService/GetData.php?userid=' + getuser;
+                        url = '../PHP/Service/UserService/GetData.php?userid=' + getuser;
                         $.getJSON(url, function (data) {
                             getuser = '接受者：' + data.NickName;
                         });
                     }
-                    url = '../php/Service/UserService/GetData.php?userid=' + userid;
+                    url = '../PHP/Service/UserService/GetData.php?userid=' + userid;
                     $.getJSON(url, function (data2) {
                         msg = creat_date(data2.NickName, data2.UserPhoto, datetime, place, msg, runid, getuser,'run');
                         $("#content")[0].innerHTML = msg + $("#content")[0].innerHTML;
@@ -139,12 +139,12 @@ function Show(part) {
                         getuser = '还没有人接受你的邀请';
                     }
                     else {
-                        url = '../php/Service/UserService/GetData.php?userid=' + getuser;
+                        url = '../PHP/Service/UserService/GetData.php?userid=' + getuser;
                         $.getJSON(url, function (data) {
                             getuser = '接受者：' + data.NickName;
                         });
                     }
-                    url = '../php/Service/UserService/GetData.php?userid=' + userid;
+                    url = '../PHP/Service/UserService/GetData.php?userid=' + userid;
                     $.getJSON(url, function (data2) {
                         msg = creat_date(data2.NickName, data2.UserPhoto, datetime, place, msg, xueid, getuser,'xue');
                         $("#content")[0].innerHTML = msg + $("#content")[0].innerHTML;
@@ -172,7 +172,7 @@ function Show(part) {
                     foodid = data.post[sum].FoodId;
                     deal = data.post[sum].FoodWay;
                     msg = data.post[sum].FoodInformation;
-                    url = '../php/Service/UserService/GetData.php?userid=' + data.post[sum].UserId;
+                    url = '../PHP/Service/UserService/GetData.php?userid=' + data.post[sum].UserId;
                     $.getJSON(url, function (data2) {
                         msg = creat_food(data2.UserPhoto, data2.NickName, place, datetime, msg, foodid, deal,'food');
                         $("#content")[0].innerHTML = msg + $("#content")[0].innerHTML;
@@ -205,7 +205,7 @@ function Show1(part) {
                     place = data.get[sum].RunArea;
                     msg = data.get[sum].RunInformation;
                     runid = data.get[sum].RunId;
-                    url = '../php/Service/UserService/GetData.php?userid=' + userid;
+                    url = '../PHP/Service/UserService/GetData.php?userid=' + userid;
                     $.getJSON(url, function (data2) {
                         msg = creat_date1(data2.NickName, data2.UserPhoto, datetime, place, msg, runid, '');
                         $("#content")[0].innerHTML = msg + $("#content")[0].innerHTML;
@@ -232,7 +232,7 @@ function Show1(part) {
                     place = data.get[sum].XueArea;
                     msg = data.post[sum].XueInformation;
                     xueid = data.get[sum].XueId;
-                    url = '../php/Service/UserService/GetData.php?userid=' + userid;
+                    url = '../PHP/Service/UserService/GetData.php?userid=' + userid;
                     $.getJSON(url, function (data2) {
                         msg = creat_date1(data2.NickName, data2.UserPhoto, datetime, place, msg, xueid, '');
                         $("#content")[0].innerHTML = msg + $("#content")[0].innerHTML;
@@ -260,7 +260,7 @@ function Show1(part) {
                     foodid = data.get[sum].FoodId;
                     deal = data.get[sum].FoodWay;
                     msg = data.get[sum].FoodInformation;
-                    url = '../php/Service/UserService/GetData.php?userid=' + data.get[sum].UserId;
+                    url = '../PHP/Service/UserService/GetData.php?userid=' + data.get[sum].UserId;
                     $.getJSON(url, function (data2) {
                         msg = creat_food1(data2.UserPhoto, data2.NickName, place, datetime, msg, foodid, deal, '');
                         $("#content")[0].innerHTML = msg + $("#content")[0].innerHTML;

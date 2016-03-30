@@ -83,7 +83,7 @@ function show1(page) {
                 place = data[sum].RunArea;
                 msg = data[sum].RunInformation;
                 runid = data[sum].RunId;
-                url = '../../php/Service/UserService/GetData.php?userid=' + data[sum].UserId;
+                url = '../../PHP/Service/UserService/GetData.php?userid=' + data[sum].UserId;
                 $.getJSON(url, function (data2) {
                     msg = creat(data2.NickName, data2.UserPhoto, datetime, place, msg, runid);
                     $("#content")[0].innerHTML += msg;
@@ -115,7 +115,7 @@ function show2(page) {
                 msg = data[sum].XueInformation;
                 place = data[sum].XueArea;
                 xueid = data[sum].XueId;
-                url = '../../php/Service/UserService/GetData.php?userid=' + data[sum].UserId;
+                url = '../../PHP/Service/UserService/GetData.php?userid=' + data[sum].UserId;
                 $.getJSON(url, function (data2) {
                     msg = creat(data2.NickName, data2.UserPhoto, datetime, place, msg, xueid);
                     $("#content2")[0].innerHTML += msg;
