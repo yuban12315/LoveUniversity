@@ -203,12 +203,15 @@ echo '1';
 /*
 $image = @imagecreatefromjpeg ("test/test.jpg");
 imagejpeg ($image,'test/test1.png',9); /*压缩等级0-9，压缩后9最小，1最大*/
-
+/*
 
 if(strtotime(date("y-m-d h:i:s")) > strtotime("2015-09-08 08:08:08"))
 {
     echo 1;
 }
+*/
+echo $_FILES['file']['type'];
+echo '111';
 
 
 
