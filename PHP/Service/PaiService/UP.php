@@ -16,14 +16,22 @@ if (isset($_SESSION['userid'])) {
         die();
     } else {
         $src = $_FILES['file']['tmp_name'];
+        $type = $_FILES['file']['type'];
+        $name = $_FILES['file']['name'];
+        $size = $_FILES['file']['size'];
+        // $type =  strtolower(end(explode(".",$name)));
+        if ($size == 0) {
+            $_SESSION['paibj'] =  '图片文件过大';
+            die();
+        }
         $mm = get_md5_string();
         $N = $mm . '.png';
         $path = 'http://7xrrdm.com1.z0.glb.clouddn.com/' . $mm . '.png';
-        $image = @imagecreatefromjpeg ($src);
-        imagejpeg ($image,"Buffer/{$N}",9); /*压缩等级0-9，压缩后9最小，1最大*/
-        upload($src, $N, 'pai');
-        unlink("Buffer/{$N}");
+        $image = @imagecreatefromjpeg($src);
+        imagejpeg($image, "Buffer/{$N}", 9);
         $_SESSION['paibj'] = $path;
+        upload("Buffer/{$N}", $N, 'paimai');
+        unlink("Buffer/{$N}");
     }
 }
 function get_md5_string()
