@@ -58,7 +58,7 @@
         <form role="form" autocomplete="off" id="form">
             <div class="col-lg-6 col-md-6 col-sm-6   col-xs-6">
                 <input type="text" class="form-control big " id="title" placeholder="标题*"><br>
-                <input type="text" class="form-control big " id="money" placeholder="起拍价*"><br>
+                <input type="text" size="6" class="form-control big " id="money" placeholder="起拍价*"><br>
                <div class="input-group">
                    <span class="input-group-addon "><span class="glyphicon glyphicon-calendar"></span> 结束时间</span>
                    <input size="16" type="text" value="" readonly class="form_datetime form-control  big" id="time">
@@ -121,7 +121,20 @@
         photo();
         $("#submit").click(function () {
             doUpload();
-        })
+        });
+        $(function () {
+            $("#input-content").keyup(function () {
+                var len = $(this).val().length;
+                if (len > 200) {
+                    $(this).val($(this).val().substring(0, 199));
+                    $("#word").text(0);
+                }
+                else {
+                    var num = 200 - len;
+                    $("#word").text(num);
+                }
+            });
+        });
     });
     function photo() {
         $("#file0").change(function () {
