@@ -56,26 +56,30 @@
             <input type="file" name="file" class="hidden" id="file0">
         </form>
         <form role="form" autocomplete="off" id="form">
-            <div class="col-lg-6">
+            <div class="col-lg-6 col-md-6 col-sm-6   col-xs-6">
                 <input type="text" class="form-control big " id="title" placeholder="标题*"><br>
                 <input type="text" class="form-control big " id="money" placeholder="起拍价*"><br>
-                <input size="16" type="text" value="" readonly class="form_datetime form-control  big" id="time"><br>
+               <div class="input-group">
+                   <span class="input-group-addon "><span class="glyphicon glyphicon-calendar"></span> 结束时间</span>
+                   <input size="16" type="text" value="" readonly class="form_datetime form-control  big" id="time">
+               </div>
+                <br>
             </div>
-            <div class="col-lg-6">
+            <div class="col-lg-6 col-md-6 col-sm-6   col-xs-6">
                 <a class="btn btn-info" onclick="$('input[id=file0]').click();">选择图片*</a>
                 <img class="upload" src="" alt="" id="img0">
             </div>
-            <div class="form-group col-lg-12">
+            <div class="form-group col-lg-12 col-md-12 col-sm-12  col-xs-12">
                 <label for="input-content"></label>
                 <textarea class="form-control textarea" rows="3" id="input-content" placeholder="描述*(在这里描述你的上架商品)"></textarea>
-                <div class="col-lg-12">
-                    <div class="col-lg-2">
+                <div class="col-lg-12 col-md-12 col-sm-12  col-xs-12">
+                    <div class="col-lg-2 col-md-2 col-sm-2  col-xs-2">
                         <button class="btn btn-default big " id="word">200</button>
                     </div>
-                    <div class="col-lg-8" id="image">
+                    <div class="col-lg-8 col-md-8 col-sm-8  col-xs-8" id="image">
 
                     </div>
-                    <div class="col-lg-2">
+                    <div class="col-lg-2 col-md-2 col-sm-2  col-xs-2">
                         <button type="button" class="btn btn-success big pull-right" id="submit">&nbsp;&nbsp;发表&nbsp;&nbsp;</button>
                     </div>
                 </div>
@@ -146,7 +150,10 @@
 
     function submit() {
         $.post('../../PHP/Service/GiveService/Create.php', {
-            giveinformation: $("#input-content").val()
+            paiinformation: $("#input-content").val(),
+            paitile:$("#title").val(),
+            paimoney:$("#money").val(),
+            downtime:$("#time").val()
         }, function (data) {
             if(data[0]=='1'){
                 location.reload();

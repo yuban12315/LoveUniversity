@@ -2,24 +2,24 @@ function comment(avatar, nickname, msg, userid) {
     var data;
     if (CheckUser()) {
         data = '<div class="comment">'
-            + '<div class="col-lg-2">'
+            + '<div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">'
             + '<img src="' + avatar + '"> </div>'
-            + '<div class="col-lg-2">'
+            + '<div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">'
             + '<p class="big"> ' + nickname + '</div>'
-            + '<div class="col-lg-6">'
+            + '<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">'
             + '<p class="big" >' + msg + '</p></div>'
-            + '<div class="col-lg-2 send">'
+            + '<div class="col-lg-2  col-md-2 col-sm-2 col-xs-2 send">'
             + '<button class="btn btn-info big" onclick="send(this)">送给Ta</button>'
             + '<p class="hidden">' + userid + '</p>'
             + '</div> </div>';
     }
     else {
         data = '<div class="comment">'
-            + '<div class="col-lg-2">'
+            + '<div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">'
             + '<img src="' + avatar + '"> </div>'
-            + '<div class="col-lg-2">'
+            + '<div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">'
             + '<p class="big"> ' + nickname + '</div>'
-            + '<div class="col-lg-6">'
+            + '<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">'
             + '<p class="big" >' + msg + '</p></div>'
             + '</div> '
             + '<p class="hidden">' + userid + '</p>';

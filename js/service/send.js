@@ -1,10 +1,10 @@
 function creat(nickname, avatar, msg, id) {
-    var data = '<div class="col-lg-12 col-md-12 col-sm-12 long" onclick="detail(this)">'
-        + '<div class="col-lg-3 col-md-3 col-sm-3 ">'
+    var data = '<div class="col-lg-12 col-md-12 col-sm-12  col-xs-12 long" onclick="detail(this)">'
+        + '<div class="col-lg-3 col-md-3 col-sm-3  col-xs-3 ">'
         + '<img class="info-img img-thumbnail" src="' + avatar + '"></div>'
-        + '<div class="col-lg-2 col-md-2 col-sm-2 text-center">'
+        + '<div class="col-lg-2 col-md-2 col-sm-2   col-xs-2 text-center">'
         + '<h2 class="text-center">' + nickname + '</h2></div>'
-        + '<div class="col-lg-7 col-md-7 col-sm-7">'
+        + '<div class="col-lg-7 col-md-7 col-sm-7  col-xs-7 ">'
         + '<h2 class="text-center">' + msg + '</h2></div></div>'
         + '<p class="hidden">' + id + '</p>';
     return data;

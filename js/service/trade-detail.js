@@ -12,11 +12,11 @@ function money() {
 function comment(avatar, nickname, msg, userid) {
     var data;
     data = '<div class="comment">'
-        + '<div class="col-lg-2">'
+        + '<div class="col-lg-2 col-xs-2">'
         + '<img src="' + avatar + '"> </div>'
-        + '<div class="col-lg-2">'
+        + '<div class="col-lg-2 col-xs-2">'
         + '<p class="big"> ' + nickname + '</div>'
-        + '<div class="col-lg-6">'
+        + '<div class="col-lg-6 col-xs-2">'
         + '<p class="big" >' + msg + '</p></div>'
         + '</div> '
         + '<p class="hidden">' + userid + '</p>';

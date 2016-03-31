@@ -8,14 +8,14 @@ function data() {
 }
 
 function creat_food(avator, nickname, place, datetime, msg, id, deal,part) {
-    var msg = '<div class="col-lg-12 col-md-12 col-sm-12 info">'
-        + '<div class="col-lg-4  col-md-4 col-sm-4">'
+    var msg = '<div class="col-lg-12 col-md-12 col-sm-12  col-xs-12 info">'
+        + '<div class="col-lg-4  col-md-4 col-sm-4 col-xs-4">'
         + '<img class="img-thumbnail info-img"src="' + avator + '"></div>'
-        + '<div class="col-lg-4  col-md-4 col-sm-4"><h2 class="text-center" id="nickname"> ' + nickname + '</h2></div>'
-        + '<div class="col-lg-4  col-md-4 col-sm-4"></span><h2 class="text-center" id="place"> ' + place + ' </h2></div>'
-        + '<div class="col-lg-4  col-md-4 col-sm-4"><h2 class="text-center" id="deal"> ' + deal + '</h2></div>'
-        + '<div class="col-lg-4  col-md-4 col-sm-4"><h2 class="text-center" id="datetime"> ' + datetime + ' </h2></div>'
-        + '<div class="col-lg-12 col-md-12 col-sm-12"><h2 class="text-center" id="msg">' + msg + '<span class="glyphicon glyphicon-cutlery"></h2></div>'
+        + '<div class="col-lg-4  col-md-4 col-sm-4 col-xs-4"><h2 class="text-center" id="nickname"> ' + nickname + '</h2></div>'
+        + '<div class="col-lg-4  col-md-4 col-sm-4 col-xs-4"></span><h2 class="text-center" id="place"> ' + place + ' </h2></div>'
+        + '<div class="col-lg-4  col-md-4 col-sm-4  col-xs-4"><h2 class="text-center" id="deal"> ' + deal + '</h2></div>'
+        + '<div class="col-lg-4  col-md-4 col-sm-4 col-xs-4"><h2 class="text-center" id="datetime"> ' + datetime + ' </h2></div>'
+        + '<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12"><h2 class="text-center" id="msg">' + msg + '<span class="glyphicon glyphicon-cutlery"></h2></div>'
         + '<button class="btn btn-info pull-right big" onclick="del(this)"><span class="glyphicon glyphicon-triangle-top"></span>撤回</button>'
         + '<p class="hidden" >' + id + '</p>'
         + '<p class="hidden" >' + part + '</p></div>';
@@ -23,13 +23,13 @@ function creat_food(avator, nickname, place, datetime, msg, id, deal,part) {
 }
 
 function creat_date(nickname, avator, datetime, place, msg, id, getuser,part) {
-    var msg = '<div class="col-lg-12 col-md-12 col-sm-12 info">'
-        + '<div class="col-lg-4  col-md-6 col-sm-6">'
+    var msg = '<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 info">'
+        + '<div class="col-lg-4  col-md-6 col-sm-6 col-xs-12">'
         + '<img class="img-thumbnail info-img" ' + 'src="' + avator + '"></div>'
-        + '<div class="col-lg-4 col-md-6 col-sm-6"><h2 class="text-center">' + nickname + '</h2></div>'
-        + '<div class="col-lg-4 col-md-6 col-sm-6">'
+        + '<div class="col-lg-4 col-md-6 col-sm-6 col-xs-6"><h2 class="text-center">' + nickname + '</h2></div>'
+        + '<div class="col-lg-4 col-md-6 col-sm-6 col-xs-6">'
         + '<h2 class="text-center">' + datetime + '</h2></div>'
-        + '<div class="col-lg-4 col-md-6 col-sm-6">'
+        + '<div class="col-lg-4 col-md-6 col-sm-6 col-xs-6">'
         + '<h2 class="text-center">' + place + '</h2></div>'
         + '<div class="col-lg-12">'
         + '<h3 class="text-center">' + msg + '<span class="glyphicon glyphicon-fire"></h3>'
@@ -42,27 +42,27 @@ function creat_date(nickname, avator, datetime, place, msg, id, getuser,part) {
 }
 
 function creat_food1(avator, nickname, place, datetime, msg, id, deal) {
-    var msg = '<div class="col-lg-12 col-md-12 col-sm-12 info">'
-        + '<div class="col-lg-4  col-md-4 col-sm-4">'
+    var msg = '<div class="col-lg-12 col-md-12 col-sm-12  col-xs-12 info">'
+        + '<div class="col-lg-4  col-md-4 col-sm-4 col-xs-4">'
         + '<img class="img-thumbnail info-img"src="' + avator + '"></div>'
-        + '<div class="col-lg-4  col-md-4 col-sm-4"><h2 class="text-center" id="nickname"> ' + nickname + '</h2></div>'
-        + '<div class="col-lg-4  col-md-4 col-sm-4"></span><h2 class="text-center" id="place"> ' + place + ' </h2></div>'
-        + '<div class="col-lg-4  col-md-4 col-sm-4"><h2 class="text-center" id="deal"> ' + deal + '</h2></div>'
-        + '<div class="col-lg-4  col-md-4 col-sm-4"><h2 class="text-center" id="datetime"> ' + datetime + ' </h2></div>'
-        + '<div class="col-lg-12 col-md-12 col-sm-12"><h2 class="text-center" id="msg">' + msg + '<span class="glyphicon glyphicon-cutlery"></h2></div></div>'
+        + '<div class="col-lg-4  col-md-4 col-sm-4 col-xs-4"><h2 class="text-center" id="nickname"> ' + nickname + '</h2></div>'
+        + '<div class="col-lg-4  col-md-4 col-sm-4 col-xs-4"></span><h2 class="text-center" id="place"> ' + place + ' </h2></div>'
+        + '<div class="col-lg-4  col-md-4 col-sm-4 col-xs-4"><h2 class="text-center" id="deal"> ' + deal + '</h2></div>'
+        + '<div class="col-lg-4  col-md-4 col-sm-4 col-xs-4"><h2 class="text-center" id="datetime"> ' + datetime + ' </h2></div>'
+        + '<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12"><h2 class="text-center" id="msg">' + msg + '<span class="glyphicon glyphicon-cutlery"></h2></div></div>'
         + '<p class="hidden" id="foodid">' + id + '</p>';
     return msg;
 }
 
 function creat_date1(nickname, avator, datetime, place, msg, id, getuser) {
-    var msg = '<div class="col-lg-12 col-md-12 col-sm-12 info">'
-        + '<div class="col-lg-4  col-md-6 col-sm-6">'
+    var msg = '<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 info">'
+        + '<div class="col-lg-4  col-md-6 col-sm-6 col-xs-6">'
         + '<img class="img-thumbnail info-img" ' + 'src="' + avator + '"></div>'
-        + '<div class="col-lg-4 col-md-6 col-sm-6"><h2 class="text-center">' + nickname + '</h2></div>'
-        + '<div class="col-lg-4 col-md-6 col-sm-6">'
+        + '<div class="col-lg-4 col-md-6 col-sm-6 col-xs-6"><h2 class="text-center">' + nickname + '</h2></div>'
+        + '<div class="col-lg-4 col-md-6 col-sm-6 col-xs-6">'
         + '<h2 class="text-center">' + datetime + '</h2>'
         + '</div>'
-        + '<div class="col-lg-4 col-md-6 col-sm-6">'
+        + '<div class="col-lg-4 col-md-6 col-sm-6 col-xs-6">'
         + '<h2 class="text-center">' + place + '</h2>'
         + '</div>'
         + '<div class="col-lg-12">'

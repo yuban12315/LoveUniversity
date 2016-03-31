@@ -1,21 +1,21 @@
 function short(image, title, time, id) {
-    var data = '<div class="col-lg-12 col-md-12 col-sm-12 long" onclick="detail(this)">'
-        + '<div class="col-lg-3  col-md-3 col-sm-3">'
+    var data = '<div class="col-lg-12 col-md-12 col-sm-12  col-xs-12 long" onclick="detail(this)">'
+        + '<div class="col-lg-3  col-md-3 col-sm-3  col-xs-3">'
         + '<img class="img-thumbnail info-img" src="' + image + '"> </div>'
-        + '<div class="col-lg-6  col-md-6 col-sm-6"><h2  > ' + title + '</h2></div>'
-        + '<div class="col-lg-3  col-md-3 col-sm-3"><h3  >下架时间： ' + time + '</h3></div></div>'
+        + '<div class="col-lg-6  col-md-6 col-sm-6 col-xs-6"><h2  > ' + title + '</h2></div>'
+        + '<div class="col-lg-3  col-md-3 col-sm-3 col-xs-3"><h3  >下架时间： ' + time + '</h3></div></div>'
         + '<p class="hidden">' + id + '</p>';
     return data;
 }
 
 function creat(avatar, nickname, time, money, msg, helpid) {
-    var data = '<div class="col-lg-12 col-md-12 col-sm-12 info">'
-        + '<div class="col-lg-3  col-md-3 col-sm-3">'
+    var data = '<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 info">'
+        + '<div class="col-lg-3  col-md-3 col-sm-3 col-xs-3">'
         + '<img class="img-thumbnail info-img" src="' + avatar + '"></div>'
-        + '<div class="col-lg-2  col-md-3 col-sm-3"><h2 class="text-center">' + nickname + ' </h2></div>'
-        + '<div class="col-lg-3  col-md-3 col-sm-3"><h2 class="text-center"> ' + time + '</h2></div>'
-        + '<div class="col-lg-3  col-md-3 col-sm-3"><h2 class="text-center"> ' + money + ' </h2></div>'
-        + ' <div class="col-lg-12 col-md-12 col-sm-12">'
+        + '<div class="col-lg-2  col-md-3 col-sm-3 col-xs-3"><h2 class="text-center">' + nickname + ' </h2></div>'
+        + '<div class="col-lg-3  col-md-3 col-sm-3 col-xs-3"><h2 class="text-center"> ' + time + '</h2></div>'
+        + '<div class="col-lg-3  col-md-3 col-sm-3 col-xs-3"><h2 class="text-center"> ' + money + ' </h2></div>'
+        + ' <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">'
         + '<h2 class="text-center">' + msg + '</h2>'
         + '<button class="btn btn-info pull-right big" onclick="help(this)">帮Ta</button>'
         + '<p class="hidden">' + helpid + '</p> </div> </div>';
