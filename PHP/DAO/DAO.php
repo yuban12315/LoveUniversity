@@ -8,7 +8,7 @@
 require_once 'DAOConfig.php';
 function connect()
 {
-    $conn = mysqli_connect('183.175.12.160', 'root', '31415926', 'loveu', '3306');
+    $conn = mysqli_connect('127.0.0.1', 'root', '', 'loveu', '3306');
     if ($conn) {
         return $conn;
     } else {
