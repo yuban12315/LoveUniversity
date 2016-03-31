@@ -162,11 +162,11 @@
     }
 
     function submit() {
-        $.post('../../PHP/Service/GiveService/Create.php', {
+        $.post('../../PHP/Service/PaiService/Create.php', {
             paiinformation: $("#input-content").val(),
-            paitile:$("#title").val(),
+            paititle:$("#title").val(),
             paimoney:$("#money").val(),
-            downtime:$("#time").val()
+            downtime:$("#time").val()+':00'
         }, function (data) {
             if(data[0]=='1'){
                 location.reload();
