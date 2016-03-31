@@ -5,7 +5,7 @@
  * Date: 2016/3/8
  * Time: 20:37
 */
-$Url = "123.206.21.155";
+$Url = "127.0.0.1";
 $user = "root";
 $pass = "";
 $database = "loveu";
