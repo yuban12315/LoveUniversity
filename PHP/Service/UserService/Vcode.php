@@ -42,5 +42,4 @@ function message($userphone)
     $html = file_get_contents($url);
     echo $html;
     return $checkCode;
-
 }
