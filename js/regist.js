@@ -10,7 +10,7 @@ $(document).ready(function () {
         $.post('../PHP/Service/UserService/Vcode.php', {
             userphone: $("#mobile").val()
         }, function (data) {
-            if (data[0] != '' || data[0] != null) {
+            if (data.lenth>2) {
                 var msg = '<p>' + data + '</p>';
                 $("#wrong").innerHTML = msg;
                 document.getElementById('wrong').innerHTML = msg;

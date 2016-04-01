@@ -40,6 +40,5 @@ function message($userphone)
     $content = "【爱大学】，您的验证码为" . $checkCode . "在1分钟内有效";
     $url = "http://www.smsbao.com/sms?u=" . $username . "&p=" . $pass . "&m=" . $userphone . "&c=" . $content;
     $html = file_get_contents($url);
-    echo $html;
     return $checkCode;
 }

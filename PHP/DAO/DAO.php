@@ -6,9 +6,10 @@
  * Time: 20:09
  */
 require_once 'DAOConfig.php';
+connect();
 function connect()
 {
-    $conn = mysqli_connect('127.0.0.1', 'root', '', 'loveu', '3306');
+    $conn = mysqli_connect('127.0.0.1', 'root', '123456', 'LoveU', '3306');
     if ($conn) {
         return $conn;
     } else {

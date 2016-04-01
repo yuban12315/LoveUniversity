@@ -105,7 +105,7 @@ function doUpload() {
     if (status == '1') {
         var formData = new FormData($("#form1")[0]);
         $.ajax({
-            url: '../../PHP/Service/GiveService/Up.php',
+            url: '../../PHP/Service/GiveService/UP.php',
             type: 'POST',
             data: formData,
             async: false,

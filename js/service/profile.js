@@ -59,6 +59,10 @@ function improve() {
     return msg;
 }
 
+function trade(){
+    var data;
+}
+
 function msg() {
     var url = '../PHP/Service/UserService/Modify.php';
     var nickname = $("#nick").val();

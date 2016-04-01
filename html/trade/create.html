@@ -56,7 +56,7 @@
             <input type="file" name="file" class="hidden" id="file0">
         </form>
         <form role="form" autocomplete="off" id="form">
-            <div class="col-lg-6 col-md-6 col-sm-6   col-xs-6">
+            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
                 <input type="text" class="form-control big " id="title" placeholder="标题*"><br>
                 <input type="text" size="6" class="form-control big " id="money" placeholder="起拍价*"><br>
                <div class="input-group">
@@ -182,7 +182,7 @@
         if (status == '1') {
             var formData = new FormData($("#form1")[0]);
             $.ajax({
-                url: '../../PHP/Service/PaiService/Up.php',
+                url: '../../PHP/Service/PaiService/UP.php',
                 type: 'POST',
                 data: formData,
                 async: false,
