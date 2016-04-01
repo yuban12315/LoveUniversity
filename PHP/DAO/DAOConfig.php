@@ -7,7 +7,7 @@
 */
 $Url = "127.0.0.1";
 $user = "root";
-$pass = "";
+$pass = "imudges2016";
 $database = "loveu";
 $port = "3306";
 ?>
