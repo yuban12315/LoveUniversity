@@ -4,8 +4,6 @@
 //$str = '2016-01-03 16:55:55';
 mysqli_query($conn,"select * from user where UserId = 1");
 */
-/*
- * 七牛云存储
 require_once "php-sdk-master/autoload.php";
 use Qiniu\Auth;
 use Qiniu\Storage\UploadManager;
@@ -38,7 +36,7 @@ function upload()
     } else {
         var_dump($ret);
     }
-}*/
+}
 //unlink('UserImage/System/Head.jpg');
 /*
  *

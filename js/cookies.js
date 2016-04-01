@@ -24,7 +24,7 @@ function  clearCookie(name){
 }
 
 function resetCookie(){
-    var url = 'http://127.0.0.1/LoveUniversity/PHP/Service/UserService/Session.php';
+    var url = 'http://loveu.iheshulin.com:9999/LoveUniversity/PHP/Service/UserService/Session.php';
     $.getJSON(url, function (data) {
         var id=data.userid;
          var id_0= getCookie('userid');
@@ -40,7 +40,7 @@ function resetCookie(){
 function logOut() {
     clearCookie('username');
     clearCookie('userid');
-    url = 'http://127.0.0.1/LoveUniversity/PHP/Service/UserService/Logout.php';
+    url = 'http://loveu.iheshulin.com:9999/LoveUniversity/PHP/Service/UserService/Logout.php';
     $.get(url, function () {
         location.reload();
     });
