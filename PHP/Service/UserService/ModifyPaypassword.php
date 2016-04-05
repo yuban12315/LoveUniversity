@@ -18,17 +18,23 @@ if (isset($_SESSION['userid'])) {
     @$oldpaypassword = $_POST['oldpaypassword'];
     $str = "select * from money where UserId = {$userid} and PayPassword = '{$oldpaypassword}'";
     $row = sel($str);
-    if($row) {
+    if ($row) {
         @$newpaypassword = xss($_POST['newpaypassword']);
-        if (strlen($newpaypassword) < 8 || strlen($newpaypassword) > 17) {
-            echo '密码应为8到16位';
+        if (strlen($newpaypassword) < 6 || strlen($newpaypassword) > 17) {
+            echo '密码应为6到16位';
         } else {
-            $str = "update money set PayPassword = '{$newpaypassword}' where UserId = {$userid}";
-            up($str);
-            echo '1';
+            for ($i = 0; $i < strlen($userphone); $i++) {
+                if ($userphone[$i] < '0' || $userphone[$i] > '9') {
+                    echo "支付密码应为6到16位纯数字";
+                } else {
+                    $str = "update money set PayPassword = '{$newpaypassword}' where UserId = {$userid}";
+                    up($str);
+                    echo '1';
+                }
+            }
         }
     }
     else{
-        echo '密码错误';
+            echo '密码错误';
+        }
     }
-}

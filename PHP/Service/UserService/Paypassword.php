@@ -14,11 +14,16 @@ $_POST['paypassword'] = '88888888';
 if (isset($_SESSION['userid'])) {
     $userid = $_SESSION['userid'];
     @$paypassword = xss($_POST['paypassword']);
-    if (strlen($paypassword) < 8 || strlen($paypassword) > 17) {
-        echo '密码应为8到16位';
+    if (strlen($paypassword) < 6 || strlen($paypassword) > 17) {
+        echo '密码应为6到16位纯数字';
     } else {
-        $str = "update money set PayPassword = '{$paypassword}' where UserId = {$userid}";
-        up($str);
-        echo '1';
+        for ($i = 0; $i < strlen($userphone); $i++) {
+            if ($userphone[$i] < '0' || $userphone[$i] > '9') {
+                echo "支付密码应为6到16位纯数字";
+            } else {
+                $str = "update money set PayPassword = '{$paypassword}' where UserId = {$userid}";
+                up($str);
+                echo '1';
+            }
+        }
     }
-}
