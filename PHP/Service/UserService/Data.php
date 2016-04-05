@@ -8,7 +8,7 @@
 session_start();
 require_once '../../DAO/DAO.php';
 require_once 'ch_json_encode.php';
-if(isset($_SESSION['userid'])) {
+if (isset($_SESSION['userid'])) {
     $userid = $_SESSION['userid'];
     $str = 'select * from user where UserId = "' . $userid . '"';
     /*
@@ -24,8 +24,17 @@ if(isset($_SESSION['userid'])) {
     $PaiData = sel($str3);
     $XueData = sel($str4);
     */
-    unset($PersonalData['PassWord'],$PersonalData['JwxtPassword'],$PersonalData['SecretKey']);
+    unset($PersonalData['PassWord'], $PersonalData['JwxtPassword'], $PersonalData['SecretKey']);
     $array['PersonalData'] = $PersonalData;
+    $str = 'select * from money where UserId = "' . $userid . '"';
+    $row = sel($str);
+    $sign = 0;
+    if (empty($row['PayPassword'])) {
+        $sign = 0;
+    } else {
+        $sign = 1;
+    }
+    $array['sign'] = $sign;
     /*
     if($FoodData!=null) {
         unset($FoodData['UserId']);
