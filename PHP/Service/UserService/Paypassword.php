@@ -13,7 +13,7 @@ $_POST['paypassword'] = '88888888';
 */
 if (isset($_SESSION['userid'])) {
     $userid = $_SESSION['userid'];
-    @$paypassword = $_POST['paypassword'];
+    @$paypassword = xss($_POST['paypassword']);
     if (strlen($paypassword) < 8 || strlen($paypassword) > 17) {
         echo '密码应为8到16位';
     } else {
