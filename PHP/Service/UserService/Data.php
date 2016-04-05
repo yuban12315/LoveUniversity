@@ -35,6 +35,7 @@ if (isset($_SESSION['userid'])) {
         $sign = 1;
     }
     $array['sign'] = $sign;
+    $array['money'] = $row['Money'];
     /*
     if($FoodData!=null) {
         unset($FoodData['UserId']);
