@@ -84,7 +84,7 @@
 <script src="../js/main.js"></script>
 <script>
     $(document).ready(function () {
-        var url = 'http://127.0.0.1/LoveUniversity/php/Service/UserService/Data.php';
+        var url = '../PHP/Service/UserService/Data.php';
         $.getJSON(url, function (data) {
             $("#head0").attr('src', data.PersonalData.UserPhoto);
         });

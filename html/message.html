@@ -37,7 +37,7 @@
 </div>
 <div class="banner"></div>
 <div class="container">
-    <div class="profile-left" style="height: 400px">
+    <div class="profile-left col-lg-3 col-md-3 col-sm-3 col-xs-3" style="height: 400px">
         <ul class="nav text-center">
             <li class="list-divider"></li>
             <li class="item-lg">
@@ -46,14 +46,37 @@
             </li>
             <li class="list-divider"></li>
             <li><h3 class="list" id="initiated"><span class="glyphicon glyphicon-ice-lolly"></span> 我发起的</h3></li>
+            <li class="big" id="myup">
+                <div class="big">
+                    <span class="glyphicon glyphicon-link icon" id="date"></span>
+                    <span class="glyphicon glyphicon-cutlery icon" id="food"></span>
+                    <span class="glyphicon glyphicon-shopping-cart icon" id="buy"></span>
+                </div>
+                <div class="big">
+                    <span class="glyphicon glyphicon-hand-right icon" id="help"></span>
+                    <span class="glyphicon glyphicon-send icon" id="send"></span>
+                </div>
+            </li>
             <li><h3 class="list" id="accepted"><span class="glyphicon glyphicon-ice-lolly-tasted"></span> 我接受的</h3></li>
+            <li class="big" id="myre">
+                <div class="big">
+                    <span class="glyphicon glyphicon-link icon"></span>
+                    <span class="glyphicon glyphicon-cutlery icon"></span>
+                    <span class="glyphicon glyphicon-shopping-cart icon"></span>
+                </div>
+                <div class="big ">
+                    <span class="glyphicon glyphicon-hand-right icon"></span>
+                    <span class="glyphicon glyphicon-send icon"></span>
+                </div>
+            </li>
         </ul>
     </div>
     <div class="container">
-        <div class="profile-right" id="content">
+        <div class="profile-right col-lg-9 col-md-9 col-sm-9 col-xs-9" id="content">
         </div>
     </div>
 </div>
+<div class="load" id="loading"></div>
 <script src="../js/jQuery.js"></script>
 <script src="../js/bootstrap.js"></script>
 <script src="../js/headroom.js"></script>

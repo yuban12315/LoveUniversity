@@ -59,7 +59,7 @@ function show() {
     }
     setTimeout(function () {
         $("#loading").fadeOut();
-    },300);
+    }, 300);
 }
 
 function show1(page) {
@@ -133,8 +133,8 @@ function submit() {
     var datetime;
     var place;
     msg = $("#input-content").val();
-    var reg=new RegExp("\n","g");
-    msg = msg.replace(reg,'；');
+    var reg = new RegExp("\n", "g");
+    msg = msg.replace(reg, '；');
     datetime = $("#datetime").val();
     place = $("#dateplace").val();
     datetime += ':00';
@@ -145,8 +145,11 @@ function submit() {
             runinformation: msg,
             runarea: place
         }, function (data) {
-            if (data[0] == '1')
-                location.reload();
+            if (data[0] == '1') {
+                setTimeout(function () {
+                    location.href = '../message.html';
+                }, 800);
+            }
             else {
                 $("#word").text(data);
             }

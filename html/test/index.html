@@ -44,16 +44,26 @@
     </div>
 </div>
 <div class="banner-bot"></div>
-<div class="row" id="input">
-    <div class="container">
-        <form id= "form1">
-            <p >指定文件名： <input type="text" name="filename" value= ""/></p >
-            <p >上传文件： <input type="file" name="file"/></p>
-            <input type="button" value="上传" onclick="doUpload()" />
-        </form>
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog"
+     aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close"
+                        data-dismiss="modal" aria-hidden="true">
+                    &times;
+                </button>
+                <h1 class="modal-title" id="myModalLabel">
+                    发起失败！
+                </h1>
+            </div>
+            <div class="modal-body">
+                <h4 class="text-center" id="wrong">SDSDSDSD</h4>
+            </div>
+        </div>
     </div>
 </div>
-<div class="lood" id="loading"></div>
+<button style="display: none" id="alert" data-toggle="modal" data-target="#myModal"></button>
 <button class="btn btn-info big" id="test">Click</button>
 
 <script src="../../js/jQuery.js"></script>
@@ -63,10 +73,12 @@
 <script>
     $(document).ready(function () {
         $("#test").click(function () {
-            $("#loading").fadeIn();
+            $("#alert").click();
+            //
             setTimeout(function () {
-                $("#loading").fadeOut();
-            },500);
+                location.href='../message.html';
+            },800);
+           // location.reload();
         })
     });
 

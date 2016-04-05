@@ -208,9 +208,9 @@
 .profile-left {
     float: left;
     margin-top: 10px;
-    width: 200px;
     height: 400px;
     border: 2px #d4d4d4 solid;
+    border-bottom: none;
     color: black;
 }
 
@@ -239,7 +239,6 @@
 .profile-right {
     margin-top: 10px;
     float: right;
-    width: 80%;
     height: 600px;
     border: 2px #d4d4d4 solid;
     border-bottom: 0;
@@ -249,6 +248,14 @@
     font-size: 1.5em;
     margin-left: 50px;
     color: #8c8c8c;
+}
+
+.icon{
+    color: #d4d4d4;
+}
+
+.icon:hover{
+    color: black;
 }
 
 .inline {

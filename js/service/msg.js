@@ -6,6 +6,15 @@ function data() {
         $("#head").attr('src', data.PersonalData.UserPhoto);
     });
 }
+function creat_trade(image, title, time, id) {
+    var data = '<div class="col-lg-12 col-md-12 col-sm-12  col-xs-12 long" onclick="detail(this)">'
+        + '<div class="col-lg-3  col-md-3 col-sm-3  col-xs-3">'
+        + '<img class="img-thumbnail info-img" src="' + image + '"> </div>'
+        + '<div class="col-lg-6  col-md-6 col-sm-6 col-xs-6"><h2  > ' + title + '</h2></div>'
+        + '<div class="col-lg-3  col-md-3 col-sm-3 col-xs-3"><h3  >下架时间： ' + time + '</h3></div></div>'
+        + '<p class="hidden">' + id + '</p>';
+    return data;
+}
 
 function creat_food(avator, nickname, place, datetime, msg, id, deal,part) {
     var msg = '<div class="col-lg-12 col-md-12 col-sm-12  col-xs-12 info">'
@@ -280,14 +289,23 @@ function del(obj) {
 
 $(document).ready(function () {
     data();
+    $("#myup").fadeToggle('1');
+    $("#myre").fadeToggle('1');
+    setTimeout(function () {
+        $("#loading").fadeOut();
+    },300);
     $("#initiated").click(function () {
         $("#content")[0].innerHTML = '';
+        $("#myup").slideDown();
+        $("#myre").slideUp();
         Show('run');
         Show('xue');
         Show('food');
     });
     $("#accepted").click(function () {
         $("#content")[0].innerHTML = '';
+        $("#myup").slideUp();
+        $("#myre").slideDown();
         Show1('run');
         Show1('xue');
         Show1('food');

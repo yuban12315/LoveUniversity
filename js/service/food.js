@@ -39,7 +39,9 @@ function submit() {
         foodtime: datetime
     }, function (data) {
         if (data[0] == '1') {
-            location.reload();
+            setTimeout(function () {
+                location.href='../message.html';
+            },800);
         }
         else $("#word").text(data);
     })

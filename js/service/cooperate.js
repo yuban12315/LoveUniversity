@@ -21,6 +21,9 @@ function help(obj){
             $("#myModalLabel")[0].innerHTML="成功";
             $("#wrong")[0].innerHTML='你已经接下了这个委托';
             $("#alert").click();
+            setTimeout(function () {
+                location.href='../message.html';
+            },800);
         }
         else{
             $("#myModalLabel")[0].innerHTML="失败";
