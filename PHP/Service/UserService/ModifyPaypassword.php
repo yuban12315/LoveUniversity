@@ -20,21 +20,24 @@ if (isset($_SESSION['userid'])) {
     $row = sel($str);
     if ($row) {
         @$newpaypassword = xss($_POST['newpaypassword']);
-        if (strlen($newpaypassword) !=6) {
+        if (strlen($newpaypassword) != 6) {
             echo '支付密码应为6位纯数字';
         } else {
-            for ($i = 0; $i < strlen($userphone); $i++) {
-                if ($userphone[$i] < '0' || $userphone[$i] > '9') {
+            $flag = 1;
+            for ($i = 0; $i < strlen($newpaypassword); $i++) {
+                if ($newpaypassword[$i] < '0' || $newpaypassword[$i] > '9') {
+                    $flag = 0;
                     echo "支付密码应为6位纯数字";
-                } else {
-                    $str = "update money set PayPassword = '{$newpaypassword}' where UserId = {$userid}";
-                    up($str);
-                    echo '1';
+                    break;
                 }
             }
+            if ($flag == 1) {
+                $str = "update money set PayPassword = '{$newpaypassword}' where UserId = {$userid}";
+                up($str);
+                echo '1';
+            }
         }
+    } else {
+        echo '密码错误';
     }
-    else{
-            echo '密码错误';
-        }
-    }
+}

@@ -17,14 +17,18 @@ if (isset($_SESSION['userid'])) {
     if (strlen($paypassword) != 6) {
         echo '支付密码应为6位纯数字';
     } else {
-        for ($i = 0; $i < strlen($userphone); $i++) {
-            if ($userphone[$i] < '0' || $userphone[$i] > '9') {
+        $flag = 1;
+        for ($i = 0; $i < strlen($paypassword); $i++) {
+            if ($paypassword[$i] < '0' || $paypassword[$i] > '9') {
+                $flag = 0;
                 echo "支付密码应为6位纯数字";
-            } else {
-                $str = "update money set PayPassword = '{$paypassword}' where UserId = {$userid}";
-                up($str);
-                echo '1';
+                break;
             }
+        }
+        if ($flag == 1) {
+            $str = "update money set PayPassword = '{$paypassword}' where UserId = {$userid}";
+            up($str);
+            echo '1';
         }
     }
 }
