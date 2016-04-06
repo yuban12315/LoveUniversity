@@ -7,6 +7,7 @@
  */
 session_start();
 require_once '../../DAO/DAO.php';
+require_once 'XSS.php';
 /*完善支付密码调用测试
 $_SESSION['userid'] = 37;
 $_POST['paypassword'] = '88888888';

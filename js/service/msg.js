@@ -16,31 +16,33 @@ function creat_trade(image, title, time, id) {
     return data;
 }
 
-function creat_food(avator, nickname, place, datetime, msg, id, deal,part) {
+function creat_food(avator, nickname, place, datetime, msg, id, deal, part, getuser) {
     var msg = '<div class="col-lg-12 col-md-12 col-sm-12  col-xs-12 info">'
-        + '<div class="col-lg-4  col-md-4 col-sm-4 col-xs-4">'
+        + '<div class="col-lg-4  col-md-6 col-sm-6 col-xs-6">'
         + '<img class="img-thumbnail info-img"src="' + avator + '"></div>'
-        + '<div class="col-lg-4  col-md-4 col-sm-4 col-xs-4"><h2 class="text-center" id="nickname"> ' + nickname + '</h2></div>'
-        + '<div class="col-lg-4  col-md-4 col-sm-4 col-xs-4"></span><h2 class="text-center" id="place"> ' + place + ' </h2></div>'
-        + '<div class="col-lg-4  col-md-4 col-sm-4  col-xs-4"><h2 class="text-center" id="deal"> ' + deal + '</h2></div>'
-        + '<div class="col-lg-4  col-md-4 col-sm-4 col-xs-4"><h2 class="text-center" id="datetime"> ' + datetime + ' </h2></div>'
-        + '<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12"><h2 class="text-center" id="msg">' + msg + '<span class="glyphicon glyphicon-cutlery"></h2></div>'
+        + '<div class="col-lg-4  col-md-6 col-sm-6 col-xs-6"><h3 class="text-center" id="nickname"> ' + nickname + '</h3></div>'
+        + '<div class="col-lg-4  col-md-6 col-sm-6 col-xs-6"></span><h3 class="text-center" id="place"> ' + place + ' </h3></div>'
+        + '<div class="col-lg-4  col-md-6 col-sm-6  col-xs-6"><h3 class="text-center" id="deal"> ' + deal + '</h3></div>'
+        + '<div class="col-lg-4  col-md-6 col-sm-6 col-xs-6"><h3 class="text-center" id="datetime"> ' + datetime + ' </h3></div>'
+        + '<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12"><h3 class="text-center" id="msg">' + msg + '<span class="glyphicon glyphicon-cutlery"></h3>'
         + '<button class="btn btn-info pull-right big" onclick="del(this)"><span class="glyphicon glyphicon-triangle-top"></span>撤回</button>'
         + '<p class="hidden" >' + id + '</p>'
-        + '<p class="hidden" >' + part + '</p></div>';
+        + '<p class="hidden" >' + part + getuser + '</p></div>'
+        + '<div class="col-lg-12">'
+        + '<h3 class="text-center">' + getuser + '</h3></div></div>';
     return msg;
 }
 
-function creat_date(nickname, avator, datetime, place, msg, id, getuser,part) {
+function creat_date(nickname, avator, datetime, place, msg, id, getuser, part) {
     var msg = '<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 info">'
-        + '<div class="col-lg-4  col-md-6 col-sm-6 col-xs-12">'
+        + '<div class="col-lg-4  col-md-6 col-sm-6 col-xs-6">'
         + '<img class="img-thumbnail info-img" ' + 'src="' + avator + '"></div>'
-        + '<div class="col-lg-4 col-md-6 col-sm-6 col-xs-6"><h2 class="text-center">' + nickname + '</h2></div>'
-        + '<div class="col-lg-4 col-md-6 col-sm-6 col-xs-6">'
-        + '<h2 class="text-center">' + datetime + '</h2></div>'
-        + '<div class="col-lg-4 col-md-6 col-sm-6 col-xs-6">'
-        + '<h2 class="text-center">' + place + '</h2></div>'
-        + '<div class="col-lg-12">'
+        + '<div class="col-lg-4  col-md-6 col-sm-6  col-xs-6"><h3 class="text-center">' + nickname + '</h3></div>'
+        + '<div class="col-lg-4  col-md-6 col-sm-6  col-xs-6">'
+        + '<h3 class="text-center">' + datetime + '</h3></div>'
+        + '<div class="col-lg-4  col-md-6 col-sm-6  col-xs-12">'
+        + '<h3 class="text-center">' + place + '</h3></div>'
+        + '<div class="col-lg-12 col-md-12 col-sm-12  col-xs-12">'
         + '<h3 class="text-center">' + msg + '<span class="glyphicon glyphicon-fire"></h3>'
         + '<button class="btn btn-info pull-right big" onclick="del(this)"><span class="glyphicon glyphicon-triangle-top"></span>撤回</button>'
         + '<p class="hidden">' + id + '</p>'
@@ -67,12 +69,12 @@ function creat_date1(nickname, avator, datetime, place, msg, id, getuser) {
     var msg = '<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 info">'
         + '<div class="col-lg-4  col-md-6 col-sm-6 col-xs-6">'
         + '<img class="img-thumbnail info-img" ' + 'src="' + avator + '"></div>'
-        + '<div class="col-lg-4 col-md-6 col-sm-6 col-xs-6"><h2 class="text-center">' + nickname + '</h2></div>'
+        + '<div class="col-lg-4 col-md-6 col-sm-6 col-xs-6"><h3 class="text-center">' + nickname + '</h3></div>'
         + '<div class="col-lg-4 col-md-6 col-sm-6 col-xs-6">'
-        + '<h2 class="text-center">' + datetime + '</h2>'
+        + '<h3 class="text-center">' + datetime + '</h3>'
         + '</div>'
         + '<div class="col-lg-4 col-md-6 col-sm-6 col-xs-6">'
-        + '<h2 class="text-center">' + place + '</h2>'
+        + '<h3 class="text-center">' + place + '</h3>'
         + '</div>'
         + '<div class="col-lg-12">'
         + '<h3 class="text-center">' + msg + '<span class="glyphicon glyphicon-fire"></h3>'
@@ -118,7 +120,7 @@ function Show(part) {
                     }
                     url = '../PHP/Service/UserService/GetData.php?userid=' + userid;
                     $.getJSON(url, function (data2) {
-                        msg = creat_date(data2.NickName, data2.UserPhoto, datetime, place, msg, runid, getuser,'run');
+                        msg = creat_date(data2.NickName, data2.UserPhoto, datetime, place, msg, runid, getuser, 'run');
                         $("#content")[0].innerHTML = msg + $("#content")[0].innerHTML;
                     });
                     sum++;
@@ -155,7 +157,7 @@ function Show(part) {
                     }
                     url = '../PHP/Service/UserService/GetData.php?userid=' + userid;
                     $.getJSON(url, function (data2) {
-                        msg = creat_date(data2.NickName, data2.UserPhoto, datetime, place, msg, xueid, getuser,'xue');
+                        msg = creat_date(data2.NickName, data2.UserPhoto, datetime, place, msg, xueid, getuser, 'xue');
                         $("#content")[0].innerHTML = msg + $("#content")[0].innerHTML;
                     });
                     sum++;
@@ -173,6 +175,7 @@ function Show(part) {
             var foodid;
             var deal;
             var place;
+            var getuser;
             setInterval(function () {
                 if (sum != num) {
                     userid = data.post[sum].UserId;
@@ -181,9 +184,13 @@ function Show(part) {
                     foodid = data.post[sum].FoodId;
                     deal = data.post[sum].FoodWay;
                     msg = data.post[sum].FoodInformation;
+                    getuser = getData(data.post[sum].GetUser);
+                    if (getuser == '') {
+                        getuser = '还没有人接受你的邀请';
+                    }
                     url = '../PHP/Service/UserService/GetData.php?userid=' + data.post[sum].UserId;
                     $.getJSON(url, function (data2) {
-                        msg = creat_food(data2.UserPhoto, data2.NickName, place, datetime, msg, foodid, deal,'food');
+                        msg = creat_food(data2.UserPhoto, data2.NickName, place, datetime, msg, foodid, deal, 'food', getuser);
                         $("#content")[0].innerHTML = msg + $("#content")[0].innerHTML;
                     });
                     sum++;
@@ -283,7 +290,7 @@ function Show1(part) {
 
 function del(obj) {
     var id = obj.nextElementSibling.innerHTML;
-    var part=obj.nextElementSibling.nextElementSibling.innerHTML;
+    var part = obj.nextElementSibling.nextElementSibling.innerHTML;
     alert(part);
 }
 
@@ -293,7 +300,7 @@ $(document).ready(function () {
     $("#myre").fadeToggle('1');
     setTimeout(function () {
         $("#loading").fadeOut();
-    },300);
+    }, 300);
     $("#initiated").click(function () {
         $("#content")[0].innerHTML = '';
         $("#myup").slideDown();
@@ -309,5 +316,14 @@ $(document).ready(function () {
         Show1('run');
         Show1('xue');
         Show1('food');
+    });
+    $("#date").click(function () {
+        $("#content")[0].innerHTML = '';
+        Show('run');
+        Show('xue');
+    });
+    $("#food").click(function () {
+        $("#content")[0].innerHTML = '';
+        Show('food');
     });
 });

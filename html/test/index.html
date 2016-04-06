@@ -66,6 +66,22 @@
 <button style="display: none" id="alert" data-toggle="modal" data-target="#myModal"></button>
 <button class="btn btn-info big" id="test">Click</button>
 
+
+<div class="container col-lg-8 col-md-12 col-sm-12 col-xs-12 text-center">
+    <div class="input-group-lg ">
+        <div class="input-group">
+            <span class="input-group-addon">原支付密码</span>
+            <input class="form-control" type="password">
+        </div>
+        <br>
+        <div class="input-group">
+            <input class="form-control" type="password">
+            <span class="input-group-addon">新支付密码</span>
+        </div>
+    </div>
+    <br>
+    <input class="btn btn-info big pull-right" type="button" value="提交" id="paysub">
+</div>
 <script src="../../js/jQuery.js"></script>
 <script src="../../js/bootstrap.js"></script>
 
@@ -73,19 +89,31 @@
 <script>
     $(document).ready(function () {
         $("#test").click(function () {
-            $("#alert").click();
-            //
-            setTimeout(function () {
-                location.href='../message.html';
-            },800);
-           // location.reload();
-        })
+            /* $("#alert").click();
+             //
+             setTimeout(function () {
+             location.href='../message.html';
+             },800);
+             // location.reload();
+             })*/
+            var url = '../../PHP/Service/UserService/Data.php';
+            var msg;
+            $.getJSON(url, function (data) {
+                if (data.sign == '1') {
+                    msg = "sdsdsd";
+                }
+                else {
+                    msg = "123213123";
+                }
+                alert(msg);
+            });
+        });
     });
 
     function doUpload() {
-        var formData = new FormData($( "#form1" )[0]);
+        var formData = new FormData($("#form1")[0]);
         $.ajax({
-            url: '../../PHP/Service/GiveService/Create.php' ,
+            url: '../../PHP/Service/GiveService/Create.php',
             type: 'POST',
             data: formData,
             async: false,

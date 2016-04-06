@@ -40,10 +40,10 @@ function resetCookie(){
 function logOut() {
     clearCookie('username');
     clearCookie('userid');
-    url = 'http://loveu.iheshulin.com:9999/LoveUniversity/PHP/Service/UserService/Logout.php';
-    $.get(url, function () {
-        location.reload();
-    });
+   // url = 'http://loveu.iheshulin.com:9999/LoveUniversity/PHP/Service/UserService/Logout.php';
+    url='http://127.0.0.1/LoveUniversity/PHP/Service/UserService/Logout.php';
+    $.get(url);
+    location.reload();
 }
 
 
