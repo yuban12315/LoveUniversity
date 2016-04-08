@@ -1,0 +1,651 @@
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+    table{
+    	border-collapse: collapse;
+    	text-align: center;
+    	
+    }
+        td
+        {
+            width: 100px;     
+            border: 3px solid cadetblue;
+        }
+        tr
+        {
+            height: 50px;
+        }
+        body{
+        	margin: 0;  
+        	background: url(img/test.jpg) no-repeat;
+        	background-size: 100% 100%; 
+        	width: 100%;
+        	height: 100%;
+        	     	
+        }
+        html{
+        	width: 100%;
+        	height: 100%;
+        }
+        #mon1{
+            filter:alpha(opacity=50);
+            -moz-opacity:0.7;
+            -khtml-opacity: 0.7;
+            opacity: 0.7;
+            background-color: hotpink;
+        	width: 100px;
+        	height: 100px;
+        	border-radius: 5px;
+        }
+        #mon3{
+            filter:alpha(opacity=50);
+            -moz-opacity:0.7;
+            -khtml-opacity: 0.7;
+            opacity: 0.7;
+        	background-color: cornflowerblue;
+        	width: 100px;
+        	height: 100px;
+        	border-radius: 5px;
+        }
+        #mon5{
+            filter:alpha(opacity=50);
+            -moz-opacity:0.7;
+            -khtml-opacity: 0.7;
+            opacity: 0.7;
+        	background-color: #0af7a1;
+        	width: 100px;
+        	height: 100px;
+        	border-radius: 5px;
+        }
+        #mon7{
+            filter:alpha(opacity=50);
+            -moz-opacity:0.7;
+            -khtml-opacity: 0.7;
+            opacity: 0.7;
+        	background-color:yellow;
+        	width: 100px;
+        	height: 100px;
+        	border-radius: 5px;
+        }
+        #mon9{
+            filter:alpha(opacity=50);
+            -moz-opacity:0.7;
+            -khtml-opacity: 0.7;
+            opacity: 0.7;
+        	background-color: deepskyblue;
+        	width: 100px;
+        	height: 150px;
+        	border-radius: 5px;
+        }
+        #tue1{
+            filter:alpha(opacity=50);
+            -moz-opacity:0.7;
+            -khtml-opacity: 0.7;
+            opacity: 0.7;
+        	background-color: lightgreen;
+        	width: 100px;
+        	height: 100px;
+        	border-radius: 5px;
+        }
+        #tue3{
+            filter:alpha(opacity=50);
+            -moz-opacity:0.7;
+            -khtml-opacity: 0.7;
+            opacity: 0.7;
+        	background-color: pink;
+        	width: 100px;
+        	height: 100px;
+        	border-radius: 5px;
+        }
+        #tue5{
+            filter:alpha(opacity=50);
+            -moz-opacity:0.7;
+            -khtml-opacity: 0.7;
+            opacity: 0.7;
+        	background-color: lightblue;
+        	width: 100px;
+        	height: 100px;
+        	border-radius: 5px;
+        }
+        #tue7{
+            filter:alpha(opacity=50);
+            -moz-opacity:0.7;
+            -khtml-opacity: 0.7;
+            opacity: 0.7;
+        	background-color: navajowhite;
+        	width: 100px;
+        	height: 100px;
+        	border-radius: 5px;
+        }
+        #tue9{
+            filter:alpha(opacity=50);
+            -moz-opacity:0.7;
+            -khtml-opacity: 0.7;
+            opacity: 0.7;
+        	background-color: yellowgreen;
+        	width: 100px;
+        	height: 150px;
+        	border-radius: 5px;
+        }
+        #wed1{
+            filter:alpha(opacity=50);
+            -moz-opacity:0.7;
+            -khtml-opacity: 0.7;
+            opacity: 0.7;
+        	background-color: #53c4e9;
+        	width: 100px;
+        	height: 100px;
+        	border-radius: 5px;
+        }
+        #wed3{
+            filter:alpha(opacity=50);
+            -moz-opacity:0.7;
+            -khtml-opacity: 0.7;
+            opacity: 0.7;
+        	background-color: lawngreen;
+        	width: 100px;
+        	height: 100px;
+        	border-radius: 5px;
+        }
+        #wed5{
+            filter:alpha(opacity=50);
+            -moz-opacity:0.7;
+            -khtml-opacity: 0.7;
+            opacity: 0.7;
+        	background-color: plum;
+        	width: 100px;
+        	height: 100px;
+        	border-radius: 5px;
+        }
+        #wed7{
+            filter:alpha(opacity=50);
+            -moz-opacity:0.7;
+            -khtml-opacity: 0.7;
+            opacity: 0.7;
+        	background-color: honeydew;
+        	width: 100px;
+        	height: 100px;
+        	border-radius: 5px;
+        }
+        #wed9{
+            filter:alpha(opacity=50);
+            -moz-opacity:0.7;
+            -khtml-opacity: 0.7;
+            opacity: 0.7;
+        	background-color:mediumaquamarine;
+        	width: 100px;
+        	height: 150px;
+        	border-radius: 5px;
+        }
+        #thu1{
+            filter:alpha(opacity=50);
+            -moz-opacity:0.7;
+            -khtml-opacity: 0.7;
+            opacity: 0.7;
+        	background-color: #FFDEAD;
+        	width: 100px;
+        	height: 100px;
+        	border-radius: 5px;
+        }
+        #thu3{
+            filter:alpha(opacity=50);
+            -moz-opacity:0.7;
+            -khtml-opacity: 0.7;
+            opacity: 0.7;
+        	background-color: lightpink;
+        	width: 100px;
+        	height: 100px;
+        	border-radius: 5px;
+        }
+        #thu5{
+            filter:alpha(opacity=50);
+            -moz-opacity:0.7;
+            -khtml-opacity: 0.7;
+            opacity: 0.7;
+        	background-color: cornsilk;
+        	width: 100px;
+        	height: 100px;
+        	border-radius: 5px;
+        }
+        #thu7{
+            filter:alpha(opacity=50);
+            -moz-opacity:0.7;
+            -khtml-opacity: 0.7;
+            opacity: 0.7;
+        	background-color: deepskyblue;
+        	width: 100px;
+        	height: 100px;
+        	border-radius: 5px;
+        }
+        #thu9{
+            filter:alpha(opacity=50);
+            -moz-opacity:0.7;
+            -khtml-opacity: 0.7;
+            opacity: 0.7;
+        	background-color: mistyrose;
+        	width: 100px;
+        	height: 150px;
+        	border-radius: 5px;
+        }
+        #fri1{
+            filter:alpha(opacity=50);
+            -moz-opacity:0.7;
+            -khtml-opacity: 0.7;
+            opacity: 0.7;
+        	background-color: #53c4e9;
+        	width: 100px;
+        	height: 100px;
+        	border-radius: 5px;
+        }
+        #fri3{
+            filter:alpha(opacity=50);
+            -moz-opacity:0.7;
+            -khtml-opacity: 0.7;
+            opacity: 0.7;
+        	background-color: lawngreen;
+        	width: 100px;
+        	height: 100px;
+        	border-radius: 5px;
+        }
+        #fri5{
+            filter:alpha(opacity=50);
+            -moz-opacity:0.7;
+            -khtml-opacity: 0.7;
+            opacity: 0.7;
+        	background-color: plum;
+        	width: 100px;
+        	height: 100px;
+        	border-radius: 5px;
+        }
+        #fri7{
+            filter:alpha(opacity=50);
+            -moz-opacity:0.7;
+            -khtml-opacity: 0.7;
+            opacity: 0.7;
+        	background-color: honeydew;
+        	width: 100px;
+        	height: 100px;
+        	border-radius: 5px;
+        }
+        #fri9{
+            filter:alpha(opacity=50);
+            -moz-opacity:0.7;
+            -khtml-opacity: 0.7;
+            opacity: 0.7;
+        	background-color:mediumaquamarine;
+        	width: 100px;
+        	height: 150px;
+        	border-radius: 5px;
+        }
+        #sat1{
+            filter:alpha(opacity=50);
+            -moz-opacity:0.7;
+            -khtml-opacity: 0.7;
+            opacity: 0.7;
+        	background-color: lightgreen;
+        	width: 100px;
+        	height: 100px;
+        	border-radius: 5px;
+        }
+        #sat3{
+            filter:alpha(opacity=50);
+            -moz-opacity:0.7;
+            -khtml-opacity: 0.7;
+            opacity: 0.7;
+        	background-color: pink;
+        	width: 100px;
+        	height: 100px;
+        	border-radius: 5px;
+        }
+        #sat5{
+            filter:alpha(opacity=50);
+            -moz-opacity:0.7;
+            -khtml-opacity: 0.7;
+            opacity: 0.7;
+        	background-color: lightblue;
+        	width: 100px;
+        	height: 100px;
+        	border-radius: 5px;
+        }
+        #sat7{
+            filter:alpha(opacity=50);
+            -moz-opacity:0.7;
+            -khtml-opacity: 0.7;
+            opacity: 0.7;
+        	background-color: navajowhite;
+        	width: 100px;
+        	height: 100px;
+        	border-radius: 5px;
+        }
+        #sat9{
+            filter:alpha(opacity=50);
+            -moz-opacity:0.7;
+            -khtml-opacity: 0.7;
+            opacity: 0.7;
+        	background-color: yellowgreen;
+        	width: 100px;
+        	height: 150px;
+        	border-radius: 5px;
+        }
+        #sun1{
+            filter:alpha(opacity=50);
+            -moz-opacity:0.7;
+            -khtml-opacity: 0.7;
+            opacity: 0.7;
+        	background-color: hotpink;
+        	width: 100px;
+        	height: 100px;
+        	border-radius: 5px;
+        }
+        #sun3{
+            filter:alpha(opacity=50);
+            -moz-opacity:0.7;
+            -khtml-opacity: 0.7;
+            opacity: 0.7;
+        	background-color: cornflowerblue;
+        	width: 100px;
+        	height: 100px;
+        	border-radius: 5px;
+        }
+        #sun5{
+            filter:alpha(opacity=50);
+            -moz-opacity:0.7;
+            -khtml-opacity: 0.7;
+            opacity: 0.7;
+        	background-color: #0af7a1;
+        	width: 100px;
+        	height: 100px;
+        	border-radius: 5px;
+        }
+        #sun7{
+            filter:alpha(opacity=50);
+            -moz-opacity:0.7;
+            -khtml-opacity: 0.7;
+            opacity: 0.7;
+        	background-color:yellow;
+        	width: 100px;
+        	height: 100px;
+        	border-radius: 5px;
+        }
+        #sun9{
+            filter:alpha(opacity=50);
+            -moz-opacity:0.7;
+            -khtml-opacity: 0.7;
+            opacity: 0.7;
+        	background-color: deepskyblue;
+        	width: 100px;
+        	height: 150px;
+        	border-radius: 5px;
+        }
+      
+    </style>
+</head>
+<body>
+<div style="text-align: center;">
+	<img src="img/未标题-3.png" />
+</div>
+<div style="font-family:'隶书';font-size: 15px;color:#217b99;">
+<table style="margin: 0 auto;border: 1px solid white;">
+    <tr>
+        <td>
+            <div>
+                &nbsp;
+            </div>
+        </td>
+        <td>
+            <div id = "mon">星期一</div>
+        </td>
+        <td>
+            <div id = "tue">星期二</div>
+        </td>
+        <td>
+            <div id = "wed">星期三</div>
+        </td>
+        <td>
+            <div id = "thu">星期四</div>
+        </td>
+        <td>
+            <div id = "fri">星期五</div>
+        </td>
+        <td>
+            <div id = "sat">星期六</div>
+        </td>
+        <td>
+            <div id = "sun">星期日</div>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <div>1</div>
+        </td>
+        <td rowspan="2">
+            <div id = "mon1">
+
+            </div>
+        </td>
+        <td rowspan="2">
+            <div id = "tue1"></div>
+        </td>
+        <td rowspan="2">
+            <div id = "wed1"></div>
+        </td>
+        <td rowspan="2">
+            <div id = "thu1"></div>
+        </td>
+        <td rowspan="2">
+            <div id = "fri1"></div>
+        </td>
+        <td rowspan="2">
+            <div id = "sat1"></div>
+        </td>
+        <td rowspan="2">
+            <div id = "sun1"></div>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <div>2</div>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <div>3</div>
+        </td>
+        <td rowspan="2">
+            <div id = "mon3"></div>
+        </td>
+        <td rowspan="2">
+            <div id = "tue3"></div>
+        </td>
+        <td rowspan="2">
+            <div id = "wed3"></div>
+        </td>
+        <td rowspan="2">
+            <div id = "thu3"></div>
+        </td>
+        <td rowspan="2">
+            <div id = "fri3"></div>
+        </td>
+        <td rowspan="2">
+            <div id = "sat3"></div>
+        </td>
+        <td rowspan="2">
+            <div id = "sun3"></div>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <div>4</div>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <div>5</div>
+        </td>
+        <td rowspan="2">
+            <div id = "mon5"></div>
+        </td>
+        <td rowspan="2">
+            <div id = "tue5"></div>
+        </td>
+        <td rowspan="2">
+            <div id = "wed5"></div>
+        </td>
+        <td rowspan="2">
+            <div id = "thu5"></div>
+        </td>
+        <td rowspan="2">
+            <div id = "fri5"></div>
+        </td>
+        <td rowspan="2">
+            <div id = "sat5"></div>
+        </td>
+        <td rowspan="2">
+            <div id = "sun5"></div>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <div>6</div>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <div>7</div>
+        </td>
+        <td rowspan="2">
+            <div id = "mon7"></div>
+        </td>
+        <td rowspan="2">
+            <div id = "tue7"></div>
+        </td>
+        <td rowspan="2">
+            <div id = "wed7"></div>
+        </td>
+        <td rowspan="2">
+            <div id = "thu7"></div>
+        </td>
+        <td rowspan="2">
+            <div id = "fri7"></div>
+        </td>
+        <td rowspan="2">
+            <div id = "sat7"></div>
+        </td>
+        <td rowspan="2">
+            <div id = "sun7"></div>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <div>8</div>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <div>9</div>
+        </td>
+        <td rowspan="3">
+            <div id = "mon9"></div>
+        </td>
+        <td rowspan="3">
+            <div id = "tue9"></div>
+        </td>
+        <td rowspan="3">
+            <div id = "wed9"></div>
+        </td>
+        <td rowspan="3">
+            <div id = "thu9"></div>
+        </td>
+        <td rowspan="3">
+            <div id = "fri9"></div>
+        </td>
+        <td rowspan="3">
+            <div id = "sat9"></div>
+        </td>
+        <td rowspan="3">
+            <div id = "sun9"></div>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <div>10</div>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <div>11</div>
+        </td>
+    </tr>
+</table>
+</div>
+</body>
+<script src="../js/jQuery.js"></script>
+<script>
+    var url = 'Service/UserService/Classes.php';
+    $.getJSON(url, function (data) {
+        var i = 1;
+        var j = 1;
+        for(i=1;i<=9;i++,j++) {
+            var str = "#mon" + i;
+            var show = $(str);
+            show.text("");
+            show.append(data[1][j]);
+        }
+        var i = 1;
+        var j = 1;
+        for(i=1;i<=11;i++,j++) {
+            var str = "#tue" + i;
+            var show = $(str);
+            show.text("");
+            show.append(data[2][j]);
+
+        }
+        var i = 1;
+        var j = 1;
+        for(i=1;i<=11;i++,j++) {
+            var str = "#wed" + i;
+            var show = $(str);
+            show.text("");
+            show.append(data[3][j]);
+        }
+        var i = 1;
+        var j = 1;
+        for(i=1;i<=11;i++,j++) {
+            var str = "#thu" + i;
+            var show = $(str);
+            show.text("");
+            show.append(data[4][j]);
+        }
+        var i = 1;
+        var j = 1;
+        for(i=1;i<=11;i++,j++) {
+            var str = "#fri" + i;
+            var show = $(str);
+            show.text("");
+            show.append(data[5][j]);
+
+        }
+        var i = 1;
+        var j = 1;
+        for(i=1;i<=11;i++,j++) {
+            var str = "#sat" + i;
+            var show = $(str);
+            show.text("");
+            show.append(data[6][j]);
+
+        }
+        var i = 1;
+        var j = 1;
+        for(i=1;i<=11;i++,j++) {
+            var str = "#sun" + i;
+            var show = $(str);
+            show.text("");
+            show.append(data[7][j]);
+
+        }
+    })
+</script>
+</html>
