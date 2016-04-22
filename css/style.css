@@ -129,6 +129,7 @@
     position: relative
 }
 
+
 .tr2 {
     width: 100%;
 }
@@ -159,6 +160,7 @@
 
 .img-max {
     width: 100%;
+    height: 120px;
 }
 
 .item-lg {
@@ -189,16 +191,18 @@
 
 .banner {
     width: 100%;
-    height: 60px;
+    height: 120px;
     margin-top: 50px;
-    background-color: #00ccff;
+    background: url("../img/banner.png") no-repeat 0 -30px;
+    background-size: 100%;
 }
 
 .banner-lg {
     width: 100%;
-    height: 110px;
+    height: 120px;
     margin-top: 50px;
-    background-color: #00ccff;
+    background:url("../img/banner1.png")  no-repeat ;
+    background-size: 100%;
 }
 
 .func {
@@ -312,15 +316,12 @@
 }
 
 .long {
-    border: 2px solid #d4d4d4;
     background-color: white;
-    color: #000;
+    color: #948f88;
     border-top: none;
     border-bottom: none;
-    border-radius: 10px;
     margin-bottom: 30px;
     margin-top: 20px;
-    height: 152px;
 }
 
 .long:hover {

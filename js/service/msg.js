@@ -6,8 +6,9 @@ function data() {
         $("#head").attr('src', data.PersonalData.UserPhoto);
     });
 }
+
 function creat_trade(image, title, time, id) {
-    var data = '<div class="col-lg-12 col-md-12 col-sm-12  col-xs-12 long" onclick="detail(this)">'
+    var data = '<div class="col-lg-12 col-md-12 col-sm-12  col-xs-12 long" onclick="detail_t(this)">'
         + '<div class="col-lg-3  col-md-3 col-sm-3  col-xs-3">'
         + '<img class="img-thumbnail info-img" src="' + image + '"> </div>'
         + '<div class="col-lg-6  col-md-6 col-sm-6 col-xs-6"><h2  > ' + title + '</h2></div>'
@@ -16,8 +17,34 @@ function creat_trade(image, title, time, id) {
     return data;
 }
 
+function creat_send(nickname, avatar, msg, id) {
+    var data = '<div class="col-lg-12 col-md-12 col-sm-12  col-xs-12 long" onclick="detail_s(this)">'
+        + '<div class="col-lg-3 col-md-3 col-sm-3  col-xs-3 ">'
+        + '<img class="info-img img-thumbnail" src="' + avatar + '"></div>'
+        + '<div class="col-lg-2 col-md-2 col-sm-2   col-xs-2 text-center">'
+        + '<h2 class="text-center">' + nickname + '</h2></div>'
+        + '<div class="col-lg-7 col-md-7 col-sm-7  col-xs-7 ">'
+        + '<h2 class="text-center">' + msg + '</h2></div></div>'
+        + '<p class="hidden">' + id + '</p>';
+    return data;
+}
+
+function creat_help(avatar, nickname, time, money, msg, helpid, getuser) {
+    var data = '<div class="col-lg-12 col-md-12 col-sm-12  col-xs-12 info"><br><br>'
+        + '<div class="col-lg-3  col-md-3 col-sm-3 col-xs-3">'
+        + '<img class="img-thumbnail info-img" src="' + avatar + '"></div>'
+        + '<div class="col-lg-2  col-md-3 col-sm-3 col-xs-3"><h2 class="text-center">' + nickname + ' </h2></div>'
+        + '<div class="col-lg-3  col-md-3 col-sm-3 col-xs-3"><h2 class="text-center"> ' + time + '</h2></div>'
+        + '<div class="col-lg-3  col-md-3 col-sm-3 col-xs-3"><h2 class="text-center"> ' + money + ' </h2></div>'
+        + ' <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">'
+        + '<h2 class="text-center">' + msg + '</h2>'
+        + '<h3 class="text-center">' + getuser + '</h3>'
+        + '<p class="hidden">' + helpid + '</p> </div> </div>';
+    return data;
+}
+
 function creat_food(avator, nickname, place, datetime, msg, id, deal, part, getuser) {
-    var msg = '<div class="col-lg-12 col-md-12 col-sm-12  col-xs-12 info">'
+    var msg = '<div class="col-lg-12 col-md-12 col-sm-12  col-xs-12 info"><br>'
         + '<div class="col-lg-4  col-md-6 col-sm-6 col-xs-6">'
         + '<img class="img-thumbnail info-img"src="' + avator + '"></div>'
         + '<div class="col-lg-4  col-md-6 col-sm-6 col-xs-6"><h3 class="text-center" id="nickname"> ' + nickname + '</h3></div>'
@@ -25,7 +52,7 @@ function creat_food(avator, nickname, place, datetime, msg, id, deal, part, getu
         + '<div class="col-lg-4  col-md-6 col-sm-6  col-xs-6"><h3 class="text-center" id="deal"> ' + deal + '</h3></div>'
         + '<div class="col-lg-4  col-md-6 col-sm-6 col-xs-6"><h3 class="text-center" id="datetime"> ' + datetime + ' </h3></div>'
         + '<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12"><h3 class="text-center" id="msg">' + msg + '<span class="glyphicon glyphicon-cutlery"></h3>'
-        + '<button class="btn btn-info pull-right big" onclick="del(this)"><span class="glyphicon glyphicon-triangle-top"></span>撤回</button>'
+            // + '<button class="btn btn-info pull-right big" onclick="del(this)"><span class="glyphicon glyphicon-triangle-top"></span>撤回</button>'
         + '<p class="hidden" >' + id + '</p>'
         + '<p class="hidden" >' + part + getuser + '</p></div>'
         + '<div class="col-lg-12">'
@@ -34,7 +61,7 @@ function creat_food(avator, nickname, place, datetime, msg, id, deal, part, getu
 }
 
 function creat_date(nickname, avator, datetime, place, msg, id, getuser, part) {
-    var msg = '<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 info">'
+    var msg = '<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 info"><br>'
         + '<div class="col-lg-4  col-md-6 col-sm-6 col-xs-6">'
         + '<img class="img-thumbnail info-img" ' + 'src="' + avator + '"></div>'
         + '<div class="col-lg-4  col-md-6 col-sm-6  col-xs-6"><h3 class="text-center">' + nickname + '</h3></div>'
@@ -44,7 +71,7 @@ function creat_date(nickname, avator, datetime, place, msg, id, getuser, part) {
         + '<h3 class="text-center">' + place + '</h3></div>'
         + '<div class="col-lg-12 col-md-12 col-sm-12  col-xs-12">'
         + '<h3 class="text-center">' + msg + '<span class="glyphicon glyphicon-fire"></h3>'
-        + '<button class="btn btn-info pull-right big" onclick="del(this)"><span class="glyphicon glyphicon-triangle-top"></span>撤回</button>'
+            //   + '<button class="btn btn-info pull-right big" onclick="del(this)"><span class="glyphicon glyphicon-triangle-top"></span>撤回</button>'
         + '<p class="hidden">' + id + '</p>'
         + '<p class="hidden">' + part + '</p></div>'
         + '<div class="col-lg-12">'
@@ -53,7 +80,7 @@ function creat_date(nickname, avator, datetime, place, msg, id, getuser, part) {
 }
 
 function creat_food1(avator, nickname, place, datetime, msg, id, deal) {
-    var msg = '<div class="col-lg-12 col-md-12 col-sm-12  col-xs-12 info">'
+    var msg = '<div class="col-lg-12 col-md-12 col-sm-12  col-xs-12 info"><br>'
         + '<div class="col-lg-4  col-md-4 col-sm-4 col-xs-4">'
         + '<img class="img-thumbnail info-img"src="' + avator + '"></div>'
         + '<div class="col-lg-4  col-md-4 col-sm-4 col-xs-4"><h2 class="text-center" id="nickname"> ' + nickname + '</h2></div>'
@@ -66,7 +93,7 @@ function creat_food1(avator, nickname, place, datetime, msg, id, deal) {
 }
 
 function creat_date1(nickname, avator, datetime, place, msg, id, getuser) {
-    var msg = '<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 info">'
+    var msg = '<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 info"><br>'
         + '<div class="col-lg-4  col-md-6 col-sm-6 col-xs-6">'
         + '<img class="img-thumbnail info-img" ' + 'src="' + avator + '"></div>'
         + '<div class="col-lg-4 col-md-6 col-sm-6 col-xs-6"><h3 class="text-center">' + nickname + '</h3></div>'
@@ -187,6 +214,11 @@ function Show(part) {
                     getuser = getData(data.post[sum].GetUser);
                     if (getuser == '') {
                         getuser = '还没有人接受你的邀请';
+                    } else {
+                        url = '../PHP/Service/UserService/GetData.php?userid=' + getuser;
+                        $.getJSON(url, function (data) {
+                            getuser = '接受者：' + data.NickName;
+                        });
                     }
                     url = '../PHP/Service/UserService/GetData.php?userid=' + data.post[sum].UserId;
                     $.getJSON(url, function (data2) {
@@ -198,6 +230,92 @@ function Show(part) {
             }, 1);
         });
     }
+    if (part == 'trade') {
+        $.getJSON(url + 'pai', function (data) {
+            var num = data.postnum;
+            var sum = 0;
+            var img;
+            var time;
+            var title;
+            var paiid;
+            var msg;
+            var id;
+            setInterval(function () {
+                if (sum != num) {
+                    paiid = data.post[sum].PaiId;
+                    img = data.post[sum].PaiImage;
+                    time = data.post[sum].DownTime;
+                    title = data.post[sum].PaiTitle;
+                    id = data.post[sum].UserId;
+                }
+                msg = creat_trade(img, title, time, id);
+                $("#content")[0].innerHTML = msg + $("#content")[0].innerHTML;
+            })
+        })
+    }
+    if (part == 'help') {
+        $.getJSON(url + 'help', function (data) {
+            var num = data.postnum;
+            var sum = 0;
+            var img;
+            var time;
+            var getuser;
+            var helpid;
+            var msg;
+            var id;
+            var money;
+            var userid;
+            setInterval(function () {
+                if (sum != num) {
+                    helpid = data.post[sum].HelpId;
+                    img = data.post[sum].HelpImage;
+                    time = data.post[sum].DownTime;
+                    id = data.post[sum].UserId;
+                    msg = data.post[sum].HelpInformation;
+                    money=data.post[sum].HelpMoney;
+                    getuser = getData(data.post[sum].GetUser);
+                    if (getuser == '') {
+                        getuser = '还没有人接受你的委托';
+                    }
+                    else {
+                        url = '../PHP/Service/UserService/GetData.php?userid=' + getuser;
+                        $.getJSON(url, function (data) {
+                            getuser = '接受者：' + data.NickName;
+                        });
+                    }
+                }url = '../PHP/Service/UserService/GetData.php?userid=' + id;
+                $.getJSON(url, function (data2) {
+                    msg = creat_help(img, data2.NickName, time, money, msg, helpid, getuser);
+                    $("#content")[0].innerHTML = msg + $("#content")[0].innerHTML;
+                });
+
+            })
+        })
+    }
+    if(part=='send'){
+        $.getJSON(url + 'give', function (data) {
+            var num = data.postnum;
+            var sum = 0;
+            var img;
+            var giveid;
+            var msg;
+            var id;
+            setInterval(function () {
+                if (sum != num) {
+                    giveid = data.post[sum].GiveId;
+                    img = data.post[sum].GiveImage;
+                    id = data.post[sum].UserId;
+                    msg= data.post[sum].GiveInformation;
+                }
+                url = '../PHP/Service/UserService/GetData.php?userid=' + id;
+                $.getJSON(url, function (data2) {
+                    msg = creat_send(data2.NickName, img, msg, giveid);
+                    $("#content")[0].innerHTML = msg + $("#content")[0].innerHTML;
+                });
+            })
+        })
+    }
+
 }
 
 function Show1(part) {
@@ -288,6 +406,19 @@ function Show1(part) {
     }
 }
 
+function detail_t(obj) {
+    var id = obj.nextElementSibling.innerHTML;
+    setCookie('master', id);
+    open('trade/details.html');
+}
+
+function  detail_s(obj){
+    var id = obj.nextElementSibling.innerHTML;
+    setCookie('master', id);
+    open('send/details.html');
+}
+
+
 function del(obj) {
     var id = obj.nextElementSibling.innerHTML;
     var part = obj.nextElementSibling.nextElementSibling.innerHTML;
@@ -308,6 +439,9 @@ $(document).ready(function () {
         Show('run');
         Show('xue');
         Show('food');
+        Show('trade');
+        Show('help');
+        Show('send');
     });
     $("#accepted").click(function () {
         $("#content")[0].innerHTML = '';
@@ -326,4 +460,16 @@ $(document).ready(function () {
         $("#content")[0].innerHTML = '';
         Show('food');
     });
+    $("#buy").click(function () {
+        $("#content")[0].innerHTML = '';
+        Show('trade');
+    })
+    $("#help").click(function () {
+        $("#content")[0].innerHTML = '';
+        Show('help');
+    });
+    $("#send").click(function () {
+        $("#content")[0].innerHTML = '';
+        Show('send');
+    })
 });

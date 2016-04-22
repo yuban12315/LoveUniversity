@@ -1,39 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>LoveU |课程表</title>
-    <link href="../css/bootstrap.css" rel="stylesheet">
-    <link href="../css/style.css" rel="stylesheet">
+<head style="background-color: #5bc0de">
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="bootstrap.css" rel="stylesheet">
     <style>
-        .c1{
+        .c1 {
             background-color: #66FF99;
         }
-        .c2{
+
+        .c2 {
             background-color: #CC99FF;
         }
-        .c3{
+
+        .c3 {
             background-color: #FFFF66;
         }
-        .c4{
-            background-color: #cccccc ;
+
+        .c4 {
+            background-color: #cccccc;
         }
-        .c5{
+
+        .c5 {
             background-color: #66CCFF;
         }
 
-        .c6{
-            background-color: #66FFCC ;
+        .c6 {
+            background-color: #66FFCC;
         }
 
-        .c7{
-            background-color: #CC6666 ;
+        .c7 {
+            background-color: #CC6666;
         }
 
-        .c8{
-            background-color: #FF9966 ;
+        .c8 {
+            background-color: #FF9966;
         }
 
         .margin-top {
@@ -73,19 +74,29 @@
             height: 200px;
             border-bottom: 5px solid #f5f5f5;
             border-right: 5px solid #f5f5f5;
-            border-left:none;
+            border-left: none;
             border-top: none;
             word-break: break-all;
-            color: black;
+            color: #f5f5f5;
         }
 
+        .container {
+            padding-right: 15px;
+            padding-left: 15px;
+            margin-right: auto;
+            margin-left: auto;
+        }
+
+        .big{
+            font-size: 1.5em;
+        }
 
     </style>
 </head>
-<body class="bg">
+<body style="background-color: #F5F5F5">
+<h1 class="text-center" style="font-family:  'Microsoft YaHei UI';">课&nbsp;程&nbsp;表</h1>
 <div class="container">
     <div class="row">
-        <img src="img/class.png" class="center-block">
         <table class="big table-class">
             <tr class="panel panel-info">
                 <th>&nbsp;</th>
@@ -168,15 +179,17 @@
         </table>
     </div>
 </div>
-<script src="../js/jQuery.js"></script>
-<script src="../js/bootstrap.js"></script>
+</body>
+
+<script src="jQuery.js"></script>
 <script>
     var id=1;
     $(document).ready(function () {
         $.ajaxSetup({
             async: false
         });
-        var url = 'Service/UserService/Classes.php';
+        var UserName = "UserName=" + "<?php echo $_GET['UserName'] ?>";
+        var url = 'Classes.php?' + UserName;
         $.getJSON(url, function (data) {
             CreatClass('a',data[1]);
             CreatClass('b',data[2]);
@@ -207,7 +220,7 @@
     }
     function  getData(data){
         if(data==''||data==null)
-                return 0;
+            return 0;
         return 1;
     }
 
@@ -217,6 +230,4 @@
     }
 
 </script>
-
-</body>
 </html>

@@ -1,5 +1,5 @@
 function creat(avatar, nickname, time, money, msg, helpid) {
-    var data = '<div class="col-lg-12 col-md-12 col-sm-12  col-xs-12 info">'
+    var data = '<div class="col-lg-12 col-md-12 col-sm-12  col-xs-12 info"><br><br>'
         + '<div class="col-lg-3  col-md-3 col-sm-3 col-xs-3">'
         + '<img class="img-thumbnail info-img" src="' + avatar + '"></div>'
         + '<div class="col-lg-2  col-md-3 col-sm-3 col-xs-3"><h2 class="text-center">' + nickname + ' </h2></div>'
